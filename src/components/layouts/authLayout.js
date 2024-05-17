@@ -38,6 +38,7 @@ function AuthLayout({children,title,subText,onSubmit}) {
     
             return serializeToJSON(data);
     }
+    
   const router = useRouter()
   // const isAuthenticated = localStorage.screeningAuthState  
 
