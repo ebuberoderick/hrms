@@ -20,7 +20,7 @@ function LineChart() {
                     inverseColors: false,
                     opacityFrom: 0.5,
                     opacityTo: 0,
-                    stops: [ 30 , 100]
+                    stops: [30, 100]
                 },
             },
 
@@ -48,13 +48,16 @@ function LineChart() {
     })
     return (
         <div className="h-full">
-            <Chart
-                options={chart.options}
-                series={chart.series}
-                type="area"
-                width="100%"
-                height="100%"
-            />
+            {(typeof window !== 'undefined') &&
+                <Chart
+                    options={chart.options}
+                    series={chart.series}
+                    type="area"
+                    width="100%"
+                    height="100%"
+                />
+            }
+
         </div>
     )
 }
