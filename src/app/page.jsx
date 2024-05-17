@@ -75,7 +75,7 @@ function Page() {
         <div className="">
           <div className="space-y-4 max-w-xs">
             <div className="bg-white shadow-sm rounded-lg ">
-              {/* <Calender /> */}
+              <Calender />
             </div>
             <div className="bg-white p-4 shadow-sm rounded-lg space-y-4">
               <div className="text-xl font-bold">Options</div>
