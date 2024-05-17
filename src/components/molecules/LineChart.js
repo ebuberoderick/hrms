@@ -1,8 +1,11 @@
 'use client'
+import dynamic from "next/dynamic";
 import React, { useState } from "react";
-import Chart from "react-apexcharts";
 
 function LineChart() {
+
+
+    const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
     const [chart, setChartData] = useState({
         options: {
