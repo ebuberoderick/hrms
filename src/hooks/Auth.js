@@ -1,3 +1,4 @@
+'use client'
 import Cookies from 'js-cookie';
 import { addData } from '../../reduxStore/reducers/UsersReducer';
 import { providerData } from '../../reduxStore/reducers/ProviderStateReducer';
