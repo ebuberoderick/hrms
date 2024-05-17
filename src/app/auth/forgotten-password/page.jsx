@@ -4,7 +4,7 @@ import AppInput from '@/components/organisms/AppInput'
 import Link from 'next/link'
 import React from 'react'
 
-function page() {
+function Page() {
   return (
     <AuthLayout title={"Forgot Password"} subText={"Reset Password With email"}>
         <AppInput name="email" required label="Enter Email" type={"email"}/>
@@ -14,4 +14,4 @@ function page() {
   )
 }
 
-export default page
+export default Page

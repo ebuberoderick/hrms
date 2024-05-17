@@ -14,7 +14,7 @@ export const metadata = {
 };
 
 
-function page() {
+function Page() {
   return (
     <AppLayout>
       <div className="grid grid-cols-3 gap-4">
@@ -135,4 +135,4 @@ function page() {
   )
 }
 
-export default page
+export default Page

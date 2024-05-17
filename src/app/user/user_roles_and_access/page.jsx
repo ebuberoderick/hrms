@@ -5,10 +5,10 @@ export const metadata = {
   title: "User roles and access"
 };
 
-function page() {
+function Page() {
   return (
     <AppLayout>page</AppLayout>
   )
 }
 
-export default page
+export default Page
