@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import bg from '@assets/images/authBG.png'
-import avatar from '@assets/images/avatar/img.png'
+import avatar from '@assets/images/avatar/Img.png'
 import React from 'react'
 
 function AuthLayout({children,title,subText,onSubmit}) {
