@@ -2,6 +2,7 @@ import axios from "axios"
 import Cookies from "js-cookie"
 
 export const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL
+axios.defaults.withCredentials = true;
 
 
 const timeoutConfig = {
@@ -13,7 +14,7 @@ export const apiWithOutAuth = axios.create({
   baseURL: API_BASE_URL,
   headers: {
     Accept: "application/json",
-    "Content-Type" : "application/json",
+    "Content-Type": "application/json",
   },
   ...timeoutConfig,
 })
@@ -22,7 +23,7 @@ export const apiWithAuth = axios.create({
   baseURL: API_BASE_URL,
   headers: {
     Accept: "application/json",
-    "Content-Type" : "application/json",
+    "Content-Type": "application/json",
     'Authorization': `Bearer ${Cookies.get('jwt')}`
   },
   ...timeoutConfig,

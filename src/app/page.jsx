@@ -96,7 +96,7 @@ function Page() {
             <div className="p-3 h-32 rounded-lg overflow-hidden bg-white shadow-sm relative">
               <div className="flex gap-2">
                 <div className="">
-                  <div className={`w-12 h-12 text-[#dc2626] text-2xl border-2 border-[#dc2626] bg-[#dc2626] flex items-center justify-center bg-opacity-20 rounded-full`}><i className="ri-currency-line"></i></div>
+                  <div className={`w-12 h-12 text-[#19C19F] text-2xl border-2 border-[#19C19F] bg-[#19C19F] flex items-center justify-center bg-opacity-20 rounded-full`}><i className="ri-currency-line"></i></div>
                 </div>
                 <div className="relative top-3">
                   <div className="font-bold text-lg">Total Deposit</div>
