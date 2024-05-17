@@ -42,32 +42,32 @@ function Page() {
           <div className=" bg-white shadow-sm rounded-lg">
             <div className="text-lg font-semibold px-5 py-3">Payment</div>
             <div className="h-96">
-              <LineChart />
+              {/* <LineChart /> */}
             </div>
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div className="h-96 p-4 bg-white shadow-sm rounded-lg">
               <div className="text-lg font-semibold">Employee Department</div>
               <div className="">
-                <PieChart series={[45, 35, 76]} labels={['CSE', 'Finance', 'Analyst']} />
+                {/* <PieChart series={[45, 35, 76]} labels={['CSE', 'Finance', 'Analyst']} /> */}
               </div>
             </div>
             <div className="h-96 p-4 bg-white shadow-sm rounded-lg">
               <div className="text-lg font-semibold">Employee Designation</div>
               <div className="">
-                <PieChart series={[54, 43, 97, 23, 56]} labels={['Android Developer', 'Data Analyst', 'Finance Manager', 'Senior Programmer', 'Marketing Analyst']} />
+                {/* <PieChart series={[54, 43, 97, 23, 56]} labels={['Android Developer', 'Data Analyst', 'Finance Manager', 'Senior Programmer', 'Marketing Analyst']} /> */}
               </div>
             </div>
             <div className="h-96 p-4 bg-white shadow-sm rounded-lg">
               <div className="text-lg font-semibold">Expense Vs Deposit</div>
               <div className="">
-                <PieChart series={[45, 35]} labels={['Expense', 'Deposit']} />
+                {/* <PieChart series={[45, 35]} labels={['Expense', 'Deposit']} /> */}
               </div>
             </div>
             <div className="h-96 p-4 bg-white shadow-sm rounded-lg">
               <div className="text-lg font-semibold">Project Status</div>
               <div className="">
-                <PieChart series={[45, 5]} labels={['In Progress', 'Not Started']} />
+                {/* <PieChart series={[45, 5]} labels={['In Progress', 'Not Started']} /> */}
               </div>
             </div>
           </div>
@@ -75,7 +75,7 @@ function Page() {
         <div className="">
           <div className="space-y-4 max-w-xs">
             <div className="bg-white shadow-sm rounded-lg ">
-              <Calender />
+              {/* <Calender /> */}
             </div>
             <div className="bg-white p-4 shadow-sm rounded-lg space-y-4">
               <div className="text-xl font-bold">Options</div>
