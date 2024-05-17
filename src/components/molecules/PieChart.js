@@ -1,8 +1,9 @@
 'use client'
+import dynamic from 'next/dynamic';
 import React, { useState } from 'react'
-import Chart from 'react-apexcharts'
 
-function PieChart({labels,series}) {
+function PieChart({ labels, series }) {
+    const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
     const [chart, setChartData] = useState({
         options: {
             plotOptions: {
@@ -11,9 +12,9 @@ function PieChart({labels,series}) {
                 }
             },
             fill: {
-                colors: ["#35C119","#ef4444","#112255","#FFFA49", '#E91E63', '#9C27B0']
+                colors: ["#35C119", "#ef4444", "#112255", "#FFFA49", '#E91E63', '#9C27B0']
             },
-            colors: ["#35C119","#ef4444","#112255","#FFFA49", '#E91E63', '#9C27B0'],
+            colors: ["#35C119", "#ef4444", "#112255", "#FFFA49", '#E91E63', '#9C27B0'],
             dataLabels: {
                 enabled: false
             },
@@ -22,13 +23,15 @@ function PieChart({labels,series}) {
             },
             labels
         },
-        colors: ["#35C119","#ef4444","#112255","#FFFA49", '#E91E63', '#9C27B0'],
+        colors: ["#35C119", "#ef4444", "#112255", "#FFFA49", '#E91E63', '#9C27B0'],
         series
-        
+
     })
     return (
         <div className="donut">
-            <Chart options={chart.options} series={chart.series} type="pie" />
+            {(typeof window !== 'undefined') &&
+                <Chart options={chart.options} series={chart.series} type="pie" width="100%"  height="" />
+            } 
         </div>
     )
 }

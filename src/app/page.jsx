@@ -140,25 +140,25 @@ function Page() {
             <div className="h-96 p-4 bg-white shadow-sm rounded-lg">
               <div className="text-lg font-semibold">Employee Department</div>
               <div className="">
-                {/* <PieChart series={[45, 35, 76]} labels={['CSE', 'Finance', 'Analyst']} /> */}
+                <PieChart series={[45, 35, 76]} labels={['CSE', 'Finance', 'Analyst']} />
               </div>
             </div>
             <div className="h-96 p-4 bg-white shadow-sm rounded-lg">
               <div className="text-lg font-semibold">Employee Designation</div>
               <div className="">
-                {/* <PieChart series={[54, 43, 97, 23, 56]} labels={['Android Developer', 'Data Analyst', 'Finance Manager', 'Senior Programmer', 'Marketing Analyst']} /> */}
+                <PieChart series={[54, 43, 97, 23, 56]} labels={['Android Developer', 'Data Analyst', 'Finance Manager', 'Senior Programmer', 'Marketing Analyst']} />
               </div>
             </div>
             <div className="h-96 p-4 bg-white shadow-sm rounded-lg">
               <div className="text-lg font-semibold">Expense Vs Deposit</div>
               <div className="">
-                {/* <PieChart series={[45, 35]} labels={['Expense', 'Deposit']} /> */}
+                <PieChart series={[45, 35]} labels={['Expense', 'Deposit']} />
               </div>
             </div>
             <div className="h-96 p-4 bg-white shadow-sm rounded-lg">
               <div className="text-lg font-semibold">Project Status</div>
               <div className="">
-                {/* <PieChart series={[45, 5]} labels={['In Progress', 'Not Started']} /> */}
+                <PieChart series={[45, 5]} labels={['In Progress', 'Not Started']} />
               </div>
             </div>
           </div>
