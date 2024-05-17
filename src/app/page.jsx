@@ -21,119 +21,119 @@ function Page() {
         <div className="col-span-2 space-y-4">
           <div className="grid grid-cols-3 gap-4">
 
-<div className="p-3 h-32 rounded-lg overflow-hidden bg-white shadow-sm relative">
-  <div className="flex gap-2">
-    <div className="">
-      <div className={`w-12 h-12 text-[#f43f5e] text-2xl border-2 border-[#f43f5e] bg-[#f43f5e] flex items-center justify-center bg-opacity-20 rounded-full`}><i className="ri-sun-line"></i></div>
-    </div>
-    <div className="relative top-3">
-      <div className="font-bold text-lg">Employees</div>
-      <div className="relative top-3">15</div>
-    </div>
-  </div>
+            <div className="p-3 h-32 rounded-lg overflow-hidden bg-white shadow-sm relative">
+              <div className="flex gap-2">
+                <div className="">
+                  <div className={`w-12 h-12 text-[#f43f5e] text-2xl border-2 border-[#f43f5e] bg-[#f43f5e] flex items-center justify-center bg-opacity-20 rounded-full`}><i className="ri-sun-line"></i></div>
+                </div>
+                <div className="relative top-3">
+                  <div className="font-bold text-lg">Employees</div>
+                  <div className="relative top-3">15</div>
+                </div>
+              </div>
 
-  <div className="w-32 h-32 absolute top-12 -right-12 bg-opacity-20 bg-hrms_blue rounded-full flex items-center justify-center">
-    <div className="w-24 h-24 flex items-center justify-center bg-hrms_blue rounded-full bg-opacity-20">
-      <div className="w-16 h-16 bg-hrms_blue rounded-full bg-opacity-20"></div>
-    </div>
-  </div>
-</div>
+              <div className="w-32 h-32 absolute top-12 -right-12 bg-opacity-20 bg-hrms_blue rounded-full flex items-center justify-center">
+                <div className="w-24 h-24 flex items-center justify-center bg-hrms_blue rounded-full bg-opacity-20">
+                  <div className="w-16 h-16 bg-hrms_blue rounded-full bg-opacity-20"></div>
+                </div>
+              </div>
+            </div>
 
-<div className="p-3 h-32 rounded-lg overflow-hidden bg-white shadow-sm relative">
-  <div className="flex gap-2">
-    <div className="">
-      <div className={`w-12 h-12 text-[#a21caf] text-2xl border-2 border-[#a21caf] bg-[#a21caf] flex items-center justify-center bg-opacity-20 rounded-full`}><i className="ri-file-list-3-line"></i></div>
-    </div>
-    <div className="relative top-3">
-      <div className="font-bold text-lg">Attendance</div>
-      <div className="relative top-3">P:12 A:31</div>
-    </div>
-  </div>
+            <div className="p-3 h-32 rounded-lg overflow-hidden bg-white shadow-sm relative">
+              <div className="flex gap-2">
+                <div className="">
+                  <div className={`w-12 h-12 text-[#a21caf] text-2xl border-2 border-[#a21caf] bg-[#a21caf] flex items-center justify-center bg-opacity-20 rounded-full`}><i className="ri-file-list-3-line"></i></div>
+                </div>
+                <div className="relative top-3">
+                  <div className="font-bold text-lg">Attendance</div>
+                  <div className="relative top-3">P:12 A:31</div>
+                </div>
+              </div>
 
-  <div className="w-32 h-32 absolute top-12 -right-12 bg-opacity-20 bg-hrms_blue rounded-full flex items-center justify-center">
-    <div className="w-24 h-24 flex items-center justify-center bg-hrms_blue rounded-full bg-opacity-20">
-      <div className="w-16 h-16 bg-hrms_blue rounded-full bg-opacity-20"></div>
-    </div>
-  </div>
-</div>
+              <div className="w-32 h-32 absolute top-12 -right-12 bg-opacity-20 bg-hrms_blue rounded-full flex items-center justify-center">
+                <div className="w-24 h-24 flex items-center justify-center bg-hrms_blue rounded-full bg-opacity-20">
+                  <div className="w-16 h-16 bg-hrms_blue rounded-full bg-opacity-20"></div>
+                </div>
+              </div>
+            </div>
 
-<div className="p-3 h-32 rounded-lg overflow-hidden bg-white shadow-sm relative">
-  <div className="flex gap-2">
-    <div className="">
-      <div className={`w-12 h-12 text-[#0e7490] text-2xl border-2 border-[#0e7490] bg-[#0e7490] flex items-center justify-center bg-opacity-20 rounded-full`}><i className="ri-leaf-line"></i></div>
-    </div>
-    <div className="relative top-3">
-      <div className="font-bold text-lg">Total Leave</div>
-      <div className="relative top-3">2</div>
-    </div>
-  </div>
+            <div className="p-3 h-32 rounded-lg overflow-hidden bg-white shadow-sm relative">
+              <div className="flex gap-2">
+                <div className="">
+                  <div className={`w-12 h-12 text-[#0e7490] text-2xl border-2 border-[#0e7490] bg-[#0e7490] flex items-center justify-center bg-opacity-20 rounded-full`}><i className="ri-leaf-line"></i></div>
+                </div>
+                <div className="relative top-3">
+                  <div className="font-bold text-lg">Total Leave</div>
+                  <div className="relative top-3">2</div>
+                </div>
+              </div>
 
-  <div className="w-32 h-32 absolute top-12 -right-12 bg-opacity-20 bg-hrms_blue rounded-full flex items-center justify-center">
-    <div className="w-24 h-24 flex items-center justify-center bg-hrms_blue rounded-full bg-opacity-20">
-      <div className="w-16 h-16 bg-hrms_blue rounded-full bg-opacity-20"></div>
-    </div>
-  </div>
-</div>
+              <div className="w-32 h-32 absolute top-12 -right-12 bg-opacity-20 bg-hrms_blue rounded-full flex items-center justify-center">
+                <div className="w-24 h-24 flex items-center justify-center bg-hrms_blue rounded-full bg-opacity-20">
+                  <div className="w-16 h-16 bg-hrms_blue rounded-full bg-opacity-20"></div>
+                </div>
+              </div>
+            </div>
 
-<div className="p-3 h-32 rounded-lg overflow-hidden bg-white shadow-sm relative">
-  <div className="flex gap-2">
-    <div className="">
-      <div className={`w-12 h-12 text-[#15803d] text-2xl border-2 border-[#15803d] bg-[#15803d] flex items-center justify-center bg-opacity-20 rounded-full`}><i className="ri-arrow-left-right-line"></i></div>
-    </div>
-    <div className="relative top-3">
-      <div className="font-bold text-lg">Total Expense</div>
-      <div className="relative top-3">&#8358;405</div>
-    </div>
-  </div>
+            <div className="p-3 h-32 rounded-lg overflow-hidden bg-white shadow-sm relative">
+              <div className="flex gap-2">
+                <div className="">
+                  <div className={`w-12 h-12 text-[#15803d] text-2xl border-2 border-[#15803d] bg-[#15803d] flex items-center justify-center bg-opacity-20 rounded-full`}><i className="ri-arrow-left-right-line"></i></div>
+                </div>
+                <div className="relative top-3">
+                  <div className="font-bold text-lg">Total Expense</div>
+                  <div className="relative top-3">&#8358;405</div>
+                </div>
+              </div>
 
-  <div className="w-32 h-32 absolute top-12 -right-12 bg-opacity-20 bg-hrms_blue rounded-full flex items-center justify-center">
-    <div className="w-24 h-24 flex items-center justify-center bg-hrms_blue rounded-full bg-opacity-20">
-      <div className="w-16 h-16 bg-hrms_blue rounded-full bg-opacity-20"></div>
-    </div>
-  </div>
-</div>
+              <div className="w-32 h-32 absolute top-12 -right-12 bg-opacity-20 bg-hrms_blue rounded-full flex items-center justify-center">
+                <div className="w-24 h-24 flex items-center justify-center bg-hrms_blue rounded-full bg-opacity-20">
+                  <div className="w-16 h-16 bg-hrms_blue rounded-full bg-opacity-20"></div>
+                </div>
+              </div>
+            </div>
 
-<div className="p-3 h-32 rounded-lg overflow-hidden bg-white shadow-sm relative">
-  <div className="flex gap-2">
-    <div className="">
-      <div className={`w-12 h-12 text-[#dc2626] text-2xl border-2 border-[#dc2626] bg-[#dc2626] flex items-center justify-center bg-opacity-20 rounded-full`}><i className="ri-currency-line"></i></div>
-    </div>
-    <div className="relative top-3">
-      <div className="font-bold text-lg">Total Deposit</div>
-      <div className="relative top-3">&#8358;3454</div>
-    </div>
-  </div>
+            <div className="p-3 h-32 rounded-lg overflow-hidden bg-white shadow-sm relative">
+              <div className="flex gap-2">
+                <div className="">
+                  <div className={`w-12 h-12 text-[#dc2626] text-2xl border-2 border-[#dc2626] bg-[#dc2626] flex items-center justify-center bg-opacity-20 rounded-full`}><i className="ri-currency-line"></i></div>
+                </div>
+                <div className="relative top-3">
+                  <div className="font-bold text-lg">Total Deposit</div>
+                  <div className="relative top-3">&#8358;3454</div>
+                </div>
+              </div>
 
-  <div className="w-32 h-32 absolute top-12 -right-12 bg-opacity-20 bg-hrms_blue rounded-full flex items-center justify-center">
-    <div className="w-24 h-24 flex items-center justify-center bg-hrms_blue rounded-full bg-opacity-20">
-      <div className="w-16 h-16 bg-hrms_blue rounded-full bg-opacity-20"></div>
-    </div>
-  </div>
-</div>
+              <div className="w-32 h-32 absolute top-12 -right-12 bg-opacity-20 bg-hrms_blue rounded-full flex items-center justify-center">
+                <div className="w-24 h-24 flex items-center justify-center bg-hrms_blue rounded-full bg-opacity-20">
+                  <div className="w-16 h-16 bg-hrms_blue rounded-full bg-opacity-20"></div>
+                </div>
+              </div>
+            </div>
 
-<div className="p-3 h-32 rounded-lg overflow-hidden bg-white shadow-sm relative">
-  <div className="flex gap-2">
-    <div className="">
-      <div className={`w-12 h-12 text-[#6d28d9] text-2xl border-2 border-[#6d28d9] bg-[#6d28d9] flex items-center justify-center bg-opacity-20 rounded-full`}><i className="ri-copper-diamond-line"></i></div>
-    </div>
-    <div className="relative top-3">
-      <div className="font-bold text-lg">Total Salaries Paid</div>
-      <div className="relative top-3">&#8358;5677</div>
-    </div>
-  </div>
+            <div className="p-3 h-32 rounded-lg overflow-hidden bg-white shadow-sm relative">
+              <div className="flex gap-2">
+                <div className="">
+                  <div className={`w-12 h-12 text-[#6d28d9] text-2xl border-2 border-[#6d28d9] bg-[#6d28d9] flex items-center justify-center bg-opacity-20 rounded-full`}><i className="ri-copper-diamond-line"></i></div>
+                </div>
+                <div className="relative top-3">
+                  <div className="font-bold text-lg">Total Salaries Paid</div>
+                  <div className="relative top-3">&#8358;5677</div>
+                </div>
+              </div>
 
-  <div className="w-32 h-32 absolute top-12 -right-12 bg-opacity-20 bg-hrms_blue rounded-full flex items-center justify-center">
-    <div className="w-24 h-24 flex items-center justify-center bg-hrms_blue rounded-full bg-opacity-20">
-      <div className="w-16 h-16 bg-hrms_blue rounded-full bg-opacity-20"></div>
-    </div>
-  </div>
-</div>
+              <div className="w-32 h-32 absolute top-12 -right-12 bg-opacity-20 bg-hrms_blue rounded-full flex items-center justify-center">
+                <div className="w-24 h-24 flex items-center justify-center bg-hrms_blue rounded-full bg-opacity-20">
+                  <div className="w-16 h-16 bg-hrms_blue rounded-full bg-opacity-20"></div>
+                </div>
+              </div>
+            </div>
 
           </div>
           <div className=" bg-white shadow-sm rounded-lg">
             <div className="text-lg font-semibold px-5 py-3">Payment</div>
             <div className="h-96">
-              {/* <LineChart /> */}
+              <LineChart />
             </div>
           </div>
           <div className="grid grid-cols-2 gap-4">
