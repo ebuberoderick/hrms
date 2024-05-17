@@ -20,22 +20,22 @@ function Page() {
       <div className="grid grid-cols-3 gap-4">
         <div className="col-span-2 space-y-4">
           <div className="grid grid-cols-3 gap-4">
-            <DashboardCard title={"Employees"} color={"#f43f5e"} icon={<i class="ri-sun-line"></i>}>
+            <DashboardCard title={"Employees"} color={"#f43f5e"} icon={<i className="ri-sun-line"></i>}>
               15
             </DashboardCard>
-            <DashboardCard title={"Attendance"} color={"#a21caf"} icon={<i class="ri-file-list-3-line"></i>}>
+            <DashboardCard title={"Attendance"} color={"#a21caf"} icon={<i className="ri-file-list-3-line"></i>}>
               P:12 A:31
             </DashboardCard>
-            <DashboardCard title={"Total Leave"} color={"#0e7490"} icon={<i class="ri-leaf-line"></i>}>
+            <DashboardCard title={"Total Leave"} color={"#0e7490"} icon={<i className="ri-leaf-line"></i>}>
               2
             </DashboardCard>
-            <DashboardCard title={"Total Expense"} color={"#15803d"} icon={<i class="ri-arrow-left-right-line"></i>}>
+            <DashboardCard title={"Total Expense"} color={"#15803d"} icon={<i className="ri-arrow-left-right-line"></i>}>
               &#8358;405
             </DashboardCard>
-            <DashboardCard title={"Total Deposit"} color={"#dc2626"} icon={<i class="ri-currency-line"></i>}>
+            <DashboardCard title={"Total Deposit"} color={"#dc2626"} icon={<i className="ri-currency-line"></i>}>
               &#8358;3454
             </DashboardCard>
-            <DashboardCard title={"Total Salaries Paid"} color={"#6d28d9"} icon={<i class="ri-copper-diamond-line"></i>}>
+            <DashboardCard title={"Total Salaries Paid"} color={"#6d28d9"} icon={<i className="ri-copper-diamond-line"></i>}>
               &#8358;5677
             </DashboardCard>
           </div>
@@ -81,50 +81,50 @@ function Page() {
               <div className="text-xl font-bold">Options</div>
               <div className="space-y-2 *:cursor-pointer">
                 <div className="border gap-2 rounded-lg p-3 flex items-center hover:bg-hrms_blue hover:bg-opacity-10">
-                  <div className=""><i class="ri-sun-line"></i></div>
+                  <div className=""><i className="ri-sun-line"></i></div>
                   <div className="">Holidays</div>
                 </div>
                 <div className="border gap-2 rounded-lg p-3 flex items-center hover:bg-hrms_blue hover:bg-opacity-10">
-                  <div className=""><i class="ri-mail-line"></i></div>
+                  <div className=""><i className="ri-mail-line"></i></div>
                   <div className="">Leave Request</div>
                 </div>
                 <div className="border gap-2 rounded-lg p-3 flex items-center hover:bg-hrms_blue hover:bg-opacity-10">
-                  <div className=""><i class="ri-flight-takeoff-fill"></i></div>
+                  <div className=""><i className="ri-flight-takeoff-fill"></i></div>
                   <div className="">Travel Request</div>
                 </div>
                 <div className="border gap-2 rounded-lg p-3 flex items-center hover:bg-hrms_blue hover:bg-opacity-10">
-                  <div className=""><i class="ri-trophy-line"></i></div>
+                  <div className=""><i className="ri-trophy-line"></i></div>
                   <div className="">Trainigs</div>
                 </div>
                 <div className="border gap-2 rounded-lg p-3 flex items-center hover:bg-hrms_blue hover:bg-opacity-10">
-                  <div className=""><i class="ri-article-line"></i></div>
+                  <div className=""><i className="ri-article-line"></i></div>
                   <div className="">Projects</div>
                 </div>
                 <div className="border gap-2 rounded-lg p-3 flex items-center hover:bg-hrms_blue hover:bg-opacity-10">
-                  <div className=""><i class="ri-list-radio"></i></div>
+                  <div className=""><i className="ri-list-radio"></i></div>
                   <div className="">Tasks</div>
                 </div>
                 <div className="border gap-2 rounded-lg p-3 flex items-center hover:bg-hrms_blue hover:bg-opacity-10">
-                  <div className=""><i class="ri-calendar-line"></i></div>
+                  <div className=""><i className="ri-calendar-line"></i></div>
                   <div className="">Events</div>
                 </div>
                 <div className="border gap-2 rounded-lg p-3 flex items-center hover:bg-hrms_blue hover:bg-opacity-10">
-                  <div className=""><i class="ri-time-line"></i></div>
+                  <div className=""><i className="ri-time-line"></i></div>
                   <div className="">Meetings</div>
                 </div>
               </div>
             </div>
             <div className="bg-white space-y-4 p-4 shadow-sm rounded-lg">
               <Link href="#" className="p-3 flex items-center gap-2 bg-gray-50 rounded-lg">
-                <div className="text-hrms_blue"><i class="ri-mic-fill"></i></div>
+                <div className="text-hrms_blue"><i className="ri-mic-fill"></i></div>
                 <div className="">0 Announcement</div>
               </Link>
               <Link href="#" className="p-3 flex items-center gap-2 bg-gray-50 rounded-lg">
-                <div className="text-hrms_green"><i class="ri-coupon-line"></i></div>
+                <div className="text-hrms_green"><i className="ri-coupon-line"></i></div>
                 <div className="">0 Open ticket</div>
               </Link>
               <Link href="#" className="p-3 flex items-center gap-2 bg-gray-50 rounded-lg">
-                <div className="text-danger"><i class="ri-file-damage-line"></i></div>
+                <div className="text-danger"><i className="ri-file-damage-line"></i></div>
                 <div className="">0 Completed Project</div>
               </Link>
             </div>

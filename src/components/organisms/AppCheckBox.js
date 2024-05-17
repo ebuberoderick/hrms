@@ -15,7 +15,7 @@ function AppCheckBox({ name, Boxlable, type, display }) {
                 />
                 <div className="relative top-[1px] bg-white w-7 h-7 rounded-md dark:bg-gray-700 dark:border-gray-500 border peer-hover:hidden peer-checked:hidden " />
                 <div className="relative top-[1px] bg-white dark:bg-gray-700 dark:border-gray-500 w-7 h-7 text-xl rounded-md peer-checked:bg-hrms_blue hidden peer-checked:flex peer-hover:border peer-hover:flex items-center justify-center text-gray-300 peer-checked:text-white ">
-                    <i class="ri-check-line"></i>
+                    <i className="ri-check-line"></i>
                 </div>
                 <label
                     htmlFor={name + Boxlable}

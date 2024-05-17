@@ -2,7 +2,7 @@
 import AuthLayout from '@/components/layouts/authLayout'
 import AppCheckBox from '@/components/organisms/AppCheckBox'
 import AppInput from '@/components/organisms/AppInput'
-import { Applogin } from '@/apis/services/authService'
+import { Applogin } from '@/services/authService'
 import Link from 'next/link'
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
@@ -16,8 +16,8 @@ function Page() {
     setTimeout(() => {
       route.push("/")
     }, 5000);
-    // const { status, data } = Applogin(e).catch(err => console.log(err))
-    // console.log(data);
+    const { status, data } = Applogin(e).catch(err => console.log(err))
+    console.log(data);
   }
 
   return (
