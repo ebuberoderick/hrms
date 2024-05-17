@@ -5,19 +5,19 @@ import AppInput from '@/components/organisms/AppInput'
 import { Applogin } from '@/services/authService'
 import Link from 'next/link'
 import React, { useState } from 'react'
-import { useRouter } from 'next/navigation'
+// import { useRouter } from 'next/navigation'
 
 function Page() {
   const [proccessing, setProccessing] = useState(false)
-  const route =  useRouter()
+  // const route =  useRouter()
 
   const login = (e) => {
     setProccessing(true)
     setTimeout(() => {
-      route.push("/")
+      // route.push("/")
     }, 5000);
-    const { status, data } = Applogin(e).catch(err => console.log(err))
-    console.log(data);
+    // const { status, data } = Applogin(e).catch(err => console.log(err))
+    // console.log(data);
   }
 
   return (
