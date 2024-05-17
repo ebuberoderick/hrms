@@ -17,7 +17,7 @@ function Page() {
       route.push("/")
       setProccessing(false)
     }, 5000);
-    // const { status, data } = Applogin(e).catch(err => console.log(err))
+    const { status, data } = Applogin(e).catch(err => console.log(err))
   }
 
   return (

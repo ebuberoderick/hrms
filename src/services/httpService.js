@@ -2,7 +2,11 @@ import axios from "axios"
 import Cookies from "js-cookie"
 
 export const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL
-axios.defaults.withCredentials = true;
+
+
+
+
+
 
 
 const timeoutConfig = {
