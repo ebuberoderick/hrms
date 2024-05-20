@@ -16,4 +16,3 @@ export const updateProfile = (formData) =>
     .post("/user/profile/update-profile", formData)
     .then(getApiResponse)
     .catch(getErrorResponse)
-    .catch((err) => console.log(err));

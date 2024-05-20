@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import SideNav from "../molecules/SideNav";
 import { useRouter } from "next/navigation";
 import TopNav from "../molecules/TopNav";
@@ -9,7 +9,7 @@ import { Session } from "@/hooks/Auth";
 function AppLayout({ children }) {
   const user = useSelector((state) => state.User);
   const isAuthenticated = Session(user);
-  console.log(isAuthenticated.status);
+  const [toggle,setToggle] = useState(false)
   const router = useRouter();
 
   if (isAuthenticated.status === "unauthenticated") {
