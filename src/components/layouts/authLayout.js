@@ -1,11 +1,11 @@
 'use client'
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
 import bg from '@assets/images/authBG.png'
 import avatar from '@assets/images/avatar/Img.png'
 import React from 'react'
+import { useSelector } from 'react-redux'
 
-function AuthLayout({children,title,subText,onSubmit}) {
+function AuthLayout({children,title,subText,onSubmit,errMsg}) {
 
     const serialize = (form) => {
         var result = [];
@@ -39,16 +39,6 @@ function AuthLayout({children,title,subText,onSubmit}) {
             return serializeToJSON(data);
     }
     
-  const router = useRouter()
-  // const isAuthenticated = localStorage.screeningAuthState  
-
-  // if (isAuthenticated) {
-  //   router.push("/")
-  // }
-
-
-
-
   return (
     <div className='h-screen w-screen flex items-center'>
         <Image src={bg} alt='' draggable="false" className='w-screen hidden md:block h-4/5 fixed top-0 right-0' />
@@ -60,6 +50,7 @@ function AuthLayout({children,title,subText,onSubmit}) {
                         <div className='font-bold pb-1 text-3xl md:text-4xl mt-5'>{title}</div>
                         <div className='text-xs md:text-sm'>{subText}</div>
                     </div>
+                    <div className="text-danger text-sm">{errMsg}</div>
                     <div className='space-y-5'>{children}</div>
                 </form>
             </div>

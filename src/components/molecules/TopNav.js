@@ -2,7 +2,7 @@ import Image from 'next/image'
 import React from 'react'
 import avatar from '@assets/images/avatar/Leslie_Image.png'
 
-function TopNav() {
+function TopNav({}) {
   return (
     <div className="bg-white flex items-center rounded-lg py-3 px-5">
         <div className="flex-grow text-xl">

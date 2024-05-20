@@ -1,5 +1,3 @@
-// import { apiWithAuth, apiWithOutAuth, getApiResponse, getErrorResponse } from "./httpService";
-
 import { apiWithAuth, apiWithOutAuth, getApiResponse, getErrorResponse } from "./httpService";
 
 export const Applogin = (formData) => apiWithOutAuth.post('/login',formData).then(getApiResponse).catch(getErrorResponse);

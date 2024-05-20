@@ -16,6 +16,7 @@ const timeoutConfig = {
 
 export const apiWithOutAuth = axios.create({
   baseURL: API_BASE_URL,
+  withCredentials:true, 
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json",
@@ -25,6 +26,7 @@ export const apiWithOutAuth = axios.create({
 
 export const apiWithAuth = axios.create({
   baseURL: API_BASE_URL,
+  withCredentials:true, 
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json",
@@ -41,6 +43,7 @@ export const getApiResponse = (data) => {
 }
 
 export const getErrorResponse = (error) => {
+  
   return {
     status: false,
     data: error?.response?.data,
