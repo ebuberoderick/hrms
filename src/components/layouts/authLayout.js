@@ -1,18 +1,49 @@
 "use client";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import bg from "@assets/images/authBG.png";
 import avatar from "@assets/images/avatar/Img.png";
 import React from "react";
-import serialize from "@/hooks/Serialize";
+import { useSelector } from "react-redux";
 
-function AuthLayout({ children, title, subText, onSubmit }) {
-  const router = useRouter();
-  // const isAuthenticated = localStorage.screeningAuthState
+function AuthLayout({ children, title, subText, onSubmit, errMsg }) {
+  const serialize = (form) => {
+    var result = [];
+    if (typeof form === "object" && form.nodeName === "FORM")
+      Array.prototype.slice.call(form.elements).forEach(function (control) {
+        if (
+          control.name &&
+          !control.disabled &&
+          ["file", "reset", "submit", "button"].indexOf(control.type) === -1
+        )
+          if (control.type === "select-multiple")
+            Array.prototype.slice
+              .call(control.options)
+              .forEach(function (option) {
+                if (option.selected)
+                  result.push(control.name + "=" + option.value);
+              });
+          else if (
+            ["checkbox", "radio"].indexOf(control.type) === -1 ||
+            control.checked
+          )
+            result.push(control.name + "=" + control.value);
+      });
+    var data = result.join("&").replace(/%20/g, "+");
 
-  // if (isAuthenticated) {
-  //   router.push("/")
-  // }
+    const serializeToJSON = (str) =>
+      str
+        .split("&")
+        .map((x) => x.split("="))
+        .reduce(
+          (acc, [key, value]) => ({
+            ...acc,
+            [key]: isNaN(value) ? value : Number(value),
+          }),
+          {}
+        );
+
+    return serializeToJSON(data);
+  };
 
   return (
     <div className="h-screen w-screen flex items-center">
@@ -39,9 +70,11 @@ function AuthLayout({ children, title, subText, onSubmit }) {
               </div>
               <div className="text-xs md:text-sm">{subText}</div>
             </div>
+            <div className="text-danger text-sm">{errMsg}</div>
             <div className="space-y-5">{children}</div>
           </form>
         </div>
+        <div className="space-y-5">{children}</div>
       </div>
     </div>
   );

@@ -2,11 +2,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import avatar from "@assets/images/avatar/Leslie_Image.png";
 
-function TopNav({ toggle, setToggle }) {
-  const handleToggle = () => {
-    setToggle(!toggle);
-    console.log(toggle);
-  };
+function TopNav({}) {
   return (
     <div className="bg-white flex items-center rounded-lg py-3 px-5">
       <div className="flex-grow text-xl" onClick={handleToggle}>
