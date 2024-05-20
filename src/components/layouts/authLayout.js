@@ -74,7 +74,6 @@ function AuthLayout({ children, title, subText, onSubmit, errMsg }) {
             <div className="space-y-5">{children}</div>
           </form>
         </div>
-        <div className="space-y-5">{children}</div>
       </div>
     </div>
   );

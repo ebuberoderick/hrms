@@ -23,11 +23,12 @@ function AppLayout({ children }) {
         <div
           className={`${
             toggle ? "ml-0" : "ml-64"
-          } space-y-4 p-4 select-none min-h-screen`}
+          } space-y-4 p-4 pb-8 select-none min-h-screen`}
         >
           <div>
             <TopNav toggle={toggle} setToggle={setToggle} />
           </div>
+          {children}
         </div>
       </>
     );
