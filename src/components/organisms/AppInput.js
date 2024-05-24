@@ -1,16 +1,35 @@
 import React, { useState } from "react";
 
-function AppInput({ label, type, required, name }) {
+function AppInput({ label, type, required, name, max, options }) {
   const [inputType, setInputType] = useState(type);
+
   return (
     <div className="text-[16px] relative rounded-lg">
-      <input
-        name={name}
-        required={required}
-        type={inputType}
-        className="w-full border focus:border-hrms_blue border-hrms_blue placeholder-shown:border-gray-300 p-3 peer outline-none rounded-lg placeholder:text-transparent"
-        placeholder={label}
-      />
+      {type === "select" ? (
+        <select
+          name={name}
+          required={required}
+          className="w-full border focus:border-hrms_blue border-hrms_blue placeholder-shown:border-gray-300 p-3 peer outline-none rounded-lg placeholder:text-transparent"
+        >
+          <option value="" disabled selected hidden>
+            {label}
+          </option>
+          {options.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </select>
+      ) : (
+        <input
+          name={name}
+          required={required}
+          type={inputType}
+          className="w-full border focus:border-hrms_blue border-hrms_blue placeholder-shown:border-gray-300 p-3 peer outline-none rounded-lg placeholder:text-transparent"
+          placeholder={label}
+          {...(max ? { max } : {})}
+        />
+      )}
       <label className="absolute text-hrms_blue peer-focus:text-hrms_blue pointer-events-none peer-placeholder-shown:text-gray-300 z-20 left-4 peer-placeholder-shown:left-2 peer-focus:left-4 px-1 peer-focus:text-[14px] text-[14px] -top-[9px] transition-all duration-300 peer-placeholder-shown:top-3 peer-placeholder-shown:text-[16px] peer-focus:-top-[9px] bg-white">
         {label}
       </label>

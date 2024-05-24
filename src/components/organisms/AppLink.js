@@ -58,7 +58,7 @@ function AppLink({ text, icon, subMenu }) {
           href={`/${
             text === "dashboard"
               ? ""
-              : text.replaceAll(" ", "_").replaceAll("&", "x")
+              : text.replaceAll(" ", "_").replaceAll("&", "x").toLowerCase()
           }`}
         >
           <div
@@ -69,7 +69,7 @@ function AppLink({ text, icon, subMenu }) {
             }`}
           >
             <div className="text-sm">{icon}</div>
-            <div className="capitalize flex-grow">{text}</div>
+            <div className=" capitalize flex-grow">{text}</div>
           </div>
         </Link>
       )}

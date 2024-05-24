@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import bg from "@assets/images/authBG.png";
+import bg from "@assets/images/bg.png";
 import avatar from "@assets/images/avatar/Img.png";
 import React from "react";
 import { useSelector } from "react-redux";
