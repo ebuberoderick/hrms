@@ -71,7 +71,7 @@ function Page() {
       />
       <button
         type="submit"
-        className="w-full shadow-md bg-hrms_blue text-white rounded-lg py-3"
+        className="w-full shadow-md bg-hrms_green text-white rounded-lg py-3"
         disabled={processing}
       >
         {processing ? "Processing..." : "Create Password"}

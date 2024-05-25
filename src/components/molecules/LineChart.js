@@ -42,7 +42,7 @@ function LineChart() {
         name: "series-1",
         data: [30, 40, 45, 50, 29, 40, 50, 31],
 
-        color: "#112255",
+        color: "#35C119",
       },
     ],
   });

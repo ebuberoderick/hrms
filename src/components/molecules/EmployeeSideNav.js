@@ -69,7 +69,7 @@ function EmployeeSideNav() {
                 { name: "users last login", extra: false },
               ]}
             />{" "}
-            <AppLink text={"Employee"} icon={<i class="ri-group-line"></i>} />{" "}
+            <AppLink text={"Employee"} icon={<i className="ri-group-line"></i>} />{" "}
             <AppLink
               text={"Promotion"}
               icon={<i className="ri-user-6-line"></i>}
