@@ -26,11 +26,11 @@ function Page() {
         label="Confirm New Password"
         type={"password"}
       />
-      <button className="w-full shadow-md bg-hrms_blue text-white rounded-lg py-3">
+      <button className="w-full shadow-md bg-hrms_green text-white rounded-lg py-3">
         Reset Password
       </button>
       <div className="">
-        <Link href="login" className="text-sm text-hrms_blue">
+        <Link href="login" className="text-sm text-hrms_green">
           Goto Login
         </Link>
       </div>

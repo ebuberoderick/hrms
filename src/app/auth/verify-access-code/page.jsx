@@ -1,21 +1,21 @@
 "use client";
 import AuthLayout from "@/components/layouts/authLayout";
-import AppCheckBox from "@/components/organisms/AppCheckBox";
 import AppInput from "@/components/organisms/AppInput";
-import { Applogin, verifyCode } from "@/services/authService";
-import Link from "next/link";
+import { verifyCode } from "@/services/authService";
 import React, { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
-import Cookies from "js-cookie";
 import { Session, SignInAuth } from "@/hooks/Auth";
 import { accessCode } from "@/Store/reducers/UsersReducer";
 
 function Page() {
   const dispatch = useDispatch();
+  const searchParams = useSearchParams()
   const [proccessing, setProccessing] = useState(false);
   const [errMsg, setErrMsg] = useState(false);
   const router = useRouter();
+  const [email,setEmail] = useState(searchParams.get('email'))
+  const [accescode,setAccescode] = useState(searchParams.get('acces_code'))
   const user = useSelector((state) => state.User);
 
   const verifyAccessCode = async (e) => {
@@ -24,16 +24,16 @@ function Page() {
       console.log(err)
     );
     setProccessing(false);
+      
     if (status) {
-      setErrMsg("");
-      SignInAuth(data, dispatch);
-      dispatch(accessCode(data));
-      router.push("/auth/create-password");
+
+      // setErrMsg("");
+      // SignInAuth(data, dispatch);
+      // dispatch(accessCode(data));
       console.log(data);
     } else {
       setErrMsg(data.message);
     }
-    console.log(e);
   };
 
   // const isAuthenticated = Session(user)
@@ -45,15 +45,14 @@ function Page() {
       title={"Verify Access Code"}
       subText={"Please fill in your details"}
     >
-      <AppInput name="email" required label="Email" />
-      <AppInput name="access_code" required label="Enter Access Code" />
+      <AppInput value={email} name="email" type={"email"} required label="Email" />
+      <AppInput value={accescode} name="access_code" required label="Gateway ID" />
 
       <div className="flex gap-3">
         <button
           disabled={proccessing}
-          className="flex-grow disabled:bg-opacity-35 shadow-md bg-hrms_blue text-white rounded-lg py-3"
+          className="flex-grow disabled:bg-opacity-35 shadow-md bg-hrms_green text-white rounded-lg py-3"
         >
-          {" "}
           {proccessing ? "Verifing..." : "Verify"}
         </button>
       </div>

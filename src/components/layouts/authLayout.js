@@ -50,7 +50,7 @@ function AuthLayout({ children, title, subText, onSubmit, errMsg }) {
       <div className="bg-hrms_green bg-opacity-15 bottom-44 -left-14 h-28 w-28 absolute rounded-full"></div>
       <div className="bg-hrms_green -right-40 -top-40 bg-opacity-5 h-96 w-96 absolute rounded-full"></div>
       <div className="bg-hrms_green -left-20 -bottom-20 bg-opacity-20 h-96 w-96 absolute rounded-full"></div>
-      <div className="w-full">
+      <div className="w-full z-50">
         <form
             onSubmit={(e) => {
               e.preventDefault(), onSubmit(serialize(e.target));

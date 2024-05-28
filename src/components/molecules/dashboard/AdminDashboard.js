@@ -7,6 +7,14 @@ import { DateCalendar } from "@mui/x-date-pickers";
 import dayjs from "dayjs";
 import Link from "next/link";
 import React from "react";
+import Holidays from "./Holidays";
+import LeaveRequest from "./LeaveRequest";
+import TravelRequest from "./TravelRequest";
+import Traings from "./Traings";
+import Projects from "./Projects";
+import Tasks from "./Tasks";
+import Events from "./Events";
+import Meetings from "./Meetings";
 
 export const metadata = {
   title: "Dashboard",
@@ -14,7 +22,6 @@ export const metadata = {
 
 function AdminDashboard() {
   return (
-    // <AppLayout>
     <div className="grid grid-cols-3 gap-4">
       <div className="col-span-2 space-y-4">
         <div className="grid grid-cols-3 gap-4">
@@ -159,7 +166,7 @@ function AdminDashboard() {
         <div className="grid grid-cols-2 gap-4">
           <div className="h-96 p-4 bg-white shadow-sm rounded-lg">
             <div className="text-lg font-semibold">Employee Department</div>
-            <div className="">
+            <div className="h-96">
               <PieChart
                 series={[45, 35, 76]}
                 labels={["CSE", "Finance", "Analyst"]}
@@ -168,7 +175,7 @@ function AdminDashboard() {
           </div>
           <div className="h-96 p-4 bg-white shadow-sm rounded-lg">
             <div className="text-lg font-semibold">Employee Designation</div>
-            <div className="">
+            <div className="h-96">
               <PieChart
                 series={[54, 43, 97, 23, 56]}
                 labels={[
@@ -183,13 +190,13 @@ function AdminDashboard() {
           </div>
           <div className="h-96 p-4 bg-white shadow-sm rounded-lg">
             <div className="text-lg font-semibold">Expense Vs Deposit</div>
-            <div className="">
+            <div className="h-96">
               <PieChart series={[45, 35]} labels={["Expense", "Deposit"]} />
             </div>
           </div>
           <div className="h-96 p-4 bg-white shadow-sm rounded-lg">
             <div className="text-lg font-semibold">Project Status</div>
-            <div className="">
+            <div className="h-96">
               <PieChart
                 series={[45, 5]}
                 labels={["In Progress", "Not Started"]}
@@ -206,54 +213,14 @@ function AdminDashboard() {
           <div className="bg-white p-4 shadow-sm rounded-lg space-y-4">
             <div className="text-xl font-bold">Options</div>
             <div className="space-y-2 *:cursor-pointer">
-              <div className="border gap-2 rounded-lg p-3 flex items-center hover:bg-hrms_blue hover:bg-opacity-10">
-                <div className="">
-                  <i className="ri-sun-line"></i>
-                </div>
-                <div className="">Holidays</div>
-              </div>
-              <div className="border gap-2 rounded-lg p-3 flex items-center hover:bg-hrms_blue hover:bg-opacity-10">
-                <div className="">
-                  <i className="ri-mail-line"></i>
-                </div>
-                <div className="">Leave Request</div>
-              </div>
-              <div className="border gap-2 rounded-lg p-3 flex items-center hover:bg-hrms_blue hover:bg-opacity-10">
-                <div className="">
-                  <i className="ri-flight-takeoff-fill"></i>
-                </div>
-                <div className="">Travel Request</div>
-              </div>
-              <div className="border gap-2 rounded-lg p-3 flex items-center hover:bg-hrms_blue hover:bg-opacity-10">
-                <div className="">
-                  <i className="ri-trophy-line"></i>
-                </div>
-                <div className="">Trainigs</div>
-              </div>
-              <div className="border gap-2 rounded-lg p-3 flex items-center hover:bg-hrms_blue hover:bg-opacity-10">
-                <div className="">
-                  <i className="ri-article-line"></i>
-                </div>
-                <div className="">Projects</div>
-              </div>
-              <div className="border gap-2 rounded-lg p-3 flex items-center hover:bg-hrms_blue hover:bg-opacity-10">
-                <div className="">
-                  <i className="ri-list-radio"></i>
-                </div>
-                <div className="">Tasks</div>
-              </div>
-              <div className="border gap-2 rounded-lg p-3 flex items-center hover:bg-hrms_blue hover:bg-opacity-10">
-                <div className="">
-                  <i className="ri-calendar-line"></i>
-                </div>
-                <div className="">Events</div>
-              </div>
-              <div className="border gap-2 rounded-lg p-3 flex items-center hover:bg-hrms_blue hover:bg-opacity-10">
-                <div className="">
-                  <i className="ri-time-line"></i>
-                </div>
-                <div className="">Meetings</div>
-              </div>
+              <Holidays />
+              <LeaveRequest />
+              <TravelRequest />
+              <Traings />
+              <Projects />
+              <Tasks />
+              <Events />
+              <Meetings />
             </div>
           </div>
           <div className="bg-white space-y-4 p-4 shadow-sm rounded-lg">
@@ -288,7 +255,6 @@ function AdminDashboard() {
         </div>
       </div>
     </div>
-    // </AppLayout>
   );
 }
 

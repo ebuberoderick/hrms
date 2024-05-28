@@ -33,7 +33,7 @@ function PieChart({ labels, series }) {
         enabled: false,
       },
       legend: {
-        position: "bottom",
+        position: "top",
       },
       labels,
     },

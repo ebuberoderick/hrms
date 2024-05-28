@@ -1,8 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import ResponseModal from "../organisms/ResponseModal";
-import AppInput from "../organisms/AppInput";
-import Modal from "../organisms/Modal";
+import ResponseModal from "../../organisms/ResponseModal";
+import AppInput from "../../organisms/AppInput";
+import Modal from "../../organisms/Modal";
 import { useSelector } from "react-redux";
 import serialize from "@/hooks/Serialize";
 

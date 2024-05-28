@@ -1,7 +1,6 @@
 import Image from "next/image";
 import React from "react";
 import logo from "@assets/images/authLogo.png";
-import CustomizeIcon from "@assets/images/customize.svg";
 import AppLink from "../organisms/AppLink";
 
 function AdminSideNav() {
@@ -31,6 +30,7 @@ function AdminSideNav() {
                 { name: "users last login", extra: false },
               ]}
             />
+            <AppLink text={"Employee"} icon={<i className="ri-group-line"></i>} />
             <AppLink
               text={"customize setting"}
               icon={<i class="ri-sound-module-line"></i>}
@@ -52,42 +52,39 @@ function AdminSideNav() {
           </div>
           <div>
             <AppLink
+              text={"Core HR"}
+              icon={<i class="ri-file-list-3-line"></i>}
+              subMenu={[
+                { name: "promotion", extra: false },
+                { name: "award", extra: false },
+                { name: "travel", extra: false },
+                { name: "resignation", extra: false },
+                { name: "complaints", extra: false },
+                { name: "query", extra: false },
+                { name: "termination", extra: false },
+              ]}
+            />
+            <AppLink
               text={"recruitment"}
               icon={<i class="ri-team-line"></i>}
-              subMenu={[
-                { name: "users list", extra: false },
-                { name: "user roles and access", extra: false },
-                { name: "users last login", extra: false },
-              ]}
+            />
+            <AppLink
+              text={"organization"}
+              icon={<i class="ri-group-2-line"></i>}
+            />
+            <AppLink
+              text={"HR Calender"}
+              icon={<i class="ri-calendar-todo-line"></i>}
+            />
+            <AppLink
+              text={"timesheet"}
+              icon={<i class="ri-time-line"></i>}
             />
             <AppLink
               text={"Onboarding"}
               icon={<i class="ri-p2p-line"></i>}
-              subMenu={[
-                { name: "users list", extra: false },
-                { name: "user roles and access", extra: false },
-                { name: "users last login", extra: false },
-              ]}
-            />{" "}
-            <AppLink text={"Employee"} icon={<i className="ri-group-line"></i>} />{" "}
-            <AppLink
-              text={"Promotion"}
-              icon={<i class="ri-megaphone-line"></i>}
-              subMenu={[
-                { name: "users list", extra: false },
-                { name: "user roles and access", extra: false },
-                { name: "users last login", extra: false },
-              ]}
-            />{" "}
-            <AppLink
-              text={"Transfer"}
-              icon={<i class="ri-wallet-line"></i>}
-              subMenu={[
-                { name: "users list", extra: false },
-                { name: "user roles and access", extra: false },
-                { name: "users last login", extra: false },
-              ]}
-            />{" "}
+            />
+            <AppLink text={"transfer"} icon={<i className="ri-group-line"></i>} />
           </div>
         </div>
         <div>
@@ -98,11 +95,6 @@ function AdminSideNav() {
             <AppLink
               text={"payroll"}
               icon={<i class="ri-wallet-line"></i>}
-              subMenu={[
-                { name: "users list", extra: false },
-                { name: "user roles and access", extra: false },
-                { name: "users last login", extra: false },
-              ]}
             />
           </div>
         </div>
@@ -112,13 +104,8 @@ function AdminSideNav() {
           </div>
           <div>
             <AppLink
-              text={" Cashbook"}
+              text={"Cashbook"}
               icon={<i class="ri-newspaper-line"></i>}
-              subMenu={[
-                { name: "users list", extra: false },
-                { name: "user roles and access", extra: false },
-                { name: "users last login", extra: false },
-              ]}
             />
           </div>
         </div>

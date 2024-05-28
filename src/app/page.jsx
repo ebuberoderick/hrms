@@ -1,10 +1,10 @@
 "use client";
 import AppLayout from "@/components/layouts/appLayout";
-import AdminDashboard from "@/components/molecules/AdminDashboard";
+import AdminDashboard from "@/components/molecules/dashboard/AdminDashboard";
 import AdminSideNav from "@/components/molecules/AdminSideNav";
 import Calender from "@/components/molecules/Calender";
 import DashboardCard from "@/components/molecules/DashboardCard";
-import EmployeeDashboard from "@/components/molecules/EmployeeDashboard";
+import EmployeeDashboard from "@/components/molecules/dashboard/EmployeeDashboard";
 import LineChart from "@/components/molecules/LineChart";
 import PieChart from "@/components/molecules/PieChart";
 import { DateCalendar } from "@mui/x-date-pickers";
