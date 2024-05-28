@@ -127,13 +127,13 @@ const Page = () => {
                 <div className="">Role:</div>
               </td>
               <td>
-                <div className=""><i class="ri-mail-line text-gray-400"></i> ergjdfgk@dfg.dfj</div>
-                <div className=""><i class="ri-phone-line text-gray-400"></i> 08054634563</div>
+                <div className=""><i className="ri-mail-line text-gray-400"></i> ergjdfgk@dfg.dfj</div>
+                <div className=""><i className="ri-phone-line text-gray-400"></i> 08054634563</div>
               </td>
               <td>
                 <div className="text-xl flex gap-1">
-                  <div className="text-hrms_blue p-1 cursor-pointer"><i class="ri-edit-2-line"></i></div>
-                  <div className="text-danger p-1 cursor-pointer"><i class="ri-delete-bin-6-line"></i></div>
+                  <div className="text-hrms_blue p-1 cursor-pointer"><i className="ri-edit-2-line"></i></div>
+                  <div className="text-danger p-1 cursor-pointer"><i className="ri-delete-bin-6-line"></i></div>
                 </div>
               </td>
             </tr>
@@ -161,13 +161,13 @@ const Page = () => {
                 <div className="">Role:</div>
               </td>
               <td>
-                <div className=""><i class="ri-mail-line text-gray-400"></i> ergjdfgk@dfg.dfj</div>
-                <div className=""><i class="ri-phone-line text-gray-400"></i> 08054634563</div>
+                <div className=""><i className="ri-mail-line text-gray-400"></i> ergjdfgk@dfg.dfj</div>
+                <div className=""><i className="ri-phone-line text-gray-400"></i> 08054634563</div>
               </td>
               <td>
                 <div className="text-xl flex gap-1">
-                  <div className="text-hrms_blue p-1 cursor-pointer"><i class="ri-edit-2-line"></i></div>
-                  <div className="text-danger p-1 cursor-pointer"><i class="ri-delete-bin-6-line"></i></div>
+                  <div className="text-hrms_blue p-1 cursor-pointer"><i className="ri-edit-2-line"></i></div>
+                  <div className="text-danger p-1 cursor-pointer"><i className="ri-delete-bin-6-line"></i></div>
                 </div>
               </td>
             </tr>
@@ -195,13 +195,13 @@ const Page = () => {
                 <div className="">Role:</div>
               </td>
               <td>
-                <div className=""><i class="ri-mail-line text-gray-400"></i> ergjdfgk@dfg.dfj</div>
-                <div className=""><i class="ri-phone-line text-gray-400"></i> 08054634563</div>
+                <div className=""><i className="ri-mail-line text-gray-400"></i> ergjdfgk@dfg.dfj</div>
+                <div className=""><i className="ri-phone-line text-gray-400"></i> 08054634563</div>
               </td>
               <td>
                 <div className="text-xl flex gap-1">
-                  <div className="text-hrms_blue p-1 cursor-pointer"><i class="ri-edit-2-line"></i></div>
-                  <div className="text-danger p-1 cursor-pointer"><i class="ri-delete-bin-6-line"></i></div>
+                  <div className="text-hrms_blue p-1 cursor-pointer"><i className="ri-edit-2-line"></i></div>
+                  <div className="text-danger p-1 cursor-pointer"><i className="ri-delete-bin-6-line"></i></div>
                 </div>
               </td>
             </tr>
@@ -229,13 +229,13 @@ const Page = () => {
                 <div className="">Role:</div>
               </td>
               <td>
-                <div className=""><i class="ri-mail-line text-gray-400"></i> ergjdfgk@dfg.dfj</div>
-                <div className=""><i class="ri-phone-line text-gray-400"></i> 08054634563</div>
+                <div className=""><i className="ri-mail-line text-gray-400"></i> ergjdfgk@dfg.dfj</div>
+                <div className=""><i className="ri-phone-line text-gray-400"></i> 08054634563</div>
               </td>
               <td>
                 <div className="text-xl flex gap-1">
-                  <div className="text-hrms_blue p-1 cursor-pointer"><i class="ri-edit-2-line"></i></div>
-                  <div className="text-danger p-1 cursor-pointer"><i class="ri-delete-bin-6-line"></i></div>
+                  <div className="text-hrms_blue p-1 cursor-pointer"><i className="ri-edit-2-line"></i></div>
+                  <div className="text-danger p-1 cursor-pointer"><i className="ri-delete-bin-6-line"></i></div>
                 </div>
               </td>
             </tr>
@@ -273,15 +273,25 @@ const Page = () => {
             </div>
           </form>
         </Modal>
-        <Modal closeModal={() => setImportModal(false)} size={"xl"} isOpen={importModal}>
-            <div className="text-hrms_green text-2xl">Import CSV file only</div>
-            <div className="bg-gray-100">
-              <div className="text-xs p-4">
-                <div className="max-w-sm text-center mx-auto">The first line in downloaded csv file should remain as it is. Please do not change the order of columns in csv file.</div>
-              </div>
-              <div className=""></div>
+        <Modal closeModal={() => setImportModal(false)} size={"2xl"} isOpen={importModal}>
+          <div className="text-hrms_green text-2xl">Import CSV file only</div>
+          <div className="bg-gray-100 py-10 space-y-4">
+            <div className="text-sm p-4">
+              <div className="max-w-lg text-center mx-auto">The first line in downloaded csv file should remain as it is. Please do not change the order of columns in csv file.</div>
             </div>
-            <div className=""></div>
+            <div className="flex justify-center">
+              <a href="#">
+                <div className="bg-hrms_green text-white px-5 py-3"><i className="ri-download-2-line"></i> Download File Sample</div>
+              </a>
+            </div>
+          </div>
+          <div className="">
+            <div className="">
+              <div className="relative">
+                <input type="file" className="" />
+              </div>
+            </div>
+          </div>
         </Modal>
 
         <ResponseModal

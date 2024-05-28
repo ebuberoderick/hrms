@@ -13,7 +13,7 @@ function AdminSideNav() {
         <div>
           <AppLink
             text={"dashboard"}
-            icon={<i class="ri-layout-grid-fill"></i>}
+            icon={<i className="ri-layout-grid-fill"></i>}
           />
         </div>
         <div>
@@ -33,7 +33,7 @@ function AdminSideNav() {
             <AppLink text={"Employee"} icon={<i className="ri-group-line"></i>} />
             <AppLink
               text={"customize setting"}
-              icon={<i class="ri-sound-module-line"></i>}
+              icon={<i className="ri-sound-module-line"></i>}
               subMenu={[
                 { name: "roles and access", extra: false },
                 { name: "general settings", extra: false },
@@ -53,7 +53,7 @@ function AdminSideNav() {
           <div>
             <AppLink
               text={"Core HR"}
-              icon={<i class="ri-file-list-3-line"></i>}
+              icon={<i className="ri-file-list-3-line"></i>}
               subMenu={[
                 { name: "promotion", extra: false },
                 { name: "award", extra: false },
@@ -66,23 +66,23 @@ function AdminSideNav() {
             />
             <AppLink
               text={"recruitment"}
-              icon={<i class="ri-team-line"></i>}
+              icon={<i className="ri-team-line"></i>}
             />
             <AppLink
               text={"organization"}
-              icon={<i class="ri-group-2-line"></i>}
+              icon={<i className="ri-group-2-line"></i>}
             />
             <AppLink
               text={"HR Calender"}
-              icon={<i class="ri-calendar-todo-line"></i>}
+              icon={<i className="ri-calendar-todo-line"></i>}
             />
             <AppLink
               text={"timesheet"}
-              icon={<i class="ri-time-line"></i>}
+              icon={<i className="ri-time-line"></i>}
             />
             <AppLink
               text={"Onboarding"}
-              icon={<i class="ri-p2p-line"></i>}
+              icon={<i className="ri-p2p-line"></i>}
             />
             <AppLink text={"transfer"} icon={<i className="ri-group-line"></i>} />
           </div>
@@ -94,7 +94,7 @@ function AdminSideNav() {
           <div>
             <AppLink
               text={"payroll"}
-              icon={<i class="ri-wallet-line"></i>}
+              icon={<i className="ri-wallet-line"></i>}
             />
           </div>
         </div>
@@ -105,7 +105,7 @@ function AdminSideNav() {
           <div>
             <AppLink
               text={"Cashbook"}
-              icon={<i class="ri-newspaper-line"></i>}
+              icon={<i className="ri-newspaper-line"></i>}
             />
           </div>
         </div>
