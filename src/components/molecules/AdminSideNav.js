@@ -30,7 +30,7 @@ function AdminSideNav() {
                 { name: "users last login", extra: false },
               ]}
             />
-            <AppLink text={"Employee"} icon={<i className="ri-group-line"></i>} />
+            <AppLink text={"employee"} icon={<i className="ri-group-line"></i>} />
             <AppLink
               text={"customize setting"}
               icon={<i className="ri-sound-module-line"></i>}
@@ -52,7 +52,7 @@ function AdminSideNav() {
           </div>
           <div>
             <AppLink
-              text={"Core HR"}
+              text={"core HR"}
               icon={<i className="ri-file-list-3-line"></i>}
               subMenu={[
                 { name: "promotion", extra: false },
@@ -73,7 +73,7 @@ function AdminSideNav() {
               icon={<i className="ri-group-2-line"></i>}
             />
             <AppLink
-              text={"HR Calender"}
+              text={"hR Calender"}
               icon={<i className="ri-calendar-todo-line"></i>}
             />
             <AppLink

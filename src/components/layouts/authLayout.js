@@ -54,10 +54,10 @@ function AuthLayout({ children, title, subText, onSubmit, errMsg }) {
         <form
             onSubmit={(e) => {
               e.preventDefault(), onSubmit(serialize(e.target));
-            }} className="max-w-lg space-y-12 mx-auto p-3">
+            }} className="max-w-lg space-y-10 mx-auto p-3">
           
           <Image src={logo} alt="" draggable="false" className="mx-auto w-72 " />
-          <div>
+          <div className="space-y-4">
             <div className="text-danger text-sm">{errMsg}</div>
             <div className="space-y-5">{children}</div>
           </div>
@@ -68,17 +68,3 @@ function AuthLayout({ children, title, subText, onSubmit, errMsg }) {
 }
 
 export default AuthLayout;
-
-
-
-{/* <div className="flex flex-col items-center">
-              <div>
-                <Image src={avatar} alt="" draggable="false" className="" />
-              </div>
-              <div className="font-bold pb-1 text-3xl md:text-4xl mt-5">
-                {title}
-              </div>
-              <div className="text-xs md:text-sm">{subText}</div>
-            </div>
-            <div className="text-danger text-sm">{errMsg}</div>
-            <div className="space-y-5">{children}</div> */}

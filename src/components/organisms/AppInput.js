@@ -31,6 +31,7 @@ function AppInput({ label, type, required, name, max, options, value, display, o
               id={name + Fid}
               className="peer group hidden appearance-none"
               name={name}
+              required={required}
               defaultValue={value}
               onChange={(e) => onChange && onChange(e)}
             />
@@ -55,7 +56,7 @@ function AppInput({ label, type, required, name, max, options, value, display, o
         <select
           name={name}
           required={required}
-          className="w-full border focus:border-hrms_green border-hrms_green placeholder-shown:border-gray-300 p-3 peer outline-none rounded-lg placeholder:text-transparent"
+          className="w-full border bg-white focus:border-hrms_green border-hrms_green placeholder-shown:border-gray-300 p-3 peer outline-none rounded-lg placeholder:text-transparent"
         >
           <option value="" disabled selected hidden>
             {label}

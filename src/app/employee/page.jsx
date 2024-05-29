@@ -281,16 +281,21 @@ const Page = () => {
             </div>
             <div className="flex justify-center">
               <a href="#">
-                <div className="bg-hrms_green text-white px-5 py-3"><i className="ri-download-2-line"></i> Download File Sample</div>
+                <div className="bg-hrms_green rounded-lg text-white px-5 py-3"><i className="ri-download-2-line"></i> Download File Sample</div>
               </a>
             </div>
           </div>
           <div className="">
-            <div className="">
-              <div className="relative">
-                <input type="file" className="" />
+            <form className="">
+              <div className="space-y-2">
+                <div className="text-sm text-gray-500">Upload File</div>
+                <label htmlFor="upload" className="relative rounded-lg text-hrms_green border border-hrms_green py-3 px-4 inline-block cursor-pointer">
+                  <input id="upload" type="file" className="opacity-0 absolute w-full cursor-pointer h-full" />
+                  <i className="ri-upload-2-line"></i> <span>Choose File. . .</span>
+                </label>
               </div>
-            </div>
+
+            </form>
           </div>
         </Modal>
 

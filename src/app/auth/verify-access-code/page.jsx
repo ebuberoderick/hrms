@@ -14,29 +14,23 @@ function Page() {
   const [proccessing, setProccessing] = useState(false);
   const [errMsg, setErrMsg] = useState(false);
   const router = useRouter();
-  const [email,setEmail] = useState(searchParams.get('email'))
-  const [accescode,setAccescode] = useState(searchParams.get('acces_code'))
+  const [email, setEmail] = useState(searchParams.get('email'))
+  const [accescode, setAccescode] = useState(searchParams.get('acces_code'))
   const user = useSelector((state) => state.User);
 
   const verifyAccessCode = async (e) => {
     setProccessing(true);
-    const { status, data } = await verifyCode(e).catch((err) =>
-      console.log(err)
-    );
+    const { status, data } = await verifyCode(e).catch((err) => console.log(err));
     setProccessing(false);
-      
     if (status) {
-
-      // setErrMsg("");
-      // SignInAuth(data, dispatch);
-      // dispatch(accessCode(data));
-      console.log(data);
+      SignInAuth({ data }, dispatch);
+      dispatch(accessCode(data));
+      router.push("/")
     } else {
       setErrMsg(data.message);
     }
   };
 
-  // const isAuthenticated = Session(user)
 
   return (
     <AuthLayout

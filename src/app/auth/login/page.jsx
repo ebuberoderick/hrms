@@ -28,11 +28,7 @@ function Page() {
     } else {
       setErrMsg(data.message)
     }
-    
   }
-
-
-  // const isAuthenticated = Session(user)
 
  
   return (
