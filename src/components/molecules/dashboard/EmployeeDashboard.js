@@ -186,7 +186,7 @@ const EmployeeDashboard = () => {
                         <div>{personalData.nextOfKin}</div>
                       </div>
                       <div>
-                        <div className="font-semibold">Next of Kin's Contact</div>
+                        <div className="font-semibold">Next of Kin&apos;s Contact</div>
                         <div>{personalData.nextOfKinContact}</div>
                       </div>
                       <div>
@@ -251,7 +251,7 @@ const EmployeeDashboard = () => {
                       <div>{personalData.nextOfKin}</div>
                     </div>
                     <div>
-                      <div className="font-semibold">Next of Kin's Contact</div>
+                      <div className="font-semibold">Next of Kin&apos;s Contact</div>
                       <div>{personalData.nextOfKinContact}</div>
                     </div>
                     <div>
