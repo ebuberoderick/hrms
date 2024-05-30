@@ -40,9 +40,9 @@ function AdminDashboard() {
               </div>
             </div>
 
-            <div className="w-32 h-32 absolute top-12 -right-12 bg-opacity-20 bg-hrms_blue rounded-full flex items-center justify-center">
-              <div className="w-24 h-24 flex items-center justify-center bg-hrms_blue rounded-full bg-opacity-20">
-                <div className="w-16 h-16 bg-hrms_blue rounded-full bg-opacity-20"></div>
+            <div className="w-32 h-32 absolute top-12 -right-12 bg-opacity-20 bg-hrms_green rounded-full flex items-center justify-center">
+              <div className="w-24 h-24 flex items-center justify-center bg-hrms_green rounded-full bg-opacity-20">
+                <div className="w-16 h-16 bg-hrms_green rounded-full bg-opacity-20"></div>
               </div>
             </div>
           </div>
@@ -62,9 +62,9 @@ function AdminDashboard() {
               </div>
             </div>
 
-            <div className="w-32 h-32 absolute top-12 -right-12 bg-opacity-20 bg-hrms_blue rounded-full flex items-center justify-center">
-              <div className="w-24 h-24 flex items-center justify-center bg-hrms_blue rounded-full bg-opacity-20">
-                <div className="w-16 h-16 bg-hrms_blue rounded-full bg-opacity-20"></div>
+            <div className="w-32 h-32 absolute top-12 -right-12 bg-opacity-20 bg-hrms_green rounded-full flex items-center justify-center">
+              <div className="w-24 h-24 flex items-center justify-center bg-hrms_green rounded-full bg-opacity-20">
+                <div className="w-16 h-16 bg-hrms_green rounded-full bg-opacity-20"></div>
               </div>
             </div>
           </div>
@@ -84,9 +84,9 @@ function AdminDashboard() {
               </div>
             </div>
 
-            <div className="w-32 h-32 absolute top-12 -right-12 bg-opacity-20 bg-hrms_blue rounded-full flex items-center justify-center">
-              <div className="w-24 h-24 flex items-center justify-center bg-hrms_blue rounded-full bg-opacity-20">
-                <div className="w-16 h-16 bg-hrms_blue rounded-full bg-opacity-20"></div>
+            <div className="w-32 h-32 absolute top-12 -right-12 bg-opacity-20 bg-hrms_green rounded-full flex items-center justify-center">
+              <div className="w-24 h-24 flex items-center justify-center bg-hrms_green rounded-full bg-opacity-20">
+                <div className="w-16 h-16 bg-hrms_green rounded-full bg-opacity-20"></div>
               </div>
             </div>
           </div>
@@ -106,9 +106,9 @@ function AdminDashboard() {
               </div>
             </div>
 
-            <div className="w-32 h-32 absolute top-12 -right-12 bg-opacity-20 bg-hrms_blue rounded-full flex items-center justify-center">
-              <div className="w-24 h-24 flex items-center justify-center bg-hrms_blue rounded-full bg-opacity-20">
-                <div className="w-16 h-16 bg-hrms_blue rounded-full bg-opacity-20"></div>
+            <div className="w-32 h-32 absolute top-12 -right-12 bg-opacity-20 bg-hrms_green rounded-full flex items-center justify-center">
+              <div className="w-24 h-24 flex items-center justify-center bg-hrms_green rounded-full bg-opacity-20">
+                <div className="w-16 h-16 bg-hrms_green rounded-full bg-opacity-20"></div>
               </div>
             </div>
           </div>
@@ -128,9 +128,9 @@ function AdminDashboard() {
               </div>
             </div>
 
-            <div className="w-32 h-32 absolute top-12 -right-12 bg-opacity-20 bg-hrms_blue rounded-full flex items-center justify-center">
-              <div className="w-24 h-24 flex items-center justify-center bg-hrms_blue rounded-full bg-opacity-20">
-                <div className="w-16 h-16 bg-hrms_blue rounded-full bg-opacity-20"></div>
+            <div className="w-32 h-32 absolute top-12 -right-12 bg-opacity-20 bg-hrms_green rounded-full flex items-center justify-center">
+              <div className="w-24 h-24 flex items-center justify-center bg-hrms_green rounded-full bg-opacity-20">
+                <div className="w-16 h-16 bg-hrms_green rounded-full bg-opacity-20"></div>
               </div>
             </div>
           </div>
@@ -150,9 +150,9 @@ function AdminDashboard() {
               </div>
             </div>
 
-            <div className="w-32 h-32 absolute top-12 -right-12 bg-opacity-20 bg-hrms_blue rounded-full flex items-center justify-center">
-              <div className="w-24 h-24 flex items-center justify-center bg-hrms_blue rounded-full bg-opacity-20">
-                <div className="w-16 h-16 bg-hrms_blue rounded-full bg-opacity-20"></div>
+            <div className="w-32 h-32 absolute top-12 -right-12 bg-opacity-20 bg-hrms_green rounded-full flex items-center justify-center">
+              <div className="w-24 h-24 flex items-center justify-center bg-hrms_green rounded-full bg-opacity-20">
+                <div className="w-16 h-16 bg-hrms_green rounded-full bg-opacity-20"></div>
               </div>
             </div>
           </div>
@@ -228,7 +228,7 @@ function AdminDashboard() {
               href="#"
               className="p-3 flex items-center gap-2 bg-gray-50 rounded-lg"
             >
-              <div className="text-hrms_blue">
+              <div className="text-hrms_green">
                 <i className="ri-mic-fill"></i>
               </div>
               <div className="">0 Announcement</div>

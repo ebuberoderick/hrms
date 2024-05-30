@@ -48,7 +48,7 @@ const Page = () => {
   return (
     <AppLayout>
       <>
-        <div className=" flex items-center justify-between">
+        <div className="lg:flex space-y-3 items-center justify-between">
           <div className="">
             <p className=" text-[24px] font-[500] text-[#000000]">
               Employee(140)
