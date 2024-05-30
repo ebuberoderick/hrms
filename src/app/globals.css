@@ -4,7 +4,7 @@
 
 
 .css-23p0if-MuiButtonBase-root-MuiPickersDay-root.Mui-selected {
-    @apply bg-hrms_blue focus:hover:bg-hrms_blue;
+    @apply bg-hrms_green focus:hover:bg-hrms_green;
 }
 .apexcharts-toolbar{
     display: none !important;

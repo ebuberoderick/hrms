@@ -7,7 +7,7 @@ function TopNav({ toggle, setToggle }) {
   //     setToggle(!toggle);
   // }
   return (
-    <div className="bg-white flex items-center rounded-lg py-3 px-5">
+    <div className="bg-white flex items-center rounded-lg py-3 md:px-5">
       <div className="flex-grow text-xl">
         <i className="ri-layout-grid-fill"></i> welcome Admin
       </div>
@@ -20,8 +20,8 @@ function TopNav({ toggle, setToggle }) {
           <div className="w-9 h-9 rounded-full bg-gray-200">
             <Image src={avatar} alt="Michael Michael" />
           </div>
-          <div>Admin</div>
-          <i className="ri-arrow-down-s-line relative top-[1px]"></i>
+          <div className="hidden sm:block">Admin</div>
+          <i className="ri-arrow-down-s-line hidden sm:block relative top-[1px]"></i>
         </div>
       </div>
     </div>

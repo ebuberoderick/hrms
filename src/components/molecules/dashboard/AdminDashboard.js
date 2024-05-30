@@ -22,9 +22,9 @@ export const metadata = {
 
 function AdminDashboard() {
   return (
-    <div className="grid grid-cols-3 gap-4">
-      <div className="col-span-2 space-y-4">
-        <div className="grid grid-cols-3 gap-4">
+    <div className="grid xl:grid-cols-3 gap-4">
+      <div className="xl:col-span-2 space-y-4">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           <div className="p-3 h-32 rounded-lg overflow-hidden bg-white shadow-sm relative">
             <div className="flex gap-2">
               <div className="">
@@ -163,8 +163,8 @@ function AdminDashboard() {
             <LineChart />
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-4">
-          <div className="h-96 p-4 bg-white shadow-sm rounded-lg">
+        <div className="grid lg:grid-cols-2 gap-4">
+          <div className=" p-4 bg-white shadow-sm rounded-lg">
             <div className="text-lg font-semibold">Employee Department</div>
             <div className="h-96">
               <PieChart
@@ -173,7 +173,7 @@ function AdminDashboard() {
               />
             </div>
           </div>
-          <div className="h-96 p-4 bg-white shadow-sm rounded-lg">
+          <div className=" p-4 bg-white shadow-sm rounded-lg">
             <div className="text-lg font-semibold">Employee Designation</div>
             <div className="h-96">
               <PieChart
@@ -188,13 +188,13 @@ function AdminDashboard() {
               />
             </div>
           </div>
-          <div className="h-96 p-4 bg-white shadow-sm rounded-lg">
+          <div className="p-4 bg-white shadow-sm rounded-lg">
             <div className="text-lg font-semibold">Expense Vs Deposit</div>
             <div className="h-96">
               <PieChart series={[45, 35]} labels={["Expense", "Deposit"]} />
             </div>
           </div>
-          <div className="h-96 p-4 bg-white shadow-sm rounded-lg">
+          <div className="p-4 bg-white shadow-sm rounded-lg">
             <div className="text-lg font-semibold">Project Status</div>
             <div className="h-96">
               <PieChart
@@ -206,7 +206,7 @@ function AdminDashboard() {
         </div>
       </div>
       <div className="">
-        <div className="space-y-4 max-w-xs">
+        <div className="space-y-4 grid md:grid-cols-2 xl:grid-cols-1 xl:max-w-xs">
           <div className="bg-white shadow-sm rounded-lg ">
             <Calender />
           </div>

@@ -274,28 +274,47 @@ const Page = () => {
           </form>
         </Modal>
         <Modal closeModal={() => setImportModal(false)} size={"2xl"} isOpen={importModal}>
-          <div className="text-hrms_green text-2xl">Import CSV file only</div>
-          <div className="bg-gray-100 py-10 space-y-4">
-            <div className="text-sm p-4">
-              <div className="max-w-lg text-center mx-auto">The first line in downloaded csv file should remain as it is. Please do not change the order of columns in csv file.</div>
-            </div>
-            <div className="flex justify-center">
-              <a href="#">
-                <div className="bg-hrms_green rounded-lg text-white px-5 py-3"><i className="ri-download-2-line"></i> Download File Sample</div>
-              </a>
-            </div>
-          </div>
-          <div className="">
-            <form className="">
-              <div className="space-y-2">
-                <div className="text-sm text-gray-500">Upload File</div>
-                <label htmlFor="upload" className="relative rounded-lg text-hrms_green border border-hrms_green py-3 px-4 inline-block cursor-pointer">
-                  <input id="upload" type="file" className="opacity-0 absolute w-full cursor-pointer h-full" />
-                  <i className="ri-upload-2-line"></i> <span>Choose File. . .</span>
-                </label>
+          <div className="space-y-5">
+            <div className="text-hrms_green text-2xl">Import CSV file only</div>
+            <div className="bg-gray-100 py-10 space-y-4">
+              <div className="text-sm p-4">
+                <div className="max-w-lg text-center mx-auto">The first line in downloaded csv file should remain as it is. Please do not change the order of columns in csv file.</div>
               </div>
-
-            </form>
+              <div className="flex justify-center">
+                <a href="#">
+                  <div className="bg-hrms_green rounded-lg text-white px-5 py-3"><i className="ri-download-2-line"></i> Download File Sample</div>
+                </a>
+              </div>
+            </div>
+            <div className="">
+              <form className="space-y-4">
+                <div className="space-y-2">
+                  <div className="text-sm text-gray-500">Upload File</div>
+                  <label htmlFor="upload" className="relative rounded-lg text-hrms_green border border-hrms_green py-3 px-4 inline-block cursor-pointer">
+                    <input id="upload" type="file" className="opacity-0 absolute w-full cursor-pointer h-full" />
+                    <i className="ri-upload-2-line"></i> <span>Choose File. . .</span>
+                  </label>
+                </div>
+                <div className="space-y-2">
+                  <div className="text-sm text-gray-500">Enter Manually</div>
+                  <textarea className="w-full bg-gray-50 p-3 rounded-lg outline-none ring-0 resize-none"></textarea>
+                </div>
+                <div className="flex gap-4 justify-end">
+                  <div
+                    onClick={() => setImportModal(false)}
+                    className="disabled:bg-opacity-35 px-6 shadow-md border border-hrms_green text-hrms_green rounded-lg py-3"
+                  >
+                    Cancel
+                  </div>
+                  <button
+                    disabled={proccessing}
+                    className="disabled:bg-opacity-35 px-6 shadow-md bg-hrms_green text-white rounded-lg py-3"
+                  >
+                    {proccessing ? "Sending..." : "Send"}
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </Modal>
 
