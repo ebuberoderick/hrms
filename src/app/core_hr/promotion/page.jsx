@@ -4,7 +4,7 @@ import AppInput from '@/components/organisms/AppInput'
 import Modal from '@/components/organisms/Modal'
 import React, { useState } from 'react'
 
-function page() {
+function Page() {
   const [showModal, setShowModal] = useState(false)
   return (
     <AppLayout>
@@ -47,4 +47,4 @@ function page() {
   )
 }
 
-export default page
+export default Page
