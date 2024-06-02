@@ -1,14 +1,11 @@
 "use client";
 import AppLayout from "@/components/layouts/appLayout";
 import AppInput from "@/components/organisms/AppInput";
-import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Input, Button, DropdownTrigger, Dropdown, DropdownMenu, DropdownItem, Chip, User, Pagination } from "@nextui-org/table";
 import Modal from "@/components/organisms/Modal";
 import ResponseModal from "@/components/organisms/ResponseModal";
 import serialize from "@/hooks/Serialize";
 import { employeeInvite } from "@/services/authService";
-import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
-import AppCheckBox from "@/components/organisms/AppCheckBox";
+import React, { useState } from "react";
 
 const Page = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -18,14 +15,6 @@ const Page = () => {
   const [errMsg, setErrMsg] = useState(false);
   const [importModal, setImportModal] = useState(false)
 
-  const selectAll = (e) => {
-    // console.log(e.target);
-  }
-
-
-  const router = useRouter();
-  // const data = useSelector((state) => state.User?.value?.user.name);
-  // console.log("hello", data);
   const inviteEmployee = async (e) => {
     e.preventDefault();
     const formData = serialize(e.target);
@@ -57,13 +46,13 @@ const Page = () => {
               All the company employee are listed here
             </p>
           </div>
-          <div className="flex gap-[10px] text-sm">
-            <div onClick={(e) => setImportModal(true)} className="flex cursor-pointer font-bold gap-2 items-center border border-hrms_green text-hrms_green px-7 py-3 rounded-[4px]">
+          <div className="sm:flex space-y-3 sm:space-y-0 gap-[10px] text-sm">
+            <div onClick={(e) => setImportModal(true)} className="flex justify-center cursor-pointer font-bold gap-2 items-center border border-hrms_green text-hrms_green px-7 py-3 rounded-[4px]">
               <i className="ri-upload-2-fill text-hrms_green"></i>
               <div className="">Import Employees</div>
             </div>
             <div
-              className="flex cursor-pointer font-bold gap-2 items-center text-white bg-hrms_green px-7 py-3 rounded-[4px]"
+              className="flex cursor-pointer font-bold justify-center gap-2 items-center text-white bg-hrms_green px-7 py-3 rounded-[4px]"
               onClick={() => setIsModalOpen(true)}
             >
               <i className="ri-add-line"></i>
@@ -99,8 +88,8 @@ const Page = () => {
                 </div>
                 <div className="flex-grow">Image</div>
               </th>
-              <th className="">Username</th>
-              <th className="">Permission Role</th>
+              <th className="hidden lg:table-cell">Username</th>
+              <th className="hidden sm:table-cell">Permission Role</th>
               <th className="w-20">Action</th>
             </tr>
             <tr>
@@ -121,120 +110,18 @@ const Page = () => {
                   </div>
                 </div>
               </td>
-              <td>
+              <td className="hidden lg:table-cell">
                 <div className="font-semibold">HR1</div>
                 <div className="">Username:</div>
                 <div className="">Role:</div>
               </td>
-              <td>
+              <td className="hidden lg:table-cell">
                 <div className=""><i className="ri-mail-line text-gray-400"></i> ergjdfgk@dfg.dfj</div>
                 <div className=""><i className="ri-phone-line text-gray-400"></i> 08054634563</div>
               </td>
               <td>
                 <div className="text-xl flex gap-1">
-                  <div className="text-hrms_blue p-1 cursor-pointer"><i className="ri-edit-2-line"></i></div>
-                  <div className="text-danger p-1 cursor-pointer"><i className="ri-delete-bin-6-line"></i></div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td className="flex items-center gap-3 pl-5 py-2">
-                <div className="w-9 relative">
-                  <div className="absolute -top-1"><AppInput onChange={(e) => selectAll(e)} type="checkbox" name="employee" /></div>
-                </div>
-                <div className="flex-grow gap-2 flex">
-                  <div className="">
-                    <div className="w-9 h-9 bg-gray-100 rounded-full"></div>
-                  </div>
-                  <div className="">
-                    <div className="font-semibold">Ashraf Shadat</div>
-                    <div className="">Username:</div>
-                    <div className="">Gender:</div>
-                    <div className="">Salary:</div>
-                    <div className="">Payslip:</div>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <div className="font-semibold">HR1</div>
-                <div className="">Username:</div>
-                <div className="">Role:</div>
-              </td>
-              <td>
-                <div className=""><i className="ri-mail-line text-gray-400"></i> ergjdfgk@dfg.dfj</div>
-                <div className=""><i className="ri-phone-line text-gray-400"></i> 08054634563</div>
-              </td>
-              <td>
-                <div className="text-xl flex gap-1">
-                  <div className="text-hrms_blue p-1 cursor-pointer"><i className="ri-edit-2-line"></i></div>
-                  <div className="text-danger p-1 cursor-pointer"><i className="ri-delete-bin-6-line"></i></div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td className="flex items-center gap-3 pl-5 py-2">
-                <div className="w-9 relative">
-                  <div className="absolute -top-1"><AppInput onChange={(e) => selectAll(e)} type="checkbox" name="employee" /></div>
-                </div>
-                <div className="flex-grow gap-2 flex">
-                  <div className="">
-                    <div className="w-9 h-9 bg-gray-100 rounded-full"></div>
-                  </div>
-                  <div className="">
-                    <div className="font-semibold">Ashraf Shadat</div>
-                    <div className="">Username:</div>
-                    <div className="">Gender:</div>
-                    <div className="">Salary:</div>
-                    <div className="">Payslip:</div>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <div className="font-semibold">HR1</div>
-                <div className="">Username:</div>
-                <div className="">Role:</div>
-              </td>
-              <td>
-                <div className=""><i className="ri-mail-line text-gray-400"></i> ergjdfgk@dfg.dfj</div>
-                <div className=""><i className="ri-phone-line text-gray-400"></i> 08054634563</div>
-              </td>
-              <td>
-                <div className="text-xl flex gap-1">
-                  <div className="text-hrms_blue p-1 cursor-pointer"><i className="ri-edit-2-line"></i></div>
-                  <div className="text-danger p-1 cursor-pointer"><i className="ri-delete-bin-6-line"></i></div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td className="flex items-center gap-3 pl-5 py-2">
-                <div className="w-9 relative">
-                  <div className="absolute -top-1"><AppInput onChange={(e) => selectAll(e)} type="checkbox" name="employee" /></div>
-                </div>
-                <div className="flex-grow gap-2 flex">
-                  <div className="">
-                    <div className="w-9 h-9 bg-gray-100 rounded-full"></div>
-                  </div>
-                  <div className="">
-                    <div className="font-semibold">Ashraf Shadat</div>
-                    <div className="">Username:</div>
-                    <div className="">Gender:</div>
-                    <div className="">Salary:</div>
-                    <div className="">Payslip:</div>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <div className="font-semibold">HR1</div>
-                <div className="">Username:</div>
-                <div className="">Role:</div>
-              </td>
-              <td>
-                <div className=""><i className="ri-mail-line text-gray-400"></i> ergjdfgk@dfg.dfj</div>
-                <div className=""><i className="ri-phone-line text-gray-400"></i> 08054634563</div>
-              </td>
-              <td>
-                <div className="text-xl flex gap-1">
-                  <div className="text-hrms_blue p-1 cursor-pointer"><i className="ri-edit-2-line"></i></div>
+                  <div className="text-hrms_green p-1 cursor-pointer"><i className="ri-edit-2-line"></i></div>
                   <div className="text-danger p-1 cursor-pointer"><i className="ri-delete-bin-6-line"></i></div>
                 </div>
               </td>

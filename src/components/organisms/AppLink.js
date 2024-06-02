@@ -19,9 +19,9 @@ function AppLink({ text, icon, subMenu }) {
 
   const checkOpen = () => {
     const page = url.split("/");
-    setActive(page[1]);
+    setActive(page[1].toLowerCase());
     if (page.length > 1 && page[1] === text) {
-      setActiveSub(page[2]);
+      setActiveSub(page[2].toLowerCase());
       openSubMenu();
     }
   };
@@ -36,7 +36,7 @@ function AppLink({ text, icon, subMenu }) {
         <div
           onClick={() => openSubMenu()}
           className={`flex items-center gap-3 py-1 rounded-r-full text-gray-500 cursor-pointer px-3 ${
-            active === text
+            active.toLowerCase() === text.toLowerCase()
               ? "text-white bg-hrms_green rounded-r-full"
               : "hover:bg-hrms_green hover:bg-opacity-70 hover:text-white"
           }`}
@@ -58,12 +58,12 @@ function AppLink({ text, icon, subMenu }) {
           href={`/${
             text === "dashboard"
               ? ""
-              : text.replaceAll(" ", "_").replaceAll("&", "x").toLowerCase()
+              : text.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x")
           }`}
         >
           <div
             className={`flex items-center gap-3 py-2 rounded-r-full text-gray-500 cursor-pointer px-3 ${
-              active === text || (active === "" && text === "dashboard")
+              active.toLowerCase() === text.toLowerCase() || (active.toLowerCase() === "" && text.toLowerCase() === "dashboard")
                 ? "text-white bg-hrms_green rounded-r-full"
                 : "hover:bg-hrms_green hover:bg-opacity-70 hover:text-white"
             }`}
@@ -82,7 +82,7 @@ function AppLink({ text, icon, subMenu }) {
                   <div
                     onClick={() => toggleSibling(subText.name)}
                     className={`flex py-1 items-center gap-3 text-gray-500 cursor-pointer ${
-                      activeSub === subText.name
+                      activeSub.toLowerCase() === subText.name.toLowerCase()
                         ? "text-bg-hrms_green font-bold"
                         : "hover:text-sm hover:font-bold hover:text-hrms_green"
                     }`}
@@ -106,15 +106,15 @@ function AppLink({ text, icon, subMenu }) {
                 </div>
               ) : (
                 <Link
-                  href={`/${text
+                  href={`/${text.toLowerCase()
                     .replaceAll(" ", "_")
-                    .replaceAll("&", "x")}/${subText.name
+                    .replaceAll("&", "x")}/${subText.name.toLowerCase()
                     .replaceAll(" ", "_")
                     .replaceAll("&", "x")}`}
                 >
                   <div
                     className={`flex py-2 items-center gap-3 text-gray-500 ${
-                      activeSub === subText.name
+                      activeSub.toLowerCase() === subText.name.toLowerCase()
                         ? "text-[#57aaa5] font-bold"
                         : "hover:text-sm hover:font-bold hover:text-hrms_green"
                     }`}

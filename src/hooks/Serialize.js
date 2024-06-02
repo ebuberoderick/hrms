@@ -5,7 +5,7 @@ const serialize = (form) => {
       if (
         control.name &&
         !control.disabled &&
-        ["file", "reset", "submit", "button"].indexOf(control.type) === -1
+        ["reset", "submit", "button"].indexOf(control.type) === -1
       )
         if (control.type === "select-multiple")
           Array.prototype.slice

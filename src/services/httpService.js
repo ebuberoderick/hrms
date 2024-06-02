@@ -30,6 +30,7 @@ export const apiWithAuth = axios.create({
 });
 
 export const getApiResponse = (data) => {
+// errors
   return {
     status: true,
     data: data.data,
@@ -37,7 +38,7 @@ export const getApiResponse = (data) => {
 };
 
 export const getErrorResponse = (error) => {
-  
+  // errors
   return {
     status: false,
     data: error?.response?.data,

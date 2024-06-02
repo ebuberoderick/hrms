@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from "react";
 
-function AppInput({ label, type, required, name, max, options, value, display, onChange }) {
+function AppInput({ label, type, required, name, max, options, value, defaultValue, display, onChange }) {
   const [inputType, setInputType] = useState(type);
 
   const makeid = (length) => {
@@ -32,7 +32,8 @@ function AppInput({ label, type, required, name, max, options, value, display, o
               className="peer group hidden appearance-none"
               name={name}
               required={required}
-              defaultValue={value}
+              value={value}
+              defaultValue={defaultValue}
               onChange={(e) => onChange && onChange(e)}
             />
             <div className="relative top-[1px] bg-white w-7 h-7 rounded-md dark:bg-gray-700 dark:border-gray-500 border peer-hover:hidden peer-checked:hidden " />
@@ -67,12 +68,21 @@ function AppInput({ label, type, required, name, max, options, value, display, o
             </option>
           ))}
         </select>
+      ) : type === "textarea" ? (
+        <textarea
+          name={name}
+          required={required}
+          value={value}
+          defaultValue={defaultValue}
+          className="w-full border resize-none focus:border-hrms_green border-hrms_green placeholder-shown:border-gray-300 p-3 peer outline-none rounded-lg placeholder:text-transparent"
+          placeholder={label}></textarea>
       ) : (
         <input
           name={name}
           required={required}
           type={inputType}
-          defaultValue={value}
+          value={value}
+          defaultValue={defaultValue}
           className="w-full border focus:border-hrms_green border-hrms_green placeholder-shown:border-gray-300 p-3 peer outline-none rounded-lg placeholder:text-transparent"
           placeholder={label}
           {...(max ? { max } : {})}
