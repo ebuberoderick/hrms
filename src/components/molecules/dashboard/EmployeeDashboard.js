@@ -3,20 +3,23 @@ import React, { useEffect, useState } from "react";
 import ResponseModal from "../../organisms/ResponseModal";
 import AppInput from "../../organisms/AppInput";
 import Modal from "../../organisms/Modal";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import serialize from "@/hooks/Serialize";
 import { NigeriaStates } from "@/hooks/Nigeria";
 import { updateProfile } from "@/services/authService";
 import Image from "next/image";
 import axios from "axios";
+import { SignInAuth } from "@/hooks/Auth";
+import { useRouter } from "next/navigation";
 
 const EmployeeDashboard = () => {
+  const dispatch = useDispatch()
   const perset_key = process.env.NEXT_PUBLIC_API_CLOUDINARY_PERSET_KEY
   const cloud_name = process.env.NEXT_PUBLIC_API_CLOUDINARY_CLOUD_NAME
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
   const [isErrorModal, setIsErrorModal] = useState(false);
-  const [proccessing, setProccessing] = useState(false);
+  const router = useRouter();
   const [imgUrl, setImgUrl] = useState("");
   const [errMsg, setErrMsg] = useState(false);
   const [personalData, setPersonalData] = useState([])
@@ -24,8 +27,8 @@ const EmployeeDashboard = () => {
 
   const userType = useSelector((state) => state.User?.value);
   useEffect(() => {
-    console.log(userType.AccountNumber);
-    if (userType.AccountNumber === undefined) {
+    console.log(userType.user.next_of_kin_name);
+    if (userType.user.next_of_kin_name === null) {
       setIsModalOpen(true);
     }
   }, []);
@@ -70,6 +73,8 @@ const EmployeeDashboard = () => {
     personalData.avatar = imgUrl
     console.log(personalData);
     const { status, data } = await updateProfile(personalData)
+    SignInAuth({ data }, dispatch);
+    router.push("/")
     console.log(data);
   }
 
@@ -145,7 +150,7 @@ const EmployeeDashboard = () => {
                     <div className="w-20 h-20 rounded-full bg-gray-100 relative">
                       <Image id="output" className="w-full h-full rounded-full" />
                       <label htmlFor="image" className="absolute w-8 h-8 border-2 border-white bottom-1 right-0 bg-hrms_green text-white rounded-full flex items-center justify-center">
-                        <input accept="image/*" id="image" onChange={(e) => uploadImg(e)} name="image" type="file" className="opacity-0 absolute w-full cursor-pointer h-full" />
+                        <input accept="image/*" required id="image" onChange={(e) => uploadImg(e)} name="image" type="file" className="opacity-0 absolute w-full cursor-pointer h-full" />
                         <i className="ri-camera-line"></i>
                       </label>
                     </div>
@@ -350,7 +355,6 @@ const EmployeeDashboard = () => {
     </div>
   );
 };
-
 export default EmployeeDashboard;
 
 

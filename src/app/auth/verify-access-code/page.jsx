@@ -16,7 +16,6 @@ function Page() {
   const router = useRouter();
   const [email, setEmail] = useState(searchParams.get('email'))
   const [accescode, setAccescode] = useState(searchParams.get('acces_code'))
-  const user = useSelector((state) => state.User);
 
   const verifyAccessCode = async (e) => {
     setProccessing(true);

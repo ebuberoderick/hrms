@@ -19,9 +19,9 @@ function AppLink({ text, icon, subMenu }) {
 
   const checkOpen = () => {
     const page = url.split("/");
-    setActive(page[1].toLowerCase());
+    setActive(page[1]);
     if (page.length > 1 && page[1] === text) {
-      setActiveSub(page[2].toLowerCase());
+      setActiveSub(page[2]);
       openSubMenu();
     }
   };
@@ -36,7 +36,7 @@ function AppLink({ text, icon, subMenu }) {
         <div
           onClick={() => openSubMenu()}
           className={`flex items-center gap-3 py-1 rounded-r-full text-gray-500 cursor-pointer px-3 ${
-            active.toLowerCase() === text.toLowerCase()
+            active === text
               ? "text-white bg-hrms_green rounded-r-full"
               : "hover:bg-hrms_green hover:bg-opacity-70 hover:text-white"
           }`}
@@ -63,7 +63,7 @@ function AppLink({ text, icon, subMenu }) {
         >
           <div
             className={`flex items-center gap-3 py-2 rounded-r-full text-gray-500 cursor-pointer px-3 ${
-              active.toLowerCase() === text.toLowerCase() || (active.toLowerCase() === "" && text.toLowerCase() === "dashboard")
+              active === text || (active === "" && text === "dashboard")
                 ? "text-white bg-hrms_green rounded-r-full"
                 : "hover:bg-hrms_green hover:bg-opacity-70 hover:text-white"
             }`}
@@ -82,7 +82,7 @@ function AppLink({ text, icon, subMenu }) {
                   <div
                     onClick={() => toggleSibling(subText.name)}
                     className={`flex py-1 items-center gap-3 text-gray-500 cursor-pointer ${
-                      activeSub.toLowerCase() === subText.name.toLowerCase()
+                      activeSub === subText.name
                         ? "text-bg-hrms_green font-bold"
                         : "hover:text-sm hover:font-bold hover:text-hrms_green"
                     }`}
@@ -95,7 +95,7 @@ function AppLink({ text, icon, subMenu }) {
                   <div className="pl-6 space-y-2 hidden" id={subText.name}>
                     {subText.option.map((e, i) => (
                       <div key={e + i}>
-                        <Link href={`/${text}/${subText.name}/${e}`}>
+                        <Link href={`/${text.toLowerCase()}/${subText.name.toLowerCase()}/${e}`}>
                           <div className="hover:text-bg-hrms_green py-1">
                             {e}
                           </div>
@@ -114,7 +114,7 @@ function AppLink({ text, icon, subMenu }) {
                 >
                   <div
                     className={`flex py-2 items-center gap-3 text-gray-500 ${
-                      activeSub.toLowerCase() === subText.name.toLowerCase()
+                      activeSub === subText.name
                         ? "text-[#57aaa5] font-bold"
                         : "hover:text-sm hover:font-bold hover:text-hrms_green"
                     }`}
