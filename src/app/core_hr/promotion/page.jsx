@@ -2,25 +2,43 @@
 import AppLayout from '@/components/layouts/appLayout'
 import AppInput from '@/components/organisms/AppInput'
 import Modal from '@/components/organisms/Modal'
+import serialize from '@/hooks/Serialize'
+import { companyEnum } from '@/utility/constants'
 import React, { useState } from 'react'
 
 function Page() {
   const [showModal, setShowModal] = useState(false)
+
+
+  const add = (e) => {
+    e.preventDefault();
+    const formData = serialize(e.target);
+    // const {status,data} = 
+    console.log(formData);
+  }
+
+  const fetch = () => {
+
+  }
+
+
   return (
     <AppLayout>
       <div className="space-y-6">
         <Modal closeModal={() => setShowModal(false)} size={"xl"} isOpen={showModal}>
-          <div className="space-y-4">
+          <form onSubmit={(e) => add(e)} className="space-y-4">
             <div className="text-hrms_green text-xl">Add Promotion</div>
             <div className="grid grid-cols-2 gap-4">
+              <AppInput name="company" type={"select"} required label="Company"
+                options={[...companyEnum]}
+              />
               <AppInput name="employee" type={"email"} required label="Employee Email" />
-              <AppInput name="company" type={"text"} required label="Company" />
               <AppInput name="promotion_title" type={"text"} required label="Promotion Ttile" />
               <AppInput name="promotion_date" type={"date"} required label="Promotion Date" />
             </div>
             <AppInput name={"description"} type={"textarea"} label="Description" />
             <button className="bg-hrms_green w-full rounded-lg text-white py-2">Add</button>
-          </div>
+          </form>
         </Modal>
 
         <div className="lg:flex space-y-3 items-center justify-between">

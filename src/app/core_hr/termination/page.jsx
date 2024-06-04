@@ -2,15 +2,25 @@
 import AppLayout from '@/components/layouts/appLayout'
 import AppInput from '@/components/organisms/AppInput'
 import Modal from '@/components/organisms/Modal'
+import serialize from '@/hooks/Serialize'
 import React, { useState } from 'react'
 
 function Page() {
   const [showModal, setShowModal] = useState(false)
+
+  const add = (e) => {
+    const formData = serialize(e.target);
+  }
+
+  const fetch = () => {
+
+  }
+
   return (
     <AppLayout>
       <div className="space-y-4">
         <Modal closeModal={() => setShowModal(false)} size={"xl"} isOpen={showModal}>
-          <div className="space-y-4">
+          <form onSubmit={(e) => add(e)} className="space-y-4">
             <div className="text-hrms_green text-xl">Add Termination</div>
             <div className="grid grid-cols-2 gap-4">
               <AppInput name="termination_to" type={"text"} required label="Termionation To" />
@@ -26,7 +36,7 @@ function Page() {
               <AppInput name="termination_date" type={"date"} required label="Termination Date" />
             </div>
             <button className="bg-hrms_green w-full rounded-lg text-white py-2">Add</button>
-          </div>
+          </form>
         </Modal>
 
         <div className="lg:flex space-ysss-3 items-center justify-between">

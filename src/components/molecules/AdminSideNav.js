@@ -76,6 +76,13 @@ function AdminSideNav() {
             <AppLink
               text={"organization"}
               icon={<i className="ri-group-2-line"></i>}
+              subMenu={[
+                { name: "company", extra: false },
+                { name: "department", extra: false },
+                { name: "location", extra: false },
+                { name: "announcements", extra: false },
+                { name: "company policy", extra: false }
+              ]}
             />
             <AppLink
               text={"hR Calender"}

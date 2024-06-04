@@ -20,7 +20,7 @@ function AppLink({ text, icon, subMenu }) {
   const checkOpen = () => {
     const page = url.split("/");
     setActive(page[1]);
-    if (page.length > 1 && page[1] === text) {
+    if (page.length > 1 && page[1].toLowerCase() === text.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x")) {
       setActiveSub(page[2]);
       openSubMenu();
     }
@@ -77,7 +77,7 @@ function AppLink({ text, icon, subMenu }) {
                 <div>
                   <div
                     onClick={() => toggleSibling(subText.name)}
-                    className={`flex py-1 items-center gap-3 text-gray-500 cursor-pointer ${activeSub === subText.name
+                    className={`flex py-1 items-center gap-3 text-gray-500 cursor-pointer ${activeSub.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x") === subText.name.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x")
                         ? "text-bg-hrms_green font-bold"
                         : "hover:text-sm hover:font-bold hover:text-hrms_green"
                       }`}
@@ -108,8 +108,8 @@ function AppLink({ text, icon, subMenu }) {
                       .replaceAll("&", "x")}`}
                 >
                   <div
-                    className={`flex py-2 items-center gap-3 text-gray-500 ${activeSub === subText.name
-                        ? "text-[#57aaa5] font-bold"
+                    className={`flex py-2 items-center gap-3 text-gray-500 ${activeSub.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x") === subText.name.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x")
+                        ? "text-hrms_green font-bold"
                         : "hover:text-sm hover:font-bold hover:text-hrms_green"
                       }`}
                   >
