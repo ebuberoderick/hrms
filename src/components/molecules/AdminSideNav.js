@@ -60,6 +60,7 @@ function AdminSideNav() {
                 { name: "travel", extra: false },
                 { name: "resignation", extra: false },
                 { name: "complaints", extra: false },
+                { name: "transfer", extra: false },
                 { name: "query", extra: false },
                 { name: "termination", extra: false }
               ]}

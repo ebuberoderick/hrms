@@ -14,8 +14,7 @@ function Page() {
   const add = async (e) => {
     e.preventDefault();
     const formData = serialize(e.target);
-    const {status , data} = await addAward(formData)
-    console.log(data);
+
   }
 
   const fetch = () => {
@@ -27,17 +26,14 @@ function Page() {
       <div className="space-y-4">
         <Modal closeModal={() => setShowModal(false)} size={"xl"} isOpen={showModal}>
           <form onSubmit={(e) => add(e)} className="space-y-4">
-            <div className="text-hrms_green text-xl">Add Award</div>
+            <div className="text-hrms_green text-xl">Add Transfer</div>
             <div className="grid grid-cols-2 gap-4">
-              <AppInput name="company" type={"select"} required label="Company" options={[...companyEnum]} />
               <AppInput name="employee_email" type={"email"} required label="Employee Email" />
-              <AppInput name="department" type={"text"} required label="Department" />
-              <AppInput name="award_type" type={"select"} required label="Award Type" options={[...awardType]} />
-              <AppInput name="gift" type={"text"} required label="Gift" />
-              <AppInput name="cash" type={"text"} required label="Cash" />
+              <AppInput name="company" type={"select"} required label="Company" options={[...companyEnum]} />
+              <AppInput name="department_from" type={"text"} required label="Department From" />
+              <AppInput name="department_to" type={"text"} required label="Department To" />
               <AppInput name={"description"} type={"textarea"} label="Description" />
-              <AppInput name="award_date" type={"date"} required label="Award Date" />
-              <AppInput name="photo" type={"file"} required label="Award Photo" />
+              <AppInput name="transfer_date" type={"date"} required label="Transfer Date" />
             </div>
             <button className="bg-hrms_green w-full rounded-lg text-white py-2">Add</button>
           </form>
@@ -46,10 +42,10 @@ function Page() {
         <div className="lg:flex space-y-3 items-center justify-between">
           <div className="">
             <p className=" text-[24px] font-[500] text-[#000000]">
-              Award
+              Transfer
             </p>
             <p className=" text-[12px] font-[400] text-[#00000099] text-opacity-60">
-              All the company Award are listed here
+              All the company Transfers are listed here
             </p>
           </div>
           <div className="sm:flex space-y-3 sm:space-y-0 gap-[10px] text-sm">
@@ -58,7 +54,7 @@ function Page() {
               onClick={() => setShowModal(true)}
             >
               <i className="ri-add-line"></i>
-              <div className="">Create Award</div>
+              <div className="">Create Transfer</div>
             </div>
           </div>
         </div>
@@ -74,8 +70,9 @@ function Page() {
                 </th>
 
                 <th className="hidden lg:table-cell">Company</th>
-                <th className="hidden sm:table-cell">Promotion Title</th>
-                <th className="hidden sm:table-cell">Date</th>
+                <th className="hidden sm:table-cell">From</th>
+                <th className="hidden sm:table-cell">To</th>
+                <th className="hidden sm:table-cell">Transfer Date</th>
                 <th className="w-20">Action</th>
               </tr>
               <tr>
@@ -91,7 +88,10 @@ function Page() {
                   <div className="font-semibold">HR1</div>
                 </td>
                 <td className="hidden lg:table-cell">
-                  <div className=""> Senior Executive 1</div>
+                  <div className=""> Accounting </div>
+                </td>
+                <td className="hidden lg:table-cell">
+                  <div className=""> Accounting </div>
                 </td>
                 <td className="hidden lg:table-cell">
                   <div className="">16/05/2024 - 09:24</div>

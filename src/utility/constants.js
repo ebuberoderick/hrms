@@ -6,6 +6,21 @@ export const companyEnum = [
     { value: "NIGERIA POLICE FORCE", label: "NIGERIA POLICE FORCE" }
 ];
 
+export const companyLocation = [
+    { value: "Boston", label: "Boston" },
+    { value: "Sydney", label: "Sydney" },
+    { value: "Force Headquarter", label: "Force Headquarter" },
+    { value: "NIS-HQ", label: "NIS-HQ" }
+]
+
+export const companyType = [
+    { value: "Corporation", label: "Corporation" },
+    { value: "Exempt Organization", label: "Exempt Organization" },
+    { value: "Partnership", label: "Partnership" },
+    { value: "Private Foundation", label: "Private Foundation" },
+    { value: "Limited Liability Company", label: "Limited Liability Company" }
+];
+
 export const awardType = [
     { value: "Employee of The Year", label: "Employee of The Year" },
     { value: "Presidential Distinguished Public Service", label: "Presidential Distinguished Public Service" },
