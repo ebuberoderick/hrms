@@ -61,12 +61,17 @@ function AdminSideNav() {
                 { name: "resignation", extra: false },
                 { name: "complaints", extra: false },
                 { name: "query", extra: false },
-                { name: "termination", extra: false },
+                { name: "termination", extra: false }
               ]}
             />
             <AppLink
               text={"recruitment"}
               icon={<i className="ri-team-line"></i>}
+              subMenu={[
+                { name: "job post", extra: false },
+                { name: "job candidates", extra: false },
+                { name: "job interview", extra: false }
+              ]}
             />
             <AppLink
               text={"organization"}

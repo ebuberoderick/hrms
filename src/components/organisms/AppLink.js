@@ -35,18 +35,16 @@ function AppLink({ text, icon, subMenu }) {
       {subMenu && subMenu.length > 0 ? (
         <div
           onClick={() => openSubMenu()}
-          className={`flex items-center gap-3 py-1 rounded-r-full text-gray-500 cursor-pointer px-3 ${
-            active === text
+          className={`flex items-center gap-3 py-1 rounded-r-full text-gray-500 cursor-pointer px-3 ${active.replaceAll(" ", "_").toLowerCase() === text.replaceAll(" ", "_").toLowerCase()
               ? "text-white bg-hrms_green rounded-r-full"
               : "hover:bg-hrms_green hover:bg-opacity-70 hover:text-white"
-          }`}
+            }`}
         >
           <div className="text-sm">{icon}</div>
           <div className="capitalize flex-grow">{text}</div>
           <div
-            className={`text-2xl transform transition-all duration-300 ${
-              showSub && "rotate-90"
-            }`}
+            className={`text-2xl transform transition-all duration-300 ${showSub && "rotate-90"
+              }`}
           >
             {subMenu && subMenu.length > 0 && (
               <i className={`ri-arrow-right-s-line transform `}></i>
@@ -55,18 +53,16 @@ function AppLink({ text, icon, subMenu }) {
         </div>
       ) : (
         <Link
-          href={`/${
-            text === "dashboard"
+          href={`/${text === "dashboard"
               ? ""
               : text.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x")
-          }`}
+            }`}
         >
           <div
-            className={`flex items-center gap-3 py-2 rounded-r-full text-gray-500 cursor-pointer px-3 ${
-              active === text || (active === "" && text === "dashboard")
+            className={`flex items-center gap-3 py-2 rounded-r-full text-gray-500 cursor-pointer px-3 ${active === text || (active === "" && text === "dashboard")
                 ? "text-white bg-hrms_green rounded-r-full"
                 : "hover:bg-hrms_green hover:bg-opacity-70 hover:text-white"
-            }`}
+              }`}
           >
             <div className="text-sm">{icon}</div>
             <div className=" capitalize flex-grow">{text}</div>
@@ -81,11 +77,10 @@ function AppLink({ text, icon, subMenu }) {
                 <div>
                   <div
                     onClick={() => toggleSibling(subText.name)}
-                    className={`flex py-1 items-center gap-3 text-gray-500 cursor-pointer ${
-                      activeSub === subText.name
+                    className={`flex py-1 items-center gap-3 text-gray-500 cursor-pointer ${activeSub === subText.name
                         ? "text-bg-hrms_green font-bold"
                         : "hover:text-sm hover:font-bold hover:text-hrms_green"
-                    }`}
+                      }`}
                   >
                     <div className="capitalize flex-grow">{subText.name}</div>
                     <div className="text-2xl transform transition-all duration-300">
@@ -109,15 +104,14 @@ function AppLink({ text, icon, subMenu }) {
                   href={`/${text.toLowerCase()
                     .replaceAll(" ", "_")
                     .replaceAll("&", "x")}/${subText.name.toLowerCase()
-                    .replaceAll(" ", "_")
-                    .replaceAll("&", "x")}`}
+                      .replaceAll(" ", "_")
+                      .replaceAll("&", "x")}`}
                 >
                   <div
-                    className={`flex py-2 items-center gap-3 text-gray-500 ${
-                      activeSub === subText.name
+                    className={`flex py-2 items-center gap-3 text-gray-500 ${activeSub === subText.name
                         ? "text-[#57aaa5] font-bold"
                         : "hover:text-sm hover:font-bold hover:text-hrms_green"
-                    }`}
+                      }`}
                   >
                     <div className="capitalize flex-grow">{subText.name}</div>
                   </div>

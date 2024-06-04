@@ -75,7 +75,6 @@ const EmployeeDashboard = () => {
     const { status, data } = await updateProfile(personalData)
     SignInAuth({ data }, dispatch);
     router.push("/")
-    console.log(data);
   }
 
   const getTodayDate = () => {

@@ -1,8 +1,11 @@
+import AppLayout from '@/components/layouts/appLayout'
 import React from 'react'
 
 function Page() {
   return (
-    <div>page</div>
+    <AppLayout>
+
+    </AppLayout>
   )
 }
 

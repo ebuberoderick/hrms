@@ -8,7 +8,7 @@ function Page() {
   const [showModal, setShowModal] = useState(false)
   return (
     <AppLayout>
-      <div className="">
+      <div className="space-y-4">
         <Modal closeModal={() => setShowModal(false)} size={"xl"} isOpen={showModal}>
           <div className="space-y-4">
             <div className="text-hrms_green text-xl">Add Termination</div>
@@ -46,6 +46,50 @@ function Page() {
               <i className="ri-add-line"></i>
               <div className="">Create Query</div>
             </div>
+          </div>
+        </div>
+        <div className="">
+          <div className="">
+            <table className="w-full divide-y text-sm text-left">
+              <tr className="bg-gray-100">
+                <th className="flex gap-3 pl-5 py-2">
+                  <div className="w-9 relative">
+                    <div className="absolute -top-1"><AppInput onChange={(e) => selectAll(e)} type="checkbox" name="employee" /></div>
+                  </div>
+                  Employee
+                </th>
+
+                <th className="hidden lg:table-cell">Company</th>
+                <th className="hidden sm:table-cell">Notice Date</th>
+                <th className="hidden sm:table-cell">Termination Date</th>
+                <th className="w-20">Action</th>
+              </tr>
+              <tr>
+                <td className="flex items-center gap-3 pl-5 py-2">
+                  <div className="w-9 relative">
+                    <div className=""><AppInput onChange={(e) => selectAll(e)} type="checkbox" name="employee" /></div>
+                  </div>
+                  <div className="space-y-1">
+                    <div className="">Goodness John</div>
+                  </div>
+                </td>
+                <td className="hidden lg:table-cell">
+                  <div className="font-semibold">HR1</div>
+                </td>
+                <td className="hidden lg:table-cell">
+                  <div className="">16/05/2024 - 09:24</div>
+                </td>
+                <td className="hidden lg:table-cell">
+                  <div className="">16/05/2024 - 09:24</div>
+                </td>
+                <td>
+                  <div className="text-xl flex gap-1">
+                    <div className="text-hrms_green p-1 cursor-pointer"><i className="ri-edit-2-line"></i></div>
+                    <div className="text-danger p-1 cursor-pointer"><i className="ri-delete-bin-6-line"></i></div>
+                  </div>
+                </td>
+              </tr>
+            </table>
           </div>
         </div>
       </div>
