@@ -6,6 +6,17 @@ export const companyEnum = [
     { value: "NIGERIA POLICE FORCE", label: "NIGERIA POLICE FORCE" }
 ];
 
+export const leaveType = [
+    
+    { value: "Medical (12 Days)", label: "Medical (12 Days)" },
+    { value: "Casual (7 days)", label: "Casual (7 days)" },
+    { value: "Manual (Days)", label: "Manual (Days)" },
+    { value: "Test (0 Day)", label: "Test (0 Day)" },
+    { value: "Annual (30 Days)", label: "Annual (30 Days)" },
+    { value: "Maternity (120 Days)", label: "Maternity (120 Days)" },
+    { value: "Paternity (14 Days)", label: "Paternity (14 Days)" }              
+]
+
 export const companyLocation = [
     { value: "Boston", label: "Boston" },
     { value: "Sydney", label: "Sydney" },

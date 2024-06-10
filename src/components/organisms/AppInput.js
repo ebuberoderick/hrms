@@ -89,7 +89,7 @@ function AppInput({ label, type, required, name, max, options, value, defaultVal
         />
       )}
       {
-        type !== "checkbox" && (
+        type !== "checkbox" && type !== "radio" && (
           <label className="absolute text-hrms_green peer-focus:text-hrms_green pointer-events-none peer-placeholder-shown:text-gray-300 z-20 left-4 peer-placeholder-shown:left-2 peer-focus:left-4 px-1 peer-focus:text-[14px] text-[14px] -top-[9px] transition-all duration-300 peer-placeholder-shown:top-3 peer-placeholder-shown:text-[16px] peer-focus:-top-[9px] bg-white">
             {label}
           </label>

@@ -17,9 +17,7 @@ function AdminSideNav() {
           />
         </div>
         <div>
-          <div className="font-[500] text-sm text-[#000000] pl-3">
-            SYSTEM ADMINISTRATION
-          </div>
+          <div className="font-[500] text-sm text-[#000000] pl-3">SYSTEM ADMINISTRATION</div>
           <div>
             <AppLink
               text={"user"}
@@ -47,9 +45,7 @@ function AdminSideNav() {
           </div>
         </div>
         <div>
-          <div className="font-[500] text-sm text-[#000000] pl-3">
-            PERSONNNEL MANAGEMENT
-          </div>
+          <div className="font-[500] text-sm text-[#000000] pl-3">PERSONNNEL MANAGEMENT</div>
           <div>
             <AppLink
               text={"core HR"}
@@ -86,24 +82,48 @@ function AdminSideNav() {
               ]}
             />
             <AppLink
-              text={"hR Calender"}
+              text={"hR calender"}
               icon={<i className="ri-calendar-todo-line"></i>}
+            />
+            <AppLink
+              text={"hR Reports"}
+              icon={<i class="ri-folder-5-line"></i>}
+              subMenu={[
+                { name: "Attendance Report", extra: false },
+                { name: "Training Report", extra: false },
+                { name: "Project Report", extra: false },
+                { name: "Task Report", extra: false },
+                { name: "Employees Report", extra: false },
+                { name: "Account Report", extra: false },
+                { name: "Expense Report", extra: false },
+                { name: "Desposit Report", extra: false },
+                { name: "Transaction Report", extra: false },
+                { name: "Pension Report", extra: false }
+              ]}
             />
             <AppLink
               text={"timesheet"}
               icon={<i className="ri-time-line"></i>}
+              subMenu={[
+                { name: "Attendances", extra: false },
+                { name: "Date Wise Attendances", extra: false },
+                { name: "Monthly Attendances", extra: false },
+                { name: "Update Attendances", extra: false },
+                { name: "Import Attendances", extra: false },
+                { name: "Office Shift", extra: false },
+                { name: "Manage Holiday", extra: false },
+                { name: "Manage Leaves", extra: false },
+              ]}
             />
             <AppLink
-              text={"Onboarding"}
-              icon={<i className="ri-p2p-line"></i>}
+              text={"File Manager"}
+              icon={<i class="ri-profile-line"></i>}
             />
-            <AppLink text={"transfer"} icon={<i className="ri-group-line"></i>} />
+            <AppLink text={"Training"} icon={<i class="ri-trophy-line"></i>} />
           </div>
         </div>
         <div>
-          <div className="font-[500] text-sm text-[#000000] pl-3">
-            PAYROLL AND COMPENSATION
-          </div>
+          <div className="font-[500] text-sm text-[#000000] pl-3">PAYROLL AND COMPENSATION </div>
           <div>
             <AppLink
               text={"payroll"}

@@ -323,7 +323,7 @@ const EmployeeDashboard = () => {
                       <div>{personalData.account_name}</div>
                     </div>
                     <div className="col-span-2 pt-4">
-                      <AppInput required type="checkbox" label="Confirm your details" />
+                      <AppInput required type="checkbox" name="remember" label="remember me" />
                     </div>
                     <div>
                       <button className="bg-hrms_green w-full text-white rounded-lg py-2 text-center cursor-pointer">submit</button>
