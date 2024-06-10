@@ -8,25 +8,10 @@ function AppPagination({ classes, totalRecords, newData, isLoading }) {
         console.log(data);
         newData(data.data[0])
     }
-
-    const fetchPaginate = async (val) => {
-        // isLoading(true)
-        // let lnk = totalRecords?.next_page_url === null ? totalRecords?.prev_page_url : totalRecords?.next_page_url
-        // let url = lnk.split("=")[0]
-        // const {status,data} = await pagination(url + `=${val}`).catch(err => console.log(err))
-        // newData(data.data)
-        // isLoading(false)
-    }
-
-    console.log(totalRecords);
-    const [links, setLinks] = useState([])
-    useEffect(() => {
-        // setLinks(Array.from({ length: totalRecords?.last_page }, (n, i) => i + 1))
-    }, [totalRecords])
     return (
         <div className="flex flex-wrap gap-4">
             {
-                totalRecords?.links.map((link, i) => (
+                totalRecords?.links?.map((link, i) => (
                     <div key={i}>
                         {
                             link.label === "&laquo; Previous" ? (
