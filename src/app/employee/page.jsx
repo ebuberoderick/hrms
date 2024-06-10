@@ -125,7 +125,7 @@ const Page = () => {
         <div className="lg:flex space-y-3 items-center justify-between">
           <div className="">
             <p className=" text-[24px] font-[500] text-[#000000]">
-              Employee(140)
+              Employee({employee?.total})
             </p>
             <p className=" text-[12px] font-[400] text-[#00000099] text-opacity-60">
               All the company employee are listed here
