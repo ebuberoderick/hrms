@@ -3,21 +3,25 @@ import React, { useState } from "react";
 import SideNav from "../molecules/SideNav";
 import { useRouter } from "next/navigation";
 import TopNav from "../molecules/TopNav";
-import { useSelector } from "react-redux";
-import { Session } from "@/hooks/Auth";
+import { useDispatch, useSelector } from "react-redux";
+import { Session, SignOut } from "@/hooks/Auth";
 
 function AppLayout({ children }) {
-  const user = useSelector((state) => state.User);
+  const user = useSelector((state) => state?.User);
+  const dispatch = useDispatch()
   const isAuthenticated = Session(user);
   const [showNav, setShowNav] = useState(false);
   const router = useRouter();
-
-  if (isAuthenticated.status === "unauthenticated") {
+  const out = async () => {
+    await SignOut(dispatch);
     router.push("/auth/login");
+  }
+  if (isAuthenticated.status === "unauthenticated") {
+    out()
   } else {
     return (
       <>
-        <div className={`bg-gray-50 z-50 transition-all ${showNav ? "left-0":"-left-64 md:left-0"} duration-300  relative`}>
+        <div className={`bg-gray-50 z-50 transition-all ${showNav ? "left-0" : "-left-64 md:left-0"} duration-300  relative`}>
           <SideNav />
         </div>
         <div className={`p-4 pb-8 md:ml-64 transition-all duration-300 select-none min-h-screen`}>

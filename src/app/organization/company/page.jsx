@@ -30,11 +30,11 @@ function Page() {
               <AppInput name="company_name" type={"text"} required label="Company Name" />
               <AppInput name="company_type" type={"select"} required label="Company Type" options={[...companyType]} />
               <AppInput name="trading_name" type={"text"} label="Trading Name (Optional)" />
-              <AppInput name="registration_number" type={"number"} label="Registration Number (Optional)" />
-              <AppInput name="phone" type={"number"} required label="Phone Number" />
+              <AppInput name="registration_no" type={"number"} label="Registration Number (Optional)" />
+              <AppInput name="contact_no" type={"number"} required label="Phone Number" />
               <AppInput name="email" type={"email"} required label="Email Address" />
-              <AppInput name="tax_number" type={"text"} label="Tax Number (Optional)" />
-              <AppInput name="Website" type={"email"} label="Website (Optional)" />
+              <AppInput name="tax_no" type={"text"} label="Tax Number (Optional)" />
+              <AppInput name="website" type={"email"} label="Website (Optional)" />
               <AppInput name="location" type={"select"} label="Location (Optional)" options={[...companyLocation]} />
               <AppInput name="company_logo" type={"file"} label="Company Logo (Optional)" />
             </div>

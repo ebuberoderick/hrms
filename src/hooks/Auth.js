@@ -8,7 +8,7 @@ export function SignInAuth(data, dispatch) {
   Cookies.set('jwt', data?.data?.bearer_token)
 }
 
-export function SignOut(dispatch) {
+export async function SignOut(dispatch) {
   dispatch(addData({}))
   Cookies.remove('jwt')
 }

@@ -1,18 +1,7 @@
-import { SignOut } from "@/hooks/Auth";
 import axios from "axios";
 import Cookies from "js-cookie";
-import { useDispatch } from "react-redux";
-import React from 'react'
 
 export const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
-
-export async function HttpService () {
-  const dispatch = useDispatch()
-  SignOut(dispatch)
-  return (
-    <></>
-  )
-}
 
 const timeoutConfig = {
   timeout: 30000,
@@ -32,8 +21,10 @@ export const apiWithOutAuth = axios.create({
 export const apiWithAuth = axios.create({
   baseURL: API_BASE_URL,
   withCredentials: true,
+  
   headers: {
     Accept: "application/json",
+    'Cache-Control': 'no-cache',
     "Content-Type": "application/json",
     Authorization: `Bearer ${Cookies.get("jwt")}`,
   },
@@ -49,10 +40,9 @@ export const getApiResponse = (data) => {
 };
 
 export const getErrorResponse = async (error) => {
-  if (error.response.status === 401) {
-    await HttpService()
-    window.location.href = "auth/login"
-  }
+  // if (error.response.status === 401) {
+  //   Cookies.remove('jwt')
+  // }
   return {
     status: false,
     data: error?.response?.data,

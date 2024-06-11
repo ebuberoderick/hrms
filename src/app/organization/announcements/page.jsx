@@ -62,7 +62,7 @@ function Page() {
         <div className="space-y-4 max-w-6xl mx-auto">
           <div className="bg-white shadow-md border rounded-lg p-3 flex gap-x-5">
             <div className="">
-              <div className="w-24 h-24 rounded-lg bg-hrms_green bg-opacity-30 text-hrms_green flex items-center justify-center text-5xl"><i class="ri-mic-line"></i></div>
+              <div className="w-24 h-24 rounded-lg bg-hrms_green bg-opacity-30 text-hrms_green flex items-center justify-center text-5xl"><i className="ri-mic-line"></i></div>
             </div>
             <div className="space-y-2">
               <div className="font-bold text-sm">Performance Management:</div>
@@ -74,7 +74,7 @@ function Page() {
           </div>
           <div className="bg-white shadow-md border rounded-lg p-3 flex gap-x-5">
             <div className="">
-              <div className="w-24 h-24 rounded-lg bg-hrms_green bg-opacity-30 text-hrms_green flex items-center justify-center text-5xl"><i class="ri-mic-line"></i></div>
+              <div className="w-24 h-24 rounded-lg bg-hrms_green bg-opacity-30 text-hrms_green flex items-center justify-center text-5xl"><i className="ri-mic-line"></i></div>
             </div>
             <div className="space-y-2">
               <div className="font-bold text-sm">Performance Management:</div>
@@ -86,7 +86,7 @@ function Page() {
           </div>
           <div className="bg-white shadow-md border rounded-lg p-3 flex gap-x-5">
             <div className="">
-              <div className="w-24 h-24 rounded-lg bg-hrms_green bg-opacity-30 text-hrms_green flex items-center justify-center text-5xl"><i class="ri-mic-line"></i></div>
+              <div className="w-24 h-24 rounded-lg bg-hrms_green bg-opacity-30 text-hrms_green flex items-center justify-center text-5xl"><i className="ri-mic-line"></i></div>
             </div>
             <div className="space-y-2">
               <div className="font-bold text-sm">Performance Management:</div>
@@ -98,7 +98,7 @@ function Page() {
           </div>
           <div className="bg-white shadow-md border rounded-lg p-3 flex gap-x-5">
             <div className="">
-              <div className="w-24 h-24 rounded-lg bg-hrms_green bg-opacity-30 text-hrms_green flex items-center justify-center text-5xl"><i class="ri-mic-line"></i></div>
+              <div className="w-24 h-24 rounded-lg bg-hrms_green bg-opacity-30 text-hrms_green flex items-center justify-center text-5xl"><i className="ri-mic-line"></i></div>
             </div>
             <div className="space-y-2">
               <div className="font-bold text-sm">Performance Management:</div>
@@ -110,7 +110,7 @@ function Page() {
           </div>
           <div className="bg-white shadow-md border rounded-lg p-3 flex gap-x-5">
             <div className="">
-              <div className="w-24 h-24 rounded-lg bg-hrms_green bg-opacity-30 text-hrms_green flex items-center justify-center text-5xl"><i class="ri-mic-line"></i></div>
+              <div className="w-24 h-24 rounded-lg bg-hrms_green bg-opacity-30 text-hrms_green flex items-center justify-center text-5xl"><i className="ri-mic-line"></i></div>
             </div>
             <div className="space-y-2">
               <div className="font-bold text-sm">Performance Management:</div>
@@ -122,7 +122,7 @@ function Page() {
           </div>
           <div className="bg-white shadow-md border rounded-lg p-3 flex gap-x-5">
             <div className="">
-              <div className="w-24 h-24 rounded-lg bg-hrms_green bg-opacity-30 text-hrms_green flex items-center justify-center text-5xl"><i class="ri-mic-line"></i></div>
+              <div className="w-24 h-24 rounded-lg bg-hrms_green bg-opacity-30 text-hrms_green flex items-center justify-center text-5xl"><i className="ri-mic-line"></i></div>
             </div>
             <div className="space-y-2">
               <div className="font-bold text-sm">Performance Management:</div>
@@ -134,7 +134,7 @@ function Page() {
           </div>
           <div className="bg-white shadow-md border rounded-lg p-3 flex gap-x-5">
             <div className="">
-              <div className="w-24 h-24 rounded-lg bg-hrms_green bg-opacity-30 text-hrms_green flex items-center justify-center text-5xl"><i class="ri-mic-line"></i></div>
+              <div className="w-24 h-24 rounded-lg bg-hrms_green bg-opacity-30 text-hrms_green flex items-center justify-center text-5xl"><i className="ri-mic-line"></i></div>
             </div>
             <div className="space-y-2">
               <div className="font-bold text-sm">Performance Management:</div>

@@ -4,8 +4,8 @@ import storage from "redux-persist/lib/storage";
 import { persistReducer } from "redux-persist";
 
 const config = {
-    key: 'hrms',
-    version:1,
+    key: 'hrms_vigilant',
+    version:2,
     storage,
 }
 

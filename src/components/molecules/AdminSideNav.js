@@ -87,7 +87,7 @@ function AdminSideNav() {
             />
             <AppLink
               text={"hR Reports"}
-              icon={<i class="ri-folder-5-line"></i>}
+              icon={<i className="ri-folder-5-line"></i>}
               subMenu={[
                 { name: "Attendance Report", extra: false },
                 { name: "Training Report", extra: false },
@@ -117,9 +117,9 @@ function AdminSideNav() {
             />
             <AppLink
               text={"File Manager"}
-              icon={<i class="ri-profile-line"></i>}
+              icon={<i className="ri-profile-line"></i>}
             />
-            <AppLink text={"Training"} icon={<i class="ri-trophy-line"></i>} />
+            <AppLink text={"Training"} icon={<i className="ri-trophy-line"></i>} />
           </div>
         </div>
         <div>

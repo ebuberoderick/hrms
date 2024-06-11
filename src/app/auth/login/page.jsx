@@ -20,6 +20,7 @@ function Page() {
   const login = async (e) => {
     setProccessing(true)
     const { status, data } = await Applogin(e).catch(err => console.log(err))
+    console.log();
     setProccessing(false)
     if (status) {
       setErrMsg('')
