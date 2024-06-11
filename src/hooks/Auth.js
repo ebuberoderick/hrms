@@ -10,8 +10,6 @@ export function SignInAuth(data, dispatch) {
 
 export function SignOut(dispatch) {
   dispatch(addData({}))
-  dispatch(businessData({}))
-  dispatch(providerData(false))
   Cookies.remove('jwt')
 }
 
