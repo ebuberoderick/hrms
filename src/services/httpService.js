@@ -6,6 +6,14 @@ import React from 'react'
 
 export const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
+export async function HttpService () {
+  const dispatch = useDispatch()
+  SignOut(dispatch)
+  return (
+    <></>
+  )
+}
+
 const timeoutConfig = {
   timeout: 30000,
   timeoutErrorMessage: "Server taking too long to respond. Try again.",
@@ -40,28 +48,16 @@ export const getApiResponse = (data) => {
   };
 };
 
-// export const getErrorResponse = (error) => {
-//   const dispatch = useDispatch()
-
-//   if (error.response.status === 401) {
-//     SignOut(dispatch)
-//     window.location.href = "auth/login"
-//   }
-//   return {
-//     status: false,
-//     data: error?.response?.data,
-//   };
-// };
-
-export const getErrorResponse = (error) => {
-  const dispatch = useDispatch()
-
+export const getErrorResponse = async (error) => {
   if (error.response.status === 401) {
-    SignOut(dispatch)
+    await HttpService()
     window.location.href = "auth/login"
   }
   return {
     status: false,
     data: error?.response?.data,
   };
-}
+};
+
+
+
