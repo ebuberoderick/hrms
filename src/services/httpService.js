@@ -38,7 +38,9 @@ export const getApiResponse = (data) => {
 };
 
 export const getErrorResponse = (error) => {
-  // errors
+  if (error.response.status === 401) {
+    window.location.href = "auth/login"
+  }
   return {
     status: false,
     data: error?.response?.data,
