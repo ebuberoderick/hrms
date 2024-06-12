@@ -16,3 +16,10 @@ export const fetchUsers = () => apiWithAuth.get("/admin/users").then(getApiRespo
 
 export const addLocation = (formData) => apiWithAuth.post("admin/organization/location/create",formData).then(getApiResponse).catch(getErrorResponse);
 export const fetchLocation = () => apiWithAuth.post("admin/organization/location/fetch").then(getApiResponse).catch(getErrorResponse);
+export const fetchAllLocation = () => apiWithAuth.post("admin/organization/location/fetch_all").then(getApiResponse).catch(getErrorResponse);
+
+
+export const addCompany = (formData) => apiWithAuth.post("admin/organization/company/create",formData).then(getApiResponse).catch(getErrorResponse);
+export const fetchCompanies = () => apiWithAuth.post("admin/organization/company/fetch").then(getApiResponse).catch(getErrorResponse);
+export const fetchAllCompanies = () => apiWithAuth.post("").then(getApiResponse).catch(getErrorResponse);
+

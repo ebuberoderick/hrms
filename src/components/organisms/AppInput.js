@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from "react";
 
-function AppInput({ label, type, required, name, max, options, value, defaultValue, display, onChange }) {
+function AppInput({ label,maxLength, type, required, name, max, options, value, defaultValue, display, onChange }) {
   const [inputType, setInputType] = useState(type);
 
   const makeid = (length) => {
@@ -32,6 +32,7 @@ function AppInput({ label, type, required, name, max, options, value, defaultVal
               className="peer group hidden appearance-none"
               name={name}
               required={required}
+              maxLength={maxLength}
               value={value}
               defaultValue={defaultValue}
               onChange={(e) => onChange && onChange(e)}
@@ -56,13 +57,14 @@ function AppInput({ label, type, required, name, max, options, value, defaultVal
       ) : type === "select" ? (
         <select
           name={name}
+          onChange={(e) => onChange && onChange(e)}
           required={required}
           className="w-full border bg-white focus:border-hrms_green border-hrms_green placeholder-shown:border-gray-300 p-3 peer outline-none rounded-lg placeholder:text-transparent"
         >
           <option value="" disabled selected hidden>
             {label}
           </option>
-          {options.map((option) => (
+          {options?.map((option) => (
             <option key={option.value} value={option.value}>
               {option.label}
             </option>
@@ -73,7 +75,9 @@ function AppInput({ label, type, required, name, max, options, value, defaultVal
           name={name}
           required={required}
           value={value}
+          onChange={(e) => onChange && onChange(e)}
           defaultValue={defaultValue}
+          maxLength={maxLength}
           className="w-full border resize-none focus:border-hrms_green border-hrms_green placeholder-shown:border-gray-300 p-3 peer outline-none rounded-lg placeholder:text-transparent"
           placeholder={label}></textarea>
       ) : (
@@ -82,9 +86,12 @@ function AppInput({ label, type, required, name, max, options, value, defaultVal
           required={required}
           type={inputType}
           value={value}
+          onChange={(e) => onChange && onChange(e)}
           defaultValue={defaultValue}
           className="w-full border focus:border-hrms_green border-hrms_green placeholder-shown:border-gray-300 p-3 peer outline-none rounded-lg placeholder:text-transparent"
           placeholder={label}
+          maxLength={maxLength}
+          {...(maxLength ? { maxLength } : {})}
           {...(max ? { max } : {})}
         />
       )}

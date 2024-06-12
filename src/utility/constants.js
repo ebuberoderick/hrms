@@ -1,3 +1,7 @@
+import { fetchAllLocation } from "@/services/authService";
+
+
+
 
 export const companyEnum = [
     { value: "HR1", label: "HR1" },
@@ -7,22 +11,23 @@ export const companyEnum = [
 ];
 
 export const leaveType = [
-    
     { value: "Medical (12 Days)", label: "Medical (12 Days)" },
     { value: "Casual (7 days)", label: "Casual (7 days)" },
     { value: "Manual (Days)", label: "Manual (Days)" },
     { value: "Test (0 Day)", label: "Test (0 Day)" },
     { value: "Annual (30 Days)", label: "Annual (30 Days)" },
     { value: "Maternity (120 Days)", label: "Maternity (120 Days)" },
-    { value: "Paternity (14 Days)", label: "Paternity (14 Days)" }              
+    { value: "Paternity (14 Days)", label: "Paternity (14 Days)" }
 ]
 
-export const companyLocation = [
-    { value: "Boston", label: "Boston" },
-    { value: "Sydney", label: "Sydney" },
-    { value: "Force Headquarter", label: "Force Headquarter" },
-    { value: "NIS-HQ", label: "NIS-HQ" }
-]
+export const companyLocation = async () => {
+    const { status, data } = await fetchAllLocation().catch(err => console.log(err))
+    const exportData = []
+    await data.data[0].forEach(element => {
+        exportData.push({ value: element.id, label: element.location_name })
+    });
+    return exportData;
+}
 
 export const companyType = [
     { value: "Corporation", label: "Corporation" },

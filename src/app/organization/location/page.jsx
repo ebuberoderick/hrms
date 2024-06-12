@@ -25,6 +25,7 @@ function Page() {
       setLocation(data.data[0])
     }
   }
+  
   useEffect(() => {
     fetch()
   }, [])
