@@ -1,4 +1,4 @@
-import { fetchAllCompanies, fetchAllEmployee, fetchAllLocation } from "@/services/authService";
+import { fetchAllCompanies, fetchAllDepartment, fetchAllEmployee, fetchAllLocation } from "@/services/authService";
 
 
 
@@ -34,6 +34,15 @@ export const companies = async () => {
     const exportData = []
     await data.data[0].forEach(element => {
         exportData.push({ value: element.id, label: element.company_name })
+    });
+    return exportData;
+}
+
+export const allDepartment = async () => {
+    const { status, data } = await fetchAllDepartment().catch(err => console.log(err))
+    const exportData = []
+    await data.data[0].forEach(element => {
+        exportData.push({ value: element.id, label: element.department_name })
     });
     return exportData;
 }
