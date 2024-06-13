@@ -12,6 +12,9 @@ export const adminadduser = (formData) => apiWithAuth.post("/adminadduser", form
 
 
 export const fetchEmployee = () => apiWithAuth.post("admin/employee/fetch").then(getApiResponse).catch(getErrorResponse);
+export const fetchAllEmployee = () => apiWithAuth.post("admin/employee/fetch_all").then(getApiResponse).catch(getErrorResponse);
+
+
 export const fetchUsers = () => apiWithAuth.get("/admin/users").then(getApiResponse).catch(getErrorResponse);
 
 export const addLocation = (formData) => apiWithAuth.post("admin/organization/location/create",formData).then(getApiResponse).catch(getErrorResponse);
@@ -21,5 +24,8 @@ export const fetchAllLocation = () => apiWithAuth.post("admin/organization/locat
 
 export const addCompany = (formData) => apiWithAuth.post("admin/organization/company/create",formData).then(getApiResponse).catch(getErrorResponse);
 export const fetchCompanies = () => apiWithAuth.post("admin/organization/company/fetch").then(getApiResponse).catch(getErrorResponse);
-export const fetchAllCompanies = () => apiWithAuth.post("").then(getApiResponse).catch(getErrorResponse);
+export const fetchAllCompanies = () => apiWithAuth.post("admin/organization/company/fetch_all").then(getApiResponse).catch(getErrorResponse);
 
+
+export const addDepartment = (formData) => apiWithAuth.post("admin/organization/department/create",formData).then(getApiResponse).catch(getErrorResponse);
+export const fetchDepartment = () => apiWithAuth.post("admin/organization/department/fetch").then(getApiResponse).catch(getErrorResponse);

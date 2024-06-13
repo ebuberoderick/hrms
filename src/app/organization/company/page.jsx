@@ -20,7 +20,6 @@ function Page() {
   const [logolink, setlogolink] = useState("")
   const fetch = async () => {
     const { status, data } = await fetchCompanies().catch(err => console.log(err))
-    console.log(data.data[0]);
     if (status) {
       setCompanies(data.data[0])
     }
