@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <Provider store={store}>
-          <PersistGate persistor={persistor}>
+          <PersistGate persistor={persistor} loading={"loading"}>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               {children}
             </LocalizationProvider>

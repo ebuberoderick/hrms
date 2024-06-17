@@ -37,3 +37,7 @@ export const addAnnouncements = (formData) => apiWithAuth.post("admin/organizati
 export const fetchAnnouncements = () => apiWithAuth.post("admin/organization/announcements/fetch").then(getApiResponse).catch(getErrorResponse);
 
 
+export const addPolicy = (formData) => apiWithAuth.post("admin/organization/policy/create",formData).then(getApiResponse).catch(getErrorResponse);
+export const fetchPolicy = () => apiWithAuth.post("admin/organization/policy/fetch").then(getApiResponse).catch(getErrorResponse);
+
+
