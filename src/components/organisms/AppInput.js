@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from "react";
 
-function AppInput({ label,maxLength, type, required, name, max, options, value, defaultValue, display, onChange }) {
+function AppInput({ label,maxLength, checked, type, required, name, max, options, value, defaultValue, display, onChange }) {
   const [inputType, setInputType] = useState(type);
 
   const makeid = (length) => {
@@ -34,6 +34,7 @@ function AppInput({ label,maxLength, type, required, name, max, options, value, 
               required={required}
               maxLength={maxLength}
               value={value}
+              checked={checked}
               defaultValue={defaultValue}
               onChange={(e) => onChange && onChange(e)}
             />

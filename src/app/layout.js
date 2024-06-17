@@ -8,6 +8,7 @@ import { Provider } from 'react-redux'
 import store from '../Store/index';
 import { PersistGate } from 'redux-persist/integration/react'
 import { persistStore } from 'redux-persist';
+import Perloader from "@/components/organisms/Perloader";
 
 
 
@@ -20,7 +21,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <Provider store={store}>
-          <PersistGate persistor={persistor} loading={"loading"}>
+          <PersistGate persistor={persistor} loading={<Perloader />}>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               {children}
             </LocalizationProvider>

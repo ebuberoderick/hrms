@@ -7,7 +7,7 @@ function AdminSideNav() {
   return (
     <div className="fixed bg-white select-none overflow-y-auto flex flex-col h-screen shadow-md w-64 gap-y-6 py-8 px-1">
       <div className="text-2xl px-1">
-        <Image src={logo} className="h-9 w-52" alt="Michael Michael" />
+        <Image src={logo} className="h-9 w-52" alt="Logo" />
       </div>
       <div className="flex-grow gap-y-4 flex flex-col gap-2">
         <div>

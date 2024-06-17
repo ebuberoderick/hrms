@@ -6,7 +6,7 @@ import Modal from "@/components/organisms/Modal";
 import ResponseModal from "@/components/organisms/ResponseModal";
 import { NigeriaStates } from "@/hooks/Nigeria";
 import serialize from "@/hooks/Serialize";
-import { adminadduser, employeeInvite, fetchEmployee, fetchemploy } from "@/services/authService";
+import { addEmploye, adminadduser, employeeInvite, fetchEmployee, fetchemploy } from "@/services/authService";
 import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -32,6 +32,21 @@ const Page = () => {
   // const [errMsg, setErrMsg] = useState(false);
   const [personalData, setPersonalData] = useState([])
   const [currentStep, setCurrentStep] = useState(0)
+
+
+
+
+
+
+
+
+  
+  const [alertMsg, setAlert] = useState(false)
+  const [alertMsgData, setAlertData] = useState(false)
+  const [btn, setBtn] = useState(false)
+
+
+
 
   const uploadImg = async (e) => {
     const file = e.target.files[0]
@@ -70,11 +85,30 @@ const Page = () => {
     console.log(personalData);
     const { status, data } = await adminadduser(personalData)
     // if (status) {
-      
+
     // }
-      console.log(data);
+    console.log(data);
   }
-  const getTodayDate = () => {   
+
+
+
+
+  const addEmployee = async (e) => {
+    e.preventDefault();
+    const formData = serialize(e.target);
+    const { status, data } = await addEmploye(formData).catch(err => console.log(err))
+    if (status) {
+      await fetch()
+      setShowModal(false)
+      setAlert(true)
+      setAlertData(data)
+      setBtn(false)
+    }
+  }
+
+
+
+  const getTodayDate = () => {
     const today = new Date();
     const yyyy = today.getFullYear();
     const mm = String(today.getMonth() + 1).padStart(2, "0");
@@ -226,8 +260,8 @@ const Page = () => {
               </h2>
             </div>
             <div className="flex items-center gap-4">
-              <AppInput onChange={(e) => setActiveModal(e.target.value)} name="addtype" value={"Invite"} type={"radio"} label="Invite Employee" />
-              <AppInput onChange={(e) => setActiveModal(e.target.value)} name="addtype" value={"Register"} type={"radio"} label="Register Employee" />
+              <AppInput onChange={(e) => setActiveModal(e.target.value)} name="addtype" checked={activeModal === "Invite"} value={"Invite"} type={"radio"} label="Invite Employee" />
+              <AppInput onChange={(e) => setActiveModal(e.target.value)} name="addtype" checked={activeModal === "Register"} value={"Register"} type={"radio"} label="Register Employee" />
             </div>
             <div className="">
               {
@@ -261,202 +295,232 @@ const Page = () => {
             <div className="">
               {
                 activeModal === "Register" && (
-                  <div>
-                    <div className="grid gap-[20px]">
-                      {
-                        currentStep === 0 ? (
-                          <form enctype="multipart/form-data" onSubmit={setPreData} className="space-y-4">
-                            <div>
-                              <div className="w-20 h-20 rounded-full bg-gray-100 relative">
-                                <Image id="output" className="w-full h-full rounded-full" />
-                                <label htmlFor="image" className="absolute w-8 h-8 border-2 border-white bottom-1 right-0 bg-hrms_green text-white rounded-full flex items-center justify-center">
-                                  <input accept="image/*" required id="image" onChange={(e) => uploadImg(e)} name="image" type="file" className="opacity-0 absolute w-full cursor-pointer h-full" />
-                                  <i className="ri-camera-line"></i>
-                                </label>
-                              </div>
-                            </div>
-                            <div className="space-y-2">
-                              <div className="text-hrms_green text-lg font-semibold">Personal Information</div>
-                              <div className="grid grid-cols-2 gap-4">
-                                <AppInput name="phone" type="number" required label="Phone Number" />
-                                <AppInput name="email" type="email" required label="Email" />
-                                <AppInput name="gender" type="select" required label="Gender"
-                                  options={[
-                                    { value: "male", label: "Male" },
-                                    { value: "female", label: "Female" }
-                                  ]}
-                                />
-                                <AppInput name="state_of_origin" type="select" required label="State Of Origin (optional)" options={[...NigeriaStates]} />
-                                <AppInput name="state_of_residence" type="select" required label="State Of Residence" options={[...NigeriaStates]} />
-                                <AppInput name="date_of_birth" type="date" required label="Date Of Birth" max={maxDate} />
-                                <AppInput name="next_of_kin_name" type="text" required label="Next of Kin" />
-                                <AppInput name="next_of_kin_contact" type="number" required label="Next of Kin's Contact" />
-                                <AppInput name="next_of_kin_relationship" type="select" required label="Relationship"
-                                  options={[
-                                    { value: "Father", label: "Father" },
-                                    { value: "Mother", label: "Mother" },
-                                    { value: "Brother", label: "Brother" },
-                                    { value: "Sister", label: "Sister" },
-                                    { value: "Cousin", label: "Cousin" },
-                                    { value: "Nephew", label: "Nephew" },
-                                    { value: "Niece", label: "Niece" },
-                                    { value: "Uncle", label: "Uncle" },
-                                    { value: "Aunt", label: "Aunt" },
-                                    { value: "in-laws", label: "in-laws" },
-                                    { value: "Others", label: "Others" },
-                                  ]}
-                                />
-                              </div>
-                            </div>
-                            <div>
-                              <button className="bg-hrms_green w-full text-white rounded-lg py-2 text-center cursor-pointer">Continue</button>
-                            </div>
-                          </form>
-                        ) : currentStep === 1 ? (
-                          <form onSubmit={e => updateData(e)} className="space-y-4">
-                            <div className="space-y-2">
-                              <div className="w-16 h-16 rounded-full bg-gray-100 relative">
-                                <Image id="output" className="w-full h-full rounded-full" />
-                              </div>
-                              <div className="text-hrms_green text-lg font-semibold">Personal Information</div>
-                              <div className="grid grid-cols-2 gap-y-2 gap-x-4 text-sm">
-                                <div>
-                                  <div className="font-semibold">Login Password</div>
-                                  <div>***********</div>
-                                </div>
-                                <div>
-                                  <div className="font-semibold">Phone Number</div>
-                                  <div>0{personalData.phone}</div>
-                                </div>
-                                <div>
-                                  <div className="font-semibold">Email</div>
-                                  <div>{personalData.email}</div>
-                                </div>
-                                <div>
-                                  <div className="font-semibold">Gender</div>
-                                  <div>{personalData.gender}</div>
-                                </div>
-                                <div>
-                                  <div className="font-semibold">State Of Origin (optional)</div>
-                                  <div>{personalData.state_of_origin}</div>
-                                </div>
-                                <div>
-                                  <div className="font-semibold">State Of Residence</div>
-                                  <div>{personalData.state_of_residence}</div>
-                                </div>
-                                <div>
-                                  <div className="font-semibold">Date Of Birth</div>
-                                  <div>{personalData.date_of_birth}</div>
-                                </div>
-                                <div>
-                                  <div className="font-semibold">Next of Kin</div>
-                                  <div>{personalData.next_of_kin_name}</div>
-                                </div>
-                                <div>
-                                  <div className="font-semibold">Next of Kin&apos;s Contact</div>
-                                  <div>0{personalData.next_of_kin_contact}</div>
-                                </div>
-                                <div>
-                                  <div className="font-semibold">Relationship</div>
-                                  <div>{personalData.next_of_kin_relationship}</div>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="space-y-2">
-                              <div className="text-hrms_green text-lg font-semibold">Employment Information</div>
-                              <div className="grid grid-cols-2 gap-4">
-                                <AppInput label={"Salary Account Number"} name={"account_number"} type={"number"}  />
-                                <AppInput name="bank_name" type="select" required label="Account Bank"
-                                  options={[
-                                    { value: "Access bank", label: "Access Bank" },
-                                    { value: "Zenith bank", label: "Zenith Bank" },
-                                  ]}
-                                />
-                                {/* <AppInput name="account_number" type="number" required label="" /> */}
-                                <div className="col-span-2"><AppInput name="account_name" type="text" required label="Account Name" /></div>
-                                <div>
-                                  <button className="bg-hrms_green w-full text-white rounded-lg py-2 text-center cursor-pointer">Continue</button>
-                                </div>
-                                <div onClick={() => setCurrentStep(0)} className="text-center py-2 border border-hrms_green rounded-lg text-hrms_green cursor-pointer">Previous</div>
-                              </div>
-                            </div>
-                          </form>
-                        ) : (
-                          <form onSubmit={(e) => saveData(e)} className="space-y-2">
-                            <div className="w-16 h-16 rounded-full bg-gray-100 relative">
-                              <Image id="output" className="w-full h-full rounded-full" />
-                            </div>
-                            <div className="text-hrms_green text-lg font-semibold">Personal Information</div>
-                            <div className="grid grid-cols-2 gap-y-2 gap-x-4 text-sm">
-                              <div>
-                                <div className="font-semibold">Login Password</div>
-                                <div>***********</div>
-                              </div>
-                              <div>
-                                <div className="font-semibold">Phone Number</div>
-                                <div>{personalData.phone}</div>
-                              </div>
-                              <div>
-                                <div className="font-semibold">Email</div>
-                                <div>{personalData.email}</div>
-                              </div>
-                              <div>
-                                <div className="font-semibold">Gender</div>
-                                <div>{personalData.gender}</div>
-                              </div>
-                              <div>
-                                <div className="font-semibold">State Of Origin (optional)</div>
-                                <div>{personalData.state_of_origin}</div>
-                              </div>
-                              <div>
-                                <div className="font-semibold">State Of Residence</div>
-                                <div>{personalData.state_of_residence}</div>
-                              </div>
-                              <div>
-                                <div className="font-semibold">Date Of Birth</div>
-                                <div>{personalData.date_of_birth}</div>
-                              </div>
-                              <div>
-                                <div className="font-semibold">Next of Kin</div>
-                                <div>{personalData.next_of_kin_name}</div>
-                              </div>
-                              <div>
-                                <div className="font-semibold">Next of Kin&apos;s Contact</div>
-                                <div>{personalData.next_of_kin_contact}</div>
-                              </div>
-                              <div>
-                                <div className="font-semibold">Relationship</div>
-                                <div>{personalData.next_of_kin_relationship}</div>
-                              </div>
-                            </div>
-                            <div className="text-hrms_green text-lg font-semibold">Employment Information</div>
-                            <div className="grid grid-cols-2 gap-y-2 gap-x-4 text-sm">
-                              <div>
-                                <div className="font-semibold">Account Bank</div>
-                                <div>{personalData.bank_name}</div>
-                              </div>
-                              <div>
-                                <div className="font-semibold">Salary Account Number</div>
-                                <div>{personalData.account_number}</div>
-                              </div>
-                              <div>
-                                <div className="font-semibold">Account Name</div>
-                                <div>{personalData.account_name}</div>
-                              </div>
-                              <div className="col-span-2 pt-4">
-                                <AppInput required type="checkbox" label="Comfirm Information" />
-                              </div>
-                              <div>
-                                <button className="bg-hrms_green w-full text-white rounded-lg py-2 text-center cursor-pointer">submit</button>
-                              </div>
-                              <div onClick={() => setCurrentStep(1)} className="text-center py-2 border border-hrms_green rounded-lg text-hrms_green cursor-pointer">Previous</div>
-                            </div>
-                          </form>
-                        )
-                      }
-                    </div>
+                  <div className="">
+                    <form enctype="multipart/form-data" onSubmit={addEmployee} className="space-y-4">
+                      <div>
+                        <div className="w-20 h-20 rounded-full bg-gray-100 relative">
+                          <Image id="output" className="w-full h-full rounded-full" />
+                          <label htmlFor="image" className="absolute w-8 h-8 border-2 border-white bottom-1 right-0 bg-hrms_green text-white rounded-full flex items-center justify-center">
+                            <input accept="image/*" required id="image" onChange={(e) => uploadImg(e)} name="image" type="file" className="opacity-0 absolute w-full cursor-pointer h-full" />
+                            <i className="ri-camera-line"></i>
+                          </label>
+                        </div>
+                      </div>
+                      <div className="space-y-2">
+                        <div className="text-hrms_green text-lg font-semibold">Personal Information</div>
+                        <div className="grid grid-cols-2 gap-4">
+                          <AppInput name="phone" type="number" required label="Phone Number" />
+                          <AppInput name="email" type="email" required label="Email" />
+                          <AppInput name="staff_id" type="text" required label="Staff ID" />
+                          <AppInput name="firstname" type="text" required label="First Name" />
+                          <AppInput name="lastname" type="text" required label="Last Name" />
+
+                        </div>
+                      </div>
+                      <div>
+                        <button className="bg-hrms_green w-full text-white rounded-lg py-2 text-center cursor-pointer">Add Employee</button>
+                      </div>
+                    </form>
                   </div>
                 )
+
+                // activeModal === "Register" && (
+                //   <div>
+                //     <div className="grid gap-[20px]">
+                //       {
+                //         currentStep === 0 ? (
+                //           <form enctype="multipart/form-data" onSubmit={setPreData} className="space-y-4">
+                //             <div>
+                //               <div className="w-20 h-20 rounded-full bg-gray-100 relative">
+                //                 <Image id="output" className="w-full h-full rounded-full" />
+                //                 <label htmlFor="image" className="absolute w-8 h-8 border-2 border-white bottom-1 right-0 bg-hrms_green text-white rounded-full flex items-center justify-center">
+                //                   <input accept="image/*" required id="image" onChange={(e) => uploadImg(e)} name="image" type="file" className="opacity-0 absolute w-full cursor-pointer h-full" />
+                //                   <i className="ri-camera-line"></i>
+                //                 </label>
+                //               </div>
+                //             </div>
+                //             <div className="space-y-2">
+                //               <div className="text-hrms_green text-lg font-semibold">Personal Information</div>
+                //               <div className="grid grid-cols-2 gap-4">
+                //                 <AppInput name="phone" type="number" required label="Phone Number" />
+                //                 <AppInput name="email" type="email" required label="Email" />
+                //                 <AppInput name="gender" type="select" required label="Gender"
+                //                   options={[
+                //                     { value: "male", label: "Male" },
+                //                     { value: "female", label: "Female" }
+                //                   ]}
+                //                 />
+                //                 <AppInput name="state_of_origin" type="select" required label="State Of Origin (optional)" options={[...NigeriaStates]} />
+                //                 <AppInput name="state_of_residence" type="select" required label="State Of Residence" options={[...NigeriaStates]} />
+                //                 <AppInput name="date_of_birth" type="date" required label="Date Of Birth" max={maxDate} />
+                //                 <AppInput name="next_of_kin_name" type="text" required label="Next of Kin" />
+                //                 <AppInput name="next_of_kin_contact" type="number" required label="Next of Kin's Contact" />
+                //                 <AppInput name="next_of_kin_relationship" type="select" required label="Relationship"
+                //                   options={[
+                //                     { value: "Father", label: "Father" },
+                //                     { value: "Mother", label: "Mother" },
+                //                     { value: "Brother", label: "Brother" },
+                //                     { value: "Sister", label: "Sister" },
+                //                     { value: "Cousin", label: "Cousin" },
+                //                     { value: "Nephew", label: "Nephew" },
+                //                     { value: "Niece", label: "Niece" },
+                //                     { value: "Uncle", label: "Uncle" },
+                //                     { value: "Aunt", label: "Aunt" },
+                //                     { value: "in-laws", label: "in-laws" },
+                //                     { value: "Others", label: "Others" },
+                //                   ]}
+                //                 />
+                //               </div>
+                //             </div>
+                //             <div>
+                //               <button className="bg-hrms_green w-full text-white rounded-lg py-2 text-center cursor-pointer">Continue</button>
+                //             </div>
+                //           </form>
+                //         ) : currentStep === 1 ? (
+                //           <form onSubmit={e => updateData(e)} className="space-y-4">
+                //             <div className="space-y-2">
+                //               <div className="w-16 h-16 rounded-full bg-gray-100 relative">
+                //                 <Image id="output" className="w-full h-full rounded-full" />
+                //               </div>
+                //               <div className="text-hrms_green text-lg font-semibold">Personal Information</div>
+                //               <div className="grid grid-cols-2 gap-y-2 gap-x-4 text-sm">
+                //                 <div>
+                //                   <div className="font-semibold">Login Password</div>
+                //                   <div>***********</div>
+                //                 </div>
+                //                 <div>
+                //                   <div className="font-semibold">Phone Number</div>
+                //                   <div>0{personalData.phone}</div>
+                //                 </div>
+                //                 <div>
+                //                   <div className="font-semibold">Email</div>
+                //                   <div>{personalData.email}</div>
+                //                 </div>
+                //                 <div>
+                //                   <div className="font-semibold">Gender</div>
+                //                   <div>{personalData.gender}</div>
+                //                 </div>
+                //                 <div>
+                //                   <div className="font-semibold">State Of Origin (optional)</div>
+                //                   <div>{personalData.state_of_origin}</div>
+                //                 </div>
+                //                 <div>
+                //                   <div className="font-semibold">State Of Residence</div>
+                //                   <div>{personalData.state_of_residence}</div>
+                //                 </div>
+                //                 <div>
+                //                   <div className="font-semibold">Date Of Birth</div>
+                //                   <div>{personalData.date_of_birth}</div>
+                //                 </div>
+                //                 <div>
+                //                   <div className="font-semibold">Next of Kin</div>
+                //                   <div>{personalData.next_of_kin_name}</div>
+                //                 </div>
+                //                 <div>
+                //                   <div className="font-semibold">Next of Kin&apos;s Contact</div>
+                //                   <div>0{personalData.next_of_kin_contact}</div>
+                //                 </div>
+                //                 <div>
+                //                   <div className="font-semibold">Relationship</div>
+                //                   <div>{personalData.next_of_kin_relationship}</div>
+                //                 </div>
+                //               </div>
+                //             </div>
+                //             <div className="space-y-2">
+                //               <div className="text-hrms_green text-lg font-semibold">Employment Information</div>
+                //               <div className="grid grid-cols-2 gap-4">
+                //                 <AppInput label={"Salary Account Number"} name={"account_number"} type={"number"}  />
+                //                 <AppInput name="bank_name" type="select" required label="Account Bank"
+                //                   options={[
+                //                     { value: "Access bank", label: "Access Bank" },
+                //                     { value: "Zenith bank", label: "Zenith Bank" },
+                //                   ]}
+                //                 />
+                //                 {/* <AppInput name="account_number" type="number" required label="" /> */}
+                //                 <div className="col-span-2"><AppInput name="account_name" type="text" required label="Account Name" /></div>
+                //                 <div>
+                //                   <button className="bg-hrms_green w-full text-white rounded-lg py-2 text-center cursor-pointer">Continue</button>
+                //                 </div>
+                //                 <div onClick={() => setCurrentStep(0)} className="text-center py-2 border border-hrms_green rounded-lg text-hrms_green cursor-pointer">Previous</div>
+                //               </div>
+                //             </div>
+                //           </form>
+                //         ) : (
+                //           <form onSubmit={(e) => saveData(e)} className="space-y-2">
+                //             <div className="w-16 h-16 rounded-full bg-gray-100 relative">
+                //               <Image id="output" className="w-full h-full rounded-full" />
+                //             </div>
+                //             <div className="text-hrms_green text-lg font-semibold">Personal Information</div>
+                //             <div className="grid grid-cols-2 gap-y-2 gap-x-4 text-sm">
+                //               <div>
+                //                 <div className="font-semibold">Login Password</div>
+                //                 <div>***********</div>
+                //               </div>
+                //               <div>
+                //                 <div className="font-semibold">Phone Number</div>
+                //                 <div>{personalData.phone}</div>
+                //               </div>
+                //               <div>
+                //                 <div className="font-semibold">Email</div>
+                //                 <div>{personalData.email}</div>
+                //               </div>
+                //               <div>
+                //                 <div className="font-semibold">Gender</div>
+                //                 <div>{personalData.gender}</div>
+                //               </div>
+                //               <div>
+                //                 <div className="font-semibold">State Of Origin (optional)</div>
+                //                 <div>{personalData.state_of_origin}</div>
+                //               </div>
+                //               <div>
+                //                 <div className="font-semibold">State Of Residence</div>
+                //                 <div>{personalData.state_of_residence}</div>
+                //               </div>
+                //               <div>
+                //                 <div className="font-semibold">Date Of Birth</div>
+                //                 <div>{personalData.date_of_birth}</div>
+                //               </div>
+                //               <div>
+                //                 <div className="font-semibold">Next of Kin</div>
+                //                 <div>{personalData.next_of_kin_name}</div>
+                //               </div>
+                //               <div>
+                //                 <div className="font-semibold">Next of Kin&apos;s Contact</div>
+                //                 <div>{personalData.next_of_kin_contact}</div>
+                //               </div>
+                //               <div>
+                //                 <div className="font-semibold">Relationship</div>
+                //                 <div>{personalData.next_of_kin_relationship}</div>
+                //               </div>
+                //             </div>
+                //             <div className="text-hrms_green text-lg font-semibold">Employment Information</div>
+                //             <div className="grid grid-cols-2 gap-y-2 gap-x-4 text-sm">
+                //               <div>
+                //                 <div className="font-semibold">Account Bank</div>
+                //                 <div>{personalData.bank_name}</div>
+                //               </div>
+                //               <div>
+                //                 <div className="font-semibold">Salary Account Number</div>
+                //                 <div>{personalData.account_number}</div>
+                //               </div>
+                //               <div>
+                //                 <div className="font-semibold">Account Name</div>
+                //                 <div>{personalData.account_name}</div>
+                //               </div>
+                //               <div className="col-span-2 pt-4">
+                //                 <AppInput required type="checkbox" label="Comfirm Information" />
+                //               </div>
+                //               <div>
+                //                 <button className="bg-hrms_green w-full text-white rounded-lg py-2 text-center cursor-pointer">submit</button>
+                //               </div>
+                //               <div onClick={() => setCurrentStep(1)} className="text-center py-2 border border-hrms_green rounded-lg text-hrms_green cursor-pointer">Previous</div>
+                //             </div>
+                //           </form>
+                //         )
+                //       }
+                //     </div>
+                //   </div>
+                // )
               }
             </div>
           </div>
@@ -517,6 +581,12 @@ const Page = () => {
           isOpen={isErrorModal}
           onClose={() => setIsErrorModal(false)}
           message={`${errMsg}`}
+        />
+        <ResponseModal
+          status={alertMsgData?.success}
+          isOpen={alertMsg}
+          onClose={() => setAlert(false)}
+          message={alertMsgData?.message}
         />
       </>
     </AppLayout>

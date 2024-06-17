@@ -14,8 +14,10 @@ export const adminadduser = (formData) => apiWithAuth.post("/adminadduser", form
 export const fetchUsers = () => apiWithAuth.post("admin/user/fetch_user").then(getApiResponse).catch(getErrorResponse);
 export const fetchAllUsers = () => apiWithAuth.post("admin/user/fetch_all_user").then(getApiResponse).catch(getErrorResponse);
 
+export const addEmploye = (formData) => apiWithAuth.post("admin/employee/add_new_employee",formData).then(getApiResponse).catch(getErrorResponse);
 export const fetchEmployee = () => apiWithAuth.post("admin/employee/fetch").then(getApiResponse).catch(getErrorResponse);
 export const fetchAllEmployee = () => apiWithAuth.post("admin/employee/fetch_all").then(getApiResponse).catch(getErrorResponse);
+
 
 
 export const addLocation = (formData) => apiWithAuth.post("admin/organization/location/create",formData).then(getApiResponse).catch(getErrorResponse);
