@@ -11,6 +11,7 @@ import Image from "next/image";
 import axios from "axios";
 import { SignInAuth } from "@/hooks/Auth";
 import { useRouter } from "next/navigation";
+import Verifications from "../Verifications";
 
 const EmployeeDashboard = () => {
   const dispatch = useDispatch()
@@ -89,6 +90,7 @@ const EmployeeDashboard = () => {
     <div>
       <div className="grid grid-cols-3 gap-4">
         <div className="col-span-2 space-y-4">
+          <Verifications />
           <div className="grid grid-cols-3 gap-4">
             <div className="p-3 h-32 rounded-lg overflow-hidden bg-white shadow-sm relative">
               <div className="flex gap-2">
@@ -134,7 +136,7 @@ const EmployeeDashboard = () => {
         </div>
       </div>
 
-      <Modal promt size={"2xl"} isOpen={isModalOpen}>
+      {/* <Modal promt size={"2xl"} isOpen={isModalOpen}>
         <div>
           <div className="grid gap-[20px]">
             <div className="flex items-start justify-between">
@@ -335,7 +337,7 @@ const EmployeeDashboard = () => {
             }
           </div>
         </div>
-      </Modal>
+      </Modal> */}
 
       <ResponseModal
         isOpen={isSuccessModalOpen}

@@ -6,7 +6,7 @@ export const Applogin = (formData) => apiWithOutAuth.post("/login", formData).th
 
 export const updateProfile = (formData) => apiWithAuth.post("/add-employee", formData).then(getApiResponse).catch(getErrorResponse);
 export const employeeInvite = (formData) => apiWithAuth.post("admin/employee/invite", formData).then(getApiResponse).catch(getErrorResponse);
-export const verifyCode = (formData) => apiWithAuth.post("/admin/verify-access-code", formData).then(getApiResponse).catch(getErrorResponse);
+export const verifyCode = (formData) => apiWithAuth.post("verify-access-code", formData).then(getApiResponse).catch(getErrorResponse);
 export const adminadduser = (formData) => apiWithAuth.post("/adminadduser", formData).then(getApiResponse).catch(getErrorResponse);
 
 
@@ -18,6 +18,10 @@ export const addEmploye = (formData) => apiWithAuth.post("admin/employee/add_new
 export const fetchEmployee = () => apiWithAuth.post("admin/employee/fetch").then(getApiResponse).catch(getErrorResponse);
 export const fetchAllEmployee = () => apiWithAuth.post("admin/employee/fetch_all").then(getApiResponse).catch(getErrorResponse);
 
+export const verifyBVN = (formData) => apiWithAuth.post("verify_bvn",formData).then(getApiResponse).catch(getErrorResponse);
+export const verifyNIN = (formData) => apiWithAuth.post("verify_nin",formData).then(getApiResponse).catch(getErrorResponse);
+export const updateBVN = (formData) => apiWithAuth.post("update_bvn",formData).then(getApiResponse).catch(getErrorResponse);
+export const updateNIN = (formData) => apiWithAuth.post("update_nin",formData).then(getApiResponse).catch(getErrorResponse);
 
 
 export const addLocation = (formData) => apiWithAuth.post("admin/organization/location/create",formData).then(getApiResponse).catch(getErrorResponse);

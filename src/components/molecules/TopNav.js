@@ -2,10 +2,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import avatar from "@assets/images/avatar/Leslie_Image.png";
 
-function TopNav({ toggle, setToggle }) {
-  // const handleToggle = () => {
-  //     setToggle(!toggle);
-  // }
+function TopNav({ role }) {
   return (
     <div className="bg-white flex items-center rounded-lg py-3 md:px-5">
       <div className="flex-grow text-xl">
@@ -17,10 +14,10 @@ function TopNav({ toggle, setToggle }) {
           <div className="absolute bg-danger w-3 h-3 top-1 right-0 border-2 border-white rounded-full"></div>
         </div>
         <div className="flex cursor-pointer items-center gap-1 text-sm">
-          <div className="w-9 h-9 rounded-full bg-gray-200">
+          <div className="w-8 h-8 rounded-full bg-gray-200">
             <Image src={avatar} alt="Michael Michael" />
           </div>
-          <div className="hidden sm:block">Admin</div>
+          <div className="hidden sm:block">{role}</div>
           <i className="ri-arrow-down-s-line hidden sm:block relative top-[1px]"></i>
         </div>
       </div>

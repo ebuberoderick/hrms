@@ -37,9 +37,6 @@ const Page = () => {
 
 
 
-
-
-
   
   const [alertMsg, setAlert] = useState(false)
   const [alertMsgData, setAlertData] = useState(false)
@@ -98,8 +95,8 @@ const Page = () => {
     const formData = serialize(e.target);
     const { status, data } = await addEmploye(formData).catch(err => console.log(err))
     if (status) {
-      await fetch()
-      setShowModal(false)
+      await fetchEmployees()
+      setIsModalOpen(false)
       setAlert(true)
       setAlertData(data)
       setBtn(false)
@@ -309,12 +306,11 @@ const Page = () => {
                       <div className="space-y-2">
                         <div className="text-hrms_green text-lg font-semibold">Personal Information</div>
                         <div className="grid grid-cols-2 gap-4">
-                          <AppInput name="phone" type="number" required label="Phone Number" />
+                          <AppInput name="telephone" type="number" required label="Phone Number" />
                           <AppInput name="email" type="email" required label="Email" />
                           <AppInput name="staff_id" type="text" required label="Staff ID" />
                           <AppInput name="firstname" type="text" required label="First Name" />
                           <AppInput name="lastname" type="text" required label="Last Name" />
-
                         </div>
                       </div>
                       <div>

@@ -26,7 +26,7 @@ function AppLayout({ children }) {
         </div>
         <div className={`p-4 pb-8 md:ml-64 transition-all duration-300 select-none min-h-screen`}>
           <div className="flex gap-3 items-center">
-            <div className="flex-grow"><TopNav /></div>
+            <div className="flex-grow"><TopNav role={user?.value?.user?.role} /></div>
             <div onClick={() => setShowNav(!showNav)} className="h-8 w-8 bg-hrms_green md:hidden text-white rounded-md text-xl flex items-center justify-center cursor-pointer"><i className="ri-menu-line"></i></div>
           </div>
           {children}
