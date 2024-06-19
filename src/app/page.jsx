@@ -7,7 +7,6 @@ import { useSelector } from "react-redux";
 
 function Page() {
   const userType = useSelector((state) => state?.User?.value?.user?.role);
-  console.log(userType);
   return (
     <AppLayout>
       {userType === "admin" ? <AdminDashboard /> : <EmployeeDashboard />}
