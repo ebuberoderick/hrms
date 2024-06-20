@@ -88,8 +88,8 @@ const EmployeeDashboard = () => {
   const maxDate = getTodayDate();
   return (
     <div>
-      <div className="grid grid-cols-3 gap-4">
-        <div className="col-span-2 space-y-4">
+      <div className="grid lg:grid-cols-3 gap-4">
+        <div className="lg:col-span-2 space-y-4">
           <Verifications />
           <div className="grid grid-cols-3 gap-4">
             <div className="p-3 h-32 rounded-lg overflow-hidden bg-white shadow-sm relative">

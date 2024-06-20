@@ -11,21 +11,21 @@ function Verifications() {
     const [errMsg, setErrMsg] = useState("")
     const user = useSelector((state) => state?.User);
 
-    const confimation = (f,l,m) => {
+    const confimation = (f, l, m) => {
         const fullname = "charlse chukwunweike ezeah"
         const array = [
-            `${f+" "+l+" "+m}`,
-            `${f+" "+m+" "+l}`,
-            `${m+" "+f+" "+l}`,
-            `${m+" "+l+" "+f}`,
-            `${l+" "+m+" "+f}`,
-            `${l+" "+f+" "+m}`,
-            `${f+" "+l}`,
-            `${f+" "+m}`,
-            `${l+" "+f}`,
-            `${l+" "+m}`,
-            `${m+" "+l}`,
-            `${m+" "+f}`
+            `${f + " " + l + " " + m}`,
+            `${f + " " + m + " " + l}`,
+            `${m + " " + f + " " + l}`,
+            `${m + " " + l + " " + f}`,
+            `${l + " " + m + " " + f}`,
+            `${l + " " + f + " " + m}`,
+            `${f + " " + l}`,
+            `${f + " " + m}`,
+            `${l + " " + f}`,
+            `${l + " " + m}`,
+            `${m + " " + l}`,
+            `${m + " " + f}`
         ]
 
         for (let index = 0; index < array.length; index++) {
@@ -42,7 +42,7 @@ function Verifications() {
         const { status, data } = await verifyBVN(formData).catch(err => console.log(err))
         setErrMsg("")
         if (data.status) {
-            confimation(data.data.identity.data.firstname.toLowerCase() , data.data.identity.data.lastname.toLowerCase() , data.data.identity.data.middlename.toLowerCase());
+            confimation(data.data.identity.data.firstname.toLowerCase(), data.data.identity.data.lastname.toLowerCase(), data.data.identity.data.middlename.toLowerCase());
         } else {
             setErrMsg(data.message)
         }
@@ -53,7 +53,7 @@ function Verifications() {
         const { status, data } = await verifyNIN(formData).catch(err => console.log(err))
         setErrMsg("")
         if (data.status) {
-            confimation(data.data.identity.data.firstname.toLowerCase() , data.data.identity.data.lastname.toLowerCase() , data.data.identity.data.middlename.toLowerCase());
+            confimation(data.data.identity.data.firstname.toLowerCase(), data.data.identity.data.lastname.toLowerCase(), data.data.identity.data.middlename.toLowerCase());
         } else {
             setErrMsg(data.message)
         }
@@ -73,7 +73,19 @@ function Verifications() {
 
     return (
         <div className='flex flex-wrap gap-3'>
+            <div onClick={() => setShow("PhoneModal")} className='flex-grow cursor-pointer px-4 py-8 rounded-md bg-hrms_blue bg-opacity-20'>
+                <div className='font-bold'>Verify Your Bio Data</div>
+                <div className='text-xs'>You have to verify your Personal Informations</div>
+            </div>
+            <div onClick={() => setShow("NINModal")} className='flex-grow cursor-pointer px-4 py-8 rounded-md bg-hrms_yellow bg-opacity-30'>
+                <div className='font-bold'>Verify Employment Details </div>
+                <div className='text-xs'>You have to verify your NIN for prove of identification</div>
+            </div>
             <div onClick={() => setShow("BVNModal")} className='flex-grow cursor-pointer px-4 py-8 rounded-md bg-hrms_green bg-opacity-10'>
+                <div className='font-bold'>Verify Your Account Details</div>
+                <div className='text-xs'>You have to verify your Bank account Information</div>
+            </div>
+            <div onClick={() => setShow("BVNModal")} className='flex-grow cursor-pointer px-4 py-8 rounded-md bg-danger bg-opacity-10'>
                 <div className='font-bold'>Verify Your BVN</div>
                 <div className='text-xs'>You have to verify your BVN for prove of identification</div>
             </div>
@@ -81,13 +93,10 @@ function Verifications() {
                 <div className='font-bold'>Verify Your NIN</div>
                 <div className='text-xs'>You have to verify your NIN for prove of identification</div>
             </div>
-            {/* <div onClick={() => setShow("PhoneModal")} className='flex-grow cursor-pointer px-4 py-8 rounded-md bg-hrms_blue bg-opacity-10'>
-                <div className='font-bold'>Verify Your Phone</div>
-                <div className='text-xs'>You have to verify your Phone for prove of identification</div>
-            </div> */}
-
-
-
+            <div onClick={() => setShow("NINModal")} className='flex-grow cursor-pointer px-4 py-8 rounded-md bg-black bg-opacity-10'>
+                <div className='font-bold'>Other Document Uploads </div>
+                <div className='text-xs'>You have to verify your NIN for prove of identification</div>
+            </div>
             <Modal closeModal={() => setShow("")} isOpen={modalVal === "BVNModal"} size={"sm"}>
                 <div>
                     <div className="inline-flex relative bottom-4 items-start justify-between">

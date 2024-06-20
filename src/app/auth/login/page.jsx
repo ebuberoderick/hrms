@@ -24,8 +24,8 @@ function Page() {
     setProccessing(false)
     if (status) {
       setErrMsg('')
-      // SignInAuth(data,dispatch)
-      // router.push("/")
+      SignInAuth(data,dispatch)
+      router.push("/")
     } else {
       setErrMsg(data.message)
     }

@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Session, SignOut } from "@/hooks/Auth";
 
 function AppLayout({ children }) {
-  router.push("/auth/login");
   const user = useSelector((state) => state?.User);
   const dispatch = useDispatch()
   const isAuthenticated = Session(user);
@@ -15,7 +14,7 @@ function AppLayout({ children }) {
   const router = useRouter();
   const out = async () => {
     await SignOut(dispatch);
-    
+    router.push("/auth/login");
   }
   if (isAuthenticated.status === "unauthenticated") {
     out()
