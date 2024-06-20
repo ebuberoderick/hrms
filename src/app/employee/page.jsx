@@ -37,7 +37,7 @@ const Page = () => {
 
 
 
-  
+
   const [alertMsg, setAlert] = useState(false)
   const [alertMsgData, setAlertData] = useState(false)
   const [btn, setBtn] = useState(false)
@@ -308,9 +308,12 @@ const Page = () => {
                         <div className="grid grid-cols-2 gap-4">
                           <AppInput name="telephone" type="number" required label="Phone Number" />
                           <AppInput name="email" type="email" required label="Email" />
-                          <AppInput name="staff_id" type="text" required label="Staff ID" />
                           <AppInput name="firstname" type="text" required label="First Name" />
                           <AppInput name="lastname" type="text" required label="Last Name" />
+                          <AppInput name="middlename" type="text" label="Middle Name (Optional)" />
+                          <AppInput name="employee_type" type="select" required label="Employee Type" options={[
+                            { value: "Uniformed", label: "Uniformed" },
+                            { value: "Formal", label: "Formal" }]} />
                         </div>
                       </div>
                       <div>
