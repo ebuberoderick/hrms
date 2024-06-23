@@ -53,13 +53,10 @@ function AppLink({ text, icon, subMenu }) {
         </div>
       ) : (
         <Link
-          href={`/${text === "dashboard"
-              ? ""
-              : text.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x")
-            }`}
+          href={`/${ text.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x")}`}
         >
           <div
-            className={`flex items-center gap-3 py-2 rounded-r-full text-gray-500 cursor-pointer px-3 ${active.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x") === text.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x") || (active === "" && text === "dashboard")
+            className={`flex items-center gap-3 py-2 rounded-r-full text-gray-500 cursor-pointer px-3 ${active.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x") === text.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x")
                 ? "text-white bg-hrms_green rounded-r-full"
                 : "hover:bg-hrms_green hover:bg-opacity-70 hover:text-white"
               }`}

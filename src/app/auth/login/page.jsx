@@ -25,7 +25,7 @@ function Page() {
     if (status) {
       setErrMsg('')
       SignInAuth(data,dispatch)
-      router.push("/")
+      router.push("/dashboard")
     } else {
       setErrMsg(data.message)
     }
