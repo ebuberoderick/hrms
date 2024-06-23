@@ -1,6 +1,6 @@
 import React from 'react'
 import coatOfArms from "@assets/images/Coat_of_arms.png"
-import union from "@assets/images/union.png"
+import union from "@assets/images/Union.png"
 import Link from 'next/link'
 import Image from 'next/image'
 
