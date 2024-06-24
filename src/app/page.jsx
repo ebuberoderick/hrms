@@ -22,7 +22,7 @@ function Page() {
         <div className="absolute h-[700px] w-[700px] -right-32 top-80 bg-hrms_green rounded-full"></div>
         <div className="absolute h-[700px] w-[700px] -left-32 top-[1000px] bg-hrms_green rounded-full"></div>
         <div className="pt-20 pb-44 relative h-full top-0 right-0 w-full bg-white backdrop-blur-3xl bg-opacity-85">
-          <div class="max-w-7xl p-4 py-32 mx-auto space-y-28">
+          <div class="max-w-7xl p-4 sm:py-32 mx-auto space-y-28">
             <div class="grid gap-5 md:grid-cols-2">
               <div class="space-y-3 text-sm md:order-1">
                 <div className="text-shadow shadow-hrms_green font-extrabold text-4xl">
@@ -115,7 +115,7 @@ function Page() {
               <div className="absolute h-[700px] w-[700px] bg-hrms_green rounded-full -top-96 -left-40"></div>
               <div className="pt-20 pb-44 relative h-full top-0 right-0 w-full bg-white backdrop-blur-3xl bg-opacity-85">
                 <div className="max-w-3xl space-y-9 mx-auto text-center">
-                  <div className="text-4xl font-bold">
+                  <div className="text-xl px-3 md:text-4xl font-bold">
                     Want To Know More About government enrolment and verification portal?
                   </div>
                   <div className="text-sm mx-auto max-w-md">
@@ -127,7 +127,7 @@ function Page() {
                     </Link>
                   </div>
                 </div>
-                <div className="absolute w-96 border-t border-r shadow-md rounded-tr-lg px-6 py-8">
+                <div className="sm:absolute relative top-16 sm:top-auto w-96 border-t border-r shadow-md rounded-tr-lg px-6 py-8">
                   <div className="flex">
                     <div className="flex-grow">Announcement</div>
                     <div className="-space-x-3">
@@ -158,8 +158,8 @@ function Page() {
         </div>
       </div>
 
-      <div className="divide-y bg-gradient-to-b from-hrms_green via-hrms_dark_green to-hrms_dark_green text-white divide-gray-300 *:max-w-7xl *:mx-auto ">
-        <div className="py-16 flex items-center">
+      <div className="divide-y bg-gradient-to-b px-4 from-hrms_green via-hrms_dark_green to-hrms_dark_green text-white divide-gray-300 *:max-w-7xl *:mx-auto ">
+        <div className="py-16 space-y-6 sm:space-y-0 sm:flex items-center">
           <div className="flex-grow text-lg flex items-center gap-4">
             Powered By: <Image alt='#' src={logowhite} className='w-32' />
           </div>
