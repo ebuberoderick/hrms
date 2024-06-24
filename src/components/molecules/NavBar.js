@@ -8,7 +8,7 @@ import Image from 'next/image'
 import Link from 'next/link';
 
 function NavBar() {
-  const [showNav, setShowNav] = useState(false);
+  const [showNav, setShowNav] = useState(true);
   return (
     <div className='fixed py-5 px-4 bg-white  z-50 w-screen'>
       <div className='max-w-7xl mx-auto items-center flex pr-4'>
