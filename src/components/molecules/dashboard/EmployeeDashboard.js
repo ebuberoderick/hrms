@@ -28,11 +28,23 @@ const EmployeeDashboard = () => {
 
   const userType = useSelector((state) => state.User?.value);
   useEffect(() => {
-    console.log(userType.user.next_of_kin_name);
     if (userType.user.next_of_kin_name === null) {
       setIsModalOpen(true);
     }
   }, []);
+
+
+  const Vbvn = userType.user.is_bvn_verified === 1
+  const Vnin = userType.user.is_nin_verified === 1
+  const VaccountNumber = userType.user.account_number !== null
+  const Vaddress = userType.user.state_of_origin !== null 
+  const Vothers = userType.employee.npfa_name !== null
+  const Vemployment = userType.employee.grade !== null 
+  const Vbio = userType.employee.staff_id !== null
+  const Vkin = userType.user.next_of_kin_name === 1
+
+
+  const isVerified = Vbvn && Vnin && VaccountNumber && Vaddress && Vothers && Vemployment && Vbio && Vkin
 
 
 
@@ -90,7 +102,10 @@ const EmployeeDashboard = () => {
     <div>
       <div className="grid lg:grid-cols-3 gap-4">
         <div className="lg:col-span-2 space-y-4">
-          <Verifications />
+          {
+            isVerified ?(<div></div>): (<Verifications Vbvn={Vbvn} Vnin={Vnin} VaccountNumber={VaccountNumber} Vaddress={Vaddress} Vothers={Vothers} Vemployment={Vemployment} Vbio={Vbio} Vkin={Vkin} />)
+          }
+          
           {/* <div className="grid grid-cols-3 gap-4">
             <div className="p-3 h-32 rounded-lg overflow-hidden bg-white shadow-sm relative">
               <div className="flex gap-2">

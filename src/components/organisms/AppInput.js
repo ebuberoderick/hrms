@@ -66,7 +66,7 @@ function AppInput({ label,maxLength, checked, type, required, name, max, options
             {label}
           </option>
           {options?.map((option) => (
-            <option key={option.value} value={option.value}>
+            <option key={option.value} selected={defaultValue === option.value} value={option.value}>
               {option.label}
             </option>
           ))}

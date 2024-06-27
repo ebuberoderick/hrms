@@ -23,7 +23,7 @@ function Page() {
     setProccessing(false);
     if (status) {
       SignInAuth({ data }, dispatch);
-      router.push("/")
+      router.push("/dashboard")
     } else {
       setErrMsg(data.message);
     }
