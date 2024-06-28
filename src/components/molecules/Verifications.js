@@ -18,7 +18,7 @@ import { addData } from '@/Store/reducers/UsersReducer'
 import KinVerification from './verification/KinVerification'
 import AddressVerification from './verification/AddressVerification'
 
-function Verifications({ Vbvn, Vnin, VaccountNumber, Vaddress, Vothers, Vemployment, Vbio, Vkin }) {
+function Verifications({ Vbvn, Vnin, VaccountNumber, Vothers, Vemployment, Vbio }) {
     const [errMsg, setErrMsg] = useState("")
     const [Bvnform, setBvnForm] = useState(false)
     const [proccessing, setProcessing] = useState(false)

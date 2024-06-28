@@ -35,7 +35,7 @@ const EmployeeDashboard = () => {
               <div>
 
               </div>
-            ) : (<Verifications Vbvn={Vbvn} Vnin={Vnin} VaccountNumber={VaccountNumber} Vaddress={Vaddress} Vothers={Vothers} Vemployment={Vemployment} Vbio={Vbio} Vkin={Vkin} />)
+            ) : (<Verifications Vbvn={Vbvn} Vnin={Vnin} VaccountNumber={VaccountNumber} Vothers={Vothers} Vemployment={Vemployment} Vbio={Vbio} />)
           }
         </div>
       </div>
