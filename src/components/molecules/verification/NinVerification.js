@@ -2,6 +2,7 @@
 import AppInput from '@/components/organisms/AppInput'
 import Modal from '@/components/organisms/Modal'
 import React, { useState } from 'react'
+import { BsShieldCheck } from 'react-icons/bs'
 
 function NinVerification({ Vnin, user }) {
     const [errMsg, setErrMsg] = useState("")

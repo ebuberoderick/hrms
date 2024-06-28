@@ -1,4 +1,5 @@
 import React from 'react'
+import { BsShieldCheck } from 'react-icons/bs';
 
 function AddressVerification({ user,Vaddress }) {
     console.log(user);

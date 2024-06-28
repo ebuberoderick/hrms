@@ -1,4 +1,5 @@
 import React from 'react'
+import { BsShieldCheck } from 'react-icons/bs';
 
 function KinVerification({ user, Vkin }) {
     console.log(user);
