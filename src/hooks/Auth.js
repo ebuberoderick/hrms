@@ -4,7 +4,9 @@ import { addData } from '@/Store/reducers/UsersReducer';
 
 
 export function SignInAuth(data, dispatch) {
-  dispatch(addData(data?.data));
+  let x = data?.data
+  x.employee = data?.data.user.employee
+  dispatch(addData(x));
   Cookies.set('jwt', data?.data?.bearer_token)
 }
 

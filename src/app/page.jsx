@@ -22,9 +22,9 @@ function Page() {
         <div className="absolute h-[700px] w-[700px] -right-32 top-80 bg-hrms_green rounded-full"></div>
         <div className="absolute h-[700px] w-[700px] -left-32 top-[1000px] bg-hrms_green rounded-full"></div>
         <div className="pt-20 pb-44 relative h-full top-0 right-0 w-full bg-white backdrop-blur-3xl bg-opacity-85">
-          <div class="max-w-7xl p-4 sm:py-32 mx-auto space-y-28">
-            <div class="grid gap-5 md:grid-cols-2">
-              <div class="space-y-3 text-sm md:order-1">
+          <div className="max-w-7xl p-4 sm:py-32 mx-auto space-y-28">
+            <div className="grid gap-5 md:grid-cols-2">
+              <div className="space-y-3 text-sm md:order-1">
                 <div className="text-shadow shadow-hrms_green font-extrabold text-4xl">
                   This portal allows you to securely
                 </div>
@@ -50,16 +50,16 @@ function Page() {
                 </div>
                 <div className="relative top-4">
                   <Link href="#" className='px-8 inline-flex items-center gap-2 font-bold rounded-md py-4 bg-hrms_dark_green text-white'>
-                    <i class="ri-play-circle-fill text-xl"></i> Learn More
+                    <i className="ri-play-circle-fill text-xl"></i> Learn More
                   </Link>
                 </div>
               </div>
-              <div class="min-h-72">
+              <div className="min-h-72">
                 <Image alt='#' src={img1} />
               </div>
             </div>
-            <div class="grid items-center gap-5 md:grid-cols-2">
-              <div class="space-y-5 text-sm">
+            <div className="grid items-center gap-5 md:grid-cols-2">
+              <div className="space-y-5 text-sm">
                 <div className="text-shadow shadow-hrms_green font-extrabold text-4xl">
                   Important Notice
                 </div>
@@ -68,16 +68,16 @@ function Page() {
                 </div>
                 <div className="relative top-4">
                   <Link href="#" className='px-8 inline-flex items-center gap-2 font-bold rounded-md py-4 bg-hrms_dark_green text-white'>
-                    <i class="ri-play-circle-fill text-xl"></i> Learn More
+                    <i className="ri-play-circle-fill text-xl"></i> Learn More
                   </Link>
                 </div>
               </div>
-              <div class="min-h-72">
+              <div className="min-h-72">
                 <Image alt='#' src={img2} />
               </div>
             </div>
-            <div class="grid gap-5 md:grid-cols-2">
-              <div class="space-y-3 text-sm md:order-1">
+            <div className="grid gap-5 md:grid-cols-2">
+              <div className="space-y-3 text-sm md:order-1">
                 <div className="text-shadow shadow-hrms_green font-extrabold text-4xl">
                   Unauthorized Access
                 </div>
@@ -87,7 +87,7 @@ function Page() {
                   </div>
                   <div className="space-y-5">
                     <div className="flex items-start gap-4 text-lg">
-                      <div className="text-hrms_green text-2xl"><i class="ri-share-fill"></i></div>
+                      <div className="text-hrms_green text-2xl"><i className="ri-share-fill"></i></div>
                       <div className="">Never share your login information with anyone</div>
                     </div>
                     <div className="flex items-start gap-4 text-lg">
@@ -102,11 +102,11 @@ function Page() {
                 </div>
                 <div className="relative top-4">
                   <Link href="#" className='px-8 inline-flex items-center gap-2 font-bold rounded-md py-4 bg-hrms_dark_green text-white'>
-                    <i class="ri-play-circle-fill text-xl"></i> Learn More
+                    <i className="ri-play-circle-fill text-xl"></i> Learn More
                   </Link>
                 </div>
               </div>
-              <div class="min-h-72">
+              <div className="min-h-72">
                 <Image alt='#' src={img3} />
               </div>
             </div>
@@ -123,7 +123,7 @@ function Page() {
                   </div>
                   <div className="relative top-4">
                     <Link href="#" className='px-8 inline-flex items-center gap-2 font-bold rounded-md py-4 bg-hrms_dark_green text-white'>
-                      <i class="ri-play-circle-fill text-xl"></i> Book A Section
+                      <i className="ri-play-circle-fill text-xl"></i> Book A Section
                     </Link>
                   </div>
                 </div>

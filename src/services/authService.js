@@ -21,12 +21,13 @@ export const fetchAllEmployee = () => apiWithAuth.post("admin/employee/fetch_all
 
 export const fetchBanks = () => apiWithAuth.post("employee/paystack_bank").then(getApiResponse).catch(getErrorResponse);
 export const verifyBanksDetails = (formData) => apiWithAuth.post("employee/fetch_account_name", formData).then(getApiResponse).catch(getErrorResponse);
+export const saveBankInfo = (formData) => apiWithAuth.post("employee/save_bank_account", formData).then(getApiResponse).catch(getErrorResponse);
 
 
 export const verifyBVN = (formData) => apiWithAuth.post("verify_bvn", formData).then(getApiResponse).catch(getErrorResponse);
 export const verifyNIN = (formData) => apiWithAuth.post("verify_nin", formData).then(getApiResponse).catch(getErrorResponse);
-export const updateBVN = (formData) => apiWithAuth.post("update_bvn", formData).then(getApiResponse).catch(getErrorResponse);
-export const updateNIN = (formData) => apiWithAuth.post("update_nin", formData).then(getApiResponse).catch(getErrorResponse);
+export const updateBVN = (formData) => apiWithAuth.post("employee/update_bvn", formData).then(getApiResponse).catch(getErrorResponse);
+export const updateNIN = (formData) => apiWithAuth.post("employee/update_nin", formData).then(getApiResponse).catch(getErrorResponse);
 
 
 export const addLocation = (formData) => apiWithAuth.post("admin/organization/location/create", formData).then(getApiResponse).catch(getErrorResponse);
@@ -52,3 +53,30 @@ export const addPolicy = (formData) => apiWithAuth.post("admin/organization/poli
 export const fetchPolicy = () => apiWithAuth.post("admin/organization/policy/fetch").then(getApiResponse).catch(getErrorResponse);
 
 
+
+
+export const addPromotion = (formData) => apiWithAuth.post("admin/corehr/promotion/create", formData).then(getApiResponse).catch(getErrorResponse);
+export const fetchPromotion = () => apiWithAuth.post("admin/corehr/promotion/fetch").then(getApiResponse).catch(getErrorResponse);
+export const fetchAllPromotion = () => apiWithAuth.post("admin/corehr/promotion/fetch_all").then(getApiResponse).catch(getErrorResponse);
+
+
+export const addAward = (formData) => apiWithAuth.post("admin/corehr/award/create", formData).then(getApiResponse).catch(getErrorResponse);
+export const fetchAwardTypes = () => apiWithAuth.post("admin/corehr/award/fetch_types").then(getApiResponse).catch(getErrorResponse);
+export const fetchAward = () => apiWithAuth.post("admin/corehr/award/fetch").then(getApiResponse).catch(getErrorResponse);
+export const fetchAllAward = () => apiWithAuth.post("admin/corehr/award/fetch_all").then(getApiResponse).catch(getErrorResponse);
+
+
+export const addTravel = (formData) => apiWithAuth.post("admin/corehr/travel/create", formData).then(getApiResponse).catch(getErrorResponse);
+export const fetchTravelTypes = () => apiWithAuth.post("admin/corehr/travel/fetch_types").then(getApiResponse).catch(getErrorResponse);
+export const fetchTravel = () => apiWithAuth.post("admin/corehr/travel/fetch").then(getApiResponse).catch(getErrorResponse);
+export const fetchAllTravel = () => apiWithAuth.post("admin/corehr/travel/fetch_all").then(getApiResponse).catch(getErrorResponse);
+
+
+export const addTransfer = (formData) => apiWithAuth.post("admin/corehr/transfer/create", formData).then(getApiResponse).catch(getErrorResponse);
+export const fetchTransfer = () => apiWithAuth.post("admin/corehr/transfer/fetch").then(getApiResponse).catch(getErrorResponse);
+export const fetchAllTransfer = () => apiWithAuth.post("admin/corehr/transfer/fetch_all").then(getApiResponse).catch(getErrorResponse);
+
+
+export const addResignation = (formData) => apiWithAuth.post("admin/corehr/resignation/create", formData).then(getApiResponse).catch(getErrorResponse);
+export const fetchResignation = () => apiWithAuth.post("admin/corehr/resignation/fetch").then(getApiResponse).catch(getErrorResponse);
+export const fetchAllResignation = () => apiWithAuth.post("admin/corehr/resignation/fetch_all").then(getApiResponse).catch(getErrorResponse);

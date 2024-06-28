@@ -11,9 +11,9 @@ function Banner() {
       <div className="absolute h-[700px] w-[700px] bg-hrms_green rounded-full -top-96 -right-72"></div>
       <div className="relative h-screen top-0 right-0 w-full bg-white backdrop-blur-3xl bg-opacity-30 sm:px-12">
         <div className='h-full'>
-          <div class="grid bg-gradient-to-b from-transparent p-4 to-white bg-opacity-20 backdrop-blur-2xl h-screen w-full items-center gap-5">
+          <div className="grid bg-gradient-to-b from-transparent p-4 to-white bg-opacity-20 backdrop-blur-2xl h-screen w-full items-center gap-5">
             <div className='max-w-7xl mx-auto grid gap-5 md:grid-cols-2'>
-              <div class="space-y-5 sm:pl-12 text-sm">
+              <div className="space-y-5 sm:pl-12 text-sm">
                 <Image alt='#' src={coatOfArms} className='w-24 xl:hidden' />
                 <div className="text-hrms_dark_green flex text-2xl">
                   <Image alt='#' src={union} /> Welcome To
@@ -23,11 +23,11 @@ function Banner() {
                 </div>
                 <div className="relative top-4">
                   <Link href="#" className='px-8 inline-flex items-center gap-2 font-bold rounded-md py-4 bg-hrms_dark_green text-white'>
-                    <i class="ri-play-circle-fill text-xl"></i> Learn More
+                    <i className="ri-play-circle-fill text-xl"></i> Learn More
                   </Link>
                 </div>
               </div>
-              <div class="min-h-72 hidden xl:flex items-center justify-center">
+              <div className="min-h-72 hidden xl:flex items-center justify-center">
                 <Image alt='#' src={coatOfArms} />
               </div>
             </div>

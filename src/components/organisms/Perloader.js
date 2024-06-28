@@ -7,13 +7,13 @@ function Perloader() {
     <div className='flex items-center justify-center top-0 right-0 z-50 w-screen h-screen fixed'>
       <div><Image src={logo} className="h-9 w-32" alt="Logo" /></div>
       <div>
-        <div class="lds-ellipsis">
+        <div className="lds-ellipsis">
           <div></div>
           <div></div>
           <div></div>
           <div></div>
         </div>
-        {/* <div class="spinner">
+        {/* <div className="spinner">
           <div></div>
           <div></div>
           <div></div>

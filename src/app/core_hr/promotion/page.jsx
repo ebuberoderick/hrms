@@ -1,26 +1,41 @@
 "use client"
 import AppLayout from '@/components/layouts/appLayout'
 import AppInput from '@/components/organisms/AppInput'
+import AppPagination from '@/components/organisms/AppPagination'
 import Modal from '@/components/organisms/Modal'
 import serialize from '@/hooks/Serialize'
-import { companyEnum } from '@/utility/constants'
-import React, { useState } from 'react'
+import { addPromotion, fetchPromotion } from '@/services/authService'
+import { AllEmployees, companies, companyEnum } from '@/utility/constants'
+import React, { useEffect, useState } from 'react'
 
 function Page() {
   const [showModal, setShowModal] = useState(false)
+  const [promtn, setpromo] = useState([])
+  const [compnis, setCompnis] = useState([])
+  const [empl, setAllEmpl] = useState([])
 
 
-  const add = (e) => {
+  const add = async (e) => {
     e.preventDefault();
     const formData = serialize(e.target);
-    // const {status,data} = 
-    console.log(formData);
+    const { status, data } = await addPromotion(formData).catch(err => console.log(err))
+    console.log(data);
   }
 
-  const fetch = () => {
-
+  const fetch = async () => {
+    const { status, data } = await fetchPromotion().catch(err => console.log(err))
+    if (status) {
+      setpromo(data?.data[0]);
+    }
   }
 
+
+
+  useEffect(() => {
+    fetch()
+    companies().then(res => setCompnis([...res]))
+    AllEmployees().then(res => setAllEmpl([...res]))
+  }, [])
 
   return (
     <AppLayout>
@@ -29,10 +44,8 @@ function Page() {
           <form onSubmit={(e) => add(e)} className="space-y-4">
             <div className="text-hrms_green text-xl">Add Promotion</div>
             <div className="grid grid-cols-2 gap-4">
-              <AppInput name="company" type={"select"} required label="Company"
-                options={[...companyEnum]}
-              />
-              <AppInput name="employee" type={"email"} required label="Employee Email" />
+              <AppInput name="company_id" type={"select"} required label="Company" options={[...compnis]} />
+              <AppInput name="employee_id" type={"select"} required label="Employee Email" options={[...empl]} />
               <AppInput name="promotion_title" type={"text"} required label="Promotion Ttile" />
               <AppInput name="promotion_date" type={"date"} required label="Promotion Date" />
             </div>
@@ -76,32 +89,40 @@ function Page() {
                 <th className="hidden sm:table-cell">Date</th>
                 <th className="w-20">Action</th>
               </tr>
-              <tr>
-                <td className="flex items-center gap-3 pl-5 py-2">
-                  <div className="w-9 relative">
-                    <div className=""><AppInput onChange={(e) => selectAll(e)} type="checkbox" name="employee" /></div>
-                  </div>
-                  <div className="flex-grow gap-2 flex">
-                    Goodness John
-                  </div>
-                </td>
-                <td className="hidden lg:table-cell">
-                  <div className="font-semibold">HR1</div>
-                </td>
-                <td className="hidden lg:table-cell">
-                  <div className="">Senior Executive 1</div>
-                </td>
-                <td className="hidden lg:table-cell">
-                  <div className="">16/05/2024 - 09:24</div>
-                </td>
-                <td>
-                  <div className="text-xl flex gap-1">
-                    <div className="text-hrms_green p-1 cursor-pointer"><i className="ri-edit-2-line"></i></div>
-                    <div className="text-danger p-1 cursor-pointer"><i className="ri-delete-bin-6-line"></i></div>
-                  </div>
-                </td>
-              </tr>
+              {
+                promtn?.data?.map((list, i) => (
+                  <tr key={i}>
+                    <td className="flex items-center gap-3 pl-5 py-2">
+                      <div className="w-9 relative">
+                        <div className=""><AppInput onChange={(e) => selectAll(e)} type="checkbox" name="employee" /></div>
+                      </div>
+                      <div className="flex-grow gap-2 flex">
+                        Goodness John
+                      </div>
+                    </td>
+                    <td className="hidden lg:table-cell">
+                      <div className="font-semibold">HR1</div>
+                    </td>
+                    <td className="hidden lg:table-cell">
+                      <div className="">Senior Executive 1</div>
+                    </td>
+                    <td className="hidden lg:table-cell">
+                      <div className="">16/05/2024 - 09:24</div>
+                    </td>
+                    <td>
+                      <div className="text-xl flex gap-1">
+                        <div className="text-hrms_green p-1 cursor-pointer"><i className="ri-edit-2-line"></i></div>
+                        <div className="text-danger p-1 cursor-pointer"><i className="ri-delete-bin-6-line"></i></div>
+                      </div>
+                    </td>
+                  </tr>
+                ))
+              }
+
             </table>
+          </div>
+          <div className="">
+            <AppPagination totalRecords={promtn} newData={(e) => setpromo(e)} />
           </div>
         </div>
       </div>

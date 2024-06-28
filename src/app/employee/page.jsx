@@ -314,6 +314,7 @@ const Page = () => {
                           <AppInput name="employee_type" type="select" required label="Employee Type" options={[
                             { value: "Uniformed", label: "Uniformed" },
                             { value: "Formal", label: "Formal" }]} />
+                          <AppInput name="staff_id" type="text" required label="Staff ID" />
                         </div>
                       </div>
                       <div>
