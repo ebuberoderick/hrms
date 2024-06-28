@@ -1,3 +1,4 @@
+import { addData } from '@/Store/reducers/UsersReducer'
 import AppInput from '@/components/organisms/AppInput'
 import Modal from '@/components/organisms/Modal'
 import serialize from '@/hooks/Serialize'
@@ -6,6 +7,7 @@ import axios from 'axios'
 import Image from 'next/image'
 import React, { useState } from 'react'
 import { BsShieldCheck } from 'react-icons/bs'
+import { useDispatch } from 'react-redux'
 
 function BioInfo({ Vbio, user }) {
     const [showModal, setShowModal] = useState(false)
@@ -15,6 +17,7 @@ function BioInfo({ Vbio, user }) {
     const perset_key = process.env.NEXT_PUBLIC_API_CLOUDINARY_PERSET_KEY
     const cloud_name = process.env.NEXT_PUBLIC_API_CLOUDINARY_CLOUD_NAME
 
+    const dispatch = useDispatch()
 
     const uploadImg = async (e) => {
         const file = e.target.files[0]

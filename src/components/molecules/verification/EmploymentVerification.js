@@ -1,14 +1,18 @@
 "use client"
+import { addData } from '@/Store/reducers/UsersReducer'
 import AppInput from '@/components/organisms/AppInput'
 import Modal from '@/components/organisms/Modal'
+import serialize from '@/hooks/Serialize'
+import { updateEmployeeInfo } from '@/services/authService'
 import React, { useState } from 'react'
 import { BsShieldCheck } from 'react-icons/bs'
+import { useDispatch } from 'react-redux'
 
 function EmploymentVerification({ Vemployment, user }) {
     const [showModal, setShowModal] = useState(false)
     const [errMsg, setErrorMsg] = useState("")
     const [proccessing, setProcessing] = useState(false)
-
+    const dispatch = useDispatch()
 
     const updateInfo = async (e) => {
         e.preventDefault();

@@ -1,10 +1,12 @@
 "use client"
+import { addData } from '@/Store/reducers/UsersReducer'
 import AppInput from '@/components/organisms/AppInput'
 import Modal from '@/components/organisms/Modal'
 import serialize from '@/hooks/Serialize'
 import { updateBVN, verifyBVN } from '@/services/authService'
 import React, { useState } from 'react'
 import { BsShieldCheck } from 'react-icons/bs'
+import { useDispatch } from 'react-redux'
 
 function BvnVerification({ user, Vbvn }) {
     const [Bvnform, setBvnForm] = useState(false)
@@ -12,7 +14,7 @@ function BvnVerification({ user, Vbvn }) {
     const [errMsg, setErrMsg] = useState("")
     const [proccessing, setProcessing] = useState(false)
     const [showModal, setShowModal] = useState(false)
-
+    const dispatch = useDispatch()
 
 
     const confimation = (f, l, m) => {
@@ -66,7 +68,17 @@ function BvnVerification({ user, Vbvn }) {
     const saveBVN = async (e) => {
         e.preventDefault()
         const formData = serialize(e.target);
+        setProcessing(true)
         const { status, data } = await updateBVN(formData).catch(err => console.log(err))
+        if (status) {
+            let x = {}
+            x.user = data.data.user
+            x.employee = data.data.user.employee
+            x.bearer_token = user.bearer_token
+            dispatch(addData(x));
+            setShowModal(false)
+        }
+        setProcessing(false)
     }
 
 
@@ -96,10 +108,10 @@ function BvnVerification({ user, Vbvn }) {
                                         </div>
                                         <div>
                                             <div className='font-bold'>Fullname</div>
-                                            <div className='text-gray-400'>{BVNData.lastname} {BVNData.firstname} {BVNData.middlename}</div>
+                                            <div className='text-gray-400 uppercase'>{BVNData.lastname} {BVNData.firstname} {BVNData.middlename}</div>
                                         </div>
                                     </div>
-                                    <input  name="bvn" value={BVNData.full_details.bvn} type="hidden" />
+                                    <input name="bvn" value={BVNData.full_details.bvn} type="hidden" />
                                 </div>
                                 <div className='text-danger text-xs'>{errMsg}</div>
                                 <div className='flex gap-5'>

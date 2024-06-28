@@ -76,7 +76,7 @@ function AdminDashboard() {
         </div>
       </div>
       <div className="grid xl:grid-cols-2 gap-4">
-        <div className="bg-white p-4 py-7 shadow-sm rounded-lg space-y-4">
+        <div className="bg-white min-h-96 md:min-h-max p-4 py-7 shadow-sm rounded-lg space-y-4">
           <div className="text-lg font-semibold">Employee Designation</div>
           <BarChart />
         </div>
