@@ -7,7 +7,7 @@ import { PiHandDeposit, PiHashStraightLight, PiPrinter } from "react-icons/pi";
 function TopCards() {
     return (
         <div>
-            <div className="grid grid-cols-6 gap-3">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3">
                 <div className="bg-hrms_yellow space-y-1 rounded-md bg-opacity-30 px-4 py-2">
                     <div className="text-2xl text-[#c4b428de]">
                         <FiUsers />
@@ -18,8 +18,6 @@ function TopCards() {
                     </div>
                     <div className="text-xs">Total Employees</div>
                 </div>
-
-
 
                 <div className="bg-hrms_green space-y-1 rounded-md bg-opacity-10 px-4 py-2">
                     <div className="text-2xl text-[#5ad44fbd]">

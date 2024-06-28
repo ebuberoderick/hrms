@@ -27,7 +27,6 @@ function Holidays() {
                             <button className="bg-hrms_green w-full text-white rounded-lg py-2 text-center cursor-pointer">Create</button>
                         </div>
                     </form>
-
                 </div>
             </Modal>
             <div onClick={() => setOpenModal(true)} className="border gap-2 rounded-lg p-3 flex items-center hover:bg-hrms_blue hover:bg-opacity-10">
