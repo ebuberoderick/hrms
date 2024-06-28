@@ -5,19 +5,20 @@ import AppLink from "../organisms/AppLink";
 
 function AdminSideNav() {
   return (
-    <div className="fixed bg-white select-none overflow-y-auto flex flex-col h-screen shadow-md w-64 gap-y-6 py-8 px-1">
+    <div className="fixed bg-white select-none overflow-y-auto flex flex-col h-screen shadow-md w-64 gap-y-6 py-8">
       <div className="text-2xl px-1">
-        <Image src={logo} className="h-9 w-32" alt="Logo" />
+        {/* <Image src={logo} className="h-9 w-32" alt="Logo" /> */}
       </div>
-      <div className="flex-grow gap-y-4 flex flex-col gap-2">
+      <div className="flex-grow gap-y-4 py-5 flex flex-col gap-2">
         <div>
           <AppLink
             text={"dashboard"}
             icon={<i className="ri-layout-grid-fill"></i>}
           />
         </div>
-        <div>
-          <div className="font-[500] text-sm text-[#000000] pl-3">SYSTEM ADMINISTRATION</div>
+        <div className="divition"></div>
+        <div className="space-y-2">
+          <div className="font-[500] text-xs text-gray-500 capitalize pl-3">System Admininstration</div>
           <div>
             <AppLink
               text={"user"}
@@ -44,8 +45,9 @@ function AdminSideNav() {
             />
           </div>
         </div>
-        <div>
-          <div className="font-[500] text-sm text-[#000000] pl-3">PERSONNNEL MANAGEMENT</div>
+        <div className="divition"></div>
+        <div className="space-y-2">
+          <div className="font-[500] text-xs text-gray-500 capitalize pl-3">Personnel Management</div>
           <div>
             <AppLink
               text={"core HR"}
@@ -122,8 +124,9 @@ function AdminSideNav() {
             <AppLink text={"Training"} icon={<i className="ri-trophy-line"></i>} />
           </div>
         </div>
-        <div>
-          <div className="font-[500] text-sm text-[#000000] pl-3">PAYROLL AND COMPENSATION </div>
+        <div className="divition"></div>
+        <div className="space-y-2">
+          <div className="font-[500] text-xs text-gray-500 capitalize pl-3">Payroll & Compensation</div>
           <div>
             <AppLink
               text={"payroll"}
@@ -131,9 +134,10 @@ function AdminSideNav() {
             />
           </div>
         </div>
-        <div>
-          <div className="font-[500] text-sm text-[#000000] pl-3">
-            FINANCE
+        <div className="divition"></div>
+        <div className="space-y-2">
+          <div className="font-[500] text-xs text-gray-500 capitalize pl-3">
+            IPRMS
           </div>
           <div>
             <AppLink

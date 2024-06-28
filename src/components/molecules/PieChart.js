@@ -33,7 +33,7 @@ function PieChart({ labels, series }) {
         enabled: false,
       },
       legend: {
-        position: "top",
+        position: "bottom",
       },
       labels,
     },
@@ -46,7 +46,7 @@ function PieChart({ labels, series }) {
         <Chart
           options={chart.options}
           series={chart.series}
-          type="pie"
+          type="donut"
           width="100%"
           height=""
         />

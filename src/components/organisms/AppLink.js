@@ -35,9 +35,9 @@ function AppLink({ text, icon, subMenu }) {
       {subMenu && subMenu.length > 0 ? (
         <div
           onClick={() => openSubMenu()}
-          className={`flex items-center gap-3 py-1 rounded-r-full text-gray-500 cursor-pointer px-3 ${active.replaceAll(" ", "_").toLowerCase() === text.replaceAll(" ", "_").toLowerCase()
-              ? "text-white bg-hrms_green rounded-r-full"
-              : "hover:bg-hrms_green hover:bg-opacity-70 hover:text-white"
+          className={`flex items-center gap-3 py-1 cursor-pointer px-3 ${active.replaceAll(" ", "_").toLowerCase() === text.replaceAll(" ", "_").toLowerCase()
+              ? "text-white bg-hrms_dark_green"
+              : "hover:bg-hrms_dark_green hover:bg-opacity-70 hover:text-white"
             }`}
         >
           <div className="text-sm">{icon}</div>
@@ -56,9 +56,9 @@ function AppLink({ text, icon, subMenu }) {
           href={`/${ text.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x")}`}
         >
           <div
-            className={`flex items-center gap-3 py-2 rounded-r-full text-gray-500 cursor-pointer px-3 ${active.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x") === text.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x")
-                ? "text-white bg-hrms_green rounded-r-full"
-                : "hover:bg-hrms_green hover:bg-opacity-70 hover:text-white"
+            className={`flex items-center gap-3 py-2 cursor-pointer px-3 ${active.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x") === text.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x")
+                ? "text-white bg-hrms_dark_green"
+                : "hover:bg-hrms_dark_green hover:bg-opacity-70 hover:text-white"
               }`}
           >
             <div className="text-sm">{icon}</div>
@@ -74,9 +74,9 @@ function AppLink({ text, icon, subMenu }) {
                 <div>
                   <div
                     onClick={() => toggleSibling(subText.name)}
-                    className={`flex py-1 items-center gap-3 text-gray-500 cursor-pointer ${activeSub.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x") === subText.name.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x")
-                        ? "text-bg-hrms_green font-bold"
-                        : "hover:text-sm hover:font-bold hover:text-hrms_green"
+                    className={`flex py-1 items-center gap-3 cursor-pointer ${activeSub.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x") === subText.name.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x")
+                        ? "text-bg-hrms_dark_green font-bold"
+                        : "hover:text-sm hover:font-bold hover:text-hrms_greenbg-hrms_dark_green"
                       }`}
                   >
                     <div className="capitalize flex-grow">{subText.name}</div>
@@ -88,7 +88,7 @@ function AppLink({ text, icon, subMenu }) {
                     {subText.option.map((e, i) => (
                       <div key={e + i}>
                         <Link href={`/${text.toLowerCase()}/${subText.name.toLowerCase()}/${e}`}>
-                          <div className="hover:text-bg-hrms_green py-1">
+                          <div className="hover:text-bg-hrms_dark_green py-1">
                             {e}
                           </div>
                         </Link>
@@ -105,9 +105,9 @@ function AppLink({ text, icon, subMenu }) {
                       .replaceAll("&", "x")}`}
                 >
                   <div
-                    className={`flex py-2 items-center gap-3 text-gray-500 ${activeSub.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x") === subText.name.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x")
-                        ? "text-hrms_green font-bold"
-                        : "hover:text-sm hover:font-bold hover:text-hrms_green"
+                    className={`flex py-2 items-center gap-3 ${activeSub.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x") === subText.name.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x")
+                        ? "text-hrms_greenbg-hrms_dark_green font-bold"
+                        : "hover:text-sm hover:font-bold hover:text-hrms_greenbg-hrms_dark_green"
                       }`}
                   >
                     <div className="capitalize flex-grow">{subText.name}</div>

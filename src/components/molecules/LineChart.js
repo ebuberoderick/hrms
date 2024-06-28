@@ -17,9 +17,9 @@ function LineChart() {
       fill: {
         type: "gradient",
         gradient: {
-          shadeIntensity: 1,
+          shadeIntensity: 9,
           inverseColors: false,
-          opacityFrom: 0.5,
+          opacityFrom: 0,
           opacityTo: 0,
           stops: [30, 100],
         },

@@ -87,3 +87,9 @@
   }
 }
 
+.divition{
+  height: 2px;
+  margin: 0px 10px;
+  background: radial-gradient(circle, rgb(211, 211, 211) 0%, rgba(209, 211, 213, 0.178) 68%);
+  border-radius: 90%;
+}
