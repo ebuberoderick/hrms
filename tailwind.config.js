@@ -17,7 +17,9 @@ module.exports = {
     },
     colors: {
       hrms_green: "#008000",
+      hrms_light_green: "#E2FFE2",
       hrms_dark_green: "#005300",
+      hrms_lighter_green: "#00D639",
       hrms_blue: "#112255",
       hrms_yellow: "#FFFF47",
       white: "#FFFFFF",

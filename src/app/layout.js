@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
       <Head>
         <link rel="shortcut icon" href={icon} />
       </Head>
-      <body className={inter.className}>
+      <body className={`overflow-x-hidden ${inter.className}`}>
         <Provider store={store}>
           <PersistGate persistor={persistor} loading={<Perloader />}>
             <LocalizationProvider dateAdapter={AdapterDayjs}>

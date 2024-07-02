@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import bg from "@assets/images/bg.png";
 import logo from "@assets/images/favicon.png";
 import React from "react";
 import { useSelector } from "react-redux";

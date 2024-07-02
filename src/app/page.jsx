@@ -1,177 +1,176 @@
-import Banner from '@/components/Banner'
-import NavBar from '@/components/molecules/NavBar'
 import Image from 'next/image'
 import React from 'react'
-import logowhite from "@assets/images/FiscusBookWhite.png"
-import img1 from "@assets/images/img1.png"
-import { TiWarning } from "react-icons/ti"
-import { BiSolidBullseye } from "react-icons/bi";
-import { FaFacebookSquare, FaLinkedin } from "react-icons/fa";
-import { FaSquareXTwitter } from "react-icons/fa6";
-import img2 from "@assets/images/img2.png"
-import img3 from "@assets/images/img3.png"
-import Link from 'next/link'
+import bannerImg from "@assets/images/imagecontainer.png"
+import vector1 from "@assets/images/Rectangle12.png"
+import vector2 from "@assets/images/Rectangle12x.png"
+import Frame226 from "@assets/images/Frame226.png"
+import Frame from "@assets/images/Frame.png"
+import lineImg from "@assets/images/Vector29.png"
+import WebLayout from '@/components/layouts/webLayout'
+import { FiMinus } from 'react-icons/fi'
+import { TbSettingsCog } from 'react-icons/tb'
+import { FaBullseye } from 'react-icons/fa'
+import { CgArrowsExpandDownLeft } from "react-icons/cg";
+import { PiChartBarFill, PiSpeedometerBold } from 'react-icons/pi'
+import { RiSignalTowerFill } from 'react-icons/ri'
 
 function Page() {
-  const year = new Date().getFullYear()
   return (
-    <div>
-      <NavBar />
-      <Banner />
-      <div className="overflow-hidden relative">
-        <div className="absolute h-[700px] w-[700px] -right-32 top-80 bg-hrms_green rounded-full"></div>
-        <div className="absolute h-[700px] w-[700px] -left-32 top-[1000px] bg-hrms_green rounded-full"></div>
-        <div className="pt-20 pb-44 relative h-full top-0 right-0 w-full bg-white backdrop-blur-3xl bg-opacity-85">
-          <div className="max-w-7xl p-4 sm:py-32 mx-auto space-y-28">
-            <div className="grid gap-5 md:grid-cols-2">
-              <div className="space-y-3 text-sm md:order-1">
-                <div className="text-shadow shadow-hrms_green font-extrabold text-4xl">
-                  This portal allows you to securely
-                </div>
-                <div className="space-y-6">
-                  <div className="">
-                    <div className="flex items-center">
-                      <div className="bg-hrms_green bg-opacity-10 rounded-md font-bold text-hrms_green px-3 py-1">Enroll</div>
-                      <div className="bg-hrms_green bg-opacity-10 flex-grow rounded-md shadow-sm pt-[2px]"></div>
-                    </div>
-                    <div className="pt-4 text-lg max-w-2xl">
-                      If you are a new employee, you can register and submit your details for payroll processing.
-                    </div>
-                  </div>
-                  <div className="">
-                    <div className="flex items-center">
-                      <div className="bg-hrms_green bg-opacity-10 rounded-md font-bold text-hrms_green px-3 py-1">Verify</div>
-                      <div className="bg-hrms_green bg-opacity-10 flex-grow rounded-md shadow-sm pt-[2px]"></div>
-                    </div>
-                    <div className="pt-4 text-lg max-w-2xl">
-                      Update and confirm your existing information to ensure accurate salary payments.
-                    </div>
-                  </div>
-                </div>
-                <div className="relative top-4">
-                  <Link href="#" className='px-8 inline-flex items-center gap-2 font-bold rounded-md py-4 bg-hrms_dark_green text-white'>
-                    <i className="ri-play-circle-fill text-xl"></i> Learn More
-                  </Link>
-                </div>
-              </div>
-              <div className="min-h-72">
-                <Image alt='#' src={img1} />
-              </div>
+    <WebLayout>
+      <div className="bg-black overflow-hidden text-white">
+        <div className="sm:py-32 relative z-10 space-y-12">
+          <div className="h-full flex -z-10 items-center justify-center absolute top-0 right-0">
+            <div className="relative bottom-24 w-screen">
+              <Image src={lineImg} className="absolute left-0 w-full" />
             </div>
-            <div className="grid items-center gap-5 md:grid-cols-2">
-              <div className="space-y-5 text-sm">
-                <div className="text-shadow shadow-hrms_green font-extrabold text-4xl">
-                  Important Notice
-                </div>
-                <div className="text-lg">
-                  The information you provide on this portal is <span className='font-bold'>confidential</span> and will be used solely for government payroll purposes. Entering any false or misleading information may result in disciplinary action, including suspension of salary payments.
-                </div>
-                <div className="relative top-4">
-                  <Link href="#" className='px-8 inline-flex items-center gap-2 font-bold rounded-md py-4 bg-hrms_dark_green text-white'>
-                    <i className="ri-play-circle-fill text-xl"></i> Learn More
-                  </Link>
-                </div>
-              </div>
-              <div className="min-h-72">
-                <Image alt='#' src={img2} />
-              </div>
+          </div>
+          <div className="space-y-16">
+            <div className="space-y-4 px-3 sm:space-y-8">
+              <div className="sm:text-3xl font-bold max-w-64 sm:max-w-md leading-relaxed mx-auto text-center">Your All-in-One ERP Solution Built for the Public Sector</div>
+              <div className="text-[10px] sm:text-xs text-center">Fiscusbook provides the technology and human support to help your business flow.</div>
             </div>
-            <div className="grid gap-5 md:grid-cols-2">
-              <div className="space-y-3 text-sm md:order-1">
-                <div className="text-shadow shadow-hrms_green font-extrabold text-4xl">
-                  Unauthorized Access
-                </div>
-                <div className="space-y-5">
-                  <div className="font-bold text-lg">
-                    Please be vigilant and take steps to protect your login credentials. This portal uses strong security measures, but it is important to remember:
-                  </div>
-                  <div className="space-y-5">
-                    <div className="flex items-start gap-4 text-lg">
-                      <div className="text-hrms_green text-2xl"><i className="ri-share-fill"></i></div>
-                      <div className="">Never share your login information with anyone</div>
-                    </div>
-                    <div className="flex items-start gap-4 text-lg">
-                      <div className="text-hrms_green text-2xl"><TiWarning /></div>
-                      <div className="">Be cautious of phishing attempts – emails or messages that appear to be from IPPIS but are trying to steal your login details.</div>
-                    </div>
-                    <div className="flex items-start gap-4 text-lg">
-                      <div className="text-hrms_green text-2xl"><BiSolidBullseye /></div>
-                      <div className="">Report any suspicious activity to the IPPIS Helpdesk immediately.</div>
-                    </div>
-                  </div>
-                </div>
-                <div className="relative top-4">
-                  <Link href="#" className='px-8 inline-flex items-center gap-2 font-bold rounded-md py-4 bg-hrms_dark_green text-white'>
-                    <i className="ri-play-circle-fill text-xl"></i> Learn More
-                  </Link>
-                </div>
-              </div>
-              <div className="min-h-72">
-                <Image alt='#' src={img3} />
-              </div>
-            </div>
-            <div className="shadow-md overflow-hidden border relative rounded-lg">
-              <div className="absolute h-[700px] w-[700px] bg-hrms_green rounded-full -bottom-96 -right-72"></div>
-              <div className="absolute h-[700px] w-[700px] bg-hrms_green rounded-full -top-96 -left-40"></div>
-              <div className="pt-20 pb-44 relative h-full top-0 right-0 w-full bg-white backdrop-blur-3xl bg-opacity-85">
-                <div className="max-w-3xl space-y-9 mx-auto text-center">
-                  <div className="text-xl px-3 md:text-4xl font-bold">
-                    Want To Know More About government enrolment and verification portal?
-                  </div>
-                  <div className="text-sm mx-auto max-w-md">
-                    We&apos;d love to enlighten you more about how FiscusBook can support your business&apos;s HR need.
-                  </div>
-                  <div className="relative top-4">
-                    <Link href="#" className='px-8 inline-flex items-center gap-2 font-bold rounded-md py-4 bg-hrms_dark_green text-white'>
-                      <i className="ri-play-circle-fill text-xl"></i> Book A Section
-                    </Link>
-                  </div>
-                </div>
-                <div className="sm:absolute relative top-16 sm:top-auto w-96 border-t border-r shadow-md rounded-tr-lg px-6 py-8">
-                  <div className="flex">
-                    <div className="flex-grow">Announcement</div>
-                    <div className="-space-x-3">
-                      <div className="w-8 inline-block h-8 bg-gray-100 rounded-full"></div>
-                      <div className="w-8 inline-block h-8 bg-gray-200 rounded-full"></div>
-                    </div>
-                  </div>
-                  <div className="flex">
-                    <div className="flex-grow">Onboarding new member</div>
-                    <div className="-space-x-3">
-                      <div className="w-8 inline-block h-8 bg-gray-100 rounded-full"></div>
-                      <div className="w-8 inline-block h-8 bg-gray-200 rounded-full"></div>
-                      <div className="w-8 inline-block h-8 bg-gray-300 rounded-full"></div>
-                    </div>
-                  </div>
-                  <div className="flex">
-                    <div className="flex-grow">Monthly report analytics</div>
-                    <div className="-space-x-3">
-                      <div className="w-8 inline-block h-8 bg-gray-100 rounded-full"></div>
-                      <div className="w-8 inline-block h-8 bg-gray-200 rounded-full"></div>
-                      <div className="w-8 inline-block h-8 bg-gray-300 rounded-full"></div>
-                    </div>
-                  </div>
+            <div className="max-w-4xl relative overflow-hidden mx-auto">
+              <Image src={bannerImg} />
+              <div className="absolute top-0 right-0 flex items-end px-12 text-xs py-8 z-50 h-full w-full">
+                <div className="grid sm: grid-cols-2 xl:grid-cols-4 border border-white rounded-3xl md:rounded-full p-1 bg-black">
+                  <div className="px-8 py-2 bg-hrms_lighter_green rounded-full text-black">Financial Management</div>
+                  <div className="px-8 py-2">Human Resources</div>
+                  <div className="px-8 py-2">Asset Management</div>
+                  <div className="px-8 py-2">Localization</div>
                 </div>
               </div>
             </div>
           </div>
+          <div className="max-w-7xl px-5 mx-auto rounded-lg bg-gray-400 p-7">
+            <div className="bg-black grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 p-4 rounded-md">
+              <div className="p-4 bg-gray-600"></div>
+              <div className="p-4 bg-gray-600"></div>
+              <div className="p-4 bg-gray-600"></div>
+              <div className="p-4 bg-gray-600"></div>
+              <div className="p-4 bg-gray-600"></div>
+              <div className="p-4 bg-gray-600"></div>
+            </div>
+          </div>
         </div>
-      </div>
+        <div className="">
+          <div className="flex pt-7 pb-16 justify-center gap-3 items-center">
+            <FiMinus className="text-hrms_green text-4xl" />
+            <div className="sm:text-4xl">About Fiscusbook</div>
+            <FiMinus className="text-hrms_green text-4xl" />
+          </div>
+        </div>
+        <div className="bg-gray-900 py-16">
+          <div className="max-w-7xl px-4 md:space-y-32 mx-auto">
+            <div class="mx-auto space-y-3">
+              <div class="grid gap-16 items-center md:grid-cols-2">
+                <div class="space-y-3 text-sm">
+                  <div className="space-y-3">
+                    <div className="text-2xl font-bold max-w-sm">FiscusBook</div>
+                    <div className="text-[14.5px] leading-7">FiscusBook, inspired by the original meaning of "FISCUS" – the public treasury – is a comprehensive Enterprise Resource Planning (ERP) solution designed specifically for the needs of modern public sector organizations.</div>
+                  </div>
+                  <div className="inline-flex bg-black px-4 p-2 rounded-full">
+                    Discover More Of Fiscusbook
+                  </div>
+                </div>
+                <div class="min-h-96">
+                  <Image src={vector1} className='w-full h-full' />
+                </div>
+              </div>
+            </div>
 
-      <div className="divide-y bg-gradient-to-b px-4 from-hrms_green via-hrms_dark_green to-hrms_dark_green text-white divide-gray-300 *:max-w-7xl *:mx-auto ">
-        <div className="py-16 space-y-6 sm:space-y-0 sm:flex items-center">
-          <div className="flex-grow text-lg flex items-center gap-4">
-            Powered By: <Image alt='#' src={logowhite} className='w-32' />
-          </div>
-          <div className="text-3xl flex gap-4">
-            <FaLinkedin />
-            <FaFacebookSquare />
-            <FaSquareXTwitter />
+            <div class="mx-auto space-y-3">
+              <div class="grid gap-16 items-center md:grid-cols-2">
+                <div class="space-y-6 text-sm md:order-1">
+                  <div className="space-y-3">
+                    <div className="text-2xl font-bold max-w-sm">Streamline Operations and Gain Financial Control</div>
+                    <div className="text-[14.5px] leading-7">FiscusBook empowers you to manage every aspect of your organization&apos;s finances, human resources, and assets, all within a single, user-friendly platform. Our integrated suite offers a powerful combination of financial applications designed for the public sector:</div>
+                  </div>
+                  <div className="inline-flex bg-black px-4 p-2 rounded-full">
+                    Discover More Of Financial Control
+                  </div>
+                </div>
+                <div class="min-h-96">
+                  <Image src={vector2} className='w-full h-full' />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="text-center py-14">Copyright &copy; {year} FISCUSBOOK - All rights reserved.</div>
+        <div className="py-24 space-y-12">
+          <div className="space-y-2">
+            <div className="flex flex-col items-center">
+              <div className="sm:text-2xl font-bold">Unleash the Power of Integration</div>
+              <FiMinus className="text-hrms_green text-4xl" />
+            </div>
+            <div className="max-w-3xl px-6 text-[10px] md:text-sm text-center mx-auto">FiscusBook boasts a robust Open API, allowing seamless integration with your existing systems. This ensures data flows smoothly between your ERP and other critical applications, eliminating data silos and manual processes.</div>
+          </div>
+          <div className="max-w-3xl px-3 mx-auto">
+            <Image src={Frame226} className='' />
+          </div>
+        </div>
+        <div className="">
+          <div className="flex pt-7 pb-16 justify-center gap-3 items-center">
+            <FiMinus className="text-hrms_green text-4xl" />
+            <div className="sm:text-4xl">Benefits of FiscusBook</div>
+            <FiMinus className="text-hrms_green text-4xl" />
+          </div>
+        </div>
+        <div className="grid px-4 max-w-4xl pb-24 gap-x-3 gap-y-12 mx-auto sm:grid-cols-2 lg:grid-cols-3">
+          <div className="rounded-md flex flex-col space-y-5 p-4 border border-gray-400">
+            <div className="text-[100px] text-hrms_green flex-grow"><TbSettingsCog /></div>
+            <div className="bg-white space-y-2 text-black p-4 rounded-md">
+              <div className="font-bold">Enhanced Efficiency</div>
+              <div className="text-xs">Automate manual tasks, streamline workflows, and save valuable time and resources.</div>
+            </div>
+          </div>
+          <div className="rounded-md flex flex-col space-y-5 p-4 border border-gray-400">
+            <div className="text-[100px] text-hrms_green flex-grow"><FaBullseye /></div>
+            <div className="bg-white space-y-2 text-black p-4 rounded-md">
+              <div className="font-bold">Improved Accuracy</div>
+              <div className="text-xs">Eliminate data entry errors and ensure consistent financial information across all departments.</div>
+            </div>
+          </div>
+          <div className="rounded-md flex flex-col space-y-5 p-4 border border-gray-400">
+            <div className="text-[100px] text-hrms_green flex-grow"><RiSignalTowerFill /></div>
+            <div className="bg-white space-y-2 text-black p-4 rounded-md">
+              <div className="font-bold">Real-Time Insights</div>
+              <div className="text-xs">Gain immediate access to critical financial data for informed decision-making.</div>
+            </div>
+          </div>
+          <div className="rounded-md flex flex-col space-y-5 p-4 border border-gray-400">
+            <div className="text-[100px] text-hrms_green flex-grow"><PiChartBarFill /></div>
+            <div className="bg-white space-y-2 text-black p-4 rounded-md">
+              <div className="font-bold">Increased Control</div>
+              <div className="text-xs">Strengthen financial controls and ensure compliance with regulations.</div>
+            </div>
+          </div>
+          <div className="rounded-md flex flex-col space-y-5 p-4 border border-gray-400">
+            <div className="text-[100px] text-hrms_green flex-grow"><CgArrowsExpandDownLeft /></div>
+            <div className="bg-white space-y-2 text-black p-4 rounded-md">
+              <div className="font-bold">Scalability</div>
+              <div className="text-xs">FiscusBook is designed to grow with your business, accommodating your evolving needs.</div>
+            </div>
+          </div>
+          <div className="rounded-md flex flex-col space-y-5 p-4 border border-gray-400">
+            <div className="text-[100px] text-hrms_green flex-grow"><PiSpeedometerBold /></div>
+            <div className="bg-white space-y-2 text-black p-4 rounded-md">
+              <div className="font-bold">Simplified Operations</div>
+              <div className="text-xs">Manage all aspects of      your organization from a single platform, fostering a collaborative work      environment.</div>
+            </div>
+          </div>
+        </div>
+        <div className="pb-24 px-4">
+          <div className="h-96 overflow-hidden relative max-w-7xl mx-auto">
+            <Image src={Frame} className='h-full w-full' />
+            <div className="absolute gap-5 flex items-center flex-col justify-center top-0 right-0 w-full h-full bg-black bg-opacity-70">
+              <div className="text-4xl text-center">Get Started with FiscusBook Today!</div>
+              <div className="text-[10px] sm:text-sm max-w-3xl px-4 text-center">Request a free demo or contact our sales team to learn more about how FiscusBook can transform your financial management and empower your business for success.</div>
+              <div className="bg-hrms_lighter_green text-xs px-4 py-2 rounded-full text-black">Request A Free Demo</div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </WebLayout>
   )
 }
 
