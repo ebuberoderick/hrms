@@ -66,7 +66,7 @@ function Page() {
                 <div class="space-y-3 text-sm">
                   <div className="space-y-3">
                     <div className="text-2xl font-bold max-w-sm">FiscusBook</div>
-                    <div className="text-[14.5px] leading-7">FiscusBook, inspired by the original meaning of "FISCUS" – the public treasury – is a comprehensive Enterprise Resource Planning (ERP) solution designed specifically for the needs of modern public sector organizations.</div>
+                    <div className="text-[14.5px] leading-7">FiscusBook, inspired by the original meaning of &ldquo;FISCUS&ldquo; – the public treasury – is a comprehensive Enterprise Resource Planning (ERP) solution designed specifically for the needs of modern public sector organizations.</div>
                   </div>
                   <div className="inline-flex bg-black px-4 p-2 rounded-full">
                     Discover More Of Fiscusbook
