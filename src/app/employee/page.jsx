@@ -21,7 +21,7 @@ const Page = () => {
   const [activeModal, setActiveModal] = useState("")
   const [importModal, setImportModal] = useState(false)
   const [employee, setEmployee] = useState([])
-
+const [proccessingAdd,setProccessingAdd] = useState(false)
 
 
 
@@ -93,6 +93,7 @@ const Page = () => {
   const addEmployee = async (e) => {
     e.preventDefault();
     const formData = serialize(e.target);
+    setProccessingAdd(true)
     const { status, data } = await addEmploye(formData).catch(err => console.log(err))
     if (status) {
       await fetchEmployees()
@@ -101,6 +102,7 @@ const Page = () => {
       setAlertData(data)
       setBtn(false)
     }
+    setProccessingAdd(false)
   }
 
 
@@ -318,7 +320,7 @@ const Page = () => {
                         </div>
                       </div>
                       <div>
-                        <button className="bg-hrms_green w-full text-white rounded-lg py-2 text-center cursor-pointer">Add Employee</button>
+                        <button disabled={proccessingAdd} className="bg-hrms_green disabled:bg-opacity-40 w-full text-white rounded-lg py-2 text-center cursor-pointer">{proccessingAdd ? "Adding Employee":"Add Employee"}</button>
                       </div>
                     </form>
                   </div>
