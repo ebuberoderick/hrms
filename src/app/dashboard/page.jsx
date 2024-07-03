@@ -9,9 +9,14 @@ function Page() {
   const userType = useSelector((state) => state?.User?.value?.user?.role);
 
   return (
-    <AppLayout>
-      {userType === "admin" ? <AdminDashboard /> : <EmployeeDashboard />}
-    </AppLayout>
+    <>
+      {userType === "admin" ? (
+        <AppLayout>
+          <AdminDashboard />
+        </AppLayout>
+      ) : (<EmployeeDashboard />)}
+    </>
+
   );
 }
 

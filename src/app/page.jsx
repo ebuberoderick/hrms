@@ -1,5 +1,6 @@
+"use client"
 import Image from 'next/image'
-import React from 'react'
+import React, { useEffect } from 'react'
 import bannerImg from "@assets/images/imagecontainer.png"
 import vector1 from "@assets/images/Rectangle12.png"
 import vector2 from "@assets/images/Rectangle12x.png"
@@ -13,8 +14,14 @@ import { FaBullseye } from 'react-icons/fa'
 import { CgArrowsExpandDownLeft } from "react-icons/cg";
 import { PiChartBarFill, PiSpeedometerBold } from 'react-icons/pi'
 import { RiSignalTowerFill } from 'react-icons/ri'
+import Aos from 'aos'
 
 function Page() {
+  // useEffect(() => {
+  //   Aos.init()
+  // }, [])
+  
+  
   return (
     <WebLayout>
       <div className="bg-black overflow-hidden text-white">
@@ -77,8 +84,8 @@ function Page() {
                 </div>
               </div>
             </div>
-
-            <div class="mx-auto space-y-3">
+            {/* lyam.tarin@floodouts.com */}
+            <div data-aos="fade-up" class="mx-auto space-y-3">
               <div class="grid gap-16 items-center md:grid-cols-2">
                 <div class="space-y-6 text-sm md:order-1">
                   <div className="space-y-3">

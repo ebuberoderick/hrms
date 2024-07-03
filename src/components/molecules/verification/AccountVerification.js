@@ -68,7 +68,7 @@ function AccountVerification({ user, VaccountNumber }) {
     return (
         <div className='flex-grow'>
             <div onClick={() => setShowModal(true)} className='w-full cursor-pointer px-4 py-8 rounded-md bg-hrms_green bg-opacity-10 relative'>
-                {VaccountNumber && <div className='absolute right-4 top-4 py-1 gap-1 px-5 rounded-md flex items-center bg-hrms_green bg-opacity-15 border-hrms_green border text-hrms_green text-[9px]'><BsShieldCheck /> Verified</div>}
+                {VaccountNumber ? <div className='absolute right-0 top-0 py-1 gap-1 px-5 rounded-sm flex items-center bg-hrms_light_green text-hrms_green text-[9px]'>Verified</div>:<div className='absolute right-0 top-0 py-2 gap-1 px-5 rounded-sm flex items-center text-danger text-[9px]'>Unverified</div>}
                 <div className='font-bold'>Verify Your Account Details</div>
                 <div className='text-xs'>You have to verify your Bank account Information</div>
             </div>
