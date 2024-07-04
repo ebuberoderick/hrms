@@ -11,6 +11,8 @@ import { persistStore } from 'redux-persist';
 import Perloader from "@/components/organisms/Perloader";
 import icon from "@assets/favicon.png"
 import Head from "next/head";
+import AOS from 'aos';
+import { useEffect } from "react";
 
 
 
@@ -18,6 +20,11 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({ children }) {
   let persistor = persistStore(store)
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Duration of animations
+    });
+  }, []);
   return (
     <html lang="en">
       <Head>

@@ -7,6 +7,7 @@ export function SignInAuth(data, dispatch) {
   let x = data?.data
   x.employee = data?.data.user.employee
   dispatch(addData(x));
+  sessionStorage['HRMS_JWT'] = data?.data?.bearer_token;
   Cookies.set('jwt', data?.data?.bearer_token)
 }
 
