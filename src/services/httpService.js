@@ -2,6 +2,8 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 export const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+export const TOKEN =  `Bearer ${Cookies.get("hrms_jwt")}`
+
 
 const timeoutConfig = {
   timeout: 30000,
@@ -12,6 +14,8 @@ export const apiWithOutAuth = axios.create({
   baseURL: API_BASE_URL,
   withCredentials: true,
   headers: {
+    'Cache-Control': 'no-cache',
+    'Pragma': 'no-cache',
     Accept: "application/json",
     "Content-Type": "application/json",
   },
@@ -21,12 +25,12 @@ export const apiWithOutAuth = axios.create({
 export const apiWithAuth = axios.create({
   baseURL: API_BASE_URL,
   withCredentials: true,
-  
   headers: {
-    Accept: "application/json",
     'Cache-Control': 'no-cache',
+    'Pragma': 'no-cache',
+    Accept: "application/json",
     "Content-Type": "application/json",
-    Authorization: `Bearer ${sessionStorage.HRMS_JWT}`,
+    Authorization: TOKEN,
   },
   ...timeoutConfig,
 });
@@ -39,15 +43,11 @@ export const getApiResponse = (data) => {
   };
 };
 
-export const getErrorResponse = async (error) => {
-  // if (error.response.status === 401) {
-  //   Cookies.remove('jwt')
-  // }
+export const getErrorResponse = (error) => {
+  // errors
   return {
     status: false,
     data: error?.response?.data,
   };
 };
-
-
 
