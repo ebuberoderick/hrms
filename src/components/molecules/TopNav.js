@@ -4,14 +4,14 @@ import logo from "@assets/images/authLogo.png";
 import avatar from "@assets/images/avatar/Leslie_Image.png";
 import { FiHelpCircle } from "react-icons/fi";
 
-function TopNav({ role }) {
+function TopNav({ role,title }) {
   return (
     <div className="bg-white fixed w-screen top-0 left-0 z-50 flex items-center shadow-md py-3 md:px-5">
       <div>
         <div className="w-64"><Image src={logo} className="h-9 w-32" alt="Logo" /></div>
       </div>
       <div className="flex flex-grow">
-        <div className="flex-grow font-bold text-lg">Dashboard</div>
+        <div className="flex-grow font-bold text-lg">{title}</div>
         <div className="flex items-center gap-4">
           <div className="relative">
             <i className="ri-notification-3-line text-lg"></i>

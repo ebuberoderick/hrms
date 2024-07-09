@@ -5,8 +5,15 @@ import AppPagination from '@/components/organisms/AppPagination'
 import Modal from '@/components/organisms/Modal'
 import serialize from '@/hooks/Serialize'
 import { addPromotion, fetchPromotion } from '@/services/authService'
-import { AllEmployees, companies, companyEnum } from '@/utility/constants'
+import { AllEmployees, companies } from '@/utility/constants'
 import React, { useEffect, useState } from 'react'
+import { BiBlock } from 'react-icons/bi'
+import { GrDocumentUser } from "react-icons/gr";
+import { LiaBullhornSolid, LiaFileAlt } from "react-icons/lia";
+import { PiHashStraightLight } from 'react-icons/pi'
+import { VscGoToSearch } from "react-icons/vsc";
+import { SlBadge, SlPlane } from 'react-icons/sl'
+import { RiExchange2Line } from 'react-icons/ri'
 
 function Page() {
   const [showModal, setShowModal] = useState(false)
@@ -19,7 +26,10 @@ function Page() {
     e.preventDefault();
     const formData = serialize(e.target);
     const { status, data } = await addPromotion(formData).catch(err => console.log(err))
-    console.log(data);
+    if (status) {
+      fetch()
+      setShowModal(false)
+    }
   }
 
   const fetch = async () => {
@@ -38,14 +48,14 @@ function Page() {
   }, [])
 
   return (
-    <AppLayout>
+    <AppLayout title={"Core HR"}>
       <div className="space-y-6">
         <Modal closeModal={() => setShowModal(false)} size={"xl"} isOpen={showModal}>
           <form onSubmit={(e) => add(e)} className="space-y-4">
             <div className="text-hrms_green text-xl">Add Promotion</div>
             <div className="grid grid-cols-2 gap-4">
-              <AppInput name="company_id" type={"select"} required label="Company" options={[...compnis]} />
               <AppInput name="employee_id" type={"select"} required label="Employee Email" options={[...empl]} />
+              <AppInput name="company_id" type={"select"} required label="Company" options={[...compnis]} />
               <AppInput name="promotion_title" type={"text"} required label="Promotion Ttile" />
               <AppInput name="promotion_date" type={"date"} required label="Promotion Date" />
             </div>
@@ -53,6 +63,105 @@ function Page() {
             <button className="bg-hrms_green w-full rounded-lg text-white py-2">Add</button>
           </form>
         </Modal>
+
+        <div className="space-y-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+
+            <div className="bg-hrms_green space-y-1 rounded-md bg-opacity-10 px-4 py-2">
+              <div className="text-2xl text-[#5ad44fbd]">
+                <LiaBullhornSolid />
+              </div>
+              <div className="flex">
+                <div className="flex-grow text-3xl">20</div>
+                <div></div>
+              </div>
+              <div className="text-xs">Total Promotions</div>
+            </div>
+
+            <div className="bg-hrms_yellow space-y-1 rounded-md bg-opacity-30 px-4 py-2">
+              <div className="text-2xl text-[#c4b428de]">
+                <SlBadge />
+              </div>
+              <div className="flex">
+                <div className="flex-grow text-3xl">47</div>
+                <div></div>
+              </div>
+              <div className="text-xs">Total Awards</div>
+            </div>
+
+
+            <div className="bg-danger space-y-1 rounded-md bg-opacity-10 px-4 py-2">
+              <div className="text-2xl text-danger">
+                <SlPlane />
+              </div>
+              <div className="flex">
+                <div className="flex-grow text-3xl">10</div>
+                <div></div>
+              </div>
+              <div className="text-xs">Total Travels</div>
+            </div>
+
+            <div className="bg-[#2886c441] space-y-1 rounded-md bg-opacity-20 px-4 py-2">
+              <div className="text-2xl text-[#2886c4de]">
+                <BiBlock />
+              </div>
+              <div className="flex">
+                <div className="flex-grow text-3xl">5</div>
+                <div></div>
+              </div>
+              <div className="text-xs">Total Resignation</div>
+            </div>
+
+
+
+            <div className="bg-danger space-y-1 rounded-md bg-opacity-30 px-4 py-2">
+              <div className="text-2xl text-danger">
+                <GrDocumentUser />
+              </div>
+              <div className="flex">
+                <div className="flex-grow text-3xl">8</div>
+                <div></div>
+              </div>
+              <div className="text-xs">Total Complanits</div>
+            </div>
+
+          </div>
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+            <div className="bg-danger space-y-1 rounded-md bg-opacity-10 px-4 py-2">
+              <div className="text-2xl text-danger">
+                <VscGoToSearch />
+              </div>
+              <div className="flex">
+                <div className="flex-grow text-3xl">12</div>
+                <div></div>
+              </div>
+              <div className="text-xs">Total Query</div>
+            </div>
+
+            <div className="bg-danger space-y-1 rounded-md bg-opacity-30 px-4 py-2">
+              <div className="text-2xl text-danger">
+                <LiaFileAlt />
+              </div>
+              <div className="flex">
+                <div className="flex-grow text-3xl">6</div>
+                <div></div>
+              </div>
+              <div className="text-xs">Total Termination</div>
+            </div>
+
+            <div className="bg-[#2886c441] space-y-1 rounded-md bg-opacity-20 px-4 py-2">
+              <div className="text-2xl text-[#2886c4de]">
+                <RiExchange2Line />
+              </div>
+              <div className="flex">
+                <div className="flex-grow text-3xl">5</div>
+                <div></div>
+              </div>
+              <div className="text-xs">Total Resignation</div>
+            </div>
+
+          </div>
+        </div>
 
         <div className="lg:flex space-y-3 items-center justify-between">
           <div className="">
@@ -69,7 +178,7 @@ function Page() {
               onClick={() => setShowModal(true)}
             >
               <i className="ri-add-line"></i>
-              <div className="">Create Promotion</div>
+              <div className="">Add Promotion</div>
             </div>
           </div>
         </div>
@@ -97,17 +206,17 @@ function Page() {
                         <div className=""><AppInput onChange={(e) => selectAll(e)} type="checkbox" name="employee" /></div>
                       </div>
                       <div className="flex-grow gap-2 flex">
-                        Goodness John
+                        {list.employee.employee_name}
                       </div>
                     </td>
                     <td className="hidden lg:table-cell">
-                      <div className="font-semibold">HR1</div>
+                      <div className="font-semibold">{list.company.company_name}</div>
                     </td>
-                    <td className="hidden lg:table-cell">
-                      <div className="">Senior Executive 1</div>
+                    <td className="hidden sm:table-cell">
+                      <div className="">{list.promotion_title}</div>
                     </td>
-                    <td className="hidden lg:table-cell">
-                      <div className="">16/05/2024 - 09:24</div>
+                    <td className="hidden sm:table-cell">
+                      <div className="">{list.promotion_date}</div>
                     </td>
                     <td>
                       <div className="text-xl flex gap-1">

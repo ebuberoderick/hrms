@@ -17,7 +17,7 @@ function Page() {
   }
 
   return (
-    <AppLayout>
+    <AppLayout title={"Core HR"}>
       <div className="space-y-4">
         <Modal closeModal={() => setShowModal(false)} size={"xl"} isOpen={showModal}>
           <form onSubmit={(e) => add(e)} className="space-y-4">

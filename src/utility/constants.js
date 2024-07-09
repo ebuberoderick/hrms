@@ -1,4 +1,4 @@
-import { fetchAllCompanies, fetchAllDepartment, fetchAllEmployee, fetchAllLocation } from "@/services/authService";
+import { fetchAllCompanies, fetchAllDepartment, fetchAllEmployee, fetchAllLocation, fetchAwardTypes } from "@/services/authService";
 
 
 
@@ -50,14 +50,11 @@ export const allDepartment = async () => {
 export const AllEmployees = async () => {
     const { status, data } = await fetchAllEmployee().catch(err => console.log(err))
     const exportData = []
-    console.log(data);
-    // await data.data[0].forEach(element => {
-    //     exportData.push({ value: element.id, label: element.employee_name })
-    // });
+    await data.data[0].forEach(element => {
+        exportData.push({ value: element.id, label: element.employee_name })
+    });
     return exportData;
 }
-
-
 
 
 export const companyType = [
@@ -68,12 +65,16 @@ export const companyType = [
     { value: "Limited Liability Company", label: "Limited Liability Company" }
 ];
 
-export const awardType = [
-    { value: "Employee of The Year", label: "Employee of The Year" },
-    { value: "Presidential Distinguished Public Service", label: "Presidential Distinguished Public Service" },
-    { value: "Presidential Civil Service Merit Award", label: "Presidential Civil Service Merit Award" },
-    { value: "Head of the Civil Service of the Federation", label: "Head of the Civil Service of the Federation" }
-];
+
+export const awardType = async () => {
+    const { status, data } = await fetchAwardTypes().catch(err => console.log(err))
+    const exportData = []
+    await data.data[0].forEach(element => {
+        exportData.push({ value: element.id, label: element.award_name })
+    });
+    return exportData;
+}
+
 
 export const travelStatus = [
     { value: "Pending", label: "Pending" },

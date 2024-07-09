@@ -36,7 +36,7 @@ const EmployeeDashboard = () => {
         <div className="lg:col-span-2 space-y-4">
           {
             isVerified ? (
-              <AppLayout></AppLayout>
+              <AppLayout title={"Dashboard"}></AppLayout>
             ) : (<Verifications Vbvn={Vbvn} Vnin={Vnin} VaccountNumber={VaccountNumber} Vothers={Vothers} Vemployment={Vemployment} Vbio={Vbio} />)
           }
         </div>

@@ -10,7 +10,7 @@ function Page() {
   return (
     <>
       {userType === "global_admin" ? (
-        <AppLayout>
+        <AppLayout title={"Dashboard"}>
           <AdminDashboard />
         </AppLayout>
       ) : (<EmployeeDashboard />)}
