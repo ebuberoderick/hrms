@@ -5,7 +5,7 @@ import EmployeeSideNav from "./EmployeeSideNav";
 
 function SideNav() {
   const userType = useSelector((state) => state.User?.value.user.role);
-  return <>{userType === "admin" ? <AdminSideNav /> : <EmployeeSideNav />}</>;
+  return <>{userType === "global_admin" ? <AdminSideNav /> : <EmployeeSideNav />}</>;
 }
 
 export default SideNav;

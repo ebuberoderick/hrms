@@ -50,9 +50,10 @@ export const allDepartment = async () => {
 export const AllEmployees = async () => {
     const { status, data } = await fetchAllEmployee().catch(err => console.log(err))
     const exportData = []
-    await data.data[0].forEach(element => {
-        exportData.push({ value: element.id, label: element.employee_name })
-    });
+    console.log(data);
+    // await data.data[0].forEach(element => {
+    //     exportData.push({ value: element.id, label: element.employee_name })
+    // });
     return exportData;
 }
 

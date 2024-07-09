@@ -12,7 +12,7 @@ export function SignInAuth(data, dispatch) {
 
 export async function SignOut(dispatch) {
   dispatch(addData({}))
-  Cookies.remove('jwt')
+  Cookies.remove('hrms_jwt')
 }
 
 export function Session(user) {
@@ -20,7 +20,7 @@ export function Session(user) {
     status: '',
     user
   }
-  if (Object.keys(user.value).length !== 0 && Cookies.get('jwt')) {
+  if (Object.keys(user.value).length !== 0 && Cookies.get('hrms_jwt')) {
     session.status = verifyJWT(user.value.bearer_token)
   } else {
     session.status = 'unauthenticated'

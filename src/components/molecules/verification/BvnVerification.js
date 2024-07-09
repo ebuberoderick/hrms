@@ -8,7 +8,7 @@ import React, { useState } from 'react'
 import { BsShieldCheck } from 'react-icons/bs'
 import { useDispatch } from 'react-redux'
 
-function BvnVerification({ user, Vbvn }) {
+function BvnVerification({ user, Vbvn, setStep }) {
     const [Bvnform, setBvnForm] = useState(false)
     const [BVNData, setBVNData] = useState([])
     const [errMsg, setErrMsg] = useState("")
@@ -57,7 +57,7 @@ function BvnVerification({ user, Vbvn }) {
                 setBVNData(data?.data?.identity?.data)
                 setBvnForm(res)
             } else {
-                setErrMsg(data?.data?.identity?.data?.lastname.toLowerCase() + " " + data?.data?.identity?.data?.firstname.toLowerCase() + " " + data?.data?.identity?.data?.middlename.toLowerCase());
+                setErrMsg("BVN name mismatch");
             }
         } else {
             setErrMsg(data.message)
@@ -84,66 +84,58 @@ function BvnVerification({ user, Vbvn }) {
 
     return (
         <div className='flex-grow '>
-            <div onClick={() => setShowModal(true)} className='w-full cursor-pointer px-4 py-8 rounded-md bg-danger bg-opacity-10 relative'>
-                {Vbvn ? <div className='absolute right-0 top-0 py-1 gap-1 px-5 rounded-sm flex items-center bg-hrms_light_green text-hrms_green text-[9px]'>Verified</div> : <div className='absolute right-0 top-0 py-2 gap-1 px-5 rounded-sm flex items-center text-danger text-[9px]'>Unverified</div>}
-                <div className='font-bold'>Verify Your BVN</div>
-                <div className='text-xs'>You have to verify your BVN for prove of identification</div>
-            </div>
-
-            <Modal closeModal={() => setShowModal(false)} isOpen={showModal} size={"sm"}>
-                <div>
-                    <div className="inline-flex relative bottom-4 items-start justify-between">
-                        <h2 className="font-[500] text-hrms_green">
-                            BVN Verification
-                        </h2>
-                    </div>
-                    {
-                        Bvnform ? (
-                            <form onSubmit={(e) => saveBVN(e)} className='space-y-4'>
-                                <div className='space-y-1'>
-                                    <div>
-                                        <div>
-                                            <div className='font-bold'>BVN</div>
-                                            <div className='text-gray-400'>{BVNData.full_details.bvn}</div>
-                                        </div>
-                                        <div>
-                                            <div className='font-bold'>Fullname</div>
-                                            <div className='text-gray-400 uppercase'>{BVNData.lastname} {BVNData.firstname} {BVNData.middlename}</div>
-                                        </div>
-                                    </div>
-                                    <input name="bvn" value={BVNData.full_details.bvn} type="hidden" />
-                                </div>
-                                <div className='text-danger text-xs'>{errMsg}</div>
-                                <div className='flex gap-5'>
-                                    <button disabled={proccessing} className={`bg-hrms_green flex-grow w-full text-white rounded-lg py-2 text-center cursor-pointer disabled:bg-opacity-25`}>{proccessing ? "Proccessing..." : "Comfirm"} </button>
-                                    <div onClick={() => setBvnForm(false)} className="border border-hrms_green w-full flex-grow text-hrms_green rounded-lg py-2 text-center cursor-pointer">Back</div>
-                                </div>
-                            </form>
-                        ) : (
-                            <form onSubmit={(e) => BVNVerification(e)} className='space-y-4'>
-                                <div className='space-y-1'>
-                                    <AppInput name="bvn" type="text" required label="Enter BVN" />
-                                    {
-                                        errMsg.length > 0 && (
-                                            <div>
-                                                <div>BVN Name mismatch</div>
-                                                <div className='text-danger capitalize text-xs'>{errMsg}</div>
-                                                <div>Please recomfirm BVN</div>
-                                            </div>
-                                        )
-                                    }
-
-                                </div>
-                                <div>
-                                    <button disabled={proccessing} className={`bg-hrms_green w-full text-white rounded-lg py-2 text-center cursor-pointer disabled:bg-opacity-25`}>{proccessing ? "Fetching Info..." : "Get BVN Info"} </button>
-                                </div>
-                            </form>
-                        )
-                    }
-
-
+            <div className='bg-white px-3 py-7 rounded-lg shadow-md'>
+                <div className="inline-flex relative bottom-4 items-start justify-between">
+                    <h2 className="font-bold md:text-3xl text-hrms_green">
+                        BVN Verification
+                    </h2>
                 </div>
-            </Modal>
+                {
+                    Bvnform ? (
+                        <form onSubmit={(e) => saveBVN(e)} className='space-y-4'>
+                            <div className='space-y-1'>
+                                <div>
+                                    <div>
+                                        <div className='font-bold'>BVN</div>
+                                        <div className='text-gray-400'>{BVNData.full_details.bvn}</div>
+                                    </div>
+                                    <div>
+                                        <div className='font-bold'>Fullname</div>
+                                        <div className='text-gray-400 uppercase'>{BVNData.lastname} {BVNData.firstname} {BVNData.middlename}</div>
+                                    </div>
+                                </div>
+                                <input name="bvn" value={BVNData.full_details.bvn} type="hidden" />
+                            </div>
+                            <div className='text-danger text-xs'>{errMsg}</div>
+                            <div className='flex gap-5'>
+                                <button disabled={proccessing} className={`bg-hrms_green flex-grow w-full text-white rounded-lg py-2 text-center cursor-pointer disabled:bg-opacity-25`}>{proccessing ? "Proccessing..." : "Save And Continue"} </button>
+                                <div onClick={() => setBvnForm(false)} className="border border-hrms_green w-full flex-grow text-hrms_green rounded-lg py-2 text-center cursor-pointer">Back</div>
+                            </div>
+                        </form>
+                    ) : (
+                        <form onSubmit={(e) => BVNVerification(e)} className='space-y-4'>
+                            <div className='space-y-1'>
+                                <AppInput name="bvn" type="text" required label="Enter BVN" />
+                                {
+                                    errMsg.length > 0 && (
+                                        <div>
+                                            <div>BVN Name mismatch</div>
+                                            <div className='text-danger capitalize text-xs'>{errMsg}</div>
+                                            <div>Please recomfirm BVN</div>
+                                        </div>
+                                    )
+                                }
+
+                            </div>
+                            <div>
+                                <button disabled={proccessing} className={`bg-hrms_green w-full text-white rounded-lg py-2 text-center cursor-pointer disabled:bg-opacity-25`}>{proccessing ? "Fetching Info..." : "Get BVN Info"} </button>
+                            </div>
+                        </form>
+                    )
+                }
+
+
+            </div>
         </div>
     )
 }

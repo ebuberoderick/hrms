@@ -14,7 +14,7 @@ const EmployeeDashboard = () => {
   }
   const Vbvn = userType?.user?.is_bvn_verified == 1
   const Vnin = userType?.user?.is_nin_verified == 1
-  const VaccountNumber = userType?.user?.account_number !== null
+  const VaccountNumber = userType?.user?.is_bank_verified == 1
   // const Vaddress = userType?.user?.state_of_origin !== null 
   const Vothers = userType?.employee?.npfa_name !== null
   const Vemployment = userType?.employee?.grade !== null

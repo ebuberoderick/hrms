@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import BioInfo from './verification/BioInfo'
 import EmploymentVerification from './verification/EmploymentVerification'
@@ -19,6 +19,7 @@ import { useRouter } from 'next/navigation'
 function Verifications({ Vbvn, Vnin, VaccountNumber, Vothers, Vemployment, Vbio }) {
     const user = useSelector((state) => state?.User.value);
     const router = useRouter()
+    const [step, setStep] = useState(0)
     const out = async () => {
         router.push("/auth/login");
     }
@@ -76,27 +77,27 @@ function Verifications({ Vbvn, Vnin, VaccountNumber, Vothers, Vemployment, Vbio 
                             <div className='font-bold text-3xl p-7 pb-0'>Steps To Verify Your Personal ID.</div>
                             <div className="divition"></div>
                             <div className='pl-12 space-y-3 pb-5 *:pr-4'>
-                                <div className='bg-hrms_lighter_green rounded-l-md py-5 bg-opacity-40 flex'>
+                                <div className={`${step === 1 && "bg-hrms_lighter_green"} rounded-l-md py-5 bg-opacity-40 flex`}>
                                     <div><div className='border-l-4 px-2 text-lg border-white'>1</div></div>
                                     <div>Click on verify your bio data to review and confirm is correct.</div>
                                 </div>
-                                <div className='rounded-l-md py-5 bg-opacity-40 flex'>
+                                <div className={`${step === 2 && "bg-hrms_lighter_green"} rounded-l-md py-5 bg-opacity-40 flex`}>
                                     <div><div className='border-l-4 px-2 text-lg border-white'>2</div></div>
                                     <div>Click on verify your account details to verify your bank account information.</div>
                                 </div>
-                                <div className='rounded-l-md py-5 bg-opacity-40 flex'>
+                                <div className={`${step === 3 && "bg-hrms_lighter_green"} rounded-l-md py-5 bg-opacity-40 flex`}>
                                     <div><div className='border-l-4 px-2 text-lg border-white'>3</div></div>
                                     <div>Click on verify your employment details to verify your information.</div>
                                 </div>
-                                <div className='rounded-l-md py-5 bg-opacity-40 flex'>
+                                <div className={`${step === 4 && "bg-hrms_lighter_green"} rounded-l-md py-5 bg-opacity-40 flex`}>
                                     <div><div className='border-l-4 px-2 text-lg border-white'>4</div></div>
                                     <div>Click on verify your BVN to verify your BVN for prove of identification.</div>
                                 </div>
-                                <div className='rounded-l-md py-5 bg-opacity-40 flex'>
+                                <div className={`${step === 5 && "bg-hrms_lighter_green"} rounded-l-md py-5 bg-opacity-40 flex`}>
                                     <div><div className='border-l-4 px-2 text-lg border-white'>5</div></div>
                                     <div>Click on verify your NIN to verify your NIN for prove of identification.</div>
                                 </div>
-                                <div className='rounded-l-md py-5 bg-opacity-40 flex'>
+                                <div className={`${step === 6 && "bg-hrms_lighter_green"} rounded-l-md py-5 bg-opacity-40 flex`}>
                                     <div><div className='border-l-4 px-2 text-lg border-white'>6</div></div>
                                     <div>Click on verify other date uploads to verify and upload your employment documents.</div>
                                 </div>
@@ -104,14 +105,55 @@ function Verifications({ Vbvn, Vnin, VaccountNumber, Vothers, Vemployment, Vbio 
                         </div>
                     </div>
                     <div className='lg:col-span-2 py-7 space-y-2'>
-                        <div className='flex p-5 lg:p-0 flex-wrap gap-3'>
-                            <BioInfo user={user} Vbio={Vbio} />
-                            <EmploymentVerification user={user} Vemployment={Vemployment} />
-                            <AccountVerification user={user} VaccountNumber={VaccountNumber} />
-                            <BvnVerification user={user} Vbvn={Vbvn} />
-                            <NinVerification user={user} Vnin={Vnin} />
-                            <OtherVerification user={user} Vothers={Vothers} />
-                        </div>
+
+                        {
+                            step === 0 ? (
+                                <div className='flex p-5 lg:p-0 flex-wrap gap-3'>
+                                    <div onClick={() => setStep(1)} className='w-full cursor-pointer px-4 py-8 rounded-md bg-hrms_blue bg-opacity-20 relative'>
+                                        {Vbio ? <div className='absolute right-0 top-0 py-1 gap-1 px-5 rounded-sm flex items-center bg-hrms_light_green text-hrms_green text-[9px]'>Verified</div> : <div className='absolute right-0 top-0 py-2 gap-1 px-5 rounded-sm flex items-center text-danger text-[9px]'>Unverified</div>}
+                                        <div className='font-bold'>Verify Your Bio Data</div>
+                                        <div className='text-xs'>You have to verify your Personal Informations</div>
+                                    </div>
+                                    <div onClick={() => setStep(2)} className='w-full cursor-pointer px-4 py-8 rounded-md bg-hrms_green bg-opacity-10 relative'>
+                                        {VaccountNumber ? <div className='absolute right-0 top-0 py-1 gap-1 px-5 rounded-sm flex items-center bg-hrms_light_green text-hrms_green text-[9px]'>Verified</div> : <div className='absolute right-0 top-0 py-2 gap-1 px-5 rounded-sm flex items-center text-danger text-[9px]'>Unverified</div>}
+                                        <div className='font-bold'>Verify Your Account Details</div>
+                                        <div className='text-xs'>You have to verify your Bank account Information</div>
+                                    </div>
+                                    <div onClick={() => setStep(3)} className='w-full cursor-pointer px-4 py-8 rounded-md bg-hrms_yellow bg-opacity-30 relative'>
+                                        {Vemployment ? <div className='absolute right-0 top-0 py-1 gap-1 px-5 rounded-sm flex items-center bg-hrms_light_green text-hrms_green text-[9px]'>Verified</div> : <div className='absolute right-0 top-0 py-2 gap-1 px-5 rounded-sm flex items-center text-danger text-[9px]'>Unverified</div>}
+                                        <div className='font-bold'>Verify Employment Details </div>
+                                        <div className='text-xs'>You have to verify your Employment informations</div>
+                                    </div>
+                                    <div onClick={() => setStep(4)} className='w-full cursor-pointer px-4 py-8 rounded-md bg-danger bg-opacity-10 relative'>
+                                        {Vbvn ? <div className='absolute right-0 top-0 py-1 gap-1 px-5 rounded-sm flex items-center bg-hrms_light_green text-hrms_green text-[9px]'>Verified</div> : <div className='absolute right-0 top-0 py-2 gap-1 px-5 rounded-sm flex items-center text-danger text-[9px]'>Unverified</div>}
+                                        <div className='font-bold'>Verify Your BVN</div>
+                                        <div className='text-xs'>You have to verify your BVN for prove of identification</div>
+                                    </div>
+                                    <div onClick={() => setStep(5)} className='w-full cursor-pointer px-4 py-8 rounded-md bg-hrms_yellow bg-opacity-10 relative'>
+                                        {Vnin ? <div className='absolute right-0 top-0 py-1 gap-1 px-5 rounded-sm flex items-center bg-hrms_light_green text-hrms_green text-[9px]'>Verified</div> : <div className='absolute right-0 top-0 py-2 gap-1 px-5 rounded-sm flex items-center text-danger text-[9px]'>Unverified</div>}
+                                        <div className='font-bold'>Verify Your NIN</div>
+                                        <div className='text-xs'>You have to verify your NIN for prove of identification</div>
+                                    </div>
+                                    <div onClick={() => setStep(6)} className='w-full cursor-pointer px-4 py-8 rounded-md bg-black bg-opacity-10 relative'>
+                                        {Vothers ? <div className='absolute right-0 top-0 py-1 gap-1 px-5 rounded-sm flex items-center bg-hrms_light_green text-hrms_green text-[9px]'>Verified</div> : <div className='absolute right-0 top-0 py-2 gap-1 px-5 rounded-sm flex items-center text-danger text-[9px]'>Unverified</div>}
+                                        <div className='font-bold'>Other Date Uploads </div>
+                                        <div className='text-xs'>You have to verify and upload Employment document</div>
+                                    </div>
+                                </div>
+                            ) : step === 1 ? (
+                                <BioInfo setStep={e => setStep(e)} user={user} Vbio={Vbio} />
+                            ) : step === 2 ? (
+                                <AccountVerification setStep={e => setStep(e)} user={user} VaccountNumber={VaccountNumber} />
+                            ) : step === 3 ? (
+                                <EmploymentVerification setStep={e => setStep(e)} user={user} Vemployment={Vemployment} />
+                            ) : step === 4 ? (
+                                <BvnVerification setStep={e => setStep(e)} user={user} Vbvn={Vbvn} />
+                            ) : step === 5 ? (
+                                <NinVerification setStep={e => setStep(e)} user={user} Vnin={Vnin} />
+                            ) : (
+                                <OtherVerification setStep={e => setStep(e)} user={user} Vothers={Vothers} />
+                            )
+                        }
                     </div>
                 </div>
             </div>

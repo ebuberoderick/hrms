@@ -8,7 +8,7 @@ import React, { useEffect, useState } from 'react'
 import { BsShieldCheck } from 'react-icons/bs'
 import { useDispatch } from 'react-redux'
 
-function AccountVerification({ user, VaccountNumber }) {
+function AccountVerification({ user, VaccountNumber, setStep }) {
     const [bankList, setBankList] = useState([])
     const [showModal, setShowModal] = useState(false)
     const [proccessing, setProcessing] = useState(false)
@@ -31,7 +31,7 @@ function AccountVerification({ user, VaccountNumber }) {
     }, [])
 
 
-    const updateBankInfo = async (e) =>{
+    const updateBankInfo = async (e) => {
         e.preventDefault()
         setProcessing(true)
         const { status, data } = await saveBankInfo(bankInfo).catch(err => console.log(err))
@@ -67,56 +67,49 @@ function AccountVerification({ user, VaccountNumber }) {
 
     return (
         <div className='flex-grow'>
-            <div onClick={() => setShowModal(true)} className='w-full cursor-pointer px-4 py-8 rounded-md bg-hrms_green bg-opacity-10 relative'>
-                {VaccountNumber ? <div className='absolute right-0 top-0 py-1 gap-1 px-5 rounded-sm flex items-center bg-hrms_light_green text-hrms_green text-[9px]'>Verified</div>:<div className='absolute right-0 top-0 py-2 gap-1 px-5 rounded-sm flex items-center text-danger text-[9px]'>Unverified</div>}
-                <div className='font-bold'>Verify Your Account Details</div>
-                <div className='text-xs'>You have to verify your Bank account Information</div>
-            </div>
 
-            <Modal closeModal={() => setShowModal(false)} isOpen={showModal} size={"sm"}>
-                <div>
-                    <div className="inline-flex relative bottom-4 items-start justify-between">
-                        <h2 className="font-[500] text-hrms_green">
-                            Bank Account Details Verification
-                        </h2>
-                    </div>
-                    {
-                        !comfirm ? (
-                            <form onSubmit={(e) => verifyBankDetails(e)} className='space-y-4'>
-                                <div className='space-y-3'>
-                                    <AppInput name="bank_code" onChange={(e) => getBankname(e)} type="select" required label="Bank" options={[...bankList]} />
-                                    <AppInput name="account_number" type="number" required label="Account Number" />
-                                </div>
-                                <div>
-                                    <button disabled={proccessing} className="bg-hrms_green disabled:bg-opacity-25 w-full text-white rounded-lg py-2 text-center cursor-pointer">{proccessing ? "Fetching Information":"Verify Bank Details"}</button>
-                                </div>
-                            </form>
-                        ) : (
-                            <form onSubmit={(e) => updateBankInfo(e)} className='space-y-4'>
-                                <div>
-                                    <div>
-                                        <div className='font-bold'>Bank</div>
-                                        <div className='text-gray-400'>{bankInfo.bank_name}</div>
-                                    </div>
-                                    <div>
-                                        <div className='font-bold'>Account Number</div>
-                                        <div className='text-gray-400'>{bankInfo.account_number}</div>
-                                    </div>
-                                    <div>
-                                        <div className='font-bold'>Account Name</div>
-                                        <div className='text-gray-400 uppercase'>{bankInfo.account_name}</div>
-                                    </div>
-                                </div> 
-                                <div className='flex gap-5'>
-                                    <button disabled={proccessing} className="bg-hrms_green disabled:bg-opacity-25 w-full text-white rounded-lg py-2 text-center cursor-pointer">{proccessing ? "Saving Info":"Comfirm"}</button>
-                                    <div onClick={() => setComfirm(false)} className="border border-hrms_green w-full flex-grow text-hrms_green rounded-lg py-2 text-center cursor-pointer">Back</div>
-                                </div>
-                            </form>
-                        )
-                    }
-
+            <div className='bg-white px-3 py-7 rounded-lg shadow-md'>
+                <div className="inline-flex relative bottom-4 items-start justify-between">
+                    <h2 className="font-bold md:text-3xl text-hrms_green">
+                        Bank Account Details Verification
+                    </h2>
                 </div>
-            </Modal>
+                {
+                    !comfirm ? (
+                        <form onSubmit={(e) => verifyBankDetails(e)} className='space-y-4'>
+                            <div className='space-y-3'>
+                                <AppInput name="bank_code" onChange={(e) => getBankname(e)} type="select" required label="Bank" options={[...bankList]} />
+                                <AppInput name="account_number" type="number" required label="Account Number" />
+                            </div>
+                            <div>
+                                <button disabled={proccessing} className="bg-hrms_green disabled:bg-opacity-25 w-full text-white rounded-lg py-2 text-center cursor-pointer">{proccessing ? "Fetching Information" : "Verify Bank Details"}</button>
+                            </div>
+                        </form>
+                    ) : (
+                        <form onSubmit={(e) => updateBankInfo(e)} className='space-y-4'>
+                            <div>
+                                <div>
+                                    <div className='font-bold'>Bank</div>
+                                    <div className='text-gray-400'>{bankInfo.bank_name}</div>
+                                </div>
+                                <div>
+                                    <div className='font-bold'>Account Number</div>
+                                    <div className='text-gray-400'>{bankInfo.account_number}</div>
+                                </div>
+                                <div>
+                                    <div className='font-bold'>Account Name</div>
+                                    <div className='text-gray-400 uppercase'>{bankInfo.account_name}</div>
+                                </div>
+                            </div>
+                            <div className='flex gap-5'>
+                                <button disabled={proccessing} className="bg-hrms_green disabled:bg-opacity-25 w-full text-white rounded-lg py-2 text-center cursor-pointer">{proccessing ? "Saving Info" : "Save And continue"}</button>
+                                <div onClick={() => setComfirm(false)} className="border border-hrms_green w-full flex-grow text-hrms_green rounded-lg py-2 text-center cursor-pointer">Back</div>
+                            </div>
+                        </form>
+                    )
+                }
+
+            </div>
 
         </div>
     )

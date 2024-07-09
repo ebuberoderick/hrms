@@ -8,7 +8,7 @@ import React, { useState } from 'react'
 import { BsShieldCheck } from 'react-icons/bs'
 import { useDispatch } from 'react-redux'
 
-function NinVerification({ Vnin, user }) {
+function NinVerification({ Vnin, user, setStep }) {
     const [Ninform, setNinForm] = useState(false)
     const [NINData, setNINData] = useState([])
     const [proccessing, setProcessing] = useState(false)
@@ -58,7 +58,7 @@ function NinVerification({ Vnin, user }) {
                 setNINData(data?.data?.identity?.data)
                 setNinForm(res)
             } else {
-                setErrMsg(data?.data?.identity?.data?.lastname.toLowerCase() + " " + data?.data?.identity?.data?.firstname.toLowerCase() + " " + data?.data?.identity?.data?.middlename.toLowerCase());
+                setErrMsg("NIN name mismatch");
             }
         } else {
             setErrMsg(data.message)
@@ -88,57 +88,47 @@ function NinVerification({ Vnin, user }) {
 
     return (
         <div className='flex-grow '>
-            <div onClick={() => setShowModal(true)} className='w-full cursor-pointer px-4 py-8 rounded-md bg-hrms_yellow bg-opacity-10 relative'>
-                {Vnin ? <div className='absolute right-0 top-0 py-1 gap-1 px-5 rounded-sm flex items-center bg-hrms_light_green text-hrms_green text-[9px]'>Verified</div> : <div className='absolute right-0 top-0 py-2 gap-1 px-5 rounded-sm flex items-center text-danger text-[9px]'>Unverified</div>}
-                <div className='font-bold'>Verify Your NIN</div>
-                <div className='text-xs'>You have to verify your NIN for prove of identification</div>
-            </div>
-
-
-            <Modal closeModal={() => setShowModal(false)} isOpen={showModal} size={"sm"}>
-                <div>
-                    <div className="inline-flex relative bottom-4 items-start justify-between">
-                        <h2 className="font-[500] text-hrms_green">
-                            NIN Verification
-                        </h2>
-                    </div>
-                    {
-                        Ninform ? (
-                            <form onSubmit={(e) => saveNIN(e)} className='space-y-4'>
-                                <div className='space-y-1'>
-                                    <div>
-                                        <div>
-                                            <div className='font-bold'>NIN</div>
-                                            <div className='text-gray-400'>{NINData.full_details.nin}</div>
-                                        </div>
-                                        <div>
-                                            <div className='font-bold'>Fullname</div>
-                                            <div className='text-gray-400 uppercase'>{NINData.lastname} {NINData.firstname} {NINData.middlename}</div>
-                                        </div>
-                                    </div>
-                                    <input name="nin" value={NINData.full_details.nin} type="hidden" />
-                                </div>
-                                <div className='flex gap-5'>
-                                    <button disabled={proccessing} className={`bg-hrms_green flex-grow w-full text-white rounded-lg py-2 text-center cursor-pointer disabled:bg-opacity-25`}>{proccessing ? "Proccessing..." : "Comfirm"} </button>
-                                    <div onClick={() => setNinForm(false)} className="border border-hrms_green w-full flex-grow text-hrms_green rounded-lg py-2 text-center cursor-pointer">Back</div>
-                                </div>
-                            </form>
-                        ) : (
-                            <form onSubmit={(e) => NINVerification(e)} className='space-y-4'>
-                                <div className='space-y-1'>
-                                    <AppInput name="nin" type="text" required label="Enter NIN" />
-                                    <div className='text-danger text-xs'>{errMsg}</div>
-                                </div>
-                                <div>
-                                    <button disabled={proccessing} className={`bg-hrms_green flex-grow w-full text-white rounded-lg py-2 text-center cursor-pointer disabled:bg-opacity-25`}>{proccessing ? "Proccessing..." : "Verify NIN"} </button>
-                                </div>
-                            </form>
-                        )
-                    }
-
+            <div className='bg-white px-3 py-7 rounded-lg shadow-md'>
+                <div className="inline-flex relative bottom-4 items-start justify-between">
+                    <h2 className="font-bold md:text-3xl text-hrms_green">
+                        NIN Verification
+                    </h2>
                 </div>
-            </Modal >
+                {
+                    Ninform ? (
+                        <form onSubmit={(e) => saveNIN(e)} className='space-y-4'>
+                            <div className='space-y-1'>
+                                <div>
+                                    <div>
+                                        <div className='font-bold'>NIN</div>
+                                        <div className='text-gray-400'>{NINData.full_details.nin}</div>
+                                    </div>
+                                    <div>
+                                        <div className='font-bold'>Fullname</div>
+                                        <div className='text-gray-400 uppercase'>{NINData.lastname} {NINData.firstname} {NINData.middlename}</div>
+                                    </div>
+                                </div>
+                                <input name="nin" value={NINData.full_details.nin} type="hidden" />
+                            </div>
+                            <div className='flex gap-5'>
+                                <button disabled={proccessing} className={`bg-hrms_green flex-grow w-full text-white rounded-lg py-2 text-center cursor-pointer disabled:bg-opacity-25`}>{proccessing ? "Proccessing..." : "Save And Continue"} </button>
+                                <div onClick={() => setNinForm(false)} className="border border-hrms_green w-full flex-grow text-hrms_green rounded-lg py-2 text-center cursor-pointer">Back</div>
+                            </div>
+                        </form>
+                    ) : (
+                        <form onSubmit={(e) => NINVerification(e)} className='space-y-4'>
+                            <div className='space-y-1'>
+                                <AppInput name="nin" type="text" required label="Enter NIN" />
+                                <div className='text-danger text-xs'>{errMsg}</div>
+                            </div>
+                            <div>
+                                <button disabled={proccessing} className={`bg-hrms_green flex-grow w-full text-white rounded-lg py-2 text-center cursor-pointer disabled:bg-opacity-25`}>{proccessing ? "Proccessing..." : "Verify NIN"} </button>
+                            </div>
+                        </form>
+                    )
+                }
 
+            </div>
         </div >
     )
 }
