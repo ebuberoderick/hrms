@@ -1,25 +1,46 @@
 "use client"
 import AppLayout from '@/components/layouts/appLayout'
 import AppInput from '@/components/organisms/AppInput'
+import AppPagination from '@/components/organisms/AppPagination'
 import Modal from '@/components/organisms/Modal'
 import serialize from '@/hooks/Serialize'
-import { addAward } from '@/services/authService'
-import { awardType, companyEnum } from '@/utility/constants'
-import React, { useState } from 'react'
+import { addAward, addTransfer, fetchTransfer } from '@/services/authService'
+import { AllEmployees, allDepartment, awardType, companies, companyEnum } from '@/utility/constants'
+import React, { useEffect, useState } from 'react'
 
 function Page() {
   const [showModal, setShowModal] = useState(false)
-
+  const [trans, setTran] = useState([])
+  const [compnis, setCompnis] = useState([])
+  const [allDept, setAllDept] = useState([])
+  const [empl, setAllEmpl] = useState([])
 
   const add = async (e) => {
     e.preventDefault();
     const formData = serialize(e.target);
-
+    const { status, data } = await addTransfer(formData).catch(err => console.log(err))
+    if (status) {
+      fetch()
+      setShowModal(false)
+    }
   }
 
-  const fetch = () => {
-
+  const fetch = async () => {
+    const { status, data } = await fetchTransfer().catch(err => console.log(err))
+    if (status) {
+      setTran(data?.data[0]);
+    }
   }
+
+
+
+  useEffect(() => {
+    fetch()
+    companies().then(res => setCompnis([...res]))
+    AllEmployees().then(res => setAllEmpl([...res]))
+    allDepartment().then(res => setAllDept([...res]))
+  }, [])
+
 
   return (
     <AppLayout>
@@ -28,10 +49,10 @@ function Page() {
           <form onSubmit={(e) => add(e)} className="space-y-4">
             <div className="text-hrms_green text-xl">Add Transfer</div>
             <div className="grid grid-cols-2 gap-4">
-              <AppInput name="employee_email" type={"email"} required label="Employee Email" />
-              <AppInput name="company" type={"select"} required label="Company" options={[...companyEnum]} />
-              <AppInput name="department_from" type={"text"} required label="Department From" />
-              <AppInput name="department_to" type={"text"} required label="Department To" />
+              <AppInput name="employee_id" type={"select"} required label="Employee" options={[...empl]} />
+              <AppInput name="company_id" type={"select"} required label="Company" options={[...compnis]} />
+              <AppInput name="from_department_id" type={"select"} required label="Department From" options={[...allDept]} />
+              <AppInput name="to_department_id" type={"select"} required label="Department To" options={[...allDept]} />
               <AppInput name={"description"} type={"textarea"} label="Description" />
               <AppInput name="transfer_date" type={"date"} required label="Transfer Date" />
             </div>
@@ -70,40 +91,48 @@ function Page() {
                 </th>
 
                 <th className="hidden lg:table-cell">Company</th>
-                <th className="hidden sm:table-cell">From</th>
+                <th className="hidden lg:table-cell">From</th>
                 <th className="hidden sm:table-cell">To</th>
                 <th className="hidden sm:table-cell">Transfer Date</th>
                 <th className="w-20">Action</th>
               </tr>
-              <tr>
-                <td className="flex items-center gap-3 pl-5 py-2">
-                  <div className="w-9 relative">
-                    <div className=""><AppInput onChange={(e) => selectAll(e)} type="checkbox" name="employee" /></div>
-                  </div>
-                  <div className="flex-grow gap-2 flex">
-                    Goodness John
-                  </div>
-                </td>
-                <td className="hidden lg:table-cell">
-                  <div className="font-semibold">HR1</div>
-                </td>
-                <td className="hidden lg:table-cell">
-                  <div className=""> Accounting </div>
-                </td>
-                <td className="hidden lg:table-cell">
-                  <div className=""> Accounting </div>
-                </td>
-                <td className="hidden lg:table-cell">
-                  <div className="">16/05/2024 - 09:24</div>
-                </td>
-                <td>
-                  <div className="text-xl flex gap-1">
-                    <div className="text-hrms_green p-1 cursor-pointer"><i className="ri-edit-2-line"></i></div>
-                    <div className="text-danger p-1 cursor-pointer"><i className="ri-delete-bin-6-line"></i></div>
-                  </div>
-                </td>
-              </tr>
+              {
+                trans?.data?.map((list, i) => (
+                  <tr key={i}>
+                    <td className="flex items-center gap-3 pl-5 py-2">
+                      <div className="w-9 relative">
+                        <div className=""><AppInput onChange={(e) => selectAll(e)} type="checkbox" name="employee" /></div>
+                      </div>
+                      <div className="flex-grow gap-2 flex">
+                        {list.employee.employee_name}
+                      </div>
+                    </td>
+                    <td className="hidden lg:table-cell">
+                      <div className="font-semibold">{list.company.company_name}</div>
+                    </td>
+                    <td className="hidden lg:table-cell">
+                      <div className=""> {list.from_department.department_name} </div>
+                    </td>
+                    <td className="hidden sm:table-cell">
+                      <div className=""> {list.to_department.department_name} </div>
+                    </td>
+                    <td className="hidden sm:table-cell">
+                      <div className="">{list.transfer_date}</div>
+                    </td>
+                    <td>
+                      <div className="text-xl flex gap-1">
+                        <div className="text-hrms_green p-1 cursor-pointer"><i className="ri-edit-2-line"></i></div>
+                        <div className="text-danger p-1 cursor-pointer"><i className="ri-delete-bin-6-line"></i></div>
+                      </div>
+                    </td>
+                  </tr>
+                ))
+              }
+
             </table>
+          </div>
+          <div className="">
+            <AppPagination totalRecords={trans} newData={(e) => setTran(e)} />
           </div>
         </div>
       </div>

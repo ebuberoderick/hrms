@@ -103,7 +103,7 @@ function Page() {
               </tr>
               {
                 term?.data?.map((list, i) => (
-                  <tr>
+                  <tr key={i}>
                     <td className="flex items-center gap-3 pl-5 py-2">
                       <div className="w-9 relative">
                         <div className=""><AppInput onChange={(e) => selectAll(e)} type="checkbox" name="employee" /></div>
