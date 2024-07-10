@@ -1,4 +1,4 @@
-import { fetchAllCompanies, fetchAllDepartment, fetchAllEmployee, fetchAllLocation, fetchAwardTypes, fetchTerminationType } from "@/services/authService";
+import { fetchAllCompanies, fetchAllDepartment, fetchAllEmployee, fetchAllLocation, fetchAwardTypes, fetchQueryType, fetchTerminationType } from "@/services/authService";
 
 
 
@@ -83,6 +83,18 @@ export const terminationType = async () => {
     });
     return exportData;
 }
+
+
+
+export const queryType = async () => {
+    const { status, data } = await fetchQueryType().catch(err => console.log(err))
+    const exportData = []
+    await data.data[0].forEach(element => {
+        exportData.push({ value: element.id, label: element.warning_title })
+    });
+    return exportData;
+}
+
 
 
 

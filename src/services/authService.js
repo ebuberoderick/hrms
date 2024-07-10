@@ -45,6 +45,11 @@ export const fetchDepartment = () => apiWithAuth.post("admin/organization/depart
 export const fetchAllDepartment = () => apiWithAuth.post("admin/organization/department/fetch_all").then(getApiResponse).catch(getErrorResponse);
 
 
+export const addQuery = (formData) => apiWithAuth.post("admin/corehr/warning/create", formData).then(getApiResponse).catch(getErrorResponse);
+export const fetchQuery = () => apiWithAuth.post("admin/corehr/warning/fetch").then(getApiResponse).catch(getErrorResponse);
+export const fetchQueryType = () => apiWithAuth.post("admin/corehr/warning/fetch_types").then(getApiResponse).catch(getErrorResponse);
+
+
 export const addAnnouncements = (formData) => apiWithAuth.post("admin/organization/announcements/create", formData).then(getApiResponse).catch(getErrorResponse);
 export const fetchAnnouncements = () => apiWithAuth.post("admin/organization/announcements/fetch").then(getApiResponse).catch(getErrorResponse);
 

@@ -14,9 +14,7 @@ function Page() {
   const [compnis, setCompnis] = useState([])
   const [allDept, setAllDept] = useState([])
   const [empl, setAllEmpl] = useState([])
-  const [awty, setAwty] = useState([])
   const [termType, setTermType] = useState([])
-  const [imgUrl, setImgUrl] = useState("")
 
   const add = async (e) => {
     e.preventDefault();
