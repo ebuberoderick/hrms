@@ -66,6 +66,12 @@ export const fetchAward = () => apiWithAuth.post("admin/corehr/award/fetch").the
 export const fetchAllAward = () => apiWithAuth.post("admin/corehr/award/fetch_all").then(getApiResponse).catch(getErrorResponse);
 
 
+export const addTermination = (formData) => apiWithAuth.post("admin/corehr/termination/create", formData).then(getApiResponse).catch(getErrorResponse);
+export const fetchTerminationType = () => apiWithAuth.post("admin/corehr/termination/fetch_types").then(getApiResponse).catch(getErrorResponse);
+export const fetchTermination = () => apiWithAuth.post("admin/corehr/termination/fetch").then(getApiResponse).catch(getErrorResponse);
+export const fetchAllTermination = () => apiWithAuth.post("admin/corehr/termination/fetch_all").then(getApiResponse).catch(getErrorResponse);
+
+
 
 export const addTravel = (formData) => apiWithAuth.post("admin/corehr/travel/create", formData).then(getApiResponse).catch(getErrorResponse);
 export const fetchTravelTypes = () => apiWithAuth.post("admin/corehr/travel/fetch_types").then(getApiResponse).catch(getErrorResponse);

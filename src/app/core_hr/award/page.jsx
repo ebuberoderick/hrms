@@ -36,7 +36,6 @@ function Page() {
   const add = async (e) => {
     e.preventDefault();
     const formData = serialize(e.target);
-    console.log(formData);
     const { status, data } = await addAward(formData).catch(err => console.log(err))
     if (status) {
       fetch()
