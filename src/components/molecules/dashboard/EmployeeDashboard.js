@@ -19,7 +19,7 @@ const EmployeeDashboard = () => {
   const Vothers = userType?.employee?.position !== null
   const Vemployment = userType?.employee?.grade !== null
   const Vbio = userType?.employee?.marital_status !== null
-  const saved = false
+  const saved = true
   // const Vkin = userType?.user?.next_of_kin_name === 1
   const isVerified = Vbvn && Vnin && VaccountNumber && Vothers && Vemployment && Vbio && saved
 

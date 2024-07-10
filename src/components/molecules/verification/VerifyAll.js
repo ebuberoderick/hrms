@@ -1,9 +1,35 @@
+"use client"
+import AppCheckBox from '@/components/organisms/AppCheckBox';
 import AppInput from '@/components/organisms/AppInput'
+import serialize from '@/hooks/Serialize';
+import { fetchMyData, verifyMyData } from '@/services/authService';
 import Image from 'next/image'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 function VerifyAll({ user }) {
     console.log(user);
+    const [userinfo,setUserinfo] = useState()
+
+    const fetchInfo = async () => {
+        const { status, data } = await fetchMyData().catch(err => console.log(err))
+        console.log(data);
+    }
+
+
+    const verify = async (e) => {
+        e.preventDefault();
+        const formData = serialize(e.target);
+        const { status, data } = await verifyMyData({status:1}).catch(err => console.log(err))
+        if (status) {
+            console.log(data);
+        }
+
+    }
+
+    useEffect(() => {
+        fetchInfo()
+    }, [])
+
     return (
         <div className="space-y-6 bg-white px-3 py-7 rounded-lg shadow-md">
             <div className='space-y-4'>
@@ -90,7 +116,7 @@ function VerifyAll({ user }) {
                 </div>
             </div>
 
-            <div className='bg-white px-3 py-7 rounded-lg shadow-md'>
+            <div className=''>
                 <div className="inline-flex relative bottom-4 items-start justify-between">
                     <h2 className="font-bold md:text-3xl text-hrms_green">
                         Employment Document Verification
@@ -104,9 +130,12 @@ function VerifyAll({ user }) {
                 </div>
             </div>
 
-            <div>
-                <button className="bg-hrms_green disabled:bg-opacity-30 w-full inline text-white rounded-lg py-2 text-center cursor-pointer">Save</button>
-            </div>
+            <form onSubmit={(e) => verify(e)} className="space-y-4">
+                <AppCheckBox required Boxlable="I here by comfirm that all information are right" type="checkbox" name="status" value={1} />
+                <div>
+                    <button className="bg-hrms_green disabled:bg-opacity-30 w-full inline text-white rounded-lg py-2 text-center cursor-pointer">Save</button>
+                </div>
+            </form>
         </div>
     )
 }

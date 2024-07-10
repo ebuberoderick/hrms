@@ -4,6 +4,10 @@ export const pagination = (formData) => apiWithAuth.post(formData).then(getApiRe
 
 export const Applogin = (formData) => apiWithOutAuth.post("/login", formData).then(getApiResponse).catch(getErrorResponse);
 
+export const fetchMyData = (formData) => apiWithAuth.post("admin/employee/verification/fetch_my_data", formData).then(getApiResponse).catch(getErrorResponse);
+export const verifyMyData = (formData) => apiWithAuth.post("admin/employee/verification/employee_verify_data", formData).then(getApiResponse).catch(getErrorResponse);
+
+
 export const updateProfile = (formData) => apiWithAuth.post("/add-employee", formData).then(getApiResponse).catch(getErrorResponse);
 export const employeeInvite = (formData) => apiWithAuth.post("admin/employee/invite", formData).then(getApiResponse).catch(getErrorResponse);
 export const verifyCode = (formData) => apiWithAuth.post("verify-access-code", formData).then(getApiResponse).catch(getErrorResponse);

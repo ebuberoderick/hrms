@@ -15,7 +15,7 @@ function EmployeeSideNav() {
   const Vothers = userType.employee.npfa_name !== null
   const Vemployment = userType.employee.grade !== null
   const Vbio = userType.employee.marital_status !== null
-  const saved = false
+  const saved = true
   // const Vkin = userType.user.next_of_kin_name === 1
   const isVerified = Vbvn && Vnin && VaccountNumber && Vothers && Vemployment && Vbio && saved
   return (
@@ -55,7 +55,35 @@ function EmployeeSideNav() {
             </div>
           </div>
         ) : (
-          <div></div>
+          <div className="flex-grow gap-y-4 py-6 flex flex-col gap-2">
+            <div>
+              <AppLink
+                text={"dashboard"}
+                icon={<i className="ri-layout-grid-fill"></i>}
+              />
+              <AppLink
+                text={"organization"}
+                icon={<i className="ri-group-2-line"></i>}
+                subMenu={[
+                  { name: "Announcements", extra: false },
+                  { name: "company policy", extra: false },
+                ]}
+              />
+              <AppLink
+                text={"time sheets"}
+                icon={<i className="ri-time-line"></i>}
+                subMenu={[
+                  { name: "attendance", extra: false },
+                  { name: "Date wise attendance", extra: false },
+                  { name: "monthly attendance", extra: false },
+                ]}
+              />
+              <AppLink
+                text={"HR calender"}
+                icon={<i className="ri-calendar-todo-line"></i>}
+              />
+            </div>
+          </div>
         )
       }
     </div>
