@@ -89,6 +89,11 @@ export const fetchTransfer = () => apiWithAuth.post("admin/corehr/transfer/fetch
 export const fetchAllTransfer = () => apiWithAuth.post("admin/corehr/transfer/fetch_all").then(getApiResponse).catch(getErrorResponse);
 
 
+export const addComplaint = (formData) => apiWithAuth.post("admin/corehr/complaint/create", formData).then(getApiResponse).catch(getErrorResponse);
+export const fetchComplaint = () => apiWithAuth.post("admin/corehr/complaint/fetch").then(getApiResponse).catch(getErrorResponse);
+export const fetchAllComplaint = () => apiWithAuth.post("admin/corehr/transfer/fetch_all").then(getApiResponse).catch(getErrorResponse);
+
+
 export const addResignation = (formData) => apiWithAuth.post("admin/corehr/resignation/create", formData).then(getApiResponse).catch(getErrorResponse);
 export const fetchResignation = () => apiWithAuth.post("admin/corehr/resignation/fetch").then(getApiResponse).catch(getErrorResponse);
 export const fetchAllResignation = () => apiWithAuth.post("admin/corehr/resignation/fetch_all").then(getApiResponse).catch(getErrorResponse);
