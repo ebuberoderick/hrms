@@ -15,8 +15,9 @@ function EmployeeSideNav() {
   const Vothers = userType.employee.npfa_name !== null
   const Vemployment = userType.employee.grade !== null
   const Vbio = userType.employee.marital_status !== null
+  const saved = false
   // const Vkin = userType.user.next_of_kin_name === 1
-  const isVerified = Vbvn && Vnin && VaccountNumber && Vothers && Vemployment && Vbio
+  const isVerified = Vbvn && Vnin && VaccountNumber && Vothers && Vemployment && Vbio && saved
   return (
     <div className="fixed bg-white select-none overflow-y-auto flex flex-col h-screen shadow-md w-64 gap-y-6 py-8 px-1">
       <div className="text-2xl px-1">

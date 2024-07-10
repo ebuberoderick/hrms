@@ -16,11 +16,12 @@ const EmployeeDashboard = () => {
   const Vnin = userType?.user?.is_nin_verified == 1
   const VaccountNumber = userType?.user?.is_bank_verified == 1
   // const Vaddress = userType?.user?.state_of_origin !== null 
-  const Vothers = userType?.employee?.npfa_name !== null
+  const Vothers = userType?.employee?.position !== null
   const Vemployment = userType?.employee?.grade !== null
   const Vbio = userType?.employee?.marital_status !== null
+  const saved = false
   // const Vkin = userType?.user?.next_of_kin_name === 1
-  const isVerified = Vbvn && Vnin && VaccountNumber && Vothers && Vemployment && Vbio
+  const isVerified = Vbvn && Vnin && VaccountNumber && Vothers && Vemployment && Vbio && saved
 
   const getTodayDate = () => {
     const today = new Date();

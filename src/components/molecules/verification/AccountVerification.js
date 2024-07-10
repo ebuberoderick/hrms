@@ -42,6 +42,7 @@ function AccountVerification({ user, VaccountNumber, setStep }) {
         dispatch(addData(x));
         setProcessing(false)
         setShowModal(false)
+        setStep(3)
     }
 
 

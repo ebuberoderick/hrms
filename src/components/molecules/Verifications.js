@@ -14,6 +14,7 @@ import logo from "@assets/images/authLogo.png";
 import avatar from "@assets/images/avatar/Leslie_Image.png";
 import { FiHelpCircle } from "react-icons/fi";
 import { useRouter } from 'next/navigation'
+import VerifyAll from './verification/VerifyAll'
 
 
 function Verifications({ Vbvn, Vnin, VaccountNumber, Vothers, Vemployment, Vbio }) {
@@ -108,7 +109,7 @@ function Verifications({ Vbvn, Vnin, VaccountNumber, Vothers, Vemployment, Vbio 
 
                         {
                             step === 0 ? (
-                                <div className='flex p-5 lg:p-0 flex-wrap gap-3'>
+                                <div className='grid sm:grid-cols-2 p-5 lg:p-0 flex-wrap gap-3'>
                                     <div onClick={() => setStep(1)} className='w-full cursor-pointer px-4 py-8 rounded-md bg-hrms_blue bg-opacity-20 relative'>
                                         {Vbio ? <div className='absolute right-0 top-0 py-1 gap-1 px-5 rounded-sm flex items-center bg-hrms_light_green text-hrms_green text-[9px]'>Verified</div> : <div className='absolute right-0 top-0 py-2 gap-1 px-5 rounded-sm flex items-center text-danger text-[9px]'>Unverified</div>}
                                         <div className='font-bold'>Verify Your Bio Data</div>
@@ -150,8 +151,10 @@ function Verifications({ Vbvn, Vnin, VaccountNumber, Vothers, Vemployment, Vbio 
                                 <BvnVerification setStep={e => setStep(e)} user={user} Vbvn={Vbvn} />
                             ) : step === 5 ? (
                                 <NinVerification setStep={e => setStep(e)} user={user} Vnin={Vnin} />
-                            ) : (
+                            ) : step === 6 ?(
                                 <OtherVerification setStep={e => setStep(e)} user={user} Vothers={Vothers} />
+                            ) : (
+                                <VerifyAll user={user} />
                             )
                         }
                     </div>

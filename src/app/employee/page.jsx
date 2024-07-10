@@ -18,7 +18,7 @@ const Page = () => {
   const [isErrorModal, setIsErrorModal] = useState(false);
   const [proccessing, setProccessing] = useState(false);
   const [errMsg, setErrMsg] = useState(false);
-  const [activeModal, setActiveModal] = useState("")
+  const [activeModal, setActiveModal] = useState("Register")
   const [importModal, setImportModal] = useState(false)
   const [employee, setEmployee] = useState([])
 const [proccessingAdd,setProccessingAdd] = useState(false)

@@ -77,6 +77,7 @@ function BioInfo({ Vbio, user, setStep }) {
                 </div>
                 <form onSubmit={(e) => updateInfo(e)} className='space-y-4'>
                     <div className="grid sm:grid-cols-2 gap-4">
+                        <input type='hidden' name='id' value={user.user.id} />
                         <AppInput name="firstname" type="text" defaultValue={user.employee.firstname} required label="First Name" />
                         <AppInput name="lastname" type="text" defaultValue={user.employee.lastname} required label="Last Name" />
                         <AppInput name="middlename" type="text" defaultValue={user.employee.middlename} label="Middle Name (Optional)" />
@@ -94,7 +95,7 @@ function BioInfo({ Vbio, user, setStep }) {
                             { value: "Male", label: "Male" },
                             { value: "Female", label: "Female" },
                             { value: "Others", label: "Others" }]} />
-                        <AppInput defaultValue={user.employee.gender} name="state_of_origin" type="select" required label="State Of Origin" options={[
+                        <AppInput defaultValue={user.user.state_of_origin} name="state_of_origin" type="select" required label="State Of Origin" options={[
                             { value: "lagos", label: "Lagos" },
                             { value: "abuja", label: "Abuja" },
                             { value: "rivers", label: "Rivers" }]} />

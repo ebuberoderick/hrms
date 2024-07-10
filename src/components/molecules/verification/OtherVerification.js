@@ -26,6 +26,7 @@ function OtherVerification({ Vothers, user, setStep }) {
             x.bearer_token = user.bearer_token
             dispatch(addData(x));
             setShowModal(false)
+            setStep(7)
         } else {
             setErrorMsg(data.message)
         }

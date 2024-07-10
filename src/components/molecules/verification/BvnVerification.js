@@ -77,13 +77,14 @@ function BvnVerification({ user, Vbvn, setStep }) {
             x.bearer_token = user.bearer_token
             dispatch(addData(x));
             setShowModal(false)
+            setStep(5)
         }
         setProcessing(false)
     }
 
 
     return (
-        <div className='flex-grow '>
+        <div className='flex-grow max-w-lg'>
             <div className='bg-white px-3 py-7 rounded-lg shadow-md'>
                 <div className="inline-flex relative bottom-4 items-start justify-between">
                     <h2 className="font-bold md:text-3xl text-hrms_green">

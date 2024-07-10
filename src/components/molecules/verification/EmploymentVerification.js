@@ -26,6 +26,7 @@ function EmploymentVerification({ Vemployment, user, setStep }) {
             x.bearer_token = user.bearer_token
             dispatch(addData(x));
             setShowModal(false)
+            setStep(4)
         } else {
             setErrorMsg(data.message)
         }
