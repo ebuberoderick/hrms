@@ -2,16 +2,11 @@
 import React, { useEffect, useState } from "react";
 import ResponseModal from "../../organisms/ResponseModal";
 import { useDispatch, useSelector } from "react-redux";
-import { useRouter } from "next/navigation";
 import Verifications from "../Verifications";
 import AppLayout from "@/components/layouts/appLayout";
 
 const EmployeeDashboard = () => {
   const userType = useSelector((state) => state.User?.value);
-  const router = useRouter()
-  if(userType?.user === undefined){
-    router.push("/auth/login")
-  }
   const Vbvn = userType?.user?.is_bvn_verified == 1
   const Vnin = userType?.user?.is_nin_verified == 1
   const VaccountNumber = userType?.user?.is_bank_verified == 1

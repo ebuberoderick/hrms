@@ -94,6 +94,8 @@ const [proccessingAdd,setProccessingAdd] = useState(false)
     e.preventDefault();
     const formData = serialize(e.target);
     setProccessingAdd(true)
+    formData.image = imgUrl
+    formData.telephone = `+234${formData.telephone}`
     const { status, data } = await addEmploye(formData).catch(err => console.log(err))
     if (status) {
       await fetchEmployees()
@@ -235,7 +237,7 @@ const [proccessingAdd,setProccessingAdd] = useState(false)
                   </td>
                   <td className="hidden lg:table-cell">
                     <div className=""><i className="ri-mail-line text-gray-400"></i> {emp.staff_id}</div>
-                    <div className=""><i className="ri-phone-line text-gray-400"></i> 0{emp.telephone}</div>
+                    <div className=""><i className="ri-phone-line text-gray-400"></i> {emp.telephone}</div>
                   </td>
                   <td>
                     <div className="text-xl flex gap-1">

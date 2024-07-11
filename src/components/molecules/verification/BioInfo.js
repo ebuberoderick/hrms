@@ -8,6 +8,7 @@ import Image from 'next/image'
 import React, { useState } from 'react'
 import { BsShieldCheck } from 'react-icons/bs'
 import { useDispatch } from 'react-redux'
+import { NigeriaStates } from '../../../hooks/Nigeria'
 
 function BioInfo({ Vbio, user, setStep }) {
     console.log(user);
@@ -90,15 +91,11 @@ function BioInfo({ Vbio, user, setStep }) {
                             { value: "married", label: "Married" },
                             { value: "widow", label: "Widow" },
                             { value: "widower", label: "Widower" },
-                            { value: "devioced", label: "Devioced" }]} />
+                            { value: "divorced", label: "Divorced" }]} />
                         <AppInput defaultValue={user.employee.gender} name="gender" type="select" required label="Gender" options={[
                             { value: "Male", label: "Male" },
-                            { value: "Female", label: "Female" },
-                            { value: "Others", label: "Others" }]} />
-                        <AppInput defaultValue={user.user.state_of_origin} name="state_of_origin" type="select" required label="State Of Origin" options={[
-                            { value: "lagos", label: "Lagos" },
-                            { value: "abuja", label: "Abuja" },
-                            { value: "rivers", label: "Rivers" }]} />
+                            { value: "Female", label: "Female" }]} />
+                        <AppInput defaultValue={user.user.state_of_origin} name="state_of_origin" type="select" required label="State Of Origin" options={[...NigeriaStates]} />
                     </div>
                     <div>
                         <button disabled={proccessing} className="bg-hrms_green disabled:bg-opacity-30 w-full text-white rounded-lg py-2 text-center cursor-pointer">{proccessing ? "Verifying Information" : "Save And Continue"} </button>

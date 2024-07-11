@@ -8,6 +8,7 @@ import { Session, SignOut } from "@/hooks/Auth";
 
 function AppLayout({ children,title }) {
   const user = useSelector((state) => state?.User);
+  const userNames = user?.value?.user?.name
   const dispatch = useDispatch()
   const isAuthenticated = Session(user);
   const [showNav, setShowNav] = useState(false);
@@ -26,7 +27,7 @@ function AppLayout({ children,title }) {
         </div>
         <div className={`p-4 pb-8 md:ml-64 bg-white pt-20 transition-all duration-300 select-none min-h-screen`}>
           <div className="flex gap-3 items-center">
-            <div className="flex-grow"><TopNav title={title} role={user?.value?.user?.role} /></div>
+            <div className="flex-grow"><TopNav user={userNames} title={title} role={user?.value?.user?.role} /></div>
             <div onClick={() => setShowNav(!showNav)} className="h-8 w-8 bg-hrms_green md:hidden text-white rounded-md text-xl flex items-center justify-center cursor-pointer"><i className="ri-menu-line"></i></div>
           </div>
           {children}

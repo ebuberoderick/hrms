@@ -44,7 +44,11 @@ export const getApiResponse = (data) => {
 };
 
 export const getErrorResponse = (error) => {
-  // errors
+  // if (error.response.status === 401) {
+  //   Cookies.remove('hrms_jwt')
+  //   window !== "undefined" && window.location.reload()
+  // }
+  
   return {
     status: false,
     data: error?.response?.data,
