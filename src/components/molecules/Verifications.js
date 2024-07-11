@@ -167,9 +167,9 @@ function Verifications({ Vbvn, Vnin, VaccountNumber, Vothers, Vemployment, Vbio,
                             }
                             {
                                 step > 0 && step < 7 && (
-                                    <div className='flex items-center justify-end gap-5 p-5'>
-                                        {step > 1 && <div className='bg-gray-300 flex items-center px-5 py-2 cursor-pointer' onClick={() => setStep(step - 1)}><MdArrowBackIos /> Back</div>}
-                                        {step < 6 && <div className='bg-gray-300 flex items-center px-5 py-2 cursor-pointer' onClick={() => setStep(step + 1)}>Next <MdArrowForwardIos /></div>}
+                                    <div className='flex items-center gap-5 p-4'>
+                                        {step > 1 && <div className='bg-white border border-hrms_green rounded-md flex items-center px-5 py-2 cursor-pointer' onClick={() => setStep(step - 1)}><MdArrowBackIos /> Back</div>}
+                                        {step < 6 && <div className='bg-white border border-hrms_green rounded-md flex items-center px-5 py-2 cursor-pointer' onClick={() => setStep(step + 1)}>Next <MdArrowForwardIos /></div>}
                                     </div>
                                 )
                             }
