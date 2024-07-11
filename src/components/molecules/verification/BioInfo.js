@@ -69,7 +69,7 @@ function BioInfo({ Vbio, user, setStep }) {
                 <div className='text-danger text-xs'>{errMsg}</div>
                 <div>
                     <div className="w-20 h-20 rounded-full bg-gray-100 relative">
-                        <Image id="output" className="w-full h-full rounded-full" />
+                        <img id="output" src={user.user.avatar} className="w-full h-full rounded-full" />
                         <label htmlFor="image" className="absolute w-8 h-8 border-2 border-white bottom-1 right-0 bg-hrms_green text-white rounded-full flex items-center justify-center">
                             <input accept="image/*" required id="image" onChange={(e) => uploadImg(e)} name="image" type="file" className="opacity-0 absolute w-full cursor-pointer h-full" />
                             <i className="ri-camera-line"></i>

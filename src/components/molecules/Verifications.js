@@ -49,7 +49,7 @@ function Verifications({ Vbvn, Vnin, VaccountNumber, Vothers, Vemployment, Vbio,
                                 <FiHelpCircle className="text-lg cursor-pointer" />
                                 <div className="flex cursor-pointer items-center gap-1 text-sm">
                                     <div className="w-7 h-7 rounded-full bg-gray-200">
-                                        <Image src={avatar} alt="Michael Michael" />
+                                        <img src={user.user.avatar} alt="Michael Michael" />
                                     </div>
                                     {/* <div className="hidden sm:block">{role}</div> */}
                                     <i className="ri-arrow-down-s-line hidden sm:block relative top-[1px]"></i>
