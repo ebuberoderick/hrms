@@ -44,7 +44,7 @@ function OtherVerification({ Vothers, user, setStep }) {
                 <div className='text-danger text-xs'>{errMsg}</div>
                 <form onSubmit={(e) => updateInfo(e)} className='space-y-4'>
                     <div className="grid gap-4">
-                        <AppInput defaultValue={user.employee.person_start_date} name="personal_start_date" type="date" required label="Personal Start Date" />
+                        <AppInput defaultValue={user.employee.person_start_date} name="personal_start_date" type="date" required label="Start Date" />
                         {/* <AppInput defaultValue={user.employee.npfa_name} name="npfa_name" type="text" required label="NPFA Name" />
                         <AppInput defaultValue={user.employee.pin_number} name="pin_number" type="number" required label="Pin Number" /> */}
                         <AppInput defaultValue={user.employee.position} name="position" type="select" required label="Position" options={[{ value: "positions", label: "Positions" }]} />

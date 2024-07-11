@@ -6,13 +6,16 @@ import { fetchMyData, verifyMyData } from '@/services/authService';
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 
-function VerifyAll({ user }) {
+function VerifyAll({ user ,setSave }) {
     console.log(user);
     const [userinfo,setUserinfo] = useState()
 
     const fetchInfo = async () => {
         const { status, data } = await fetchMyData().catch(err => console.log(err))
         console.log(data);
+        if(status){
+            setUserinfo(data.data[0])
+        }
     }
 
 
@@ -21,6 +24,7 @@ function VerifyAll({ user }) {
         const formData = serialize(e.target);
         const { status, data } = await verifyMyData({status:1}).catch(err => console.log(err))
         if (status) {
+            setSave()
             console.log(data);
         }
 
@@ -80,15 +84,12 @@ function VerifyAll({ user }) {
                         Bank Account Details Verification
                     </h2>
                 </div>
-                {/* <form onSubmit={(e) => verifyBankDetails(e)} className='space-y-4'>
+                <div className='space-y-4'>
                     <div className='space-y-3'>
-                        <AppInput name="bank_code" value={user.} type="text" required label="Bank" options={[...bankList]} />
-                        <AppInput name="account_number" type="number" required label="Account Number" />
+                        <AppInput name="bank_code" value={userinfo?.bank[0].bank_name} type="text" required label="Bank" />
+                        <AppInput name="account_number" value={userinfo?.bank[0].account_number} type="number" required label="Account Number" />
                     </div>
-                    <div>
-                        <button disabled={proccessing} className="bg-hrms_green disabled:bg-opacity-25 w-full text-white rounded-lg py-2 text-center cursor-pointer">{proccessing ? "Fetching Information" : "Verify Bank Details"}</button>
-                    </div>
-                </form> */}
+                </div>
             </div>
             <div className='max-w-lg'>
                 <div className="inline-flex relative bottom-4 items-start justify-between">
@@ -124,7 +125,7 @@ function VerifyAll({ user }) {
                 </div>
                 <div className='space-y-4'>
                     <div className="grid gap-4">
-                        <AppInput value={user.employee.person_start_date} name="personal_start_date" type="date" required label="Personal Start Date" />
+                        <AppInput value={user.employee.person_start_date} name="personal_start_date" type="date" required label="Start Date" />
                         <AppInput value={user.employee.position} name="position" type="text" required label="Position" options={[{ value: "positions", label: "Positions" }]} />
                     </div>
                 </div>

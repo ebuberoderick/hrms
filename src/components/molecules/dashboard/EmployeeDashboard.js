@@ -14,7 +14,7 @@ const EmployeeDashboard = () => {
   const Vothers = userType?.employee?.position !== null
   const Vemployment = userType?.employee?.grade !== null
   const Vbio = userType?.employee?.marital_status !== null
-  const saved = true
+  const [saved,setSave] = useState(false)
   // const Vkin = userType?.user?.next_of_kin_name === 1
   const isVerified = Vbvn && Vnin && VaccountNumber && Vothers && Vemployment && Vbio && saved
 
@@ -33,7 +33,7 @@ const EmployeeDashboard = () => {
           {
             isVerified ? (
               <AppLayout title={"Dashboard"}></AppLayout>
-            ) : (<Verifications Vbvn={Vbvn} Vnin={Vnin} VaccountNumber={VaccountNumber} Vothers={Vothers} Vemployment={Vemployment} Vbio={Vbio} />)
+            ) : (<Verifications setSave={()=>setSave(true)} Vbvn={Vbvn} Vnin={Vnin} VaccountNumber={VaccountNumber} Vothers={Vothers} Vemployment={Vemployment} Vbio={Vbio} />)
           }
         </div>
       </div>

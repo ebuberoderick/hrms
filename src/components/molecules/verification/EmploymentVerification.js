@@ -51,7 +51,7 @@ function EmploymentVerification({ Vemployment, user, setStep }) {
                             { value: "Active", label: "Active" },
                             { value: "Inactive", label: "Inactive" }]} />
                         <AppInput defaultValue={user.employee.designation} name="designation" type="select" required label="Designation" options={[{ value: "Corporal", label: "Corporal" }]} />
-                        <AppInput defaultValue={user.employee.sub_organization} name="sub_organization" type="select" required label="Sub Organization" options={[{ value: "Enugu Command", label: "Enugu Command" }]} />
+                        <AppInput defaultValue={user.employee.sub_organization} name="sub_organization" type="select" required label="Sub Organization" options={[{ value: "Enugu Command", label: "Enugu Command" },{ value: "Abuja Command", label: "Abuja Command" },{ value: "Lagos Command", label: "Lagos Command" },{ value: "Kaduna Command", label: "Kaduna Command" }]} />
                         <AppInput defaultValue={user.employee.category} name="category" type="select" required label="Category" options={[{ value: "Conposs", label: "Conposs" }]} />
                     </div>
                     <div>
