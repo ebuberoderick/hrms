@@ -1,18 +1,19 @@
 "use client"
 import AppCheckBox from '@/components/organisms/AppCheckBox';
 import AppInput from '@/components/organisms/AppInput'
+import { NigeriaStates } from '@/hooks/Nigeria';
 import serialize from '@/hooks/Serialize';
 import { fetchMyData, verifyMyData } from '@/services/authService';
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 
 function VerifyAll({ user ,setSave }) {
-    console.log(user);
+    // console.log(user);
     const [userinfo,setUserinfo] = useState()
 
     const fetchInfo = async () => {
         const { status, data } = await fetchMyData().catch(err => console.log(err))
-        console.log(data);
+        // console.log(data);
         if(status){
             setUserinfo(data.data[0])
         }
@@ -25,7 +26,6 @@ function VerifyAll({ user ,setSave }) {
         const { status, data } = await verifyMyData({status:1}).catch(err => console.log(err))
         if (status) {
             setSave()
-            console.log(data);
         }
 
     }
@@ -44,7 +44,7 @@ function VerifyAll({ user ,setSave }) {
                 </div>
                 <div>
                     <div className="w-20 h-20 rounded-full bg-gray-100 relative">
-                        <Image id="output" className="w-full h-full rounded-full" />
+                        <img src={user.user.avatar} id="output" className="w-full h-full rounded-full" />
                         <label htmlFor="image" className="absolute w-8 h-8 border-2 border-white bottom-1 right-0 bg-hrms_green text-white rounded-full flex items-center justify-center">
                             <input accept="image/*" required id="image" onChange={(e) => uploadImg(e)} name="image" type="file" className="opacity-0 absolute w-full cursor-pointer h-full" />
                             <i className="ri-camera-line"></i>
@@ -66,15 +66,12 @@ function VerifyAll({ user ,setSave }) {
                             { value: "married", label: "Married" },
                             { value: "widow", label: "Widow" },
                             { value: "widower", label: "Widower" },
-                            { value: "devioced", label: "Devioced" }]} />
+                            { value: "divorced", label: "Divorced" }]} />
                         <AppInput value={user.employee.gender} name="gender" type="text" required label="Gender" options={[
                             { value: "Male", label: "Male" },
                             { value: "Female", label: "Female" },
                             { value: "Others", label: "Others" }]} />
-                        <AppInput value={user.user.state_of_origin} name="state_of_origin" type="text" required label="State Of Origin" options={[
-                            { value: "lagos", label: "Lagos" },
-                            { value: "abuja", label: "Abuja" },
-                            { value: "rivers", label: "Rivers" }]} />
+                        <AppInput defaultValue={user.user.state_of_origin} name="state_of_origin" type="select" required label="State Of Origin" options={[...NigeriaStates]} />
                     </div>
                 </div>
             </div>

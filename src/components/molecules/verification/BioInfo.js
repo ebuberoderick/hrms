@@ -14,6 +14,7 @@ function BioInfo({ Vbio, user, setStep }) {
     console.log(user);
     const [showModal, setShowModal] = useState(false)
     const [errMsg, setErrorMsg] = useState("")
+    const [imgUrl,setImgUrl] = useState(user.user.avatar)
     const [proccessing, setProcessing] = useState(false)
 
     const perset_key = process.env.NEXT_PUBLIC_API_CLOUDINARY_PERSET_KEY
@@ -44,6 +45,7 @@ function BioInfo({ Vbio, user, setStep }) {
         e.preventDefault();
         const formData = serialize(e.target);
         setProcessing(true)
+        formData.image = imgUrl
         const { status, data } = await updateEmployeeInfo(formData).catch(err => console.log(err))
         if (status) {
             let x = {}
