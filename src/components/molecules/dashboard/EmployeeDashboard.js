@@ -4,6 +4,7 @@ import ResponseModal from "../../organisms/ResponseModal";
 import { useDispatch, useSelector } from "react-redux";
 import Verifications from "../Verifications";
 import AppLayout from "@/components/layouts/appLayout";
+import EmployeeVerifiedDashboard from "./EmployeeVerifiedDashboard";
 
 const EmployeeDashboard = () => {
   const userType = useSelector((state) => state.User?.value);
@@ -14,7 +15,7 @@ const EmployeeDashboard = () => {
   const Vothers = userType?.employee?.position !== null
   const Vemployment = userType?.employee?.grade !== null
   const Vbio = userType?.employee?.marital_status !== null
-  const [saved,setSave] = useState(Vbvn && Vnin && VaccountNumber && Vothers && Vemployment && Vbio)
+  const [saved, setSave] = useState(Vbvn && Vnin && VaccountNumber && Vothers && Vemployment && Vbio)
   // const Vkin = userType?.user?.next_of_kin_name === 1
   const isVerified = Vbvn && Vnin && VaccountNumber && Vothers && Vemployment && Vbio && saved
 
@@ -28,16 +29,14 @@ const EmployeeDashboard = () => {
   const maxDate = getTodayDate();
   return (
     <div>
-      <div className="grid lg:grid-cols-3 gap-4">
-        <div className="lg:col-span-2 space-y-4">
-          {
-            isVerified ? (
-              <AppLayout title={"Dashboard"}>
-                <div>Welcome </div>
-              </AppLayout>
-            ) : (<Verifications setSave={()=>setSave(true)} Vbvn={Vbvn} Vnin={Vnin} VaccountNumber={VaccountNumber} Vothers={Vothers} Vemployment={Vemployment} Vbio={Vbio} />)
-          }
-        </div>
+      <div className="">
+        {
+          isVerified ? (
+            <AppLayout title={"Dashboard"}>
+              <EmployeeVerifiedDashboard />
+            </AppLayout>
+          ) : (<Verifications setSave={() => setSave(true)} Vbvn={Vbvn} Vnin={Vnin} VaccountNumber={VaccountNumber} Vothers={Vothers} Vemployment={Vemployment} Vbio={Vbio} />)
+        }
       </div>
     </div>
   );

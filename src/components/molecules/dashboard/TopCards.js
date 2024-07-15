@@ -13,7 +13,7 @@ function TopCards() {
                         <FiUsers />
                     </div>
                     <div className="flex">
-                        <div className="flex-grow text-3xl">1782</div>
+                        <div className="flex-grow text-3xl">25</div>
                         <div></div>
                     </div>
                     <div className="text-xs">Total Employees</div>
@@ -50,7 +50,7 @@ function TopCards() {
                         <PiPrinter />
                     </div>
                     <div className="flex">
-                        <div className="flex-grow text-3xl">$1,782</div>
+                        <div className="flex-grow text-3xl">&#8358;7,013</div>
                         <div></div>
                     </div>
                     <div className="text-xs">Total Expense</div>
@@ -63,7 +63,7 @@ function TopCards() {
                         <PiHandDeposit />
                     </div>
                     <div className="flex">
-                        <div className="flex-grow text-3xl">$1,782</div>
+                        <div className="flex-grow text-3xl">&#8358;10,782</div>
                         <div></div>
                     </div>
                     <div className="text-xs">Total Deposit</div>
@@ -76,7 +76,7 @@ function TopCards() {
                         <PiHashStraightLight />
                     </div>
                     <div className="flex">
-                        <div className="flex-grow text-3xl">$1,782</div>
+                        <div className="flex-grow text-3xl">&#8358;15,500</div>
                         <div></div>
                     </div>
                     <div className="text-xs">Total Salaries Paid</div>
