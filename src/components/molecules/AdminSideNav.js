@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 import logo from "@assets/images/authLogo.png";
 import AppLink from "../organisms/AppLink";
+import { RiSettings4Line } from "react-icons/ri";
 
 function AdminSideNav() {
   return (
@@ -41,6 +42,16 @@ function AdminSideNav() {
                 { name: "variable type", extra: false },
                 { name: "variable method", extra: false },
                 { name: "IP settings", extra: false },
+              ]}
+            />
+            <AppLink
+              text={"setups"}
+              icon={<RiSettings4Line />}
+              subMenu={[
+                { name: "job titles", extra: false },
+                { name: "allowance and deductions", extra: false },
+                { name: "grade levels", extra: false },
+                { name: "steps", extra: false }
               ]}
             />
           </div>
