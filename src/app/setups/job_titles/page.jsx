@@ -4,38 +4,39 @@ import AppInput from '@/components/organisms/AppInput'
 import AppPagination from '@/components/organisms/AppPagination'
 import Modal from '@/components/organisms/Modal'
 import serialize from '@/hooks/Serialize'
-import { addResignation, fetchResignation } from '@/services/authService'
-import { AllEmployees, allDepartment, companies } from '@/utility/constants'
+import { createJobTitle, fetchJobTitle } from '@/services/authService'
+import { allDepartment, companies } from '@/utility/constants'
 import React, { useEffect, useState } from 'react'
 
 function Page() {
   const [showModal, setShowModal] = useState(false)
   const [riz, setRiz] = useState([])
+  const [processing, setProcessing] = useState(false)
   const [compnis, setCompnis] = useState([])
   const [allDept, setAllDept] = useState([])
-  const [empl, setAllEmpl] = useState([])
 
   const add = async (e) => {
     e.preventDefault();
     const formData = serialize(e.target);
-    const { status, data } = await addResignation(formData).catch(err => console.log(err))
+    setProcessing(true)
+    const { status, data } = await createJobTitle(formData).catch(err => console.log(err))
     if (status) {
       fetch()
       setShowModal(false)
     }
+    setProcessing(false)
   }
 
   const fetch = async () => {
-    const { status, data } = await fetchResignation().catch(err => console.log(err))
+    const { status, data } = await fetchJobTitle().catch(err => console.log(err))
     if (status) {
-      setRiz(data?.data[0]);
+      setRiz(data.data[0]);
     }
   }
 
   useEffect(() => {
     fetch()
     companies().then(res => setCompnis([...res]))
-    AllEmployees().then(res => setAllEmpl([...res]))
     allDepartment().then(res => setAllDept([...res]))
   }, [])
 
@@ -46,16 +47,14 @@ function Page() {
       <div className="space-y-4">
         <Modal closeModal={() => setShowModal(false)} size={"xl"} isOpen={showModal}>
           <form onSubmit={(e) => add(e)} className="space-y-4">
-            <div className="text-hrms_green text-xl">Add Resignation</div>
+            <div className="text-hrms_green text-xl">Add Job title</div>
             <div className="grid grid-cols-2 gap-4">
-              <AppInput name="employee_id" type={"select"} required label="Employee Name" options={[...empl]} />
               <AppInput name="company_id" type={"select"} required label="Company" options={[...compnis]} />
               <AppInput name="department_id" type={"select"} required label="Department To" options={[...allDept]} />
-              <AppInput name="notice_date" type={"date"} required label="Notice Date" />
-              <AppInput name="resignation_date" type={"date"} required label="Resignation Date" />
+              <AppInput name="title" type={"text"} required label="Title" />
               <AppInput name={"description"} type={"textarea"} label="Description" />
             </div>
-            <button className="bg-hrms_green w-full rounded-lg text-white py-2">Add</button>
+            <button disabled={processing} className={`bg-hrms_green w-full rounded-lg text-white py-2 ${processing && "bg-opacity-25"}`}>{processing ? "Creating" : "Add"}</button>
           </form>
         </Modal>
 
@@ -95,21 +94,21 @@ function Page() {
                 <th className="w-20">Status</th>
               </tr>
               {
-                riz?.data?.map((list, i) => (
-                  <tr key={i} className='opacity-0 hidden'>
+                riz.map((list, i) => (
+                  <tr key={i} className=''>
                     <td className="flex items-center gap-3 pl-5 py-2">
                       <div className="w-9 relative">
                         <div className=""><AppInput onChange={(e) => selectAll(e)} type="checkbox" name="employee" /></div>
                       </div>
                       <div className="space-y-1">
-                        <div className="">{list.employee.employee_name}</div>
+                        <div className="">{list.company.company_name}</div>
                       </div>
                     </td>
                     <td className="hidden lg:table-cell">
-                      <div className="font-semibold">{list.company.company_name}</div>
+                      <div className="">{list.department.department_name}</div>
                     </td>
                     <td className="hidden sm:table-cell">
-                      <div className="">{list.resignation_date}</div>
+                      <div className="font-semibold">{list.title}</div>
                     </td>
                     <td>
                       <div className="text-xl flex gap-1">

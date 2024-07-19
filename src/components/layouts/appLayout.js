@@ -17,6 +17,7 @@ function AppLayout({ children,title }) {
     await SignOut(dispatch);
     router.push("/auth/login");
   }
+  
   if (isAuthenticated.status === "unauthenticated") {
     out()
   } else {

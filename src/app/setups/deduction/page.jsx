@@ -4,23 +4,24 @@ import AppInput from '@/components/organisms/AppInput'
 import AppPagination from '@/components/organisms/AppPagination'
 import Modal from '@/components/organisms/Modal'
 import serialize from '@/hooks/Serialize'
-import { createGradeLevel, fetchGradeLevel } from '@/services/authService'
+import { createDeductionDefinition, fetchDeductionDefinition } from '@/services/authService'
 import { AllEmployees, allDepartment, companies } from '@/utility/constants'
 import React, { useEffect, useState } from 'react'
 
 function Page() {
   const [showModal, setShowModal] = useState(false)
-  const [riz, setRiz] = useState([])
   const [processing, setProcessing] = useState(false)
+  const [riz, setRiz] = useState([])
   const [compnis, setCompnis] = useState([])
   const [allDept, setAllDept] = useState([])
   const [empl, setAllEmpl] = useState([])
 
   const add = async (e) => {
+
     e.preventDefault();
     const formData = serialize(e.target);
     setProcessing(true)
-    const { status, data } = await createGradeLevel(formData).catch(err => console.log(err))
+    const { status, data } = await createDeductionDefinition(formData).catch(err => console.log(err))
     if (status) {
       fetch()
       setShowModal(false)
@@ -29,7 +30,7 @@ function Page() {
   }
 
   const fetch = async () => {
-    const { status, data } = await fetchGradeLevel().catch(err => console.log(err))
+    const { status, data } = await fetchDeductionDefinition().catch(err => console.log(err))
     if (status) {
       setRiz(data?.data[0]);
     }
@@ -49,11 +50,12 @@ function Page() {
       <div className="space-y-4">
         <Modal closeModal={() => setShowModal(false)} size={"xl"} isOpen={showModal}>
           <form onSubmit={(e) => add(e)} className="space-y-4">
-            <div className="text-hrms_green text-xl">Add Grade Level</div>
+            <div className="text-hrms_green text-xl">Add Deductions</div>
             <div className="grid grid-cols-2 gap-4">
               <AppInput name="company_id" type={"select"} required label="Company" options={[...compnis]} />
-              <AppInput name="department_id" type={"select"} required label="Department To" options={[...allDept]} />
-              <AppInput name="grade" type={"text"} required label="Grade" />
+              <AppInput name="code" type={"text"} required label="Code" />
+              <AppInput name="calculation_method" type={"select"} options={[{ value: "fixed", label: "Fixed" }]} required label="Calculation method" />
+              <AppInput name="statutory" type={"select"} options={[{ value: "1", label: "Yes" }, { value: "0", label: "No" }]} required label="Statutory" />
               <AppInput name={"description"} type={"textarea"} label="Description" />
             </div>
             <button disabled={processing} className={`bg-hrms_green w-full rounded-lg text-white py-2 ${processing && "bg-opacity-25"}`}>{processing ? "Creating" : "Add"}</button>
@@ -63,10 +65,10 @@ function Page() {
         <div className="lg:flex lg:gap-y-4 space-ysss-3 items-center justify-between">
           <div className="">
             <p className=" text-[24px] font-[500] text-[#000000]">
-              Grade Level
+              Deductions
             </p>
             <p className=" text-[12px] font-[400] text-[#00000099] text-opacity-60">
-              All the company Grade Levels are listed here
+              All the company Deductions are listed here
             </p>
           </div>
           <div className="sm:flex space-y-3 sm:space-y-0 gap-[10px] text-sm">
@@ -75,7 +77,7 @@ function Page() {
               onClick={() => setShowModal(true)}
             >
               <i className="ri-add-line"></i>
-              <div className="">Add Grade Level</div>
+              <div className="">Add Deductions</div>
             </div>
           </div>
         </div>
@@ -91,9 +93,10 @@ function Page() {
                   Company
                 </th>
 
+                <th className="hidden lg:table-cell">Code</th>
                 <th className="hidden lg:table-cell">Description</th>
-                <th className="hidden sm:table-cell">Grade Level</th>
-                <th className="w-20">Status</th>
+                <th className="hidden sm:table-cell w-40">Calculation method</th>
+                <th className="w-20">Statutory</th>
                 <th className="w-20">Action</th>
               </tr>
               {
@@ -108,13 +111,16 @@ function Page() {
                       </div>
                     </td>
                     <td className="hidden lg:table-cell">
+                      <div className="font-semibold">{list.code}</div>
+                    </td>
+                    <td className="hidden lg:table-cell">
                       <div className="font-semibold">{list.description}</div>
                     </td>
                     <td className="hidden sm:table-cell">
-                      <div className="">{list.grade}</div>
+                      <div className="">{list.calculation_method}</div>
                     </td>
                     <td>
-                      <div className="">{list.active === "1" ? "active":"inactive"}</div>
+                      <div className="">{list.statutory === "1" ? "Yes":"No"}</div>
                     </td>
                     <td>
                       <div className="text-xl flex gap-1">

@@ -101,3 +101,36 @@ export const fetchAllComplaint = () => apiWithAuth.post("admin/corehr/transfer/f
 export const addResignation = (formData) => apiWithAuth.post("admin/corehr/resignation/create", formData).then(getApiResponse).catch(getErrorResponse);
 export const fetchResignation = () => apiWithAuth.post("admin/corehr/resignation/fetch").then(getApiResponse).catch(getErrorResponse);
 export const fetchAllResignation = () => apiWithAuth.post("admin/corehr/resignation/fetch_all").then(getApiResponse).catch(getErrorResponse);
+
+
+export const createJobTitle = (formData) => apiWithAuth.post("admin/payroll/job_title/create", formData).then(getApiResponse).catch(getErrorResponse);
+export const fetchJobTitle = (formData) => apiWithAuth.post("admin/payroll/job_title/fetch", formData).then(getApiResponse).catch(getErrorResponse);
+export const updateJobTitle = (formData) => apiWithAuth.post("admin/payroll/job_title/update", formData).then(getApiResponse).catch(getErrorResponse);
+
+export const createAllowanceDefinition = (formData) => apiWithAuth.post("admin/payroll/allowance_definition/create", formData).then(getApiResponse).catch(getErrorResponse);
+export const fetchAllowanceDefinition = (formData) => apiWithAuth.post("admin/payroll/allowance_definition/fetch", formData).then(getApiResponse).catch(getErrorResponse);
+export const updateAllowanceDefinition = (formData) => apiWithAuth.post("admin/payroll/allowance_definition/update", formData).then(getApiResponse).catch(getErrorResponse);
+
+export const createDeductionDefinition = (formData) => apiWithAuth.post("admin/payroll/deduction_definition/create", formData).then(getApiResponse).catch(getErrorResponse);
+export const fetchDeductionDefinition = (formData) => apiWithAuth.post("admin/payroll/deduction_definition/fetch", formData).then(getApiResponse).catch(getErrorResponse);
+export const updateDeductionDefinition = (formData) => apiWithAuth.post("admin/payroll/deduction_definition/update", formData).then(getApiResponse).catch(getErrorResponse);
+
+export const createGradeLevel = (formData) => apiWithAuth.post("admin/payroll/grade_level/create", formData).then(getApiResponse).catch(getErrorResponse);
+export const fetchGradeLevel = (formData) => apiWithAuth.post("admin/payroll/grade_level/fetch", formData).then(getApiResponse).catch(getErrorResponse);
+export const updateGradeLevel = (formData) => apiWithAuth.post("admin/payroll/grade_level/update", formData).then(getApiResponse).catch(getErrorResponse);
+
+export const createGradeStep = (formData) => apiWithAuth.post("admin/payroll/grade_step/create", formData).then(getApiResponse).catch(getErrorResponse);
+export const fetchGradeStep = (formData) => apiWithAuth.post("admin/payroll/grade_step/fetch", formData).then(getApiResponse).catch(getErrorResponse);
+export const updateGradeStep = (formData) => apiWithAuth.post("admin/payroll/grade_step/update", formData).then(getApiResponse).catch(getErrorResponse);
+
+export const createSalaryStructure = (formData) => apiWithAuth.post("admin/payroll/salary_structure/create", formData).then(getApiResponse).catch(getErrorResponse);
+export const fetchSalaryStructure = (formData) => apiWithAuth.post("admin/payroll/salary_structure/fetch", formData).then(getApiResponse).catch(getErrorResponse);
+export const updateSalaryStructure = (formData) => apiWithAuth.post("admin/payroll/salary_structure/update", formData).then(getApiResponse).catch(getErrorResponse);
+
+export const createSalaryAllowance = (formData) => apiWithAuth.post("admin/payroll/salary_allowance/create", formData).then(getApiResponse).catch(getErrorResponse);
+export const fetchSalaryAllowance = (formData) => apiWithAuth.post("admin/payroll/salary_allowance/fetch", formData).then(getApiResponse).catch(getErrorResponse);
+export const updateSalaryAllowance = (formData) => apiWithAuth.post("admin/payroll/salary_allowance/update", formData).then(getApiResponse).catch(getErrorResponse);
+
+export const createSalaryDeduction = (formData) => apiWithAuth.post("admin/payroll/salary_deduction/create", formData).then(getApiResponse).catch(getErrorResponse);
+export const fetchSalaryDeduction = (formData) => apiWithAuth.post("admin/payroll/salary_deduction/fetch", formData).then(getApiResponse).catch(getErrorResponse);
+export const updateSalaryDeduction = (formData) => apiWithAuth.post("admin/payroll/salary_deduction/update", formData).then(getApiResponse).catch(getErrorResponse);

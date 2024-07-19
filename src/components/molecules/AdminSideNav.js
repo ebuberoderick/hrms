@@ -49,7 +49,8 @@ function AdminSideNav() {
               icon={<RiSettings4Line />}
               subMenu={[
                 { name: "job titles", extra: false },
-                { name: "allowance and deductions", extra: false },
+                { name: "allowance", extra: false },
+                { name: "deduction", extra: false },
                 { name: "grade levels", extra: false },
                 { name: "steps", extra: false }
               ]}

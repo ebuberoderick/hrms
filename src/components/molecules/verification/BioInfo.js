@@ -11,7 +11,6 @@ import { useDispatch } from 'react-redux'
 import { NigeriaStates } from '../../../hooks/Nigeria'
 
 function BioInfo({ Vbio, user, setStep }) {
-    console.log(user);
     const [showModal, setShowModal] = useState(false)
     const [errMsg, setErrorMsg] = useState("")
     const [imgUrl,setImgUrl] = useState(user.user.avatar)
