@@ -40,6 +40,7 @@ export const fetchAllLocation = () => apiWithAuth.post("admin/organization/locat
 
 
 export const addCompany = (formData) => apiWithAuth.post("admin/organization/company/create", formData).then(getApiResponse).catch(getErrorResponse);
+export const updateCompanyData = (formData) => apiWithAuth.post("admin/organization/company/update", formData).then(getApiResponse).catch(getErrorResponse);
 export const fetchCompanies = () => apiWithAuth.post("admin/organization/company/fetch").then(getApiResponse).catch(getErrorResponse);
 export const fetchAllCompanies = () => apiWithAuth.post("admin/organization/company/fetch_all").then(getApiResponse).catch(getErrorResponse);
 
