@@ -265,7 +265,7 @@ const Page = () => {
         </div>
 
         {
-          Object.keys(updData).length > 0 && console.log(updData) && (
+          Object.keys(updData).length > 0 && (
             <Modal size={"lg"} closeModal={() => setUpdateData({})} isOpen={Object.keys(updData).length > 0}>
               <div className="space-y-4">
                 <div className="flex items-start justify-between">
@@ -273,87 +273,62 @@ const Page = () => {
                     Employees Infomation
                   </h2>
                 </div>
-                {/* assignment: null
-                bvn: null
-                category: null
-                date_of_birth: null
-                designation: null
-                employee_status: null
-
-                firstname: "Ebube"
-
-                gender: null
-
-                grade: null
-
-                hire_date: null
-
-                lastname: "Roderick"
-
-                legacy_id: null
-
-                marital_status: null
-
-                middlename: "Onyemzoro"
-
-                npfa_name: null
-
-                person_start_date: null
-
-                pin_number: null
-
-                position: null
-
-                staff_id: "RDE-762"
-
-                state_of_origin: null
-
-                step: null
-
-                sub_organization: null
-
-                telephone: "+2349088776655" */}
-
                 <div className="grid grid-cols-2 gap-4">
                   <div className="">
-                    <div className="font-bold">Email</div>
-                    <div className=""></div>
+                    <div className="font-bold">Staff ID</div>
+                    <div className="">{updData.staff_id === null ? "Null" : updData.staff_id}</div>
                   </div>
                   <div className="">
-                    <div className="font-bold capitalize">name</div>
-                    <div className=""></div>
+                    <div className="font-bold capitalize">firstname</div>
+                    <div className="">{updData.firstname === null ? "Null" : updData.firstname}</div>
                   </div>
                   <div className="">
-                    <div className="font-bold capitalize">role</div>
-                    <div className=""></div>
+                    <div className="font-bold capitalize">lastname</div>
+                    <div className="">{updData.lastname === null ? "Null" : updData.lastname}</div>
+                  </div>
+                  <div className="">
+                    <div className="font-bold capitalize">middlename</div>
+                    <div className="">{updData.middlename === null ? "Null" : updData.middlename}</div>
+                  </div>
+                  <div className="">
+                    <div className="font-bold capitalize">telephone</div>
+                    <div className="">{updData.telephone === null ? "Null" : updData.telephone}</div>
                   </div>
                   <div className="">
                     <div className="font-bold capitalize">state of origin</div>
-                    <div className=""></div>
+                    <div className="">{updData.state_of_origin === null ? "Null" : updData.state_of_origin}</div>
                   </div>
                   <div className="">
-                    <div className="font-bold capitalize">address verification</div>
-                    <div className=""></div>
+                    <div className="font-bold capitalize">category</div>
+                    <div className="">{updData.category === null ? "Null" : updData.category}</div>
                   </div>
                   <div className="">
-                    <div className="font-bold capitalize">bank verification</div>
-                    <div className=""></div>
+                    <div className="font-bold capitalize">grade</div>
+                    <div className="">{updData.grade === null ? "Null" : updData.grade}</div>
                   </div>
                   <div className="">
-                    <div className="font-bold capitalize">bvn verification</div>
-                    <div className=""></div>
+                    <div className="font-bold capitalize">step</div>
+                    <div className="">{updData.step === null ? "Null" : updData.step}</div>
                   </div>
                   <div className="">
-                    <div className="font-bold capitalize">next of kin verification</div>
-                    <div className=""></div>
+                    <div className="font-bold capitalize">designation</div>
+                    <div className="">{updData.designation === null ? "Null" : updData.designation}</div>
                   </div>
                   <div className="">
-                    <div className="font-bold capitalize">nin verification</div>
-                    <div className=""></div>
+                    <div className="font-bold capitalize">date of birth</div>
+                    <div className="">{updData.date_of_birth === null ? "Null" : updData.date_of_birth}</div>
                   </div>
                   <div className="">
-                    <div className="font-bold capitalize">status</div>
-                    <div className=""></div>
+                    <div className="font-bold capitalize">hire date</div>
+                    <div className="">{updData.hire_date === null ? "Null" : updData.hire_date}</div>
+                  </div>
+                  <div className="">
+                    <div className="font-bold capitalize">assignment</div>
+                    <div className="">{updData.assignment === null ? "Null" : updData.assignment}</div>
+                  </div>
+                  <div className="">
+                    <div className="font-bold capitalize">sub organization</div>
+                    <div className="">{updData.sub_organization === null ? "Null" : updData.sub_organization}</div>
                   </div>
                 </div>
               </div>
