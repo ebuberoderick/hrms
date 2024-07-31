@@ -6,11 +6,13 @@ import Modal from "@/components/organisms/Modal";
 import ResponseModal from "@/components/organisms/ResponseModal";
 import { NigeriaStates } from "@/hooks/Nigeria";
 import serialize from "@/hooks/Serialize";
+import { debounce } from "@/hooks/useDebounce";
 import { addEmploye, adminadduser, employeeInvite, fetchEmployee, fetchemploy } from "@/services/authService";
 import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
+import { LuEye } from "react-icons/lu";
 
 const Page = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -21,7 +23,8 @@ const Page = () => {
   const [activeModal, setActiveModal] = useState("Register")
   const [importModal, setImportModal] = useState(false)
   const [employee, setEmployee] = useState([])
-const [proccessingAdd,setProccessingAdd] = useState(false)
+  const [updData, setUpdateData] = useState({})
+  const [proccessingAdd, setProccessingAdd] = useState(false)
 
 
 
@@ -149,13 +152,22 @@ const [proccessingAdd,setProccessingAdd] = useState(false)
     }
   }
 
+
+  const searchFN = debounce(async (e) => {
+    const { status, data } = await fetchEmployee({ search: e }).catch(err => console.log(err))
+    if (status) {
+      setEmployee(data.data[0])
+    }
+  }, 3000);
+
+
   useEffect(() => {
     fetchEmployees()
   }, [])
 
 
   return (
-    <AppLayout>
+    <AppLayout title={"Employee"}>
       <>
         <div className="lg:flex space-y-3 items-center justify-between">
           <div className="">
@@ -185,7 +197,8 @@ const [proccessingAdd,setProccessingAdd] = useState(false)
           <div className="w-[334px] relative py-[12px] pr-[30px] border border-hrms_green rounded-[10px]">
             <input
               type="text"
-              placeholder="Search..."
+              onChange={(e) => searchFN(e.target.value)}
+              placeholder="Search by name and staff_id"
               className="pl-2 w-full placeholder:text-hrms_green outline-none text capitalize"
             />
             <div className="absolute right-0 top-0 flex items-center justify-center h-full w-8">
@@ -203,9 +216,9 @@ const [proccessingAdd,setProccessingAdd] = useState(false)
           <table className="w-full divide-y text-sm text-left">
             <tr className="bg-gray-100">
               <th className="flex gap-3 pl-5 py-2">
-                <div className="w-9 relative">
+                {/* <div className="w-9 relative">
                   <div className="absolute -top-1"><AppInput type="checkbox" name="employee" /></div>
-                </div>
+                </div> */}
                 <div className="flex-grow">Image</div>
               </th>
               <th className="hidden lg:table-cell">Username</th>
@@ -216,9 +229,9 @@ const [proccessingAdd,setProccessingAdd] = useState(false)
               employee?.data?.map((emp, i) => (
                 <tr key={i}>
                   <td className="flex items-center gap-3 pl-5 py-2">
-                    <div className="w-9 relative">
+                    {/* <div className="w-9 relative">
                       <div className="absolute -top-1"><AppInput type="checkbox" name="employee" /></div>
-                    </div>
+                    </div> */}
                     <div className="flex-grow gap-2 flex">
                       <div className="">
                         <div className="w-9 h-9 bg-gray-100 rounded-full"></div>
@@ -241,8 +254,7 @@ const [proccessingAdd,setProccessingAdd] = useState(false)
                   </td>
                   <td>
                     <div className="text-xl flex gap-1">
-                      <div className="text-hrms_green p-1 cursor-pointer"><i className="ri-edit-2-line"></i></div>
-                      <div className="text-danger p-1 cursor-pointer"><i className="ri-delete-bin-6-line"></i></div>
+                      <div onClick={() => setUpdateData(emp)} className="text-hrms_green p-1 cursor-pointer"><LuEye /></div>
                     </div>
                   </td>
                 </tr>
@@ -252,7 +264,102 @@ const [proccessingAdd,setProccessingAdd] = useState(false)
           <AppPagination totalRecords={employee} newData={(e) => setEmployee(e)} />
         </div>
 
+        {
+          Object.keys(updData).length > 0 && console.log(updData) && (
+            <Modal size={"lg"} closeModal={() => setUpdateData({})} isOpen={Object.keys(updData).length > 0}>
+              <div className="space-y-4">
+                <div className="flex items-start justify-between">
+                  <h2 className="text-[24px] font-[500] text-hrms_green">
+                    Employees Infomation
+                  </h2>
+                </div>
+                {/* assignment: null
+                bvn: null
+                category: null
+                date_of_birth: null
+                designation: null
+                employee_status: null
 
+                firstname: "Ebube"
+
+                gender: null
+
+                grade: null
+
+                hire_date: null
+
+                lastname: "Roderick"
+
+                legacy_id: null
+
+                marital_status: null
+
+                middlename: "Onyemzoro"
+
+                npfa_name: null
+
+                person_start_date: null
+
+                pin_number: null
+
+                position: null
+
+                staff_id: "RDE-762"
+
+                state_of_origin: null
+
+                step: null
+
+                sub_organization: null
+
+                telephone: "+2349088776655" */}
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="">
+                    <div className="font-bold">Email</div>
+                    <div className=""></div>
+                  </div>
+                  <div className="">
+                    <div className="font-bold capitalize">name</div>
+                    <div className=""></div>
+                  </div>
+                  <div className="">
+                    <div className="font-bold capitalize">role</div>
+                    <div className=""></div>
+                  </div>
+                  <div className="">
+                    <div className="font-bold capitalize">state of origin</div>
+                    <div className=""></div>
+                  </div>
+                  <div className="">
+                    <div className="font-bold capitalize">address verification</div>
+                    <div className=""></div>
+                  </div>
+                  <div className="">
+                    <div className="font-bold capitalize">bank verification</div>
+                    <div className=""></div>
+                  </div>
+                  <div className="">
+                    <div className="font-bold capitalize">bvn verification</div>
+                    <div className=""></div>
+                  </div>
+                  <div className="">
+                    <div className="font-bold capitalize">next of kin verification</div>
+                    <div className=""></div>
+                  </div>
+                  <div className="">
+                    <div className="font-bold capitalize">nin verification</div>
+                    <div className=""></div>
+                  </div>
+                  <div className="">
+                    <div className="font-bold capitalize">status</div>
+                    <div className=""></div>
+                  </div>
+                </div>
+              </div>
+            </Modal>
+          )
+        }
         <Modal size={"2xl"} closeModal={() => setIsModalOpen(false)} isOpen={isModalOpen}>
           <div className="space-y-4">
             <div className="flex items-start justify-between">
@@ -322,7 +429,7 @@ const [proccessingAdd,setProccessingAdd] = useState(false)
                         </div>
                       </div>
                       <div>
-                        <button disabled={proccessingAdd} className="bg-hrms_green disabled:bg-opacity-40 w-full text-white rounded-lg py-2 text-center cursor-pointer">{proccessingAdd ? "Adding Employee":"Add Employee"}</button>
+                        <button disabled={proccessingAdd} className="bg-hrms_green disabled:bg-opacity-40 w-full text-white rounded-lg py-2 text-center cursor-pointer">{proccessingAdd ? "Adding Employee" : "Add Employee"}</button>
                       </div>
                     </form>
                   </div>

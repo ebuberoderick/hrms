@@ -155,6 +155,15 @@ function AdminSideNav() {
             <AppLink
               text={"Cashbook"}
               icon={<i className="ri-newspaper-line"></i>}
+              subMenu={[
+                { name: "Account List", extra: false },
+                { name: "Account Balance", extra: false },
+                { name: "Payee", extra: false },
+                { name: "Payer", extra: false },
+                { name: "Deposit", extra: false },
+                { name: "Expense", extra: false },
+                { name: "Transaction History", extra: false }
+              ]}
             />
           </div>
         </div>

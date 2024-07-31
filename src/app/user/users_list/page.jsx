@@ -2,14 +2,15 @@
 import AppLayout from "@/components/layouts/appLayout";
 import AppInput from "@/components/organisms/AppInput";
 import AppPagination from "@/components/organisms/AppPagination";
+import Modal from "@/components/organisms/Modal";
 import { fetchUsers } from "@/services/authService";
+import { LuEye } from "react-icons/lu";
 import React, { useEffect, useState } from "react";
+import { debounce } from "@/hooks/useDebounce";
 
 const Page = () => {
   const [employee, setEmployee] = useState([])
-
-
-
+  const [updateData, setUpdateData] = useState({})
 
   const fetchEmployees = async () => {
     const { status, data } = await fetchUsers().catch(err => console.log(err))
@@ -18,13 +19,83 @@ const Page = () => {
     }
   }
 
+  const searchFN = debounce(async (e) => {
+    const { status, data } = await fetchUsers({ search: e }).catch(err => console.log(err))
+    if (status) {
+      setEmployee(data.data[0])
+    }
+  }, 3000);
+
+
   useEffect(() => {
     fetchEmployees()
   }, [])
 
 
   return (
-    <AppLayout>
+    <AppLayout title={"User"}>
+      {
+        Object.keys(updateData).length > 0 && (
+          <Modal size={"lg"} closeModal={() => setUpdateData({})} isOpen={Object.keys(updateData).length > 0}>
+            <div className="space-y-4">
+              <div className="flex items-start justify-between">
+                <h2 className="text-[24px] font-[500] text-hrms_green">
+                  User Infomation
+                </h2>
+              </div>
+              <div className="">
+                <div className="">
+                  <div className="w-16 h-16 bg-gray-100 rounded-full">
+                    <img src={updateData.avatar} alt="" className="w-full h-full rounded-full" />
+                  </div>
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="">
+                    <div className="font-bold">Email</div>
+                    <div className="">{updateData.email}</div>
+                  </div>
+                  <div className="">
+                    <div className="font-bold capitalize">name</div>
+                    <div className="">{updateData.name}</div>
+                  </div>
+                  <div className="">
+                    <div className="font-bold capitalize">role</div>
+                    <div className="">{updateData.role}</div>
+                  </div>
+                  <div className="">
+                    <div className="font-bold capitalize">state of origin</div>
+                    <div className="">{updateData.state_of_origin}</div>
+                  </div>
+                  <div className="">
+                    <div className="font-bold capitalize">address verification</div>
+                    <div className="">{updateData.is_address_verified == 1 ? "Verified" : "Pending"}</div>
+                  </div>
+                  <div className="">
+                    <div className="font-bold capitalize">bank verification</div>
+                    <div className="">{updateData.is_bank_verified == 1 ? "Verified" : "Pending"}</div>
+                  </div>
+                  <div className="">
+                    <div className="font-bold capitalize">bvn verification</div>
+                    <div className="">{updateData.is_bvn_verified == 1 ? "Verified" : "Pending"}</div>
+                  </div>
+                  <div className="">
+                    <div className="font-bold capitalize">next of kin verification</div>
+                    <div className="">{updateData.is_next_of_kin_verified == 1 ? "Verified" : "Pending"}</div>
+                  </div>
+                  <div className="">
+                    <div className="font-bold capitalize">nin verification</div>
+                    <div className="">{updateData.is_nin_verified == 1 ? "Verified" : "Pending"}</div>
+                  </div>
+                  <div className="">
+                    <div className="font-bold capitalize">status</div>
+                    <div className="">{updateData.status}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Modal>
+        )
+      }
       <>
         <div className="lg:flex space-y-3 items-center justify-between">
           <div className="">
@@ -35,15 +106,16 @@ const Page = () => {
               All the company employee are listed here
             </p>
           </div>
-          
+
         </div>
 
         <div className="my-[32px] max-w-[461px] flex items-center gap-[20px]">
           <div className="w-[334px] relative py-[12px] pr-[30px] border border-hrms_green rounded-[10px]">
             <input
               type="text"
-              placeholder="Search..."
-              className="pl-2 w-full placeholder:text-hrms_green outline-none text capitalize"
+              onChange={(e) => searchFN(e.target.value)}
+              placeholder="Search by name or email"
+              className="pl-2 w-full placeholder:text-hrms_green outline-none text"
             />
             <div className="absolute right-0 top-0 flex items-center justify-center h-full w-8">
               <i className="ri-search-line"></i>
@@ -60,12 +132,12 @@ const Page = () => {
           <table className="w-full divide-y text-sm text-left">
             <tr className="bg-gray-100">
               <th className="flex gap-3 pl-5 py-2">
-                <div className="w-9 relative">
+                {/* <div className="w-9 relative">
                   <div className="absolute -top-1"><AppInput type="checkbox" name="employee" /></div>
-                </div>
+                </div> */}
                 <div className="flex-grow">Image</div>
               </th>
-              <th className="hidden lg:table-cell">Username</th>
+              <th className="hidden lg:table-cell">Email</th>
               <th className="hidden lg:table-cell">Permission Role</th>
               <th className="w-20">Action</th>
             </tr>
@@ -73,33 +145,30 @@ const Page = () => {
               employee?.data?.map((emp, i) => (
                 <tr key={i}>
                   <td className="flex items-center gap-3 pl-5 py-2">
-                    <div className="w-9 relative">
+                    {/* <div className="w-9 relative">
                       <div className="absolute -top-3"><AppInput type="checkbox" name="employee" /></div>
-                    </div>
+                    </div> */}
                     <div className="flex-grow gap-2 flex">
                       <div className="">
-                        <div className="w-9 h-9 bg-gray-100 rounded-full"></div>
+                        <div className="w-9 h-9 bg-gray-100 rounded-full">
+                          <img src={emp.avatar} alt="" className="w-full h-full rounded-full" />
+                        </div>
                       </div>
                       <div className="">
-                        <div className="font-semibold">{emp.employee_name}</div>
-                        <div className="">Username:{emp.employee}</div>
-                        <div className="">Gender:{emp.gender}</div>
-                        <div className="">Employee status:{emp.employee_status}</div>
+                        <div className="font-semibold">{emp.name}</div>
+                        <div className="">Employee status : {emp.status}</div>
                       </div>
                     </div>
                   </td>
                   <td className="hidden lg:table-cell">
-                    <div className="font-semibold">{emp.designation}</div>
-                    <div className="">Grade: {emp.grade}</div>
+                    <div className="font-semibold">{emp.email}</div>
                   </td>
                   <td className="hidden lg:table-cell">
-                    <div className=""><i className="ri-mail-line text-gray-400"></i> {emp.staff_id}</div>
-                    <div className=""><i className="ri-phone-line text-gray-400"></i> 0{emp.telephone}</div>
+                    <div className="">{emp.role}</div>
                   </td>
                   <td>
                     <div className="text-xl flex gap-1">
-                      <div className="text-hrms_green p-1 cursor-pointer"><i className="ri-edit-2-line"></i></div>
-                      <div className="text-danger p-1 cursor-pointer"><i className="ri-delete-bin-6-line"></i></div>
+                      <div onClick={() => setUpdateData(emp)} className="text-hrms_green p-1 cursor-pointer"><LuEye /></div>
                     </div>
                   </td>
                 </tr>
