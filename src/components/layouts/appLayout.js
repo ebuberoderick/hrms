@@ -13,13 +13,13 @@ function AppLayout({ children,title }) {
   const isAuthenticated = Session(user);
   const [showNav, setShowNav] = useState(false);
   const router = useRouter();
-  const out = async () => {
-    await SignOut(dispatch);
-    router.push("/auth/login");
-  }
+  // const out = async () => {
+  //   await SignOut(dispatch);
+  //   router.push("/auth/login");
+  // }
   
   if (isAuthenticated.status === "unauthenticated") {
-    out()
+    router.push("/auth/login");
   } else {
     return (
       <>

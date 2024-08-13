@@ -45,6 +45,9 @@ function BioInfo({ Vbio, user, setStep }) {
         const formData = serialize(e.target);
         setProcessing(true)
         formData.image = imgUrl
+        formData.middlename === 0 ? formData.middlename = "" : formData.middlename = formData.middlename 
+        formData.firstname === 0 ? formData.firstname = "" : formData.firstname = formData.firstname 
+        formData.lastname === 0 ? formData.lastname = "" : formData.lastname = formData.lastname 
         const { status, data } = await updateEmployeeInfo(formData).catch(err => console.log(err))
         if (status) {
             let x = {}

@@ -11,12 +11,14 @@ import { debounce } from "@/hooks/useDebounce";
 const Page = () => {
   const [employee, setEmployee] = useState([])
   const [updateData, setUpdateData] = useState({})
+  const [isloading, setIsLoading] = useState(true)
 
   const fetchEmployees = async () => {
     const { status, data } = await fetchUsers().catch(err => console.log(err))
     if (status) {
       setEmployee(data.data[0])
     }
+    setIsLoading(false)
   }
 
   const searchFN = debounce(async (e) => {
@@ -122,10 +124,10 @@ const Page = () => {
             </div>
           </div>
 
-          <div className="flex items-center gap-[10px] py-[12px] px-[14px] border border-hrms_green rounded-[10px]">
+          {/* <div className="flex items-center gap-[10px] py-[12px] px-[14px] border border-hrms_green rounded-[10px]">
             <i className="ri-equalizer-line"></i>
             <p className="font-[700] text-[16px] text-hrms_green">Filter</p>
-          </div>
+          </div> */}
         </div>
 
         <div className="py-5 space-y-8">
@@ -169,6 +171,36 @@ const Page = () => {
                   <td>
                     <div className="text-xl flex gap-1">
                       <div onClick={() => setUpdateData(emp)} className="text-hrms_green p-1 cursor-pointer"><LuEye /></div>
+                    </div>
+                  </td>
+                </tr>
+              ))
+            }
+            {
+              isloading && ["", "", "", "", "", "", "", ""].map((emp, i) => (
+                <tr key={i}>
+                  <td className="flex items-center gap-3 pl-5 py-2">
+                    <div className="flex-grow gap-2 flex">
+                      <div className="">
+                        <div className="w-9 h-9 preload rounded-full">
+
+                        </div>
+                      </div>
+                      <div className="w-full space-y-1">
+                        <div className="preload w-2/3 py-3"></div>
+                        <div className="preload w-2/3 py-2"></div>
+                      </div>
+                    </div>
+                  </td>
+                  <td className="hidden lg:table-cell">
+                    <div className="preload w-2/3 py-3"></div>
+                  </td>
+                  <td className="hidden lg:table-cell">
+                    <div className="preload w-2/3 py-3"></div>
+                  </td>
+                  <td>
+                    <div className="text-xl flex gap-1">
+                      <div className="preload w-1/3 py-3"></div>
                     </div>
                   </td>
                 </tr>

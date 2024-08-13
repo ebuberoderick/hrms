@@ -111,7 +111,7 @@ function Page() {
                 <td>
                   <div className="text-xl flex gap-1">
                     <div className="text-hrms_green p-1 cursor-pointer"><i className="ri-edit-2-line"></i></div>
-                    <div className="text-danger p-1 cursor-pointer"><i className="ri-delete-bin-6-line"></i></div>
+                    {/* <div className="text-danger p-1 cursor-pointer"><i className="ri-delete-bin-6-line"></i></div> */}
                   </div>
                 </td>
               </tr>

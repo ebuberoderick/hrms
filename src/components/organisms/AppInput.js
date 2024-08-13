@@ -34,7 +34,7 @@ function AppInput({ label,maxLength, checked, type, required, name, max, options
               required={required}
               maxLength={maxLength}
               value={value}
-              checked={checked}
+              checked={checked && checked}
               defaultValue={defaultValue}
               onChange={(e) => onChange && onChange(e)}
             />

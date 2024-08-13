@@ -31,7 +31,7 @@ function TopNav({ role, title, user }) {
           <div onMouseLeave={() => setDrop(false)} className="relative">
             <div onClick={() => setDrop(true)} className="flex cursor-pointer items-center gap-1 text-sm">
               <div className="w-7 h-7 rounded-full bg-gray-200">
-                <Image src={avatar} alt="Michael Michael" />
+                <Image src={avatar} alt={user} />
               </div>
               <div className="hidden sm:block">{user}</div>
               <i className="ri-arrow-down-s-line hidden sm:block relative top-[1px]"></i>
