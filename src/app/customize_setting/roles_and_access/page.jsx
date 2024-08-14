@@ -134,7 +134,7 @@ function Page() {
               <div className="grid grid-cols-2 gap-2">
                 {
                   viewInfo?.permissions?.map((perms,i) => (
-                    <div className="flex gap-1 items-center">
+                    <div key={i} className="flex gap-1 items-center">
                       <div className="">{i+1}. </div>
                       <div className=""> {perms.name}</div>
                     </div>
