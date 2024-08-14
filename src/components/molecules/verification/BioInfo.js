@@ -64,7 +64,8 @@ function BioInfo({ Vbio, user, setStep }) {
 
     return (
         <div className='flex-grow'>
-            <div className='space-y-4 bg-white px-4 py-7 rounded-lg shadow-md'>
+            
+            <div id='' className='space-y-4 bg-white px-4 py-7 rounded-lg shadow-md'>
                 <div className="inline-flex relative items-start justify-between">
                     <h2 className="font-bold md:text-3xl text-hrms_green">
                         Bio Data Verification
@@ -106,6 +107,7 @@ function BioInfo({ Vbio, user, setStep }) {
                     </div>
                 </form>
             </div>
+            
         </div>
     )
 }

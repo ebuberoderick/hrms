@@ -66,7 +66,7 @@ function Page() {
       <div className="space-y-4">
         <Modal closeModal={() => setShowModal(false)} size={"xl"} isOpen={showModal}>
           <form onSubmit={(e) => add(e)} className="space-y-4">
-            <div className="text-hrms_green text-xl">Add Award</div>
+            <div className="text-hrms_green text-xl">Add Account</div>
             <div className="grid grid-cols-2 gap-4">
               <AppInput name="employee_id" type={"select"} required label="Employee Email" options={[...empl]} />
               <AppInput name="company_id" type={"select"} required label="Company" options={[...compnis]} />

@@ -17,7 +17,7 @@ const EmployeeDashboard = () => {
   const Vbio = userType?.employee?.marital_status !== null
   const [saved, setSave] = useState(Vbvn && Vnin && VaccountNumber && Vothers && Vemployment && Vbio)
   // const Vkin = userType?.user?.next_of_kin_name === 1
-  const isVerified = Vbvn && Vnin && VaccountNumber && Vothers && Vemployment && Vbio && saved
+  const isVerified = Vbvn && Vnin && VaccountNumber && Vothers && Vemployment && Vbio && false
 
   const getTodayDate = () => {
     const today = new Date();

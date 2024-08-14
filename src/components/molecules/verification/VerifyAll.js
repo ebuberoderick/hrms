@@ -7,24 +7,36 @@ import { fetchMyData, verifyMyData } from '@/services/authService';
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 
-function VerifyAll({ user ,setSave }) {
+function VerifyAll({ user, setSave }) {
     // console.log(user);
-    const [userinfo,setUserinfo] = useState()
+    const [userinfo, setUserinfo] = useState()
+    const [btnPrint, setBtnPrint] = useState(false)
 
     const fetchInfo = async () => {
         const { status, data } = await fetchMyData().catch(err => console.log(err))
-        // console.log(data);
-        if(status){
+        if (status) {
             setUserinfo(data.data[0])
         }
+    }
+
+
+    const printNw = () => {
+        var content = document.getElementById("divcontents");
+        var pri = document.getElementById("ifmcontentstoprint").contentWindow;
+        pri.document.open();
+        pri.document.write(content.innerHTML);
+        pri.document.close();
+        pri.focus();
+        pri.print();
     }
 
 
     const verify = async (e) => {
         e.preventDefault();
         const formData = serialize(e.target);
-        const { status, data } = await verifyMyData({status:1}).catch(err => console.log(err))
+        const { status, data } = await verifyMyData({ status: 1 }).catch(err => console.log(err))
         if (status) {
+            setBtnPrint(true)
             setSave()
         }
 
@@ -36,6 +48,129 @@ function VerifyAll({ user ,setSave }) {
 
     return (
         <div className="space-y-6 bg-white px-3 py-7 rounded-lg shadow-md">
+            <iframe id="ifmcontentstoprint" className='h-0 w-0 absolute'></iframe>
+
+            <div id='divcontents' className='space-y-6 hidden'>
+                <div className='space-y-4'>
+                    <div className="inline-flex relative items-start justify-between">
+                        <h2 className="font-bold md:text-3xl text-hrms_green">
+                            Bio Data Verification
+                        </h2>
+                    </div>
+                    <div className='space-y-3 print:space-y-3'>
+                        <div>
+                            <div className='mb-2 font-bold'>firstname</div>
+                            <div>{user.employee.firstname}</div>
+                        </div>
+                        <div>
+                            <div className='mb-2 font-bold'>lastname</div>
+                            <div>{user.employee.lastname}</div>
+                        </div>
+                        <div>
+                            <div className='mb-2 font-bold'>middlename</div>
+                            <div>{user.employee.middlename}</div>
+                        </div>
+                        <div>
+                            <div className='mb-2 font-bold'>telephone</div>
+                            <div>{user.employee.telephone}</div>
+                        </div>
+                        <div>
+                            <div className='mb-2 font-bold'>Date of birth</div>
+                            <div>{user.employee.date_of_brith}</div>
+                        </div>
+                        <div>
+                            <div className='mb-2 font-bold'>Email</div>
+                            <div>{user?.user?.email}</div>
+                        </div>
+                        <div>
+                            <div className='mb-2 font-bold'>Staff ID</div>
+                            <div>{user.employee.staff_id}</div>
+                        </div>
+                        <div>
+                            <div className='mb-2 font-bold'>Marital status</div>
+                            <div>{user.employee.marital_status}</div>
+                        </div>
+                        <div>
+                            <div className='mb-2 font-bold'>Gender</div>
+                            <div>{user.employee.gender}</div>
+                        </div>
+                        <div>
+                            <div className='mb-2 font-bold'>State Of Origin</div>
+                            <div>{user.user.state_of_origin}</div>
+                        </div>
+                    </div>
+                       
+                </div>
+                <div>
+                    <div className="inline-flex relative bottom-4 items-start justify-between">
+                        <h2 className="font-bold md:text-3xl text-hrms_green">
+                            Bank Account Details Verification
+                        </h2>
+                    </div>
+                    <div className='space-y-4'>
+                        <div className='space-y-3 print:space-y-3'>
+                            <div>
+                                <div className='mb-2 font-bold'>Bank</div>
+                                <div>{userinfo?.bank[0].bank_name}</div>
+                            </div>
+                            <div>
+                                <div className='mb-2 font-bold'>Account Number</div>
+                                <div>{userinfo?.bank[0].account_number}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className='max-w-lg'>
+                    <div className="inline-flex relative bottom-4 items-start justify-between">
+                        <h2 className="font-bold md:text-3xl text-hrms_green">
+                            BVN Verification
+                        </h2>
+                    </div>
+                    <div className='space-y-4'>
+                        <div className='space-y-3 print:space-y-3'>
+                            <div>
+                                <div className='mb-2 font-bold'>BVN</div>
+                                <div>{user.employee.bvn}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className='max-w-lg'>
+                    <div className="inline-flex relative bottom-4 items-start justify-between">
+                        <h2 className="font-bold md:text-3xl text-hrms_green">
+                            NIN Verification
+                        </h2>
+                    </div>
+                    <div className='space-y-3 print:space-y-3'>
+                        <div>
+                            <div className='mb-2 font-bold'>NIN</div>
+                            <div>{user.user.nin}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className=''>
+                    <div className="inline-flex relative bottom-4 items-start justify-between">
+                        <h2 className="font-bold md:text-3xl text-hrms_green">
+                            Employment Document Verification
+                        </h2>
+                    </div>
+                    <div className='space-y-4'>
+                        <div className='space-y-3 print:space-y-3'>
+                            <div>
+                                <div className='mb-2 font-bold'>Personal start date</div>
+                                <div>{user.employee.person_start_date}</div>
+                            </div>
+                            <div>
+                                <div className='mb-2 font-bold'>Position</div>
+                                <div>{user.employee.position}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div className='space-y-4'>
                 <div className="inline-flex relative items-start justify-between">
                     <h2 className="font-bold md:text-3xl text-hrms_green">
@@ -109,7 +244,7 @@ function VerifyAll({ user ,setSave }) {
                 </div>
                 <div className='space-y-4'>
                     <div className='space-y-1'>
-                        <AppInput name="bvn" value={user.user.nin} type="text" required label="Enter BVN" />
+                        <AppInput name="nin" value={user.user.nin} type="text" required label="Enter NIN" />
                     </div>
                 </div>
             </div>
@@ -127,13 +262,24 @@ function VerifyAll({ user ,setSave }) {
                     </div>
                 </div>
             </div>
+            {
+                btnPrint ? (
+                    <form onSubmit={(e) => verify(e)} className="space-y-4 w-full">
+                        <div className='w-full'>
+                            <div onClick={() => printNw()} className="bg-hrms_green text-white rounded-lg py-2 text-center cursor-pointer">Print</div>
+                        </div>
+                    </form>
 
-            <form onSubmit={(e) => verify(e)} className="space-y-4">
-                <AppCheckBox required Boxlable="I here by comfirm that all information are right" type="checkbox" name="status" value={1} />
-                <div>
-                    <button className="bg-hrms_green disabled:bg-opacity-30 w-full inline text-white rounded-lg py-2 text-center cursor-pointer">Save</button>
-                </div>
-            </form>
+                ) : (
+                    <form onSubmit={(e) => verify(e)} className="space-y-4">
+                        <AppCheckBox required Boxlable="I here by comfirm that all information are right" type="checkbox" name="status" value={1} />
+                        <div>
+                            <button className="bg-hrms_green disabled:bg-opacity-30 w-full inline text-white rounded-lg py-2 text-center cursor-pointer">Save</button>
+                        </div>
+                    </form>
+                )
+            }
+
         </div>
     )
 }
