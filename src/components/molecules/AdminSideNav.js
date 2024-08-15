@@ -3,6 +3,7 @@ import React from "react";
 import logo from "@assets/images/authLogo.png";
 import AppLink from "../organisms/AppLink";
 import { RiSettings4Line } from "react-icons/ri";
+import { FaRegBell } from "react-icons/fa";
 
 function AdminSideNav() {
   return (
@@ -18,6 +19,11 @@ function AdminSideNav() {
           />
         </div>
         <div className="divition"></div>
+
+        <AppLink
+          text={"Notification"}
+          icon={<FaRegBell />}
+        />
         <div className="space-y-2">
           <div className="font-[500] text-xs text-gray-500 capitalize pl-3">System Admininstration</div>
           <div>

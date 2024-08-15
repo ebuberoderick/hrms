@@ -66,21 +66,9 @@ function Page() {
       <div className="space-y-4">
         <Modal closeModal={() => setShowModal(false)} size={"xl"} isOpen={showModal}>
           <form onSubmit={(e) => add(e)} className="space-y-4">
-            <div className="text-hrms_green text-xl">Add Account</div>
+            <div className="text-hrms_green text-xl">Add New Account</div>
             <div className="grid grid-cols-2 gap-4">
-              <AppInput name="employee_id" type={"select"} required label="Employee Email" options={[...empl]} />
-              <AppInput name="company_id" type={"select"} required label="Company" options={[...compnis]} />
-              <AppInput name="department_id" type={"select"} required label="Department" options={[...allDept]} />
-              <AppInput name="award_type_id" type={"select"} required label="Award Type" options={[...awty]} />
-              <AppInput name="gift" type={"text"} label="Gift (Optional)" />
-              <AppInput name="cash" type={"text"} label="Cash (Optional)" />
-              <AppInput name="award_date" type={"date"} required label="Award Date" />
-              <AppInput name="photo" onChange={e => uploadImg(e)} type={"file"} required label="Award Photo" />
-              <input type="hidden" value={imgUrl} name='award_photo' />
-              <AppInput name="award_information" type={"text"} required label="Award Information" />
-              <div className="col-span-2">
-                <AppInput name={"description"} type={"textarea"} label="Description" />
-              </div>
+              
             </div>
             <button className="bg-hrms_green w-full rounded-lg text-white py-2">Add</button>
           </form>

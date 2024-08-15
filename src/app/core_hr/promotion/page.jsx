@@ -14,6 +14,7 @@ import { PiHashStraightLight } from 'react-icons/pi'
 import { VscGoToSearch } from "react-icons/vsc";
 import { SlBadge, SlPlane } from 'react-icons/sl'
 import { RiExchange2Line } from 'react-icons/ri'
+import Link from 'next/link'
 
 function Page() {
   const [showModal, setShowModal] = useState(false)
@@ -67,98 +68,115 @@ function Page() {
         <div className="space-y-4">
           <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
 
-            <div className="bg-hrms_green space-y-1 rounded-md bg-opacity-10 px-4 py-2">
-              <div className="text-2xl text-[#5ad44fbd]">
-                <LiaBullhornSolid />
+            <Link href="/core_hr/promotion">
+              <div className="bg-hrms_green space-y-1 rounded-md bg-opacity-10 px-4 py-2">
+                <div className="text-2xl text-[#5ad44fbd]">
+                  <LiaBullhornSolid />
+                </div>
+                <div className="flex">
+                  <div className="flex-grow text-3xl">20</div>
+                  <div></div>
+                </div>
+                <div className="text-xs">Total Promotions</div>
               </div>
-              <div className="flex">
-                <div className="flex-grow text-3xl">20</div>
-                <div></div>
-              </div>
-              <div className="text-xs">Total Promotions</div>
-            </div>
+            </Link>
 
-            <div className="bg-hrms_yellow space-y-1 rounded-md bg-opacity-30 px-4 py-2">
-              <div className="text-2xl text-[#c4b428de]">
-                <SlBadge />
+            <Link href="/core_hr/award">
+              <div className="bg-hrms_yellow space-y-1 rounded-md bg-opacity-30 px-4 py-2">
+                <div className="text-2xl text-[#c4b428de]">
+                  <SlBadge />
+                </div>
+                <div className="flex">
+                  <div className="flex-grow text-3xl">47</div>
+                  <div></div>
+                </div>
+                <div className="text-xs">Total Awards</div>
               </div>
-              <div className="flex">
-                <div className="flex-grow text-3xl">47</div>
-                <div></div>
-              </div>
-              <div className="text-xs">Total Awards</div>
-            </div>
-
-
-            <div className="bg-danger space-y-1 rounded-md bg-opacity-10 px-4 py-2">
-              <div className="text-2xl text-danger">
-                <SlPlane />
-              </div>
-              <div className="flex">
-                <div className="flex-grow text-3xl">10</div>
-                <div></div>
-              </div>
-              <div className="text-xs">Total Travels</div>
-            </div>
-
-            <div className="bg-[#2886c441] space-y-1 rounded-md bg-opacity-20 px-4 py-2">
-              <div className="text-2xl text-[#2886c4de]">
-                <BiBlock />
-              </div>
-              <div className="flex">
-                <div className="flex-grow text-3xl">5</div>
-                <div></div>
-              </div>
-              <div className="text-xs">Total Resignation</div>
-            </div>
+            </Link>
 
 
-
-            <div className="bg-danger space-y-1 rounded-md bg-opacity-30 px-4 py-2">
-              <div className="text-2xl text-danger">
-                <GrDocumentUser />
+            <Link href="/core_hr/travel">
+              <div className="bg-danger space-y-1 rounded-md bg-opacity-10 px-4 py-2">
+                <div className="text-2xl text-danger">
+                  <SlPlane />
+                </div>
+                <div className="flex">
+                  <div className="flex-grow text-3xl">10</div>
+                  <div></div>
+                </div>
+                <div className="text-xs">Total Travels</div>
               </div>
-              <div className="flex">
-                <div className="flex-grow text-3xl">8</div>
-                <div></div>
-              </div>
-              <div className="text-xs">Total Complanits</div>
-            </div>
+            </Link>
 
+
+            <Link href="/core_hr/resignation">
+              <div className="bg-[#2886c441] space-y-1 rounded-md bg-opacity-20 px-4 py-2">
+                <div className="text-2xl text-[#2886c4de]">
+                  <BiBlock />
+                </div>
+                <div className="flex">
+                  <div className="flex-grow text-3xl">5</div>
+                  <div></div>
+                </div>
+                <div className="text-xs">Total Resignation</div>
+              </div>
+            </Link>
+
+
+            <Link href="/core_hr/complaints">
+              <div className="bg-danger space-y-1 rounded-md bg-opacity-30 px-4 py-2">
+                <div className="text-2xl text-danger">
+                  <GrDocumentUser />
+                </div>
+                <div className="flex">
+                  <div className="flex-grow text-3xl">8</div>
+                  <div></div>
+                </div>
+                <div className="text-xs">Total Complanits</div>
+              </div>
+            </Link>
           </div>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-            <div className="bg-danger space-y-1 rounded-md bg-opacity-10 px-4 py-2">
-              <div className="text-2xl text-danger">
-                <VscGoToSearch />
+            <Link href="/core_hr/query">
+              <div className="bg-danger space-y-1 rounded-md bg-opacity-10 px-4 py-2">
+                <div className="text-2xl text-danger">
+                  <VscGoToSearch />
+                </div>
+                <div className="flex">
+                  <div className="flex-grow text-3xl">12</div>
+                  <div></div>
+                </div>
+                <div className="text-xs">Total Query</div>
               </div>
-              <div className="flex">
-                <div className="flex-grow text-3xl">12</div>
-                <div></div>
-              </div>
-              <div className="text-xs">Total Query</div>
-            </div>
+            </Link>
 
-            <div className="bg-danger space-y-1 rounded-md bg-opacity-30 px-4 py-2">
-              <div className="text-2xl text-danger">
-                <LiaFileAlt />
-              </div>
-              <div className="flex">
-                <div className="flex-grow text-3xl">6</div>
-                <div></div>
-              </div>
-              <div className="text-xs">Total Termination</div>
-            </div>
 
-            <div className="bg-[#2886c441] space-y-1 rounded-md bg-opacity-20 px-4 py-2">
-              <div className="text-2xl text-[#2886c4de]">
-                <RiExchange2Line />
+            <Link href="/core_hr/termination">
+              <div className="bg-danger space-y-1 rounded-md bg-opacity-30 px-4 py-2">
+                <div className="text-2xl text-danger">
+                  <LiaFileAlt />
+                </div>
+                <div className="flex">
+                  <div className="flex-grow text-3xl">6</div>
+                  <div></div>
+                </div>
+                <div className="text-xs">Total Termination</div>
               </div>
-              <div className="flex">
-                <div className="flex-grow text-3xl">5</div>
-                <div></div>
+            </Link>
+
+
+            <Link href="/core_hr/travel">
+              <div className="bg-[#2886c441] space-y-1 rounded-md bg-opacity-20 px-4 py-2">
+                <div className="text-2xl text-[#2886c4de]">
+                  <RiExchange2Line />
+                </div>
+                <div className="flex">
+                  <div className="flex-grow text-3xl">5</div>
+                  <div></div>
+                </div>
+                <div className="text-xs">Total Travels</div>
               </div>
-              <div className="text-xs">Total Resignation</div>
-            </div>
+            </Link>
 
           </div>
         </div>

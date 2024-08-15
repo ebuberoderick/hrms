@@ -6,7 +6,7 @@ function Traings() {
             <div className="">
                 <i className="ri-trophy-line"></i>
             </div>
-            <div className="">Trainigs</div>
+            <div className="">Traings</div>
         </div>
     )
 }

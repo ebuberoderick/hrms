@@ -1,6 +1,7 @@
 'use client'
 import Cookies from 'js-cookie';
 import { addData } from '@/Store/reducers/UsersReducer';
+import dynamic from 'next/dynamic';
 
 
 export function SignInAuth(data, dispatch) {
