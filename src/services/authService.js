@@ -152,5 +152,11 @@ export const updateAccount = (formData) => apiWithAuth.post("admin/cashbook/acco
 export const deleteAccount = (formData) => apiWithAuth.post("admin/cashbook/account/delete", formData).then(getApiResponse).catch(getErrorResponse);
 
 
+export const createPayee = (formData) => apiWithAuth.post("admin/cashbook/payee/create", formData).then(getApiResponse).catch(getErrorResponse);
+export const fetchPayee = (formData) => apiWithAuth.post("admin/cashbook/payee/fetch", formData).then(getApiResponse).catch(getErrorResponse);
+export const updatePayee = (formData) => apiWithAuth.post("admin/cashbook/payee/update", formData).then(getApiResponse).catch(getErrorResponse);
+export const deletePayee = (formData) => apiWithAuth.post("admin/cashbook/payee/delete", formData).then(getApiResponse).catch(getErrorResponse);
+
+
 
 

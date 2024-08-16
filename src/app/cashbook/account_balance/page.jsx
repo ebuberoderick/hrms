@@ -43,18 +43,14 @@ function Page() {
   return (
     <AppLayout title={"Cashbook"}>
       <div className="space-y-4">
-        <Modal closeModal={() => setShowModal(false)} size={"xl"} isOpen={showModal}>
+        <Modal closeModal={() => setShowModal(false)} size={"sm"} isOpen={showModal}>
           <form onSubmit={(e) => add(e)} className="space-y-4">
-            <div className="text-hrms_green text-xl">Add Complaint</div>
+            <div className="text-hrms_green text-xl">Add New Payee</div>
             <div className="grid grid-cols-2 gap-4">
-              <AppInput name="complaint_from_id" type={"select"} required label="Complaint From" options={[...empl]} />
-              <AppInput name="complaint_against_id" type={"select"} required label="Complaint Against" options={[...empl]} />
-              <AppInput name="complaint_title" type={"text"} required label="Complaint Title" />
-              <AppInput name="company_id" type={"select"} required label="Company" options={[...compnis]} />
-              <AppInput name="complaint_date" type={"date"} required label="Complaint Date" />
-              <AppInput name={"description"} type={"textarea"} label="Description" />
+              <AppInput name="payee_name" type={"text"} required label="Payee Name" />
+              <AppInput name="contact_no" type={"text"} required label="Phone No." />
             </div>
-            <button className="bg-hrms_green w-full rounded-lg text-white py-2">Add</button>
+            <button className="bg-hrms_green w-full rounded-lg text-white py-2">Save Payer</button>
           </form>
         </Modal>
 

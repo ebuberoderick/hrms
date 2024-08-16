@@ -4,39 +4,25 @@ import AppInput from '@/components/organisms/AppInput'
 import AppPagination from '@/components/organisms/AppPagination'
 import Modal from '@/components/organisms/Modal'
 import serialize from '@/hooks/Serialize'
-import { addAward, fetchAward } from '@/services/authService'
+import { addAward, createPayee, deletePayee, fetchAward, fetchPayee, updatePayee } from '@/services/authService'
 import { AllEmployees, allDepartment, awardType, companies, companyEnum } from '@/utility/constants'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { HiOutlineBan } from 'react-icons/hi'
+import { LuEye } from 'react-icons/lu'
 
 function Page() {
   const [showModal, setShowModal] = useState(false)
+  const [processing, setProcessing] = useState(false)
   const [awards, setAwards] = useState([])
-  const [compnis, setCompnis] = useState([])
-  const [allDept, setAllDept] = useState([])
-  const [empl, setAllEmpl] = useState([])
-  const [awty, setAwty] = useState([])
-  const [imgUrl, setImgUrl] = useState("")
-
-  const perset_key = process.env.NEXT_PUBLIC_API_CLOUDINARY_PERSET_KEY
-  const cloud_name = process.env.NEXT_PUBLIC_API_CLOUDINARY_CLOUD_NAME
-
-  const uploadImg = async (e) => {
-    const file = e.target.files[0]
-    const formData = new FormData();
-    formData.append("file", file)
-    formData.append("upload_preset", perset_key)
-    await axios.post(`https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`, formData).then(res => {
-      setImgUrl(res.data.url);
-    }).catch(err => console.log(err))
-  }
-
-
+  const [edit, setEdit] = useState({})
+  const [del, setDelete] = useState({})
+  const [view, setView] = useState({})
 
   const add = async (e) => {
     e.preventDefault();
     const formData = serialize(e.target);
-    const { status, data } = await addAward(formData).catch(err => console.log(err))
+    const { status, data } = await createPayee(formData).catch(err => console.log(err))
     if (status) {
       fetch()
       setShowModal(false)
@@ -44,47 +30,93 @@ function Page() {
   }
 
   const fetch = async () => {
-    const { status, data } = await fetchAward().catch(err => console.log(err))
+    const { status, data } = await fetchPayee().catch(err => console.log(err))
     if (status) {
       setAwards(data?.data[0]);
     }
   }
 
 
+  const update = async (e) => {
+    e.preventDefault();
+    setProcessing(true)
+    const formData = serialize(e.target);
+    const { status, data } = await updatePayee(formData).catch(err => console.log(err))
+    if (status) {
+      fetch()
+      setEdit({})
+    }
+    setProcessing(false)
+  }
+
+
+  const delFN = async (e) => {
+    e.preventDefault();
+    setProcessing(true)
+    const formData = serialize(e.target);
+    const { status, data } = await deletePayee(formData).catch(err => console.log(err))
+    if (status) {
+      fetch()
+      setDelete({})
+    }
+    setProcessing(false)
+  }
+
 
   useEffect(() => {
     fetch()
-    companies().then(res => setCompnis([...res]))
-    AllEmployees().then(res => setAllEmpl([...res]))
-    awardType().then(res => setAwty([...res]))
-    allDepartment().then(res => setAllDept([...res]))
   }, [])
 
 
   return (
     <AppLayout title={"Cashbook"}>
       <div className="space-y-4">
-        <Modal closeModal={() => setShowModal(false)} size={"xl"} isOpen={showModal}>
+        <Modal closeModal={() => setShowModal(false)} size={"sm"} isOpen={showModal}>
           <form onSubmit={(e) => add(e)} className="space-y-4">
-            <div className="text-hrms_green text-xl">Add Award</div>
-            <div className="grid grid-cols-2 gap-4">
-              <AppInput name="employee_id" type={"select"} required label="Employee Email" options={[...empl]} />
-              <AppInput name="company_id" type={"select"} required label="Company" options={[...compnis]} />
-              <AppInput name="department_id" type={"select"} required label="Department" options={[...allDept]} />
-              <AppInput name="award_type_id" type={"select"} required label="Award Type" options={[...awty]} />
-              <AppInput name="gift" type={"text"} label="Gift (Optional)" />
-              <AppInput name="cash" type={"text"} label="Cash (Optional)" />
-              <AppInput name="award_date" type={"date"} required label="Award Date" />
-              <AppInput name="photo" onChange={e => uploadImg(e)} type={"file"} required label="Award Photo" />
-              <input type="hidden" value={imgUrl} name='award_photo' />
-              <AppInput name="award_information" type={"text"} required label="Award Information" />
-              <div className="col-span-2">
-                <AppInput name={"description"} type={"textarea"} label="Description" />
-              </div>
+            <div className="text-hrms_green text-xl">Add New Payee</div>
+            <div className="space-y-4 gap-4">
+              <AppInput name="payee_name" type={"text"} required label="Payee Name" />
+              <AppInput name="contact_no" type={"text"} required label="Phone No." />
             </div>
-            <button className="bg-hrms_green w-full rounded-lg text-white py-2">Add</button>
+            <button className="bg-hrms_green w-full rounded-lg text-white py-2">Save Payer</button>
           </form>
         </Modal>
+
+
+
+        <Modal closeModal={() => setDelete({})} size={"sm"} isOpen={Object.keys(del).length > 0}>
+          <form onSubmit={(e) => delFN(e)} className="space-y-4">
+            <input type='hidden' name='id' value={del.id} />
+            <div className="text-center">Are you sure you want to delete this Payee Information</div>
+            <button disabled={processing} className="bg-hrms_green w-full rounded-lg text-white py-2 disabled:bg-opacity-20">Delete</button>
+          </form>
+        </Modal>
+        <Modal closeModal={() => setView({})} size={"sm"} isOpen={Object.keys(view).length > 0}>
+          <div className="text-hrms_green text-xl">Account Information</div>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="">
+              <div className="">account name</div>
+              <div className="text-gray-400 text-sm">{view.account_name}</div>
+            </div>
+            <div className="">
+              <div className="">Initial balance</div>
+              <div className="text-gray-400 text-sm">{view.initial_balance}</div>
+            </div>
+          </div>
+        </Modal>
+        <Modal closeModal={() => setEdit({})} size={"sm"} isOpen={Object.keys(edit).length > 0}>
+          <form onSubmit={(e) => update(e)} className="space-y-4">
+            <div className="text-hrms_green text-xl">Update Account</div>
+            <div className="grid gap-4">
+              <input type='hidden' name='id' value={edit.id} />
+              <AppInput name="payee_name" defaultValue={edit.payee_name} type={"text"} label="Enter Payee Name" />
+              <AppInput name="contact_no" defaultValue={edit.contact_no} type={"text"} label="Enter Phone No." />
+            </div>
+            <button disabled={processing} className="bg-hrms_green w-full rounded-lg text-white py-2 disabled:bg-opacity-20">Update</button>
+          </form>
+        </Modal>
+
+
 
         <div className="lg:flex space-y-3 items-center justify-between">
           <div className="">
@@ -118,19 +150,20 @@ function Page() {
                   <tr key={i}>
                     <td className="flex items-center gap-3 pl-5 py-2">
                       <div className="flex-grow gap-2 flex">
-                        {list.employee.employee_name}
+                        {list.payee_name}
                       </div>
                     </td>
                     <td className="hidden lg:table-cell">
-                      <div className="font-semibold">{list.award_type.award_name}</div>
+                      <div className="font-semibold">{list.contact_no}</div>
                     </td>
                     <td className="hidden sm:table-cell">
-                      <div className=""> {list.department.department_name} </div>
+                      <div className=""> {list.created_at.split("T")[0]} </div>
                     </td>
                     <td>
-                      <div className="text-xl flex gap-1">
-                        <div className="text-hrms_green p-1 cursor-pointer"><i className="ri-edit-2-line"></i></div>
-                        <div className="text-danger p-1 cursor-pointer"><i className="ri-delete-bin-6-line"></i></div>
+                      <div className="text-xl flex items-center gap-1">
+                        <div onClick={() => setView(list)} className="text-hrms_green p-1 cursor-pointer"><LuEye /></div>
+                        <div onClick={() => setEdit(list)} className="text-hrms_green p-1 cursor-pointer"><i className="ri-edit-2-line"></i></div>
+                        <div onClick={() => setDelete(list)} className="text-danger p-1 cursor-pointer"><HiOutlineBan /></div>
                       </div>
                     </td>
                   </tr>

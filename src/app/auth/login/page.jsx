@@ -26,6 +26,7 @@ function Page() {
       setErrMsg('')
       SignInAuth(data,dispatch)
       router.push("/dashboard")
+      window !== "undefined" && window.location.reload()
     } else {
       setErrMsg(data.message)
     }
