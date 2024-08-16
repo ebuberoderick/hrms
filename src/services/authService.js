@@ -144,3 +144,13 @@ export const createRole = (formData) => apiWithAuth.post("admin/user/roles/creat
 export const assignRole = (formData) => apiWithAuth.post("admin/user/roles/assign_role", formData).then(getApiResponse).catch(getErrorResponse);
 export const updateRole = (formData) => apiWithAuth.post("admin/user/roles/create_role", formData).then(getApiResponse).catch(getErrorResponse);
 export const revokeRole = (formData) => apiWithAuth.post("admin/user/roles/revoke_role", formData).then(getApiResponse).catch(getErrorResponse);
+
+
+export const createAccount = (formData) => apiWithAuth.post("admin/cashbook/account/create", formData).then(getApiResponse).catch(getErrorResponse);
+export const fetchAccount = (formData) => apiWithAuth.post("admin/cashbook/account/fetch", formData).then(getApiResponse).catch(getErrorResponse);
+export const updateAccount = (formData) => apiWithAuth.post("admin/cashbook/account/update", formData).then(getApiResponse).catch(getErrorResponse);
+export const deleteAccount = (formData) => apiWithAuth.post("admin/cashbook/account/delete", formData).then(getApiResponse).catch(getErrorResponse);
+
+
+
+
