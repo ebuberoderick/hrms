@@ -92,15 +92,15 @@ function Page() {
           </form>
         </Modal>
         <Modal closeModal={() => setView({})} size={"sm"} isOpen={Object.keys(view).length > 0}>
-          <div className="text-hrms_green text-xl">Account Information</div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="text-hrms_green text-xl">Payee Information</div>
+          <div className="grid gap-4">
             <div className="">
-              <div className="">account name</div>
-              <div className="text-gray-400 text-sm">{view.account_name}</div>
+              <div className="">Payee name</div>
+              <div className="text-gray-400 text-sm">{view.payee_name}</div>
             </div>
             <div className="">
-              <div className="">Initial balance</div>
-              <div className="text-gray-400 text-sm">{view.initial_balance}</div>
+              <div className="">Contact </div>
+              <div className="text-gray-400 text-sm">{view.contact_no	}</div>
             </div>
           </div>
         </Modal>
