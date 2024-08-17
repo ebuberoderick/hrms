@@ -147,16 +147,18 @@ export const revokeRole = (formData) => apiWithAuth.post("admin/user/roles/revok
 
 
 export const createAccount = (formData) => apiWithAuth.post("admin/cashbook/account/create", formData).then(getApiResponse).catch(getErrorResponse);
-export const fetchAccount = (formData) => apiWithAuth.post("admin/cashbook/account/fetch", formData).then(getApiResponse).catch(getErrorResponse);
+export const fetchAccount = () => apiWithAuth.post("admin/cashbook/account/fetch").then(getApiResponse).catch(getErrorResponse);
 export const updateAccount = (formData) => apiWithAuth.post("admin/cashbook/account/update", formData).then(getApiResponse).catch(getErrorResponse);
 export const deleteAccount = (formData) => apiWithAuth.post("admin/cashbook/account/delete", formData).then(getApiResponse).catch(getErrorResponse);
 
 
 export const createPayee = (formData) => apiWithAuth.post("admin/cashbook/payee/create", formData).then(getApiResponse).catch(getErrorResponse);
-export const fetchPayee = (formData) => apiWithAuth.post("admin/cashbook/payee/fetch", formData).then(getApiResponse).catch(getErrorResponse);
+export const fetchPayee = () => apiWithAuth.post("admin/cashbook/payee/fetch").then(getApiResponse).catch(getErrorResponse);
 export const updatePayee = (formData) => apiWithAuth.post("admin/cashbook/payee/update", formData).then(getApiResponse).catch(getErrorResponse);
 export const deletePayee = (formData) => apiWithAuth.post("admin/cashbook/payee/delete", formData).then(getApiResponse).catch(getErrorResponse);
 
 
-
-
+export const createPayer = (formData) => apiWithAuth.post("admin/cashbook/payer/create", formData).then(getApiResponse).catch(getErrorResponse);
+export const fetchPayer = () => apiWithAuth.post("admin/cashbook/payer/fetch").then(getApiResponse).catch(getErrorResponse);
+export const updatePayer = (formData) => apiWithAuth.post("admin/cashbook/payer/update", formData).then(getApiResponse).catch(getErrorResponse);
+export const deletePayer = (formData) => apiWithAuth.post("admin/cashbook/payer/delete", formData).then(getApiResponse).catch(getErrorResponse);

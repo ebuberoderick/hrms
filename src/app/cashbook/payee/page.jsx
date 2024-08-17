@@ -13,6 +13,7 @@ import { LuEye } from 'react-icons/lu'
 
 function Page() {
   const [showModal, setShowModal] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   const [processing, setProcessing] = useState(false)
   const [awards, setAwards] = useState([])
   const [edit, setEdit] = useState({})
@@ -33,6 +34,7 @@ function Page() {
     const { status, data } = await fetchPayee().catch(err => console.log(err))
     if (status) {
       setAwards(data?.data[0]);
+      setIsLoading(false)
     }
   }
 
@@ -164,6 +166,29 @@ function Page() {
                         <div onClick={() => setView(list)} className="text-hrms_green p-1 cursor-pointer"><LuEye /></div>
                         <div onClick={() => setEdit(list)} className="text-hrms_green p-1 cursor-pointer"><i className="ri-edit-2-line"></i></div>
                         <div onClick={() => setDelete(list)} className="text-danger p-1 cursor-pointer"><HiOutlineBan /></div>
+                      </div>
+                    </td>
+                  </tr>
+                ))
+              }
+
+              {
+                isLoading && ["","","","","",""].map((list,i) => (
+                  <tr key={i}>
+                    <td className="flex items-center gap-3 pl-5 py-2">
+                      <div className="preload py-2 w-2/3"></div>
+                    </td>
+                    <td className="hidden lg:table-cell">
+                      <div className="preload py-2 w-2/3"></div>
+                    </td>
+                    <td className="hidden sm:table-cell">
+                      <div className="preload py-2 w-2/3"></div>
+                    </td>
+                    <td>
+                      <div className="text-xl flex items-center gap-1">
+                        <div className="preload w-1/3 py-3"></div>
+                        <div className="preload w-1/3 py-3"></div>
+                        <div className="preload w-1/3 py-3"></div>
                       </div>
                     </td>
                   </tr>
