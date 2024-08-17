@@ -3,8 +3,13 @@ import Image from "next/image";
 import logo from "@assets/images/favicon.png";
 import React from "react";
 import { useSelector } from "react-redux";
+import { useRouter } from "next/navigation";
+import { Session } from "@/hooks/Auth";
 
 function AuthLayout({ children, title, subText, onSubmit, errMsg }) {
+  const user = useSelector((state) => state.User);
+  const isAuthenticated = Session(user);
+  const router = useRouter();
   const serialize = (form) => {
     var result = [];
     if (typeof form === "object" && form.nodeName === "FORM")
@@ -44,31 +49,38 @@ function AuthLayout({ children, title, subText, onSubmit, errMsg }) {
     return serializeToJSON(data);
   };
 
-  return (
-    <div className="h-screen authBg overflow-hidden relative w-screen flex items-center">
-      <div className="h-full w-full bg-hrms_green bg-opacity-55 flex items-center">
-        <div className="p-4 w-full">
-          <form
-            onSubmit={(e) => {
-              e.preventDefault(), onSubmit(serialize(e.target));
-            }} className="max-w-4xl rounded-lg px-12 py-8 bg-white space-y-10 mx-auto p-3">
 
-            <div className="space-y-11">
-              <Image src={logo} alt="" draggable="false" className="w-12 " />
-              <div className="space-y-3">
-                <div className="text-hrms_green font-bold text-3xl">Welcome To FiscusBook!</div>
-                <div className="text-sm">Please sign in to manage your data seamlessly.</div>
+  if (isAuthenticated.status === "authenticated") {
+    router.push("/dashboard");
+  } else {
+    return (
+      <div className="h-screen authBg overflow-hidden relative w-screen flex items-center">
+        <div className="h-full w-full bg-hrms_green bg-opacity-55 flex items-center">
+          <div className="p-4 w-full">
+            <form
+              onSubmit={(e) => {
+                e.preventDefault(), onSubmit(serialize(e.target));
+              }} className="max-w-4xl rounded-lg px-12 py-8 bg-white space-y-10 mx-auto p-3">
+
+              <div className="space-y-11">
+                <Image src={logo} alt="" draggable="false" className="w-12 " />
+                <div className="space-y-3">
+                  <div className="text-hrms_green font-bold text-3xl">Welcome To FiscusBook!</div>
+                  <div className="text-sm">Please sign in to manage your data seamlessly.</div>
+                </div>
+                <div className="space-y-4">
+                  <div className="text-danger text-sm">{errMsg}</div>
+                  <div className="space-y-5">{children}</div>
+                </div>
               </div>
-              <div className="space-y-4">
-                <div className="text-danger text-sm">{errMsg}</div>
-                <div className="space-y-5">{children}</div>
-              </div>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
+
+
 }
 
 export default AuthLayout;

@@ -84,8 +84,6 @@ function Page() {
           </form>
         </Modal>
 
-
-
         <Modal closeModal={() => setDelete({})} size={"sm"} isOpen={Object.keys(del).length > 0}>
           <form onSubmit={(e) => delFN(e)} className="space-y-4">
             <input type='hidden' name='id' value={del.id} />
