@@ -48,20 +48,13 @@ function Page() {
       <div className="space-y-4">
         <Modal closeModal={() => setShowModal(false)} size={"xl"} isOpen={showModal}>
           <form onSubmit={(e) => add(e)} className="space-y-4">
-            <div className="text-hrms_green text-xl">Add Query</div>
+            <div className="text-hrms_green text-xl">Add New Expense</div>
             <div className="grid grid-cols-2 gap-4">
-              <AppInput name="warning_to" type={"select"} required label="Query To" options={[...empl]} />
-              <AppInput name="company_id" type={"select"} required label="Company" options={[...compnis]} />
-              <AppInput name="warning_type" type={"select"} required label="Query Type" options={[...queType]} />
-              <AppInput name="subject" type={"text"} required label="Subject" />
-              <AppInput name="warning_date" type={"date"} required label="Query Date" />
-              <AppInput name="Award_present" type="select" required label="status"
-                options={[
-                  { value: "pending", label: "Pending" },
-                  { value: "on review", label: "On review" },
-                  { value: "resolved", label: "Resolved" }
-                ]}
-              />
+              <AppInput name="amount" type={"text"} required label="Amount" />
+              <AppInput name="category" type={"select"} required label="Category" options={[...empl]} />
+              <AppInput name="date" type={"date"} required label="Date" options={[...empl]} />
+              <AppInput name="payment_mode" type={"select"} required label="Payment Mode" options={[...empl]} />
+              <AppInput name="payer" type={"select"} required label="Payer" options={[...empl]} />
               <div className="col-span-2">
                 <AppInput name={"description"} type={"textarea"} label="Description" />
               </div>
@@ -91,7 +84,7 @@ function Page() {
               onClick={() => setShowModal(true)}
             >
               <i className="ri-add-line"></i>
-              <div className="">Add Deposit</div>
+              <div className="">Add Expense</div>
             </div>
           </div>
         </div>

@@ -4,7 +4,7 @@ import AppInput from '@/components/organisms/AppInput'
 import AppPagination from '@/components/organisms/AppPagination'
 import Modal from '@/components/organisms/Modal'
 import serialize from '@/hooks/Serialize'
-import { addQuery, deleteDeposit, fetchDeposit, fetchQuery, updateDeposit } from '@/services/authService'
+import { addQuery, createDeposit, deleteDeposit, fetchAllAccount, fetchAllPayer, fetchDeposit, fetchPaymentMethod, fetchQuery, updateDeposit } from '@/services/authService'
 import { AllEmployees, allDepartment, companies, queryType } from '@/utility/constants'
 import React, { useEffect, useState } from 'react'
 import { HiOutlineBan } from 'react-icons/hi'
@@ -15,10 +15,9 @@ function Page() {
   const [isLoading, setIsLoading] = useState(true)
   const [processing, setProcessing] = useState(false)
   const [qury, setQury] = useState([])
-  const [compnis, setCompnis] = useState([])
-  const [allDept, setAllDept] = useState([])
-  const [empl, setAllEmpl] = useState([])
-  const [queType, setQueryType] = useState([])
+  const [payerList, setPayerList] = useState([])
+  const [accountList, setAccountList] = useState([])
+  const [payMethod, setPaymethod] = useState([])
   const [edit, setEdit] = useState({})
   const [del, setDelete] = useState({})
   const [view, setView] = useState({})
@@ -26,7 +25,7 @@ function Page() {
   const add = async (e) => {
     e.preventDefault();
     const formData = serialize(e.target);
-    const { status, data } = await addQuery(formData).catch(err => console.log(err))
+    const { status, data } = await createDeposit(formData).catch(err => console.log(err))
     if (status) {
       fetch()
       setShowModal(false)
@@ -69,13 +68,48 @@ function Page() {
   }
 
 
+  const paymentMethodFetch = async () => {
+    const { status, data } = await fetchPaymentMethod().catch(err => console.log(err))
+    if (status) {
+      const exportData = []
+      await data.data[0].forEach(element => {
+        exportData.push({ value: element.id, label: element.method_name })
+      });
+      setPaymethod(exportData);
+    }
+  }
+
+  const payerFetch = async () => {
+    const { status, data } = await fetchAllPayer().catch(err => console.log(err))
+    if (status) {
+      console.log(data);
+      const exportData = []
+      await data.data[0].forEach(element => {
+        exportData.push({ value: element.id, label: element.payer_name })
+      });
+      setPayerList(exportData);
+    }
+  }
+
+  const accountFetch = async () => {
+    const { status, data } = await fetchAllAccount().catch(err => console.log(err))
+    if (status) {
+      console.log(data);
+      const exportData = []
+      await data.data[0].forEach(element => {
+        exportData.push({ value: element.id, label: element.account_name })
+      });
+      setAccountList(exportData);
+    }
+  }
+
+
 
   useEffect(() => {
     fetch()
-    companies().then(res => setCompnis([...res]))
-    AllEmployees().then(res => setAllEmpl([...res]))
-    allDepartment().then(res => setAllDept([...res]))
-    queryType().then(res => setQueryType([...res]))
+    paymentMethodFetch()
+    payerFetch()
+    accountFetch()
   }, [])
 
   return (
@@ -85,14 +119,12 @@ function Page() {
           <form onSubmit={(e) => add(e)} className="space-y-4">
             <div className="text-hrms_green text-xl">Add New Deposit</div>
             <div className="grid grid-cols-2 gap-4">
-              <AppInput name="account_name" type={"text"} required label="Account Name" />
-              <AppInput name="category" type={"select"} required label="Category" options={[...empl]} />
               <AppInput name="amount" type={"text"} required label="Amount" />
-              <AppInput name="date" type={"date"} required label="Date" options={[...empl]} />
-              <AppInput name="payment_mode" type={"select"} required label="Payment Mode" options={[...empl]} />
-              <AppInput name="payer" type={"select"} required label="Payer" options={[...empl]} />
-              <AppInput name="reference_number" type={"select"} required label="Reference Number" options={[...empl]} />
-              <AppInput name="attached_file" type={"file"} required label="Attached File" />
+              <AppInput name="category" type={"select"} required label="Category" options={[{ value: "public", label: "Public" }]} />
+              <AppInput name="deposit_date" type={"date"} required label="Date" />
+              <AppInput name="payment_method_id" type={"select"} required label="Payment Mode" options={[...payMethod]} />
+              <AppInput name="payer_id" type={"select"} required label="Payer" options={[...payerList]} />
+              <AppInput name="account_id" type={"select"} required label="Account List" options={[...accountList]} />
               <div className="col-span-2">
                 <AppInput name={"description"} type={"textarea"} label="Description" />
               </div>
@@ -121,10 +153,6 @@ function Page() {
                 <div className="text-gray-400">{view.category}</div>
               </div>
               <div className="">
-                <div className="font-bold">Description</div>
-                <div className="text-gray-400">{view.description}</div>
-              </div>
-              <div className="">
                 <div className="font-bold">Deposit reference</div>
                 <div className="text-gray-400">{view.deposit_reference}</div>
               </div>
@@ -132,52 +160,63 @@ function Page() {
                 <div className="font-bold">Deposit date</div>
                 <div className="text-gray-400">{view.deposit_date}</div>
               </div>
+              <div className="col-span-2">
+                <div className="font-bold">Description</div>
+                <div className="text-gray-400">{view.description}</div>
+              </div>
             </div>
-            {/* <div className="grid grid-cols-2">
+            <div className="grid grid-cols-2">
               <div className="">
                 <div className="font-bold">Account Name</div>
-                <div className="text-gray-400">{view.cashbookaccount.account_name}</div>
+                <div className="text-gray-400">{view?.cashbookaccount?.account_name}</div>
               </div>
               <div className="">
                 <div className="font-bold">Account balance</div>
-                <div className="text-gray-400">{view.cashbookaccount.account_balance}</div>
+                <div className="text-gray-400">{view?.cashbookaccount?.account_balance}</div>
               </div>
               <div className="">
                 <div className="font-bold">Initial balance</div>
-                <div className="text-gray-400">{view.cashbookaccount.initial_balance}</div>
+                <div className="text-gray-400">{view?.cashbookaccount?.initial_balance}</div>
               </div>
               <div className="">
                 <div className="font-bold">Account number</div>
-                <div className="text-gray-400">{view.cashbookaccount.account_number}</div>
+                <div className="text-gray-400">{view?.cashbookaccount?.account_number}</div>
               </div>
               <div className="">
                 <div className="font-bold">Branch code</div>
-                <div className="text-gray-400">{view.cashbookaccount.branch_code}</div>
+                <div className="text-gray-400">{view?.cashbookaccount?.branch_code}</div>
               </div>
               <div className="">
                 <div className="font-bold">Bank branch</div>
-                <div className="text-gray-400">{view.cashbookaccount.bank_branch}</div>
+                <div className="text-gray-400">{view?.cashbookaccount?.bank_branch}</div>
               </div>
-            </div> */}
-            {/* <div className="grid grid-cols-2">
+            </div>
+            <div className="grid grid-cols-2">
               <div className="">
                 <div className="font-bold">Payer Name</div>
-                <div className="text-gray-400">{view.cashbookpayer.payer_name}</div>
+                <div className="text-gray-400">{view?.cashbookpayer?.payer_name}</div>
               </div>
               <div className="">
                 <div className="font-bold">Contact No.</div>
-                <div className="text-gray-400">{view.cashbookpayer.contact_no}</div>
+                <div className="text-gray-400">{view?.cashbookpayer?.contact_no}</div>
               </div>
-            </div> */}
+            </div>
           </div>
         </Modal>
-        <Modal closeModal={() => setEdit({})} size={"sm"} isOpen={Object.keys(edit).length > 0}>
+        <Modal closeModal={() => setEdit({})} size={"lg"} isOpen={Object.keys(edit).length > 0}>
           <form onSubmit={(e) => update(e)} className="space-y-4">
-            <div className="text-hrms_green text-xl">Update Account</div>
-            <div className="grid gap-4">
-              <input type='hidden' name='id' value={edit.id} />
-              <AppInput name="payer_name" defaultValue={edit.payer_name} type={"text"} label="Enter Payer Name" />
-              <AppInput name="contact_no" defaultValue={edit.contact_no} type={"text"} label="Enter Phone No." />
+            <div className="text-hrms_green text-xl">Update Deposit</div>
+            <input name='id' type="hidden" value={edit.id} />
+            <div className="grid grid-cols-2 gap-4">
+              <AppInput name="amount" defaultValue={edit.amount} type={"text"} required label="Amount" />
+              <AppInput name="category" defaultValue={edit.category} type={"select"} required label="Category" options={[{ value: "public", label: "Public" }]} />
+              <AppInput name="deposit_date" defaultValue={edit.deposit_date} type={"date"} required label="Date" />
+              <AppInput name="payment_method_id" defaultValue={edit.payment_method_id	} type={"select"} required label="Payment Mode" options={[...payMethod]} />
+              <AppInput name="payer_id" defaultValue={edit.payer_id	} type={"select"} required label="Payer" options={[...payerList]} />
+              <AppInput name="account_id" defaultValue={edit.account_id} type={"select"} required label="Account List" options={[...accountList]} />
+              <div className="col-span-2">
+                <AppInput name={"description"} defaultValue={edit.description} type={"textarea"} label="Description" />
+              </div>
             </div>
             <button disabled={processing} className="bg-hrms_green w-full rounded-lg text-white py-2 disabled:bg-opacity-20">Update</button>
           </form>

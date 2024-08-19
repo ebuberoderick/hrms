@@ -168,3 +168,10 @@ export const createDeposit = (formData) => apiWithAuth.post("admin/cashbook/depo
 export const fetchDeposit = () => apiWithAuth.post("admin/cashbook/deposit/fetch").then(getApiResponse).catch(getErrorResponse);
 export const updateDeposit = (formData) => apiWithAuth.post("admin/cashbook/deposit/update", formData).then(getApiResponse).catch(getErrorResponse);
 export const deleteDeposit = (formData) => apiWithAuth.post("admin/cashbook/deposit/delete", formData).then(getApiResponse).catch(getErrorResponse);
+
+export const fetchPaymentMethod = () => apiWithAuth.post("admin/cashbook/paymentmenthod/fetch_all").then(getApiResponse).catch(getErrorResponse);
+export const fetchAllAccount = () => apiWithAuth.post("admin/cashbook/account/fetch_all").then(getApiResponse).catch(getErrorResponse);
+export const fetchAllPayer = () => apiWithAuth.post("admin/cashbook/payer/fetch_all").then(getApiResponse).catch(getErrorResponse);
+
+
+
