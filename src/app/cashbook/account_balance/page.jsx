@@ -4,16 +4,14 @@ import AppInput from '@/components/organisms/AppInput'
 import AppPagination from '@/components/organisms/AppPagination'
 import Modal from '@/components/organisms/Modal'
 import serialize from '@/hooks/Serialize'
-import { addComplaint, fetchComplaint } from '@/services/authService'
+import { addComplaint, fetchAccount, fetchComplaint } from '@/services/authService'
 import { AllEmployees, allDepartment, companies } from '@/utility/constants'
 import React, { useEffect, useState } from 'react'
 
 function Page() {
   const [showModal, setShowModal] = useState(false)
+  const [isloading, setIsLoading] = useState(true)
   const [cons, setCon] = useState([])
-  const [compnis, setCompnis] = useState([])
-  const [allDept, setAllDept] = useState([])
-  const [empl, setAllEmpl] = useState([])
 
   const add = async (e) => {
     e.preventDefault();
@@ -25,18 +23,18 @@ function Page() {
     }
   }
 
+
   const fetch = async () => {
-    const { status, data } = await fetchComplaint().catch(err => console.log(err))
+    const { status, data } = await fetchAccount().catch(err => console.log(err))
     if (status) {
       setCon(data?.data[0]);
+      setIsLoading(false)
     }
+
   }
 
   useEffect(() => {
     fetch()
-    companies().then(res => setCompnis([...res]))
-    AllEmployees().then(res => setAllEmpl([...res]))
-    allDepartment().then(res => setAllDept([...res]))
   }, [])
 
 
@@ -78,9 +76,9 @@ function Page() {
             <table className="w-full divide-y text-sm text-left">
               <tr className="bg-gray-100">
                 <th className="flex gap-3 pl-5 py-2">
-                  <div className="w-9 relative">
+                  {/* <div className="w-9 relative">
                     <div className="absolute -top-1"><AppInput onChange={(e) => selectAll(e)} type="checkbox" name="employee" /></div>
-                  </div>
+                  </div> */}
                   Bank Name
                 </th>
                 <th className="">Balance</th>
@@ -89,24 +87,31 @@ function Page() {
                 cons?.data?.map((list, i) => (
                   <tr key={i}>
                     <td className="flex items-center gap-3 pl-5 py-2">
-                      <div className="w-9 relative">
+                      {/* <div className="w-9 relative">
                         <div className=""><AppInput onChange={(e) => selectAll(e)} type="checkbox" name="employee" /></div>
-                      </div>
+                      </div> */}
                       <div className="space-y-1">
-                        <div className="">{list.complaint_from.employee_name}</div>
+                        <div className="">{list.account_name}</div>
                       </div>
                     </td>
                     <td>
-                      <div className="text-xl flex gap-1">
-                        <div className="text-hrms_green p-1 cursor-pointer"><i className="ri-edit-2-line"></i></div>
-                        <div className="text-danger p-1 cursor-pointer"><i className="ri-delete-bin-6-line"></i></div>
-                      </div>
+                      <div className="">{list.account_balance}</div>
                     </td>
                   </tr>
                 ))
 
               }
-
+              {
+                isloading && ["", "", "", "", ""].map((list, i) => (
+                  <tr key={i}>
+                    <td className="flex items-center gap-3 pl-5 py-3"><div className="preload w-1/3 py-2 gap-2"></div>
+                    </td>
+                    <td className="hidden lg:table-cell">
+                      <div className="font-semibold preload w-2/3 py-2"></div>
+                    </td>
+                  </tr>
+                ))
+              }
             </table>
           </div>
           <div className="">

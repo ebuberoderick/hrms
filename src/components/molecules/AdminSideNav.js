@@ -168,7 +168,8 @@ function AdminSideNav() {
                 { name: "Payer", extra: false },
                 { name: "Deposit", extra: false },
                 { name: "Expense", extra: false },
-                { name: "Transaction History", extra: false }
+                { name: "Transaction History", extra: false },
+                { name: "Transfer", extra: false }
               ]}
             />
           </div>
