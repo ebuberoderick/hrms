@@ -82,7 +82,6 @@ function Page() {
   const payerFetch = async () => {
     const { status, data } = await fetchAllPayer().catch(err => console.log(err))
     if (status) {
-      console.log(data);
       const exportData = []
       await data.data[0].forEach(element => {
         exportData.push({ value: element.id, label: element.payer_name })
@@ -94,7 +93,6 @@ function Page() {
   const accountFetch = async () => {
     const { status, data } = await fetchAllAccount().catch(err => console.log(err))
     if (status) {
-      console.log(data);
       const exportData = []
       await data.data[0].forEach(element => {
         exportData.push({ value: element.id, label: element.account_name })
@@ -141,7 +139,7 @@ function Page() {
           </form>
         </Modal>
         <Modal closeModal={() => setView({})} size={"sm"} isOpen={Object.keys(view).length > 0}>
-          <div className="text-hrms_green text-xl">Deposite Information</div>
+          <div className="text-hrms_green text-xl">Deposit Information</div>
           <div className="grid gap-4">
             <div className="grid grid-cols-2">
               <div className="">
