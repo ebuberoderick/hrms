@@ -3,7 +3,7 @@ import React from 'react'
 
 function page() {
   return (
-    <AppLayout>
+    <AppLayout title={"Payroll/Setups"}>
         Page Under Development
     </AppLayout>
   )
