@@ -19,7 +19,7 @@ import { Session, SignOut } from '@/hooks/Auth'
 import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
 
 
-function Verifications({ Vbvn, Vnin, VaccountNumber, Vothers, Vemployment, Vbio, setSave }) {
+function Verifications({ Vbvn, Vnin, VaccountNumber, Vothers, Vemployment, Vbio, check }) {
     const user = useSelector((state) => state?.User.value);
     const userAuth = useSelector((state) => state?.User);
     const isAuthenticated = Session(userAuth);
@@ -162,7 +162,7 @@ function Verifications({ Vbvn, Vnin, VaccountNumber, Vothers, Vemployment, Vbio,
                                 ) : step === 6 ? (
                                     <OtherVerification setStep={e => setStep(e)} user={user} Vothers={Vothers} />
                                 ) : (
-                                    <VerifyAll setSave={() => setSave()} user={user} />
+                                    <VerifyAll check={()=> check()} user={user} />
                                 )
                             }
                             {

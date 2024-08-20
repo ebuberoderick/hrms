@@ -7,7 +7,7 @@ import { fetchMyData, verifyMyData } from '@/services/authService';
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 
-function VerifyAll({ user, setSave }) {
+function VerifyAll({ user, check }) {
     // console.log(user);
     const [userinfo, setUserinfo] = useState()
     const [btnPrint, setBtnPrint] = useState(false)
@@ -37,7 +37,6 @@ function VerifyAll({ user, setSave }) {
         const { status, data } = await verifyMyData({ status: 1 }).catch(err => console.log(err))
         if (status) {
             setBtnPrint(true)
-            setSave()
         }
 
     }
@@ -99,7 +98,7 @@ function VerifyAll({ user, setSave }) {
                             <div>{user.user.state_of_origin}</div>
                         </div>
                     </div>
-                       
+
                 </div>
                 <div>
                     <div className="inline-flex relative bottom-4 items-start justify-between">
@@ -266,7 +265,7 @@ function VerifyAll({ user, setSave }) {
                 btnPrint ? (
                     <form onSubmit={(e) => verify(e)} className="space-y-4 w-full">
                         <div className='w-full flex gap-3'>
-                            <div onClick={() => printNw()} className="flex-grow border border-hrms_green text-hrms_green rounded-lg py-2 text-center cursor-pointer">View Dashboard</div>
+                            <div onClick={() => check()} className="flex-grow border border-hrms_green text-hrms_green rounded-lg py-2 text-center cursor-pointer">View Dashboard</div>
                             <div onClick={() => printNw()} className="flex-grow bg-hrms_green text-white rounded-lg py-2 text-center cursor-pointer">Print</div>
                         </div>
                     </form>

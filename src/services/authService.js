@@ -17,6 +17,7 @@ export const adminadduser = (formData) => apiWithAuth.post("/adminadduser", form
 
 export const fetchUsers = (formData) => apiWithAuth.post("admin/user/fetch_user",formData).then(getApiResponse).catch(getErrorResponse);
 export const fetchAllUsers = () => apiWithAuth.post("admin/user/fetch_all_user").then(getApiResponse).catch(getErrorResponse);
+export const chcekVerification = () => apiWithAuth.post("admin/employee/verification/chect_my_verification").then(getApiResponse).catch(getErrorResponse);
 
 export const addEmploye = (formData) => apiWithAuth.post("admin/employee/add_new_employee", formData).then(getApiResponse).catch(getErrorResponse);
 export const updateEmployeeInfo = (formData) => apiWithAuth.post("employee/employee_update_info", formData).then(getApiResponse).catch(getErrorResponse);
