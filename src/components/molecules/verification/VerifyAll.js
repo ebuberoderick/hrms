@@ -59,23 +59,23 @@ function VerifyAll({ user, check }) {
                     <div className='space-y-3 print:space-y-3'>
                         <div>
                             <div className='mb-2 font-bold'>firstname</div>
-                            <div>{user.employee.firstname}</div>
+                            <div>{user?.employee?.firstname}</div>
                         </div>
                         <div>
                             <div className='mb-2 font-bold'>lastname</div>
-                            <div>{user.employee.lastname}</div>
+                            <div>{user?.employee?.lastname}</div>
                         </div>
                         <div>
                             <div className='mb-2 font-bold'>middlename</div>
-                            <div>{user.employee.middlename}</div>
+                            <div>{user?.employee?.middlename}</div>
                         </div>
                         <div>
                             <div className='mb-2 font-bold'>telephone</div>
-                            <div>{user.employee.telephone}</div>
+                            <div>{user?.employee?.telephone}</div>
                         </div>
                         <div>
                             <div className='mb-2 font-bold'>Date of birth</div>
-                            <div>{user.employee.date_of_brith}</div>
+                            <div>{user?.employee?.date_of_brith}</div>
                         </div>
                         <div>
                             <div className='mb-2 font-bold'>Email</div>
@@ -83,19 +83,19 @@ function VerifyAll({ user, check }) {
                         </div>
                         <div>
                             <div className='mb-2 font-bold'>Staff ID</div>
-                            <div>{user.employee.staff_id}</div>
+                            <div>{user?.employee?.staff_id}</div>
                         </div>
                         <div>
                             <div className='mb-2 font-bold'>Marital status</div>
-                            <div>{user.employee.marital_status}</div>
+                            <div>{user?.employee?.marital_status}</div>
                         </div>
                         <div>
                             <div className='mb-2 font-bold'>Gender</div>
-                            <div>{user.employee.gender}</div>
+                            <div>{user?.employee?.gender}</div>
                         </div>
                         <div>
                             <div className='mb-2 font-bold'>State Of Origin</div>
-                            <div>{user.user.state_of_origin}</div>
+                            <div>{user?.user?.state_of_origin}</div>
                         </div>
                     </div>
 
@@ -110,11 +110,11 @@ function VerifyAll({ user, check }) {
                         <div className='space-y-3 print:space-y-3'>
                             <div>
                                 <div className='mb-2 font-bold'>Bank</div>
-                                <div>{userinfo?.bank[0].bank_name}</div>
+                                <div>{userinfo?.bank[0]?.bank_name}</div>
                             </div>
                             <div>
                                 <div className='mb-2 font-bold'>Account Number</div>
-                                <div>{userinfo?.bank[0].account_number}</div>
+                                <div>{userinfo?.bank[0]?.account_number}</div>
                             </div>
                         </div>
                     </div>
@@ -129,7 +129,7 @@ function VerifyAll({ user, check }) {
                         <div className='space-y-3 print:space-y-3'>
                             <div>
                                 <div className='mb-2 font-bold'>BVN</div>
-                                <div>{user.employee.bvn}</div>
+                                <div>{user?.employee?.bvn}</div>
                             </div>
                         </div>
                     </div>
@@ -144,7 +144,7 @@ function VerifyAll({ user, check }) {
                     <div className='space-y-3 print:space-y-3'>
                         <div>
                             <div className='mb-2 font-bold'>NIN</div>
-                            <div>{user.user.nin}</div>
+                            <div>{user?.user?.nin}</div>
                         </div>
                     </div>
                 </div>
@@ -159,11 +159,11 @@ function VerifyAll({ user, check }) {
                         <div className='space-y-3 print:space-y-3'>
                             <div>
                                 <div className='mb-2 font-bold'>Personal start date</div>
-                                <div>{user.employee.person_start_date}</div>
+                                <div>{user?.employee?.person_start_date}</div>
                             </div>
                             <div>
                                 <div className='mb-2 font-bold'>Position</div>
-                                <div>{user.employee.position}</div>
+                                <div>{user?.employee?.position}</div>
                             </div>
                         </div>
                     </div>
@@ -178,7 +178,7 @@ function VerifyAll({ user, check }) {
                 </div>
                 <div>
                     <div className="w-20 h-20 rounded-full bg-gray-100 relative">
-                        <img src={user.user.avatar} id="output" className="w-full h-full rounded-full" />
+                        <img src={user?.user?.avatar} id="output" className="w-full h-full rounded-full" />
                         <label htmlFor="image" className="absolute w-8 h-8 border-2 border-white bottom-1 right-0 bg-hrms_green text-white rounded-full flex items-center justify-center">
                             <input accept="image/*" required id="image" onChange={(e) => uploadImg(e)} name="image" type="file" className="opacity-0 absolute w-full cursor-pointer h-full" />
                             <i className="ri-camera-line"></i>
@@ -187,25 +187,25 @@ function VerifyAll({ user, check }) {
                 </div>
                 <div className='space-y-4'>
                     <div className="grid sm:grid-cols-2 gap-4">
-                        <input type='hidden' name='id' value={user.user.id} />
-                        <AppInput name="firstname" type="text" value={user.employee.firstname} required label="First Name" />
-                        <AppInput name="lastname" type="text" value={user.employee.lastname} required label="Last Name" />
-                        <AppInput name="middlename" type="text" value={user.employee.middlename} label="Middle Name (Optional)" />
-                        <AppInput name="telephone" type="number" value={user.employee.telephone} required label="Phone Number" />
-                        <AppInput name="date_of_birth" value={user.employee.date_of_brith} type="date" required label="DOB" />
+                        <input type='hidden' name='id' value={user?.user?.id} />
+                        <AppInput name="firstname" type="text" value={user?.employee?.firstname} required label="First Name" />
+                        <AppInput name="lastname" type="text" value={user?.employee?.lastname} required label="Last Name" />
+                        <AppInput name="middlename" type="text" value={user?.employee?.middlename} label="Middle Name (Optional)" />
+                        <AppInput name="telephone" type="number" value={user?.employee?.telephone} required label="Phone Number" />
+                        <AppInput name="date_of_birth" value={user?.employee?.date_of_brith} type="date" required label="DOB" />
                         <AppInput name="email" type="email" required value={user?.user?.email} label="Email" />
-                        <AppInput name="staff_id" type="text" value={user.employee.staff_id} required label="Staff ID" />
-                        <AppInput value={user.employee.marital_status} name="marital_status" type="text" required label="Marital Status" options={[
+                        <AppInput name="staff_id" type="text" value={user?.employee?.staff_id} required label="Staff ID" />
+                        <AppInput value={user?.employee?.marital_status} name="marital_status" type="text" required label="Marital Status" options={[
                             { value: "single", label: "Single" },
                             { value: "married", label: "Married" },
                             { value: "widow", label: "Widow" },
                             { value: "widower", label: "Widower" },
                             { value: "divorced", label: "Divorced" }]} />
-                        <AppInput value={user.employee.gender} name="gender" type="text" required label="Gender" options={[
+                        <AppInput value={user?.employee?.gender} name="gender" type="text" required label="Gender" options={[
                             { value: "Male", label: "Male" },
                             { value: "Female", label: "Female" },
                             { value: "Others", label: "Others" }]} />
-                        <AppInput defaultValue={user.user.state_of_origin} name="state_of_origin" type="select" required label="State Of Origin" options={[...NigeriaStates]} />
+                        <AppInput defaultValue={user?.user?.state_of_origin} name="state_of_origin" type="select" required label="State Of Origin" options={[...NigeriaStates]} />
                     </div>
                 </div>
             </div>
@@ -217,8 +217,8 @@ function VerifyAll({ user, check }) {
                 </div>
                 <div className='space-y-4'>
                     <div className='space-y-3'>
-                        <AppInput name="bank_code" value={userinfo?.bank[0].bank_name} type="text" required label="Bank" />
-                        <AppInput name="account_number" value={userinfo?.bank[0].account_number} type="number" required label="Account Number" />
+                        <AppInput name="bank_code" value={userinfo?.bank[0]?.bank_name} type="text" required label="Bank" />
+                        <AppInput name="account_number" value={userinfo?.bank[0]?.account_number} type="number" required label="Account Number" />
                     </div>
                 </div>
             </div>
@@ -230,7 +230,7 @@ function VerifyAll({ user, check }) {
                 </div>
                 <div className='space-y-4'>
                     <div className='space-y-1'>
-                        <AppInput name="bvn" value={user.employee.bvn} type="text" required label="Enter BVN" />
+                        <AppInput name="bvn" value={user?.employee?.bvn} type="text" required label="Enter BVN" />
                     </div>
                 </div>
             </div>
@@ -243,7 +243,7 @@ function VerifyAll({ user, check }) {
                 </div>
                 <div className='space-y-4'>
                     <div className='space-y-1'>
-                        <AppInput name="nin" value={user.user.nin} type="text" required label="Enter NIN" />
+                        <AppInput name="nin" value={user?.user?.nin} type="text" required label="Enter NIN" />
                     </div>
                 </div>
             </div>
@@ -256,8 +256,8 @@ function VerifyAll({ user, check }) {
                 </div>
                 <div className='space-y-4'>
                     <div className="grid gap-4">
-                        <AppInput value={user.employee.person_start_date} name="personal_start_date" type="date" required label="Start Date" />
-                        <AppInput value={user.employee.position} name="position" type="text" required label="Position" options={[{ value: "positions", label: "Positions" }]} />
+                        <AppInput value={user?.employee?.person_start_date} name="personal_start_date" type="date" required label="Start Date" />
+                        <AppInput value={user?.employee?.position} name="position" type="text" required label="Position" options={[{ value: "positions", label: "Positions" }]} />
                     </div>
                 </div>
             </div>
