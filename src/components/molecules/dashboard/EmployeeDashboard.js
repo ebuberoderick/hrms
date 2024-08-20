@@ -46,19 +46,17 @@ const EmployeeDashboard = () => {
 
 
   const maxDate = getTodayDate();
-  if (isLoading) {
-    return (
-      <div>
-        <div className="">
-          {
-            isVerified ? (
-              <AppLayout title={"Dashboard"}>
-                <EmployeeVerifiedDashboard />
-              </AppLayout>
-            ) : (<Verifications check={() => check()} Vbvn={Vbvn} Vnin={Vnin} VaccountNumber={VaccountNumber} Vothers={Vothers} Vemployment={Vemployment} Vbio={Vbio} />)
-          }
-        </div>
-      </div>)
-  }
+  return (
+    <div>
+      <div className="">
+        {
+          isVerified ? (
+            <AppLayout title={"Dashboard"}>
+              <EmployeeVerifiedDashboard />
+            </AppLayout>
+          ) : (isLoading && <Verifications check={() => check()} Vbvn={Vbvn} Vnin={Vnin} VaccountNumber={VaccountNumber} Vothers={Vothers} Vemployment={Vemployment} Vbio={Vbio} />)
+        }
+      </div>
+    </div>)
 };
 export default EmployeeDashboard;
