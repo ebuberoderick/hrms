@@ -3,7 +3,7 @@ import React from 'react'
 
 function page() {
   return (
-    <AppLayout>
+    <AppLayout >
         <div className="">asd</div>
         <div className=""></div>
     </AppLayout>

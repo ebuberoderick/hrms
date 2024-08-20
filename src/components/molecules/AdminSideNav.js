@@ -33,7 +33,7 @@ function AdminSideNav() {
               subMenu={[
                 { name: "users list", extra: false },
                 { name: "user roles and access", extra: false },
-                { name: "users last login", extra: false },
+                // { name: "users last login", extra: false },
               ]}
             />
             <AppLink text={"employee"} icon={<i className="ri-group-line"></i>} />
@@ -42,12 +42,12 @@ function AdminSideNav() {
               icon={<i className="ri-sound-module-line"></i>}
               subMenu={[
                 { name: "roles and access", extra: false },
-                { name: "general settings", extra: false },
-                { name: "mail setting", extra: false },
-                { name: "language settings", extra: false },
-                { name: "variable type", extra: false },
-                { name: "variable method", extra: false },
-                { name: "IP settings", extra: false },
+                // { name: "general settings", extra: false },
+                // { name: "mail setting", extra: false },
+                // { name: "language settings", extra: false },
+                // { name: "variable type", extra: false },
+                // { name: "variable method", extra: false },
+                // { name: "IP settings", extra: false },
               ]}
             />
             <AppLink
@@ -101,11 +101,11 @@ function AdminSideNav() {
                 { name: "company policy", extra: false }
               ]}
             />
-            <AppLink
+            {/* <AppLink
               text={"hR calender"}
               icon={<i className="ri-calendar-todo-line"></i>}
-            />
-            <AppLink
+            /> */}
+            {/* <AppLink
               text={"hR Reports"}
               icon={<i className="ri-folder-5-line"></i>}
               subMenu={[
@@ -120,8 +120,8 @@ function AdminSideNav() {
                 { name: "Transaction Report", extra: false },
                 { name: "Pension Report", extra: false }
               ]}
-            />
-            <AppLink
+            /> */}
+            {/* <AppLink
               text={"timesheet"}
               icon={<i className="ri-time-line"></i>}
               subMenu={[
@@ -134,12 +134,12 @@ function AdminSideNav() {
                 { name: "Manage Holiday", extra: false },
                 { name: "Manage Leaves", extra: false },
               ]}
-            />
-            <AppLink
+            /> */}
+            {/* <AppLink
               text={"File Manager"}
               icon={<i className="ri-profile-line"></i>}
-            />
-            <AppLink text={"Training"} icon={<i className="ri-trophy-line"></i>} />
+            /> */}
+            {/* <AppLink text={"Training"} icon={<i className="ri-trophy-line"></i>} /> */}
           </div>
         </div>
         <div className="divition"></div>
@@ -147,8 +147,22 @@ function AdminSideNav() {
           <div className="font-[500] text-xs text-gray-500 capitalize pl-3">Payroll & Compensation</div>
           <div>
             <AppLink
-              text={"payroll"}
+              text={"Payroll"}
               icon={<i className="ri-wallet-line"></i>}
+              subMenu={[
+                { name: "Dashboard", extra: false },
+                {
+                  name: "Setups", extra: true,
+                  option: ["Salary Structure", "Allowance", "Deduction", "Job Title", "Grade Level","Steps"]
+                },
+                { name: "Salary Allowances", extra: false },
+                { name: "Salary Deductions", extra: false },
+                { name: "Payroll Calculation", extra: false },
+                { name: "Payroll Schedule", extra: false },
+                { name: "Payroll Settings", extra: false },
+                { name: "Payslip", extra: false },
+                { name: "Payment History", extra: false }
+              ]}
             />
           </div>
         </div>

@@ -265,8 +265,9 @@ function VerifyAll({ user, setSave }) {
             {
                 btnPrint ? (
                     <form onSubmit={(e) => verify(e)} className="space-y-4 w-full">
-                        <div className='w-full'>
-                            <div onClick={() => printNw()} className="bg-hrms_green text-white rounded-lg py-2 text-center cursor-pointer">Print</div>
+                        <div className='w-full flex gap-3'>
+                            <div onClick={() => printNw()} className="flex-grow border border-hrms_green text-hrms_green rounded-lg py-2 text-center cursor-pointer">View Dashboard</div>
+                            <div onClick={() => printNw()} className="flex-grow bg-hrms_green text-white rounded-lg py-2 text-center cursor-pointer">Print</div>
                         </div>
                     </form>
 
