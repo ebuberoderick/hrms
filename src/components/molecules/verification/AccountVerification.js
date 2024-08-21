@@ -49,7 +49,7 @@ function AccountVerification({ user, VaccountNumber, setStep }) {
 
         for (let index = 0; index < array.length; index++) {
             const element = array[index];
-            if (fullname.toLowerCase() === element.toLowerCase()) {
+            if (fullname.toLowerCase().includes(element.toLowerCase())) {
                 return true
             }
         }
