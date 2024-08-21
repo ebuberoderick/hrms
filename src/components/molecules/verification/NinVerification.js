@@ -34,7 +34,10 @@ function NinVerification({ Vnin, user, setStep }) {
             `${l + " " + f}`,
             `${l + " " + m}`,
             `${m + " " + l}`,
-            `${m + " " + f}`
+            `${m + " " + f}`,
+            `${m}`,
+            `${l}`,
+            `${f}`
         ]
 
         for (let index = 0; index < array.length; index++) {
@@ -58,7 +61,7 @@ function NinVerification({ Vnin, user, setStep }) {
                 setNINData(data?.data?.identity?.data)
                 setNinForm(res)
             } else {
-                setErrMsg("NIN name mismatch");
+                setErrMsg(`NIN name mismatch ${data.data.res.data.identity.data.firstname.toUpperCase(), data.data.res.data.identity.data.lastname.toUpperCase(), data.data.res.data.identity.data.middlename.toUpperCase()}`)
             }
         } else {
             setErrMsg(data.message)

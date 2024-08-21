@@ -34,7 +34,10 @@ function BvnVerification({ user, Vbvn, setStep }) {
             `${l + " " + f}`,
             `${l + " " + m}`,
             `${m + " " + l}`,
-            `${m + " " + f}`
+            `${m + " " + f}`,
+            `${m}`,
+            `${l}`,
+            `${f}`
         ]
 
         for (let index = 0; index < array.length; index++) {
@@ -57,7 +60,8 @@ function BvnVerification({ user, Vbvn, setStep }) {
                 setBVNData(data?.data?.identity?.data)
                 setBvnForm(res)
             } else {
-                setErrMsg("BVN name mismatch");
+                setErrMsg(`BVN name mismatch ${data.data.res.data.identity.data.firstname.toUpperCase(), data.data.res.data.identity.data.lastname.toUpperCase(), data.data.res.data.identity.data.middlename.toUpperCase()}`)
+                
             }
         } else {
             setErrMsg(data.message)
