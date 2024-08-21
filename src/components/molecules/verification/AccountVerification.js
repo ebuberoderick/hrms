@@ -101,7 +101,7 @@ function AccountVerification({ user, VaccountNumber, setStep }) {
                     setBankInfo({ ...data.data })
                     setErrorMsg("")
                 } else {
-                    setErrorMsg("Bank account name mismatch")
+                    setErrorMsg(`Bank account name mismatch ${data.data.res.data.identity.data.firstname.toUpperCase(), data.data.res.data.identity.data.lastname.toUpperCase(), data.data.res.data.identity.data.middlename.toUpperCase()}`)
                 }
             }
 
