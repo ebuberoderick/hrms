@@ -14,8 +14,9 @@ function AppLink({ text, icon, subMenu }) {
 
   const toggleSibling = (e) => {
     document.getElementById(e).classList.toggle("hidden");
-    console.log(document.getElementById(e).parentElement());
+    document.getElementById(e).parentElement.childNodes[0].childNodes[1].classList.toggle("rotate-90");
   };
+
 
   const checkOpen = () => {
     const page = url.split("/");
@@ -80,11 +81,11 @@ function AppLink({ text, icon, subMenu }) {
                       }`}
                   >
                     <div className="capitalize flex-grow">{subText.name}</div>
-                    <div className="text-2xl transform transition-all duration-300">
+                    <div className={`text-2xl transform transition-all duration-300  ${activeSub.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x") === subText.name.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x") && "rotate-90"} `}>
                       <i className="ri-arrow-right-s-line"></i>
                     </div>
                   </div>
-                  <div className="pl-6 space-y-2 hidden" id={subText.name}>
+                  <div className={`pl-6 space-y-2 ${activeSub.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x") === subText.name.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x") ? "":"hidden"} `}  id={subText.name}>
                     {subText.option.map((e, i) => (
                       <div key={e + i}>
                         <Link href={`/${text.toLowerCase()}/${subText.name.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x")}/${e.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x")}`}>
