@@ -87,7 +87,7 @@ function AppLink({ text, icon, subMenu }) {
                   <div className="pl-6 space-y-2 hidden" id={subText.name}>
                     {subText.option.map((e, i) => (
                       <div key={e + i}>
-                        <Link href={`/${text.toLowerCase()}/${subText.name.toLowerCase()}/${e.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x")}`}>
+                        <Link href={`/${text.toLowerCase()}/${subText.name.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x")}/${e.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x")}`}>
                           <div className="hover:text-bg-hrms_dark_green py-1">{e}</div>
                         </Link>
                       </div>

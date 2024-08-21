@@ -158,8 +158,8 @@ function AdminSideNav() {
                 { name: "Salary Allowances", extra: false },
                 { name: "Salary Deductions", extra: false },
                 {
-                  name: "Payroll Calculation", extra: true,
-                  option: ["Employee Details", "Allowance", "Deduction"]
+                  name: "Payroll Calculations", extra: true,
+                  option: ["Employee Details", "Allowances", "Deductions"]
                 },
                 { name: "Payroll Schedule", extra: false },
                 { name: "Payroll Settings", extra: false },
