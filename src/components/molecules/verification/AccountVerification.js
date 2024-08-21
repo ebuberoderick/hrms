@@ -41,7 +41,10 @@ function AccountVerification({ user, VaccountNumber, setStep }) {
             `${l + " " + f}`,
             `${l + " " + m}`,
             `${m + " " + l}`,
-            `${m + " " + f}`
+            `${m + " " + f}`,
+            `${m}`,
+            `${l}`,
+            `${f}`
         ]
 
         for (let index = 0; index < array.length; index++) {
