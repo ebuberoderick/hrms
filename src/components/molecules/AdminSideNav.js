@@ -153,11 +153,14 @@ function AdminSideNav() {
                 { name: "Dashboard", extra: false },
                 {
                   name: "Setups", extra: true,
-                  option: ["Salary Structure", "Allowance", "Deduction", "Job Title", "Grade Level","Steps"]
+                  option: ["Salary Structure", "Allowances", "Deductions", "Job Title", "Grade Levels", "Steps"]
                 },
                 { name: "Salary Allowances", extra: false },
                 { name: "Salary Deductions", extra: false },
-                { name: "Payroll Calculation", extra: false },
+                {
+                  name: "Payroll Calculation", extra: true,
+                  option: ["Employee Details", "Allowance", "Deduction"]
+                },
                 { name: "Payroll Schedule", extra: false },
                 { name: "Payroll Settings", extra: false },
                 { name: "Payslip", extra: false },
