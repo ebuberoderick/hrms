@@ -25,19 +25,23 @@ function Page() {
         <div className="lg:flex space-y-3 items-center justify-between">
           <div className="">
             <p className=" text-[24px] font-[500] text-[#000000]">
-              Payroll Schedule
+              Salary Allowances
             </p>
             <p className=" text-[12px] font-[400] text-[#00000099] text-opacity-60">
-              All the scheduled payroll  are listed here.
+              All the salary allowances are listed here.
             </p>
           </div>
           <div className="sm:flex space-y-3 sm:space-y-0 gap-[10px] text-sm">
+            <div className="flex justify-center cursor-pointer font-bold gap-2 items-center border border-hrms_green text-hrms_green px-7 py-3 rounded-[4px]">
+              <i className="ri-upload-2-fill text-hrms_green"></i>
+              <div className="">Upload Bulk</div>
+            </div>
             <div
               className="flex cursor-pointer font-bold justify-center gap-2 items-center text-white bg-hrms_green px-7 py-3 rounded-[4px]"
             // onClick={() => setIsModalOpen(true)}
             >
               <i className="ri-add-line"></i>
-              <div className="">Generate Payroll Schedule</div>
+              <div className="">Add Allowance</div>
             </div>
           </div>
         </div>
@@ -67,13 +71,13 @@ function Page() {
                   ID
                 </th>
                 <th className="hidden lg:table-cell">Org_ID</th>
-                <th className="hidden sm:table-cell">HR Officer ID</th>
-                <th className="hidden sm:table-cell">Head HR ID</th>
-                <th className="hidden sm:table-cell">Start Date</th>
-                <th className="hidden sm:table-cell">End Date</th>
-                <th className="hidden sm:table-cell">Created Date</th>
-                <th className="hidden sm:table-cell">Approved Date</th>
-                <th className="w-20">Updated By</th>
+                <th className="hidden sm:table-cell">Salary Structure ID</th>
+                <th className="hidden sm:table-cell">Allowance ID</th>
+                <th className="hidden sm:table-cell">Payroll Schedule ID</th>
+                <th className="hidden sm:table-cell">Amount</th>
+                <th className="hidden sm:table-cell">Created By</th>
+                <th className="hidden sm:table-cell">Updated By</th>
+                <th className="w-20">Created Date</th>
               </tr>
               {/* {
                                 acct?.data?.map((list, i) => (
