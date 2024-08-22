@@ -92,11 +92,15 @@ const Page = () => {
     setProccessingAdd(false)
   }
 
-  
+
 
   const bulkUpload = async (e) => {
     e.preventDefault();
-    const formData = serialize(e.target);
+    const file = e.target[0].files[0]
+    const formData = new FormData();
+    formData.append("csv_file", file)
+
+    console.log(formData);
     setProccessingAdd(true)
     const { status, data } = await employeeBulkUpload(formData).catch(err => console.log(err))
     if (status) {
@@ -109,7 +113,7 @@ const Page = () => {
     setProccessingAdd(false)
   }
 
-  
+
 
 
   const getTodayDate = () => {
@@ -252,7 +256,7 @@ const Page = () => {
                     <div className="">Grade: {emp.grade}</div>
                   </td>
                   <td className="hidden lg:table-cell">
-                    <div className="flex items-center gap-1 "><FaRegUserCircle className=" text-gray-400"/> {emp.staff_id}</div>
+                    <div className="flex items-center gap-1 "><FaRegUserCircle className=" text-gray-400" /> {emp.staff_id}</div>
                     <div className=""><i className="ri-phone-line text-gray-400"></i> {emp.telephone}</div>
                   </td>
                   <td>
@@ -477,10 +481,10 @@ const Page = () => {
                     <i className="ri-upload-2-line"></i> <span>Choose File. . .</span>
                   </label>
                 </div>
-                <div className="space-y-2">
+                {/* <div className="space-y-2">
                   <div className="text-sm text-gray-500">Enter Manually</div>
                   <textarea className="w-full bg-gray-50 p-3 rounded-lg outline-none ring-0 resize-none"></textarea>
-                </div>
+                </div> */}
                 <div className="flex gap-4 justify-end">
                   <div
                     onClick={() => setImportModal(false)}

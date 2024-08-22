@@ -41,6 +41,10 @@ function VerifyAll({ user, check }) {
 
     }
 
+    var DOB = user?.employee.date_of_birth
+    var SD = user?.employee?.hire_date
+    console.log(user);
+
     useEffect(() => {
         fetchInfo()
     }, [])
@@ -191,8 +195,8 @@ function VerifyAll({ user, check }) {
                         <AppInput name="firstname" type="text" value={user?.employee?.firstname} required label="First Name" />
                         <AppInput name="lastname" type="text" value={user?.employee?.lastname} required label="Last Name" />
                         <AppInput name="middlename" type="text" value={user?.employee?.middlename} label="Middle Name (Optional)" />
-                        <AppInput name="telephone" type="number" value={user?.employee?.telephone} required label="Phone Number" />
-                        <AppInput name="date_of_birth" value={user?.employee?.date_of_brith} type="date" required label="DOB" />
+                        <AppInput name="telephone" type="number" value={Number(user.employee.telephone.split("+")[1])} required label="Phone Number" />
+                        <AppInput name="date_of_birth" value={DOB} type="date" required label="DOB" />
                         <AppInput name="email" type="email" required value={user?.user?.email} label="Email" />
                         <AppInput name="staff_id" type="text" value={user?.employee?.staff_id} required label="Staff ID" />
                         <AppInput value={user?.employee?.marital_status} name="marital_status" type="text" required label="Marital Status" options={[
@@ -205,7 +209,7 @@ function VerifyAll({ user, check }) {
                             { value: "Male", label: "Male" },
                             { value: "Female", label: "Female" },
                             { value: "Others", label: "Others" }]} />
-                        <AppInput defaultValue={user?.user?.state_of_origin} name="state_of_origin" type="select" required label="State Of Origin" options={[...NigeriaStates]} />
+                        <AppInput defaultValue={user?.user?.state_of_origin} name="state_of_origin" type="text" required label="State Of Origin" />
                     </div>
                 </div>
             </div>
@@ -256,7 +260,7 @@ function VerifyAll({ user, check }) {
                 </div>
                 <div className='space-y-4'>
                     <div className="grid gap-4">
-                        <AppInput value={user?.employee?.person_start_date} name="personal_start_date" type="date" required label="Start Date" />
+                        <AppInput value={SD} name="personal_start_date" type="date" required label="Start Date" />
                         <AppInput value={user?.employee?.position} name="position" type="text" required label="Position" options={[{ value: "positions", label: "Positions" }]} />
                     </div>
                 </div>

@@ -13,7 +13,7 @@ import { NigeriaStates } from '../../../hooks/Nigeria'
 function BioInfo({ Vbio, user, setStep }) {
     const [showModal, setShowModal] = useState(false)
     const [errMsg, setErrorMsg] = useState("")
-    const [imgUrl,setImgUrl] = useState(user.user.avatar)
+    const [imgUrl, setImgUrl] = useState(user.user.avatar)
     const [proccessing, setProcessing] = useState(false)
 
     const perset_key = process.env.NEXT_PUBLIC_API_CLOUDINARY_PERSET_KEY
@@ -44,10 +44,11 @@ function BioInfo({ Vbio, user, setStep }) {
         e.preventDefault();
         const formData = serialize(e.target);
         setProcessing(true)
+        formData.telephone = `+${formData.telephone}`
         formData.image = imgUrl
-        formData.middlename === 0 ? formData.middlename = "" : formData.middlename = formData.middlename 
-        formData.firstname === 0 ? formData.firstname = "" : formData.firstname = formData.firstname 
-        formData.lastname === 0 ? formData.lastname = "" : formData.lastname = formData.lastname 
+        formData.middlename === 0 ? formData.middlename = "" : formData.middlename = formData.middlename
+        formData.firstname === 0 ? formData.firstname = "" : formData.firstname = formData.firstname
+        formData.lastname === 0 ? formData.lastname = "" : formData.lastname = formData.lastname
         const { status, data } = await updateEmployeeInfo(formData).catch(err => console.log(err))
         if (status) {
             let x = {}
@@ -61,10 +62,11 @@ function BioInfo({ Vbio, user, setStep }) {
         }
         setProcessing(false)
     }
+    var DOB = user?.employee.date_of_birth
 
     return (
         <div className='flex-grow'>
-            
+
             <div id='' className='space-y-4 bg-white px-4 py-7 rounded-lg shadow-md'>
                 <div className="inline-flex relative items-start justify-between">
                     <h2 className="font-bold md:text-3xl text-hrms_green">
@@ -87,8 +89,8 @@ function BioInfo({ Vbio, user, setStep }) {
                         <AppInput name="firstname" type="text" defaultValue={user.employee.firstname} required label="First Name" />
                         <AppInput name="lastname" type="text" defaultValue={user.employee.lastname} required label="Last Name" />
                         <AppInput name="middlename" type="text" defaultValue={user.employee.middlename} label="Middle Name (Optional)" />
-                        <AppInput name="telephone" type="number" defaultValue={user.employee.telephone} required label="Phone Number" />
-                        <AppInput name="date_of_birth" defaultValue={user.employee.date_of_brith} type="date" required label="DOB" />
+                        <AppInput name="telephone" type="number" defaultValue={Number(user.employee.telephone.split("+")[1])} required label="Phone Number" />
+                        <AppInput name="date_of_birth" defaultValue={DOB} type="date" required label="DOB" />
                         <AppInput name="email" type="email" required value={user?.user?.email} label="Email" />
                         <AppInput name="staff_id" type="text" defaultValue={user.employee.staff_id} required label="Staff ID" />
                         <AppInput defaultValue={user.employee.marital_status} name="marital_status" type="select" required label="Marital Status" options={[
@@ -107,7 +109,7 @@ function BioInfo({ Vbio, user, setStep }) {
                     </div>
                 </form>
             </div>
-            
+
         </div>
     )
 }
