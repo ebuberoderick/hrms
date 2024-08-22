@@ -5,7 +5,7 @@ import AppPagination from '@/components/organisms/AppPagination'
 import Modal from '@/components/organisms/Modal'
 import ResponseModal from '@/components/organisms/ResponseModal'
 import serialize from '@/hooks/Serialize'
-import { addDepartment, createRole, deleteRoleAPI, fetchDepartment, fetchPermissionsList, fetchRoleList } from '@/services/authService'
+import { addDepartment, createRole, deleteRoleAPI, fetchDepartment, fetchPermissionsList, fetchRoleList, updateRole } from '@/services/authService'
 import { AllEmployees, companies, companyEnum } from '@/utility/constants'
 import React, { useEffect, useState } from 'react'
 import { FaRegCircleUser } from 'react-icons/fa6'
@@ -24,6 +24,7 @@ function Page() {
   const [perission, setPerission] = useState([])
   const [isloading, setIsloading] = useState(true)
   const [viewInfo, setViewInfo] = useState({})
+  const [updateDataInfo, setUpdateDataInfo] = useState({})
 
 
   const add = async (e) => {
@@ -56,6 +57,24 @@ function Page() {
     setProcessingx(false)
   }
 
+
+  const updateRoleA = async (e) => {
+    e.preventDefault()
+    console.log(updateDataInfo);
+    setProcessingx(true)
+    const { status, data } = await updateRole(updateDataInfo).catch(err => console.log(err))
+    if (status) {
+      await fetch()
+      setUpdateDataInfo({})
+    }
+    setAlert(true)
+    setAlertData(data)
+    setProcessingx(false)
+  }
+
+  
+
+
   const updateList = (e) => {
     const num = e.target.value
     if (permissionLIst.includes(num)) {
@@ -65,6 +84,19 @@ function Page() {
       setPermissionLIst(arr)
     } else {
       setPermissionLIst([...permissionLIst, num])
+    }
+  }
+
+
+  const updatePermissionList = (e) => {
+    const num = e.target.value
+    if (updateDataInfo.permissions.includes(num)) {
+      const arr = updateDataInfo.permissions
+      const index = arr.indexOf(num);
+      const x = arr.splice(index, 1);
+      setUpdateDataInfo((prev) => ({ ...prev, permissions: arr }))
+    } else {
+      setUpdateDataInfo((prev) => ({ ...prev, permissions: [...updateDataInfo.permissions, num] }))
     }
   }
 
@@ -83,7 +115,18 @@ function Page() {
     }
   }
 
-
+  const upDateUpdate = (e) => {
+    const permissions = []
+    e.permissions.forEach(element => {
+      permissions.push(element.id.toString())
+    });
+    const data = {
+      id: e.id,
+      name: e.name,
+      permissions
+    }
+    setUpdateDataInfo(data)
+  }
 
   useEffect(() => {
     fetch()
@@ -116,6 +159,27 @@ function Page() {
             <button disabled={processing} className={`bg-hrms_green w-full rounded-lg text-white py-2 ${processing && "opacity-20"}`}>{processing ? "Creating Role" : "Create Role"}</button>
           </form>
         </Modal>
+        <Modal closeModal={() => setUpdateDataInfo({})} size={"2xl"} isOpen={Object.keys(updateDataInfo).length > 0}>
+          <form onSubmit={(e) => updateRoleA(e)} className="space-y-4 h-[500px] overflow-y-auto overflow-x-hidden">
+            <div className="text-hrms_green text-xl">Update Role</div>
+            <div className="grid grid-cols-3 gap-4">
+              <div className="col-span-3">
+                <AppInput name="name" onChange={e => setUpdateDataInfo((prev) => ({ ...prev, name: e.target.value }))} defaultValue={updateDataInfo.name} type={"text"} required label="Role Name" />
+              </div>
+
+              {
+                perission.map((list, i) => (
+                  <div key={i} className="text-xs">
+                    <AppInput type={"checkbox"} checked={updateDataInfo?.permissions?.includes(list.id.toString())} onChange={(e) => updatePermissionList(e)} value={list.id} label={list.name} />
+                  </div>
+                ))
+              }
+
+            </div>
+            <button disabled={processing} className={`bg-hrms_green w-full rounded-lg text-white py-2 ${processing && "opacity-20"}`}>{processing ? "Updating Role" : "Update Role"}</button>
+          </form>
+        </Modal>
+
         <Modal closeModal={() => setDeleteRole({})} size={"sm"} isOpen={Object.keys(deleteRole).length > 0}>
           <form onSubmit={(e) => deleteRoleFN(e)} className="space-y-4 overflow-y-auto overflow-x-hidden">
             <div className="text-center">Are you sure you want to delete <span className='font-extrabold uppercase'>{deleteRole.name}</span> role</div>
@@ -133,9 +197,9 @@ function Page() {
               <div className="font-extrabold">Permissions:</div>
               <div className="grid grid-cols-2 gap-2">
                 {
-                  viewInfo?.permissions?.map((perms,i) => (
+                  viewInfo?.permissions?.map((perms, i) => (
                     <div key={i} className="flex gap-1 items-center">
-                      <div className="">{i+1}. </div>
+                      <div className="">{i + 1}. </div>
                       <div className=""> {perms.name}</div>
                     </div>
                   ))
@@ -203,7 +267,7 @@ function Page() {
                 </td>
                 <td>
                   <div className="text-xl flex gap-1">
-                    <div className="text-hrms_blue p-1 cursor-pointer"><i className="ri-edit-2-line"></i></div>
+                    <div onClick={() => upDateUpdate(role)} className="text-hrms_blue p-1 cursor-pointer"><i className="ri-edit-2-line"></i></div>
                     <div onClick={() => setViewInfo(role)} className="text-hrms_green p-1 cursor-pointer"><i className="ri-eye-line"></i></div>
                     <div onClick={() => setDeleteRole(role)} className="text-danger p-1 cursor-pointer"><i className="ri-delete-bin-6-line"></i></div>
                   </div>

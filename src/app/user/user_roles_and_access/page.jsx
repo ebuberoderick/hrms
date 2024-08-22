@@ -256,14 +256,23 @@ const Page = () => {
                     <div className="font-semibold">{emp.email}</div>
                   </td>
                   <td className="hidden lg:table-cell">
-                    <div className="">{emp.role}</div>
+                    <div className="">
+                      <ul className="list-disc">
+                        {
+                          emp.roles.map((rol, i) => (
+                            <li className="list-disc" key={i}>{rol.name}</li>
+                          ))
+                        }
+                      </ul>
+                      {/* {emp.roles} */}
+                    </div>
                   </td>
                   <td>
                     <div className="text-xl flex gap-1">
                       <div onClick={() => setUpdateData(emp)} className="text-hrms_green bg-hrms_lighter_green bg-opacity-15 px-3 p-1 text-xs cursor-pointer">
                         Assign
                       </div>
-                      <div onClick={() => { setrevokeData(emp) ; setRRole(emp) }} className="text-danger bg-danger bg-opacity-15 px-3 p-1 text-xs cursor-pointer">
+                      <div onClick={() => { setrevokeData(emp); setRRole(emp) }} className="text-danger bg-danger bg-opacity-15 px-3 p-1 text-xs cursor-pointer">
                         Revoke
                       </div>
                     </div>

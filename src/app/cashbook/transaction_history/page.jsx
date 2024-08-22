@@ -70,9 +70,9 @@ function Page() {
                   Date
                 </th>
 
-                <th className="hidden lg:table-cell">Bank Name</th>
+                <th className="hidden lg:table-cell">Account Name</th>
                 <th className="hidden sm:table-cell">(&#8358;) Amount </th>
-                <th className="hidden lg:table-cell">Transaction</th>
+                <th className="hidden lg:table-cell">Transaction Method</th>
                 <th className="hidden sm:table-cell">Type</th>
                 <th className="w-28">Reference No</th>
               </tr>
@@ -84,20 +84,23 @@ function Page() {
                         <div className=""><AppInput onChange={(e) => selectAll(e)} type="checkbox" name="employee" /></div>
                       </div> */}
                       <div className="space-y-1">
-                        {/* <div className="">{list.employee.employee_name}</div> */}
+                        <div className="">{list.date}</div>
                       </div>
                     </td>
                     <td className="hidden lg:table-cell">
-                      {/* <div className="font-semibold">{list.company.company_name}</div> */}
+                        <div className="">{list?.cashbookpayer?.payer_name} {list?.cashbookpayee?.payee_name}</div>
                     </td>
                     <td className="hidden sm:table-cell">
-                      {/* <div className="">{list.subject}</div> */}
+                      <div className="">{list.amount}</div>
                     </td>
                     <td className="hidden lg:table-cell">
-                      {/* <div className="">{list.warning_date}</div> */}
+                      <div className="">{list.cashbookpaymentmethod.method_name}</div>
+                    </td>
+                    <td className="hidden sm:table-cell">
+                      <div className="">{list.type}</div>
                     </td>
                     <td>
-                      {/* <div className="">{list.status}</div> */}
+                      <div className="">{list.reference}</div>
                     </td>
                   </tr>
                 ))

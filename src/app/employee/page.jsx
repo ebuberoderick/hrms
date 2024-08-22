@@ -4,15 +4,19 @@ import AppInput from "@/components/organisms/AppInput";
 import AppPagination from "@/components/organisms/AppPagination";
 import Modal from "@/components/organisms/Modal";
 import ResponseModal from "@/components/organisms/ResponseModal";
+import DownloadCSV from "@/hooks/DownloadCSV";
 import { NigeriaStates } from "@/hooks/Nigeria";
 import serialize from "@/hooks/Serialize";
 import { debounce } from "@/hooks/useDebounce";
-import { addEmploye, adminadduser, employeeInvite, fetchEmployee, fetchemploy } from "@/services/authService";
+// import sample from "@assets/samples/employee_sample.csv"
+import { addEmploye, adminadduser, employeeBulkUpload, employeeInvite, fetchEmployee, fetchemploy } from "@/services/authService";
 import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
+import { FaRegUserCircle } from "react-icons/fa";
 import { LuEye } from "react-icons/lu";
+
 
 const Page = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -65,32 +69,6 @@ const Page = () => {
     reader.readAsDataURL(e.target.files[0]);
   }
 
-  // const setPreData = (e) => {
-  //   e.preventDefault();
-  //   const formData = serialize(e.target);
-  //   setPersonalData({ ...formData })
-  //   setCurrentStep(1)
-  // };
-
-
-  // const updateData = (e) => {
-  //   e.preventDefault();
-  //   const formData = serialize(e.target);
-  //   setPersonalData((prev) => { return { ...prev, ...formData } })
-  //   setCurrentStep(2)
-  // }
-
-  // const saveData = async (e) => {
-  //   e.preventDefault();
-  //   personalData.avatar = imgUrl
-  //   console.log(personalData);
-  //   const { status, data } = await adminadduser(personalData)
-  //   // if (status) {
-
-  //   // }
-  //   console.log(data);
-  // }
-
 
 
 
@@ -114,6 +92,24 @@ const Page = () => {
     setProccessingAdd(false)
   }
 
+  
+
+  const bulkUpload = async (e) => {
+    e.preventDefault();
+    const formData = serialize(e.target);
+    setProccessingAdd(true)
+    const { status, data } = await employeeBulkUpload(formData).catch(err => console.log(err))
+    if (status) {
+      await fetchEmployees()
+      setIsModalOpen(false)
+      setBtn(false)
+    }
+    setAlert(true)
+    setAlertData(data)
+    setProccessingAdd(false)
+  }
+
+  
 
 
   const getTodayDate = () => {
@@ -164,6 +160,8 @@ const Page = () => {
       setEmployee(data.data[0])
     }
   }, 3000);
+
+  const data = "Name,Age,Profession\nJohn Doe,30,Developer\nJane Smith,25,Designer";
 
 
   useEffect(() => {
@@ -254,7 +252,7 @@ const Page = () => {
                     <div className="">Grade: {emp.grade}</div>
                   </td>
                   <td className="hidden lg:table-cell">
-                    <div className=""><i className="ri-mail-line text-gray-400"></i> {emp.staff_id}</div>
+                    <div className="flex items-center gap-1 "><FaRegUserCircle className=" text-gray-400"/> {emp.staff_id}</div>
                     <div className=""><i className="ri-phone-line text-gray-400"></i> {emp.telephone}</div>
                   </td>
                   <td>
@@ -464,17 +462,18 @@ const Page = () => {
                 <div className="max-w-lg text-center mx-auto">The first line in downloaded csv file should remain as it is. Please do not change the order of columns in csv file.</div>
               </div>
               <div className="flex justify-center">
-                <a href="#">
+                {/* <a download={sample} href="#">
                   <div className="bg-hrms_green rounded-lg text-white px-5 py-3"><i className="ri-download-2-line"></i> Download File Sample</div>
-                </a>
+                </a> */}
+                <DownloadCSV data={data} fileName="employees" />
               </div>
             </div>
             <div className="">
-              <form className="space-y-4">
+              <form onSubmit={bulkUpload} className="space-y-4">
                 <div className="space-y-2">
                   <div className="text-sm text-gray-500">Upload File</div>
                   <label htmlFor="upload" className="relative rounded-lg text-hrms_green border border-hrms_green py-3 px-4 inline-block cursor-pointer">
-                    <input id="upload" type="file" className="opacity-0 absolute w-full cursor-pointer h-full" />
+                    <input id="upload" name="csv_file" type="file" className="opacity-0 absolute w-full cursor-pointer h-full" />
                     <i className="ri-upload-2-line"></i> <span>Choose File. . .</span>
                   </label>
                 </div>

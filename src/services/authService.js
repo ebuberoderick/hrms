@@ -12,7 +12,7 @@ export const updateProfile = (formData) => apiWithAuth.post("/add-employee", for
 export const employeeInvite = (formData) => apiWithAuth.post("admin/employee/invite", formData).then(getApiResponse).catch(getErrorResponse);
 export const verifyCode = (formData) => apiWithAuth.post("verify-access-code", formData).then(getApiResponse).catch(getErrorResponse);
 export const adminadduser = (formData) => apiWithAuth.post("/adminadduser", formData).then(getApiResponse).catch(getErrorResponse);
-
+export const employeeBulkUpload = (formData) => apiWithAuth.post("/admin/employee/employee_bulk_upload", formData).then(getApiResponse).catch(getErrorResponse);
 
 
 export const fetchUsers = (formData) => apiWithAuth.post("admin/user/fetch_user",formData).then(getApiResponse).catch(getErrorResponse);
@@ -143,7 +143,7 @@ export const fetchRoleList = () => apiWithAuth.post("admin/user/roles/fetch_role
 export const deleteRoleAPI = (formData) => apiWithAuth.post("admin/user/roles/delete_role", formData).then(getApiResponse).catch(getErrorResponse);
 export const createRole = (formData) => apiWithAuth.post("admin/user/roles/create_role", formData).then(getApiResponse).catch(getErrorResponse);
 export const assignRole = (formData) => apiWithAuth.post("admin/user/roles/assign_role", formData).then(getApiResponse).catch(getErrorResponse);
-export const updateRole = (formData) => apiWithAuth.post("admin/user/roles/create_role", formData).then(getApiResponse).catch(getErrorResponse);
+export const updateRole = (formData) => apiWithAuth.post("admin/user/roles/update_role", formData).then(getApiResponse).catch(getErrorResponse);
 export const revokeRole = (formData) => apiWithAuth.post("admin/user/roles/revoke_role", formData).then(getApiResponse).catch(getErrorResponse);
 
 

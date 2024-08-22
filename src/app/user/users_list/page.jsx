@@ -166,7 +166,15 @@ const Page = () => {
                     <div className="font-semibold">{emp.email}</div>
                   </td>
                   <td className="hidden lg:table-cell">
-                    <div className="">{emp.role}</div>
+                    <div className="">
+                      <ul className="list-disc">
+                        {
+                          emp.roles.map((rol, i) => (
+                            <li className="list-disc" key={i}>{rol.name}</li>
+                          ))
+                        }
+                      </ul>
+                    </div>
                   </td>
                   <td>
                     <div className="text-xl flex gap-1">
