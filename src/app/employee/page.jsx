@@ -8,7 +8,7 @@ import DownloadCSV from "@/hooks/DownloadCSV";
 import { NigeriaStates } from "@/hooks/Nigeria";
 import serialize from "@/hooks/Serialize";
 import { debounce } from "@/hooks/useDebounce";
-// import sample from "@assets/samples/employee_sample.csv"
+import sample from "../../../public/images/FiscusBookWhite.png"
 import { addEmploye, adminadduser, employeeBulkUpload, employeeInvite, fetchEmployee, fetchemploy } from "@/services/authService";
 import axios from "axios";
 import Image from "next/image";
@@ -16,7 +16,7 @@ import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { FaRegUserCircle } from "react-icons/fa";
 import { LuEye } from "react-icons/lu";
-
+import { saveAs } from 'file-saver'
 
 const Page = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -51,6 +51,9 @@ const Page = () => {
   const [btn, setBtn] = useState(false)
 
 
+  const downloadCSV = () => {
+    saveAs('https://timesofindia.indiatimes.com/thumb/msid-70238371,imgsize-89579,width-400,resizemode-4/70238371.jpg', 'image.jpg') // Put your image URL here.
+  }
 
 
   const uploadImg = async (e) => {
@@ -466,10 +469,10 @@ const Page = () => {
                 <div className="max-w-lg text-center mx-auto">The first line in downloaded csv file should remain as it is. Please do not change the order of columns in csv file.</div>
               </div>
               <div className="flex justify-center">
-                {/* <a download={sample} href="#">
-                  <div className="bg-hrms_green rounded-lg text-white px-5 py-3"><i className="ri-download-2-line"></i> Download File Sample</div>
-                </a> */}
-                <DownloadCSV data={data} fileName="employees" />
+                <div>
+                  <div onClick={downloadCSV} className="bg-hrms_green rounded-lg text-white px-5 py-3"><i className="ri-download-2-line"></i> Download File Sample</div>
+                </div>
+                {/* <DownloadCSV data={data} fileName="employees" /> */}
               </div>
             </div>
             <div className="">
