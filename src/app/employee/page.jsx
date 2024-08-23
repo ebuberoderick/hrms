@@ -477,7 +477,7 @@ const Page = () => {
                 <div className="space-y-2">
                   <div className="text-sm text-gray-500">Upload File</div>
                   <label htmlFor="upload" className="relative rounded-lg text-hrms_green border border-hrms_green py-3 px-4 inline-block cursor-pointer">
-                    <input id="upload" name="csv_file" type="file" className="opacity-0 absolute w-full cursor-pointer h-full" />
+                    <input id="upload" name="csv_file" accept=".csv" type="file" className="opacity-0 absolute w-full cursor-pointer h-full" />
                     <i className="ri-upload-2-line"></i> <span>Choose File. . .</span>
                   </label>
                 </div>
