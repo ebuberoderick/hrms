@@ -20,7 +20,7 @@ function Page() {
     }, [])
 
     return (
-        <AppLayout title={"Payroll"}>
+        <AppLayout title={"Payroll Calculation"}>
             <div className='space-y-5'>
                 <div className="lg:flex space-y-3 items-center justify-between">
                     <div className="">
