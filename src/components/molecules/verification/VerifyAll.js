@@ -52,7 +52,7 @@ function VerifyAll({ user, check }) {
         <div className="space-y-6 bg-white px-3 py-7 rounded-lg shadow-md">
             <iframe id="ifmcontentstoprint" className='h-0 w-0 absolute'></iframe>
 
-            <div id='divcontents' className='space-y-6 print:bg-hrms_yellow hidden' style={{ background: "red" }}>
+            <div className='space-y-6 print:bg-hrms_yellow hidden' style={{ background: "red" }}>
                 <div className='space-y-4'>
                     <div className="inline-flex relative items-start justify-between">
                         <h2 className="font-bold md:text-3xl text-hrms_green">
@@ -173,7 +173,7 @@ function VerifyAll({ user, check }) {
                 </div>
             </div>
 
-            <div class="max-w-4xl hidden mx-auto bg-white shadow-lg p-6">
+            <div id='divcontents' class="max-w-4xl hidden mx-auto bg-white shadow-lg p-6">
                 {/* <!-- Header Section --> */}
                 <div class="flex justify-between items-center border-b pb-4 mb-6">
                     <div class="flex items-center space-x-4">

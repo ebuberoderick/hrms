@@ -473,7 +473,7 @@ const Page = () => {
               </div>
             </div>
             <div className="">
-              <form onSubmit={bulkUpload} className="space-y-4">
+              <form onSubmit={bulkUpload} enctype="multipart/form-data" className="space-y-4">
                 <div className="space-y-2">
                   <div className="text-sm text-gray-500">Upload File</div>
                   <label htmlFor="upload" className="relative rounded-lg text-hrms_green border border-hrms_green py-3 px-4 inline-block cursor-pointer">
