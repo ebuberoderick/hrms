@@ -8,7 +8,8 @@ import DownloadCSV from "@/hooks/DownloadCSV";
 import { NigeriaStates } from "@/hooks/Nigeria";
 import serialize from "@/hooks/Serialize";
 import { debounce } from "@/hooks/useDebounce";
-import sample from "../../../public/images/FiscusBookWhite.png"
+// import sample from "../../../public/samples/employee_sample.csv"
+// images/FiscusBookWhite.png
 import { addEmploye, adminadduser, employeeBulkUpload, employeeInvite, fetchEmployee, fetchemploy } from "@/services/authService";
 import axios from "axios";
 import Image from "next/image";
@@ -95,7 +96,14 @@ const Page = () => {
     setProccessingAdd(false)
   }
 
-
+  const handleDownload = () => {
+    const link = document.createElement('a');
+    link.href = "../../../public/samples/employee_sample.csv"; // Path to the CSV file in the public directory
+    link.download = 'data.csv'; // Name of the file after download
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+};
 
   const bulkUpload = async (e) => {
     e.preventDefault();
@@ -470,7 +478,7 @@ const Page = () => {
               </div>
               <div className="flex justify-center">
                 <div>
-                  <div onClick={downloadCSV} className="bg-hrms_green rounded-lg text-white px-5 py-3"><i className="ri-download-2-line"></i> Download File Sample</div>
+                  <div onClick={handleDownload} className="bg-hrms_green rounded-lg text-white px-5 py-3"><i className="ri-download-2-line"></i> Download File Sample</div>
                 </div>
                 {/* <DownloadCSV data={data} fileName="employees" /> */}
               </div>

@@ -1,17 +1,19 @@
 "use client"
 import AppLayout from '@/components/layouts/appLayout'
-import LineChart from '@/components/molecules/LineChart'
-import PieChart from '@/components/molecules/PieChart'
-import ResponseModal from '@/components/organisms/ResponseModal'
+import AppInput from '@/components/organisms/AppInput'
+import Modal from '@/components/organisms/Modal'
 import React, { useEffect, useState } from 'react'
-import { FiUploadCloud, FiUsers } from 'react-icons/fi'
-import { IoIosArrowDown } from 'react-icons/io'
-import { PiPrinter } from 'react-icons/pi'
-import { RiUserReceivedLine } from 'react-icons/ri'
-import { TbCalendarTime } from 'react-icons/tb'
 
 function Page() {
   const [isloading, setIsLoading] = useState(true)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [proccessingAdd, setProccessingAdd] = useState(false)
+
+
+
+  const add = (e) => {
+    e.preventDefault()
+  }
 
   useEffect(() => {
     setTimeout(() => {
@@ -21,6 +23,28 @@ function Page() {
 
   return (
     <AppLayout title={"Payroll Setups"}>
+
+      <Modal size={"lg"} closeModal={() => setIsModalOpen(false)} isOpen={isModalOpen}>
+        <div className="">
+          <form onSubmit={add} className="space-y-4">
+            <div className="space-y-2">
+              <div className="text-hrms_green text-xl">Add New Allowance</div>
+              <div className="grid grid-cols-2 gap-4">
+                <AppInput name="employee_id" type={"select"} required label="Organization" options={[]} />
+                <AppInput name="job_title_id" type={"select"} required label="Code" options={[]} />
+                <AppInput name="grade_level_id" type={"select"} required label="Grade Level" options={[]} />
+                <AppInput name="grade_step_id" type={"select"} required label="Statutory" options={[]} />
+                <AppInput name="grade_step_id" type={"select"} required label="Description" options={[]} />
+                <AppInput name="grade_step_id" type={"select"} required label="Calculation" options={[]} />
+              </div>
+            </div>
+            <div>
+              <button disabled={proccessingAdd} className="bg-hrms_green disabled:bg-opacity-40 w-full text-white rounded-lg py-2 text-center cursor-pointer">{proccessingAdd ? "Adding Allowance" : "Add Allowance"}</button>
+            </div>
+          </form>
+        </div>
+      </Modal>
+
       <div className='space-y-5'>
         <div className="lg:flex space-y-3 items-center justify-between">
           <div className="">
@@ -38,7 +62,7 @@ function Page() {
             </div>
             <div
               className="flex cursor-pointer font-bold justify-center gap-2 items-center text-white bg-hrms_green px-7 py-3 rounded-[4px]"
-            // onClick={() => setIsModalOpen(true)}
+              onClick={() => setIsModalOpen(true)}
             >
               <i className="ri-add-line"></i>
               <div className="">Add Allowance</div>

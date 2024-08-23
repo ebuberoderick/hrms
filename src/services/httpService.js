@@ -6,7 +6,7 @@ export const TOKEN =  `Bearer ${Cookies.get("hrms_jwt")}`
 
 
 const timeoutConfig = {
-  timeout: 30000,
+  timeout: 3000000,
   timeoutErrorMessage: "Server taking too long to respond. Try again.",
 };
 

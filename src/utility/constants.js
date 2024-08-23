@@ -1,4 +1,4 @@
-import { fetchAllCompanies, fetchAllDepartment, fetchAllEmployee, fetchAllLocation, fetchAwardTypes, fetchQueryType, fetchTerminationType } from "@/services/authService";
+import { createJobTitle, fetchAllCompanies, fetchAllDepartment, fetchAllEmployee, fetchAllLocation, fetchAwardTypes, fetchGradeLevel, fetchGradeStep, fetchJobTitle, fetchQueryType, fetchTerminationType } from "@/services/authService";
 
 
 
@@ -52,6 +52,36 @@ export const AllEmployees = async () => {
     const exportData = []
     await data.data[0].forEach(element => {
         exportData.push({ value: element.id, label: element.employee_name })
+    });
+    return exportData;
+}
+
+
+export const AllJobTitle = async () => {
+    const { status, data } = await fetchJobTitle().catch(err => console.log(err))
+    const exportData = []
+    await data.data[0].forEach(element => {
+        exportData.push({ value: element.id, label: element.title })
+    });
+    return exportData;
+}
+
+
+export const AllGradeLevel = async () => {
+    const { status, data } = await fetchGradeLevel().catch(err => console.log(err))
+    const exportData = []
+    await data.data[0].forEach(element => {
+        exportData.push({ value: element.id, label: element.grade })
+    });
+    return exportData;
+}
+
+
+export const AllGradeStep = async () => {
+    const { status, data } = await fetchGradeStep().catch(err => console.log(err))
+    const exportData = []
+    await data.data[0].forEach(element => {
+        exportData.push({ value: element.id, label: element.step })
     });
     return exportData;
 }

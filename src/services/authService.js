@@ -197,4 +197,7 @@ export const fetchAllEmployeeData = (formData) => apiWithAuth.post("admin/employ
 
 
 
+// export const createSalaryStructure = (formData) => apiWithAuth.post("admin/payroll/salary_structure/create",formData).then(getApiResponse).catch(getErrorResponse);
+
+
 

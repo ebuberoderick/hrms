@@ -1,9 +1,20 @@
 "use client"
 import AppLayout from '@/components/layouts/appLayout'
+import AppInput from '@/components/organisms/AppInput'
+import Modal from '@/components/organisms/Modal'
 import React, { useEffect, useState } from 'react'
 
 function Page() {
   const [isloading, setIsLoading] = useState(true)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [proccessingAdd, setProccessingAdd] = useState(false)
+
+
+
+  const add = (e) => {
+    e.preventDefault()
+  }
+
 
   useEffect(() => {
     setTimeout(() => {
@@ -13,14 +24,34 @@ function Page() {
 
   return (
     <AppLayout title={"Payroll Setups"}>
+
+      <Modal size={"lg"} closeModal={() => setIsModalOpen(false)} isOpen={isModalOpen}>
+        <div className="">
+          <form onSubmit={add} className="space-y-4">
+            <div className="space-y-2">
+              <div className="text-hrms_green text-xl">Add New Job Title</div>
+              <div className="grid grid-cols-2 gap-4">
+                <AppInput name="employee_id" type={"select"} required label="Organization" options={[]} />
+                <AppInput name="job_title_id" type={"select"} required label="Department" options={[]} />
+                <AppInput name="grade_level_id" type={"select"} required label="Job Title" options={[]} />
+                <AppInput name="grade_step_id" type={"select"} required label="Active" options={[]} />
+              </div>
+            </div>
+            <div>
+              <button disabled={proccessingAdd} className="bg-hrms_green disabled:bg-opacity-40 w-full text-white rounded-lg py-2 text-center cursor-pointer">{proccessingAdd ? "Adding Job Title" : "Add Job Title"}</button>
+            </div>
+          </form>
+        </div>
+      </Modal>
+
       <div className='space-y-5'>
         <div className="lg:flex space-y-3 items-center justify-between">
           <div className="">
             <p className=" text-[24px] font-[500] text-[#000000]">
-            Job Title
+              Job Title
             </p>
             <p className=" text-[12px] font-[400] text-[#00000099] text-opacity-60">
-            All the payroll titles are listed here.
+              All the payroll titles are listed here.
             </p>
           </div>
           <div className="sm:flex space-y-3 sm:space-y-0 gap-[10px] text-sm">
@@ -30,7 +61,7 @@ function Page() {
             </div>
             <div
               className="flex cursor-pointer font-bold justify-center gap-2 items-center text-white bg-hrms_green px-7 py-3 rounded-[4px]"
-            // onClick={() => setIsModalOpen(true)}
+            onClick={() => setIsModalOpen(true)}
             >
               <i className="ri-add-line"></i>
               <div className="">Add Job Title</div>
