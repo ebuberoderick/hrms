@@ -190,5 +190,11 @@ export const fetchAllAccount = () => apiWithAuth.post("admin/cashbook/account/fe
 export const fetchAllPayer = () => apiWithAuth.post("admin/cashbook/payer/fetch_all").then(getApiResponse).catch(getErrorResponse);
 export const fetchAllPayee = () => apiWithAuth.post("admin/cashbook/payee/fetch_all").then(getApiResponse).catch(getErrorResponse);
 
+export const fetchAllPendingVerification = () => apiWithAuth.post("admin/employee/verification/fetch_pending_verifications").then(getApiResponse).catch(getErrorResponse);
+export const fetchAllEmployeeData = (formData) => apiWithAuth.post("admin/employee/verification/fetch_employee_data",formData).then(getApiResponse).catch(getErrorResponse);
+// export const hrVerifyEmployee = (formData) => apiWithAuth.post("admin/employee/verification/hr_verify_data", formData).then(getApiResponse).catch(getErrorResponse);
+// export const hodVerifyEmployee = (formData) => apiWithAuth.post("admin/employee/verification/hod_verify_data", formData).then(getApiResponse).catch(getErrorResponse);
+
+
 
 

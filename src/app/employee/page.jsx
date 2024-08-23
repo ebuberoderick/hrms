@@ -229,7 +229,7 @@ const Page = () => {
                 <div className="flex-grow">Image</div>
               </th>
               <th className="hidden lg:table-cell">Username</th>
-              <th className="hidden lg:table-cell">Permission Role</th>
+              <th className="hidden lg:table-cell">ID/Contact</th>
               <th className="w-20">Action</th>
             </tr>
             {

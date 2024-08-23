@@ -43,7 +43,6 @@ function VerifyAll({ user, check }) {
 
     var DOB = user?.employee.date_of_birth
     var SD = user?.employee?.hire_date
-    console.log(user);
 
     useEffect(() => {
         fetchInfo()
@@ -53,7 +52,7 @@ function VerifyAll({ user, check }) {
         <div className="space-y-6 bg-white px-3 py-7 rounded-lg shadow-md">
             <iframe id="ifmcontentstoprint" className='h-0 w-0 absolute'></iframe>
 
-            <div id='divcontents' className='space-y-6 hidden'>
+            <div id='divcontents' className='space-y-6 print:bg-hrms_yellow hidden' style={{ background: "red" }}>
                 <div className='space-y-4'>
                     <div className="inline-flex relative items-start justify-between">
                         <h2 className="font-bold md:text-3xl text-hrms_green">
@@ -174,6 +173,98 @@ function VerifyAll({ user, check }) {
                 </div>
             </div>
 
+            <div class="max-w-4xl hidden mx-auto bg-white shadow-lg p-6">
+                {/* <!-- Header Section --> */}
+                <div class="flex justify-between items-center border-b pb-4 mb-6">
+                    <div class="flex items-center space-x-4">
+                        {/* <img src="https://via.placeholder.com/100" alt="Profile Picture" class="rounded-full w-24 h-24" /> */}
+                            <div>
+                                <h1 class="text-xl font-bold">John Miles Johnson</h1>
+                                <p>john@gmail.com</p>
+                                <p>090 2345 5983</p>
+                            </div>
+                    </div>
+                    <div>
+                        <h2 class="text-lg font-semibold">Name of company</h2>
+                        {/* <img src="https://via.placeholder.com/50x50" alt="Company Logo" /> */}
+                    </div>
+                </div>
+
+                {/* <!-- Employee Details --> */}
+                <div class="mb-6">
+                    <h3 class="text-lg font-semibold mb-2">Employee Details</h3>
+                    <div class="print:grid print:grid-cols-2 print:gap-4 print:text-sm">
+                        <div><strong>Employee ID:</strong> 12345</div>
+                        <div><strong>First Name:</strong> John</div>
+                        <div><strong>Last Name:</strong> Miles</div>
+                        <div><strong>Middle Name:</strong> Johnson</div>
+                        <div><strong>Username:</strong> employee</div>
+                        <div><strong>Gender:</strong> Male</div>
+                        <div><strong>State Of Residence:</strong> Imo</div>
+                        <div><strong>Marital Status:</strong> Married</div>
+                        <div><strong>Date Of Birth:</strong> July 2, 2024</div>
+                        <div><strong>State Of Origin:</strong> Imo</div>
+                    </div>
+                </div>
+
+                {/* <!-- Address --> */}
+                <div class="mb-6">
+                    <h3 class="text-lg font-semibold mb-2">Address</h3>
+                    <div class="grid grid-cols-2 gap-4 text-sm">
+                        <div><strong>Home Address:</strong></div>
+                        <div></div>
+                        <div><strong>State:</strong> Imo</div>
+                        <div><strong>City:</strong> Owerri</div>
+                        <div><strong>Address:</strong> Owerri, Nigeria</div>
+                    </div>
+                </div>
+
+                {/* <!-- Next of Kin --> */}
+                <div class="mb-6">
+                    <h3 class="text-lg font-semibold mb-2">Next of Kin</h3>
+                    <div class="grid grid-cols-2 gap-4 text-sm">
+                        <div><strong>First Name:</strong> Mike</div>
+                        <div><strong>Last Name:</strong> Miles</div>
+                        <div><strong>Middle Name:</strong> </div>
+                        <div><strong>State Of Origin:</strong> Imo</div>
+                        <div><strong>Relationship:</strong> Brother</div>
+                        <div><strong>Phone Number:</strong> 08109273467</div>
+                        <div><strong>City:</strong> Owerri</div>
+                        <div><strong>Address:</strong> Owerri, Nigeria</div>
+                    </div>
+                </div>
+
+                {/* <!-- Identification --> */}
+                <div class="mb-6">
+                    <h3 class="text-lg font-semibold mb-2">Identification</h3>
+                    <div class="grid grid-cols-2 gap-4 text-sm">
+                        <div><strong>Employee ID:</strong> #12345</div>
+                        <div><strong>User ID:</strong> #2354</div>
+                        <div><strong>Staff ID:</strong> #124</div>
+                        <div><strong>Pin Number:</strong> 1827</div>
+                        <div><strong>Legacy ID:</strong> #28917</div>
+                        <div><strong>Tax Number:</strong> 192837</div>
+                        <div><strong>BVN:</strong> 29988374</div>
+                    </div>
+                </div>
+
+                {/* <!-- Official Details --> */}
+                <div class="mb-6">
+                    <h3 class="text-lg font-semibold mb-2">Official Details</h3>
+                    <div class="grid grid-cols-2 gap-4 text-sm">
+                        <div><strong>Hire Date:</strong> 21/08/2024</div>
+                        <div><strong>Posting:</strong> Developer</div>
+                        <div><strong>Grade:</strong> Grade 1</div>
+                        <div><strong>Step:</strong> Step 1</div>
+                    </div>
+                </div>
+
+                {/* <!-- Print Button --> */}
+                <div class="flex justify-end">
+                    <button onclick="window.print()" class="print-button bg-green-600 text-white px-4 py-2 rounded shadow hover:bg-green-500">Print</button>
+                </div>
+            </div>
+
             <div className='space-y-4'>
                 <div className="inline-flex relative items-start justify-between">
                     <h2 className="font-bold md:text-3xl text-hrms_green">
@@ -182,7 +273,7 @@ function VerifyAll({ user, check }) {
                 </div>
                 <div>
                     <div className="w-20 h-20 rounded-full bg-gray-100 relative">
-                        <img src={user?.user?.avatar} id="output" className="w-full h-full rounded-full" />
+                        <img src={user?.user?.avatar} alt="" id="output" className="w-full h-full rounded-full" />
                         <label htmlFor="image" className="absolute w-8 h-8 border-2 border-white bottom-1 right-0 bg-hrms_green text-white rounded-full flex items-center justify-center">
                             <input accept="image/*" required id="image" onChange={(e) => uploadImg(e)} name="image" type="file" className="opacity-0 absolute w-full cursor-pointer h-full" />
                             <i className="ri-camera-line"></i>
@@ -209,7 +300,7 @@ function VerifyAll({ user, check }) {
                             { value: "Male", label: "Male" },
                             { value: "Female", label: "Female" },
                             { value: "Others", label: "Others" }]} />
-                        <AppInput defaultValue={user?.user?.state_of_origin} name="state_of_origin" type="text" required label="State Of Origin" />
+                        <AppInput defaultValue={user?.employee?.state_of_origin} name="state_of_origin" type="select" required label="State Of Origin" options={[...NigeriaStates]} />
                     </div>
                 </div>
             </div>

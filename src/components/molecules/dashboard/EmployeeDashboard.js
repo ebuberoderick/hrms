@@ -43,9 +43,6 @@ const EmployeeDashboard = () => {
     check()
   }, [saved])
 
-
-
-  const maxDate = getTodayDate();
   return (
     <div>
       <div className="">
