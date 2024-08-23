@@ -38,7 +38,7 @@ function OtherVerification({ Vothers, user, setStep }) {
             <div className='bg-white px-3 py-7 rounded-lg shadow-md'>
                 <div className="inline-flex relative bottom-4 items-start justify-between">
                     <h2 className="font-bold md:text-3xl text-hrms_green">
-                        Employment Document Verification
+                        Employment Details Verification
                     </h2>
                 </div>
                 <div className='text-danger text-xs'>{errMsg}</div>
