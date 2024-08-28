@@ -2,32 +2,186 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+
+.css-23p0if-MuiButtonBase-root-MuiPickersDay-root.Mui-selected {
+  @apply bg-hrms_green focus:hover:bg-hrms_green;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+.apexcharts-toolbar {
+  display: none !important;
+}
+
+
+.trunck-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+
+.authBg {
+  background-image: url("../../public/images/Coat_of_arms.png");
+  background-size: 320px;
+}
+
+.custom-loader {
+  height: 4px;
+  width: 130px;
+  background:
+    linear-gradient(#00B800 0 0),
+    linear-gradient(#00B800 0 0),
+    #C6FCBB;
+  background-size: 60% 100%;
+  background-repeat: no-repeat;
+  animation: p6 3s infinite;
+}
+
+@keyframes p6 {
+  0% {
+    background-position: -150% 0, -150% 0
+  }
+
+  66% {
+    background-position: 250% 0, -150% 0
+  }
+
+  100% {
+    background-position: 250% 0, 250% 0
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.divition {
+  height: 2px;
+  margin: 0px 10px;
+  background: radial-gradient(circle, rgb(211, 211, 211) 0%, rgba(209, 211, 213, 0.178) 68%);
+  border-radius: 90%;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+
+@keyframes placeHolderShimmer {
+  0% {
+    background-position: -800px 0
   }
+
+  100% {
+    background-position: 800px 0
+  }
+}
+
+
+.preload {
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background-color: #f6f7f8;
+  background: linear-gradient(to right, #e6e4e4ad 8%, #f0ededc0 18%, #e4dddd9a 33%);
+  background-size: 800px 104px;
+  position: relative;
+  /* border-radius: 8px ; */
+}
+
+
+@media print {
+  .head {
+    margin-bottom: 16px;
+    border-bottom-width: 1px;
+    justify-content: space-between;
+    display: flex;
+    color: rgb(92, 92, 92);
+  }
+
+  .head-left {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(1rem
+        /* 16px */
+        * var(--tw-space-x-reverse));
+    margin-left: calc(1rem
+        /* 16px */
+        * calc(1 - var(--tw-space-x-reverse)));
+    display: flex;
+    gap: 9px;
+  }
+
+  .head-left-title {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-weight: 700;
+    margin: 0px;
+  }
+
+  .head-left-subText {
+    margin: 0px;
+  }
+
+  .head-right {
+    display: flex;
+    gap: 9px;
+  }
+
+  .title {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-weight: 700;
+    margin: 0px;
+  }
+
+  .section-content {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+  .box {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(1rem
+        /* 16px */
+        * var(--tw-space-x-reverse));
+    margin-left: calc(1rem
+        /* 16px */
+        * calc(1 - var(--tw-space-x-reverse)));
+    border: 2px solid #c9c9c9;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 16px;
+  }
+
+  .span-4 {
+    grid-column: span 4 / span 4;
+  }
+
+  .section-content div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .logo {
+    width: 50px;
+    height: 50px;
+  }
+
+  .avatar {
+    width: 100px;
+    height: 100px;
+  }
+
+  .bg {
+    position: relative;
+  }
+
+  .water-mark {
+    position: absolute;
+    top: 100px;
+    width: 100%;
+    height: 70%;
+    z-index: -1;
+    opacity: 0.05;
+  }
+
 }
