@@ -18,6 +18,7 @@ import React, { useEffect, useState } from "react";
 import { FaRegUserCircle } from "react-icons/fa";
 import { LuEye } from "react-icons/lu";
 import { saveAs } from 'file-saver'
+import { API_BASE_URL, TOKEN } from "@/services/httpService";
 
 const Page = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -42,7 +43,7 @@ const Page = () => {
   const [personalData, setPersonalData] = useState([])
   const [currentStep, setCurrentStep] = useState(0)
 
-
+  const headers = { 'Authorization': TOKEN }
 
 
 
@@ -103,24 +104,27 @@ const Page = () => {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-};
+  };
 
   const bulkUpload = async (e) => {
     e.preventDefault();
     const file = e.target[0].files[0]
     const formData = new FormData();
     formData.append("csv_file", file)
-
-    console.log(formData);
     setProccessingAdd(true)
-    const { status, data } = await employeeBulkUpload(formData).catch(err => console.log(err))
-    if (status) {
+
+
+
+    await axios.post(`${API_BASE_URL}admin/employee/employee_bulk_upload`, formData, { headers }).then(async (res) => {
       await fetchEmployees()
       setIsModalOpen(false)
       setBtn(false)
-    }
-    setAlert(true)
-    setAlertData(data)
+      setAlert(true)
+      setAlertData(res)
+    }).catch((error) => {
+      setAlert(true)
+      setAlertData(error)
+    })
     setProccessingAdd(false)
   }
 
@@ -135,10 +139,6 @@ const Page = () => {
     return `${yyyy}-${mm}-${dd}`;
   };
   const maxDate = getTodayDate();
-
-
-
-
 
   const inviteEmployee = async (e) => {
     e.preventDefault();
