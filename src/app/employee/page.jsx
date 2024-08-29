@@ -113,14 +113,12 @@ const Page = () => {
     formData.append("csv_file", file)
     setProccessingAdd(true)
 
-
-
     await axios.post(`${API_BASE_URL}admin/employee/employee_bulk_upload`, formData, { headers }).then(async (res) => {
       await fetchEmployees()
-      setIsModalOpen(false)
+      setImportModal(false)
       setBtn(false)
       setAlert(true)
-      setAlertData(res)
+      setAlertData(res.data)
     }).catch((error) => {
       setAlert(true)
       setAlertData(error)
@@ -504,10 +502,10 @@ const Page = () => {
                     Cancel
                   </div>
                   <button
-                    disabled={proccessing}
+                    disabled={setProccessingAdd}
                     className="disabled:bg-opacity-35 px-6 shadow-md bg-hrms_green text-white rounded-lg py-3"
                   >
-                    {proccessing ? "Sending..." : "Send"}
+                    {setProccessingAdd ? "Uploading..." : "Upload"}
                   </button>
                 </div>
               </form>
