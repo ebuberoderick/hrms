@@ -113,7 +113,7 @@ const Page = () => {
     formData.append("csv_file", file)
     setProccessingAdd(true)
 
-    await axios.post(`${API_BASE_URL}/admin/employee/employee_bulk_upload`, formData, { headers }).then(async (res) => {
+    await axios.post(`${API_BASE_URL}admin/employee/employee_bulk_upload`, formData, { headers }).then(async (res) => {
       await fetchEmployees()
       setImportModal(false)
       setBtn(false)
