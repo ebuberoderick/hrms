@@ -69,7 +69,7 @@ function Page() {
                 <div className="space-y-4">
                     <div className="flex gap-3 items-center">
                         <div onClick={() => setActive("all")} className={`${active === "all" ? "bg-hrms_dark_green text-white" : "text-hrms_dark_green"} cursor-pointer px-3 py-1`}>All ({pending.length})</div>
-                        <div onClick={() => setActive("new")} className={`${active === "new" ? "bg-hrms_dark_green text-white" : "text-hrms_dark_green"} cursor-pointer px-3 py-1`}>New (5)</div>
+                        {/* <div onClick={() => setActive("new")} className={`${active === "new" ? "bg-hrms_dark_green text-white" : "text-hrms_dark_green"} cursor-pointer px-3 py-1`}>New (5)</div> */}
                     </div>
                     <div className="space-y-3">
                         {
