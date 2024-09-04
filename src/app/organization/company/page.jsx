@@ -94,7 +94,7 @@ function Page() {
               <AppInput name="website" type={"link"} defaultValue={comInfo.website} label="Website (Optional)" />
               <AppInput name="location_id" type={"select"} defaultValue={comInfo.location_id} label="Location (Optional)" options={appLocation} />
               <input type="hidden" readOnly value={logolink === "" ? comInfo.company_logo:logolink} name="company_logo" />
-              <input type="id" readOnly value={comInfo.id} name="id" />
+              <input type="hidden" readOnly value={comInfo.id} name="id" />
               <AppInput name="clogo" onChange={(e) => FileUpload(e).then(res => setlogolink(res.link))} type={"file"} label="Company Logo (Optional)" />
             </div>
             <button className="bg-hrms_green w-full rounded-lg text-white py-2">Update</button>
