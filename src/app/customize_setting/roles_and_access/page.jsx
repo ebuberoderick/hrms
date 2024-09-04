@@ -146,7 +146,6 @@ function Page() {
               <div className="col-span-3">
                 <AppInput name="name" type={"text"} required label="Role Name" />
               </div>
-
               {
                 perission.map((list, i) => (
                   <div key={i} className="text-xs">

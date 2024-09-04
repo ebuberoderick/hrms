@@ -55,8 +55,8 @@ function AdminSideNav() {
               icon={<RiSettings4Line />}
               subMenu={[
                 { name: "job titles", extra: false },
-                { name: "allowance", extra: false },
-                { name: "deduction", extra: false },
+                // { name: "allowance", extra: false },
+                // { name: "deduction", extra: false },
                 { name: "grade levels", extra: false },
                 { name: "steps", extra: false }
               ]}
@@ -153,7 +153,7 @@ function AdminSideNav() {
                 { name: "Dashboard", extra: false },
                 {
                   name: "Setups", extra: true,
-                  option: ["Salary Structure", "Allowances", "Deductions", "Job Title", "Grade Levels", "Steps"]
+                  option: ["Salary Structure", "Allowances", "Deductions"]
                 },
                 { name: "Salary Allowances", extra: false },
                 { name: "Salary Deductions", extra: false },

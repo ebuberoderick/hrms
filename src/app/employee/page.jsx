@@ -19,6 +19,7 @@ import { FaRegUserCircle } from "react-icons/fa";
 import { LuEye } from "react-icons/lu";
 import { saveAs } from 'file-saver'
 import { API_BASE_URL, TOKEN } from "@/services/httpService";
+import { allDepartment } from "@/utility/constants";
 
 const Page = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -28,6 +29,7 @@ const Page = () => {
   const [errMsg, setErrMsg] = useState(false);
   const [activeModal, setActiveModal] = useState("Register")
   const [importModal, setImportModal] = useState(false)
+  const [allDept, setAllDept] = useState([])
   const [employee, setEmployee] = useState([])
   const [updData, setUpdateData] = useState({})
   const [proccessingAdd, setProccessingAdd] = useState(false)
@@ -179,6 +181,7 @@ const Page = () => {
 
   useEffect(() => {
     fetchEmployees()
+    allDepartment().then(res => setAllDept([...res]))
   }, [])
 
 
@@ -451,6 +454,7 @@ const Page = () => {
                           <AppInput name="firstname" type="text" required label="First Name" />
                           <AppInput name="lastname" type="text" required label="Last Name" />
                           <AppInput name="middlename" type="text" label="Middle Name (Optional)" />
+                          <AppInput name="department_id" type={"select"} required label="Department" options={[...allDept]} />
                           <AppInput name="employee_type" type="select" required label="Employee Type" options={[
                             { value: "Uniformed", label: "Uniformed" },
                             { value: "Formal", label: "Formal" }]} />

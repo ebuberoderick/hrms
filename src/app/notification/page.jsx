@@ -1,8 +1,9 @@
 "use client"
 import AppLayout from '@/components/layouts/appLayout'
 import AppInput from '@/components/organisms/AppInput'
+import ResponseModal from '@/components/organisms/ResponseModal'
 import { NigeriaStates } from '@/hooks/Nigeria'
-import { fetchAllEmployeeData, fetchAllPendingVerification } from '@/services/authService'
+import { fetchAllEmployeeData, fetchAllPendingVerification, hrVerifyEmployee } from '@/services/authService'
 import React, { useEffect, useState } from 'react'
 import { IoIosCloseCircleOutline } from 'react-icons/io'
 
@@ -12,15 +13,30 @@ function Page() {
     const [emp, setEmp] = useState({})
     const [empData, setEmpData] = useState({})
     const [isLoading, setIsLoading] = useState([])
+    const [proccessing, setProccessing] = useState(false)
     const [DOB, setDOB] = useState("")
     const [SD, setSD] = useState("")
+    const [alertMsg, setAlert] = useState(false)
+    const [alertMsgData, setAlertData] = useState(false)
 
 
+    const verify = async (state) => {
+        setProccessing(true)
+
+        const val = { status: state, employee_id: emp.employee_id }
+        const { status, data } = await hrVerifyEmployee(val).catch(err => console.log(err))
+        if (status) {
+            await fetchEmployees()
+            setEmpData({})
+        }
+        setAlert(true)
+        setAlertData(data)
+        setProccessing(false)
+    }
 
     const fetchEmployees = async () => {
         const { status, data } = await fetchAllPendingVerification().catch(err => console.log(err))
         if (status) {
-            console.log(data);
             setPending(data.data[0])
         }
         setIsLoading(false)
@@ -29,11 +45,9 @@ function Page() {
     const fetchEmployeeData = async () => {
         const { status, data } = await fetchAllEmployeeData({ employee_id: emp.employee_id }).catch(err => console.log(err))
         if (status) {
-            console.log(data.data[0]);
-            console.log(emp);
             setEmpData(data.data[0]);
-            // setDOB
-            // setSD
+            setDOB(data.data[0].date_of_birth)
+            setSD(data.data[0].hire_date)
         }
         setIsLoading(false)
     }
@@ -100,10 +114,6 @@ function Page() {
                                 <div>
                                     <div className="w-20 h-20 rounded-full bg-gray-100 relative">
                                         <img src={empData?.user?.avatar} alt="" id="output" className="w-full h-full rounded-full" />
-                                        <label htmlFor="image" className="absolute w-8 h-8 border-2 border-white bottom-1 right-0 bg-hrms_green text-white rounded-full flex items-center justify-center">
-                                            <input accept="image/*" required id="image" onChange={(e) => uploadImg(e)} name="image" type="file" className="opacity-0 absolute w-full cursor-pointer h-full" />
-                                            <i className="ri-camera-line"></i>
-                                        </label>
                                     </div>
                                 </div>
                                 <div className='space-y-4'>
@@ -126,7 +136,7 @@ function Page() {
                                             { value: "Male", label: "Male" },
                                             { value: "Female", label: "Female" },
                                             { value: "Others", label: "Others" }]} />
-                                        <AppInput defaultValue={empData?.state_of_origin} name="state_of_origin" type="select" required label="State Of Origin" options={[...NigeriaStates]} />
+                                        <AppInput value={empData?.state_of_origin} name="state_of_origin" type="select" required label="State Of Origin" options={[...NigeriaStates]} />
                                     </div>
                                 </div>
                             </div>
@@ -182,10 +192,33 @@ function Page() {
                                     </div>
                                 </div>
                             </div>
+                            <div className="">
+                                {
+                                    proccessing ? (
+                                        <div className='w-full flex gap-3'>
+                                            <button disabled={proccessing} onClick={() => verify(1)} className="flex-grow bg-hrms_green text-white rounded-lg disabled:bg-gray-500 py-2 text-center cursor-pointer">Processing...</button>
+                                        </div>
+                                    ) : (
+                                        <div className="space-y-4 w-full">
+                                            <div className='w-full flex gap-3'>
+                                                <button onClick={() => verify(0)} className="flex-grow border border-hrms_green text-hrms_green rounded-lg py-2 text-center cursor-pointer">Decline</button>
+                                                <button onClick={() => verify(1)} className="flex-grow bg-hrms_green text-white rounded-lg py-2 text-center cursor-pointer">Approve</button>
+                                            </div>
+                                        </div>
+                                    )
+                                }
+
+                            </div>
                         </div>
                     )
                 }
             </div>
+            <ResponseModal
+                status={alertMsgData?.success}
+                isOpen={alertMsg}
+                onClose={() => setAlert(false)}
+                message={alertMsgData?.message}
+            />
         </AppLayout>
     )
 }
