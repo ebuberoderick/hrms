@@ -173,7 +173,7 @@ function Page() {
                 </th>
                 <th className="hidden lg:table-cell">Account No.</th>
                 <th className="hidden sm:table-cell">Branch Code</th>
-                <th className="hidden sm:table-cell">Balanace</th>
+                <th className="hidden sm:table-cell">Balance</th>
                 <th className="hidden sm:table-cell">Bank Branch</th>
                 <th className="w-20">Action</th>
               </tr>
