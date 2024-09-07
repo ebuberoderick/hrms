@@ -69,7 +69,7 @@ function Page() {
               <div className="grid grid-cols-2 gap-4">
                 <AppInput name="employee_id" type={"select"} required label="Employee" options={[...empl]} />
                 <AppInput name="job_title_id" type={"select"} required label="Job Title" options={[...jobT]} />
-                <AppInput name="grade_level_id" type={"select"} required label="Grade Level" options={[...gradeL]} />
+                <AppInput name="grade_level_id" type={"select"} label="Grade Level (Optional)" options={[...gradeL]} />
                 <AppInput name="grade_step_id" type={"select"} required label="Grade Step" options={[...gradeS]} />
                 <AppInput name="basic_pay" type="text" required label="Amount" />
               </div>

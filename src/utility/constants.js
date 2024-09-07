@@ -1,4 +1,4 @@
-import { createJobTitle, fetchAllCompanies, fetchAllDepartment, fetchAllEmployee, fetchAllLocation, fetchAwardTypes, fetchGradeLevel, fetchGradeStep, fetchJobTitle, fetchQueryType, fetchTerminationType } from "@/services/authService";
+import { createJobTitle, fetchAllCompanies, fetchAllDepartment, fetchAllEmployee, fetchAllLocation, fetchAllowanceDefinition, fetchAwardTypes, fetchDeductionDefinition, fetchGradeLevel, fetchGradeStep, fetchJobTitle, fetchQueryType, fetchSalaryStructure, fetchTerminationType } from "@/services/authService";
 
 
 
@@ -56,6 +56,37 @@ export const AllEmployees = async () => {
     return exportData;
 }
 
+export const AllSalarytructure = async () => {
+    const { status, data } = await fetchSalaryStructure().catch(err => console.log(err))
+    const exportData = []
+    await data.data[0].forEach(element => {
+        exportData.push({ value: element.id, label: element.jobtitle.title })
+    });
+    return exportData;
+}
+
+
+export const AllAllowanceDefinition = async () => {
+    const { status, data } = await fetchAllowanceDefinition().catch(err => console.log(err))
+    const exportData = []
+    await data.data[0].forEach(element => {
+        exportData.push({ value: element.id, label: element.code })
+    });
+    return exportData;
+}
+
+
+export const AllDeductionDefinition = async () => {
+    const { status, data } = await fetchDeductionDefinition().catch(err => console.log(err))
+    const exportData = []
+    await data.data[0].forEach(element => {
+        exportData.push({ value: element.id, label: element.code })
+    });
+    return exportData;
+}
+
+
+
 
 export const AllJobTitle = async () => {
     const { status, data } = await fetchJobTitle().catch(err => console.log(err))
@@ -65,7 +96,6 @@ export const AllJobTitle = async () => {
     });
     return exportData;
 }
-
 
 export const AllGradeLevel = async () => {
     const { status, data } = await fetchGradeLevel().catch(err => console.log(err))

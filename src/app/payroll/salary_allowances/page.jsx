@@ -1,26 +1,78 @@
 "use client"
 import AppLayout from '@/components/layouts/appLayout'
-import LineChart from '@/components/molecules/LineChart'
-import PieChart from '@/components/molecules/PieChart'
+import AppInput from '@/components/organisms/AppInput'
+import Modal from '@/components/organisms/Modal'
 import ResponseModal from '@/components/organisms/ResponseModal'
+import serialize from '@/hooks/Serialize'
+import { createSalaryAllowance, fetchSalaryAllowance } from '@/services/authService'
+import { AllAllowanceDefinition, AllEmployees, AllSalarytructure } from '@/utility/constants'
 import React, { useEffect, useState } from 'react'
-import { FiUploadCloud, FiUsers } from 'react-icons/fi'
-import { IoIosArrowDown } from 'react-icons/io'
-import { PiPrinter } from 'react-icons/pi'
-import { RiUserReceivedLine } from 'react-icons/ri'
-import { TbCalendarTime } from 'react-icons/tb'
 
 function Page() {
   const [isloading, setIsLoading] = useState(true)
+  const [proccessingAdd, setProccessingAdd] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [alertMsg, setAlert] = useState(false)
+  const [salaryAllowance, setSalaryAllowance] = useState([])
+  const [alertMsgData, setAlertData] = useState(false)
+  const [empl, setAllEmpl] = useState([])
+  const [salStruc, setSalStruc] = useState([])
+  const [alloDef, setAlloDef] = useState([])
+
+
+  const add = async (e) => {
+    e.preventDefault()
+    const formData = serialize(e.target);
+    setProccessingAdd(true)
+    const { status, data } = await createSalaryAllowance(formData).catch(err => console.log(err))
+    if (status) {
+      await fetch()
+      setIsModalOpen(false)
+    }
+    setAlert(true)
+    setAlertData(data)
+    setProccessingAdd(false)
+  }
+
+  const fetch = async () => {
+    const { status, data } = await fetchSalaryAllowance().catch(err => console.log(err))
+    if (status) {
+      setSalaryAllowance(data.data[0])
+    }
+    setIsLoading(false)
+  }
+
 
   useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false)
-    }, 4000);
+    fetch()
+    AllSalarytructure().then(res => setSalStruc([...res]))
+    AllAllowanceDefinition().then(res => setAlloDef([...res]))
+    AllEmployees().then(res => setAllEmpl([...res]))
   }, [])
+
 
   return (
     <AppLayout title={"Payroll Setups"}>
+      <Modal size={"lg"} closeModal={() => setIsModalOpen(false)} isOpen={isModalOpen}>
+        <div className="">
+          <form onSubmit={add} className="space-y-4">
+            <div className="space-y-2">
+              <div className="text-hrms_green text-xl">Add New Salary Allowance</div>
+              <div className="grid grid-cols-2 gap-4">
+                <AppInput name="employee_id" type={"select"} required label="Employee" options={[...empl]} />
+                <AppInput name="salary_structure_id" type={"select"} required label="Salary Structure" options={[...salStruc]} />
+                <AppInput name="allowance_definition_id" type={"select"} required label="Allowance Definition" options={[...alloDef]} />
+                <AppInput name="amount" type={"text"} required label="Amount" />
+              </div>
+            </div>
+            <div>
+              <button disabled={proccessingAdd} className="bg-hrms_green disabled:bg-opacity-40 w-full text-white rounded-lg py-2 text-center cursor-pointer">{proccessingAdd ? "Adding Deduction" : "Add Deduction"}</button>
+            </div>
+          </form>
+        </div>
+      </Modal>
+
+
       <div className='space-y-5'>
         <div className="lg:flex space-y-3 items-center justify-between">
           <div className="">
@@ -38,7 +90,7 @@ function Page() {
             </div>
             <div
               className="flex cursor-pointer font-bold justify-center gap-2 items-center text-white bg-hrms_green px-7 py-3 rounded-[4px]"
-            // onClick={() => setIsModalOpen(true)}
+              onClick={() => setIsModalOpen(true)}
             >
               <i className="ri-add-line"></i>
               <div className="">Add Allowance</div>
@@ -68,45 +120,35 @@ function Page() {
                   {/* <div className="w-9 relative">
                     <div className="absolute -top-1"><AppInput onChange={(e) => selectAll(e)} type="checkbox" name="employee" /></div>
                   </div> */}
-                  ID
+                  Employee
                 </th>
-                <th className="hidden lg:table-cell">Org_ID</th>
                 <th className="hidden sm:table-cell">Salary Structure ID</th>
-                <th className="hidden sm:table-cell">Allowance ID</th>
-                <th className="hidden sm:table-cell">Payroll Schedule ID</th>
+                <th className="hidden sm:table-cell">Allowance Code</th>
+                <th className="hidden sm:table-cell">Allowance Method</th>
                 <th className="hidden sm:table-cell">Amount</th>
                 <th className="hidden sm:table-cell">Created By</th>
                 <th className="hidden sm:table-cell">Updated By</th>
                 <th className="w-20">Created Date</th>
               </tr>
-              {/* {
-                                acct?.data?.map((list, i) => (
-                                    <tr key={i}>
-                                        <td className="flex items-center gap-3 pl-5 py-3">
-                                            <div className="flex-grow gap-2">{list.account_name}</div>
-                                        </td>
-                                        <td className="hidden lg:table-cell">
-                                            <div className="font-semibold">{list.account_number}</div>
-                                        </td>
-                                        <td className="hidden sm:table-cell">
-                                            <div className="">{list.branch_code}</div>
-                                        </td>
-                                        <td className="hidden sm:table-cell">
-                                            <div className="">{list.account_balance}</div>
-                                        </td>
-                                        <td className="hidden sm:table-cell">
-                                            <div className="">{list.bank_branch}</div>
-                                        </td>
-                                        <td>
-                                            <div className="text-xl flex items-center gap-1">
-                                                <div onClick={() => setView(list)} className="text-hrms_green p-1 cursor-pointer"><LuEye /></div>
-                                                <div onClick={() => setEdit(list)} className="text-hrms_green p-1 cursor-pointer"><i className="ri-edit-2-line"></i></div>
-                                                <div onClick={() => setDelete(list)} className="text-danger p-1 cursor-pointer"><HiOutlineBan /></div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                ))
-                            } */}
+              {
+                salaryAllowance.map((data, i) => (
+                  <tr key={i} className="">
+                    <td className="flex gap-3 pl-5 py-2">
+                      {/* <div className="w-9 relative">
+                    <div className="absolute -top-1"><AppInput onChange={(e) => selectAll(e)} type="checkbox" name="employee" /></div>
+                  </div> */}
+                      {data.employee.employee_name}
+                    </td>
+                    <td className="hidden sm:table-cell">{data.salarystructure.id}</td>
+                    <td className="hidden sm:table-cell">{data.allowancedefinition.code}</td>
+                    <td className="hidden sm:table-cell">{data.allowancedefinition.calculation_method}</td>
+                    <td className="hidden sm:table-cell">{data.amount}</td>
+                    <td className="hidden sm:table-cell">{data.createdby.name}</td>
+                    <td className="hidden sm:table-cell">{data.date_updated}</td>
+                    <td className="w-20">{data.date_created}</td>
+                  </tr>
+                ))
+              }
               {
                 isloading && ["", "", "", "", ""].map((list, i) => (
                   <tr className="" key={i}>
@@ -137,13 +179,13 @@ function Page() {
           isOpen={isErrorModal}
           onClose={() => setIsErrorModal(false)}
           message={`${errMsg}`}
-        />
+        /> */}
         <ResponseModal
           status={alertMsgData?.success}
           isOpen={alertMsg}
           onClose={() => setAlert(false)}
           message={alertMsgData?.message}
-        /> */}
+        />
       </div>
     </AppLayout>
   )
