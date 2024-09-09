@@ -23,7 +23,7 @@ function Page() {
   
   
   return (
-    <WebLayout>
+    <WebLayout active={"home"}>
       <div className="bg-black overflow-hidden text-white">
         <div className="sm:py-32 relative z-10 space-y-12">
           <div className="h-full flex -z-10 items-center justify-center absolute top-0 right-0">

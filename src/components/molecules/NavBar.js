@@ -7,7 +7,7 @@ import { FiLogIn, FiSearch } from "react-icons/fi";
 import Image from 'next/image'
 import Link from 'next/link';
 
-function NavBar() {
+function NavBar({active}) {
   const [showNav, setShowNav] = useState(false);
   const [isSearch, setSearch] = useState(false)
   return (
@@ -17,11 +17,11 @@ function NavBar() {
         <div className={` ${showNav? " left-0":"-left-72 md:left-0"} md:flex px-3 md:px-0 pt-8 md:pt-0 space-y-10 md:space-y-0 flex-grow fixed md:relative w-72 md:w-auto h-screen md:h-auto bg-black shadow-md md:shadow-none transition-all duration-300 top-0`}>
           <Image src={logo} alt='#' className='w-32 md:hidden' />
           <div className='flex-grow md:flex justify-center'>
-            <NavLink active text="home" />
-            <NavLink text="help" />
-            <NavLink text="partners" />
-            <NavLink text="training" />
-            <NavLink text="contact" />
+            <NavLink active={active} text="home" />
+            <NavLink active={active} text="help" />
+            <NavLink active={active} text="partners" />
+            <NavLink active={active} text="training" />
+            <NavLink active={active} text="contact" />
           </div>
           <div className='md:flex gap-5 space-y-3 md:space-y-0'>
             {
