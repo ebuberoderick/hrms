@@ -103,10 +103,10 @@ function Page() {
                   </div>
                 </td>
                 <td className="hidden lg:table-cell">
-                  <div className="font-semibold">{dept.employee.employee_name}</div>
+                  <div className="font-semibold">{dept?.employee?.employee_name}</div>
                 </td>
                 <td className="hidden sm:table-cell">
-                  <div className="">{dept.company.company_name}</div>
+                  <div className="">{dept?.company?.company_name}</div>
                 </td>
                 <td>
                   <div className="text-xl flex gap-1">
