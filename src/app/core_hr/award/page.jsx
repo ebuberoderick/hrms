@@ -3,6 +3,7 @@ import AppLayout from '@/components/layouts/appLayout'
 import AppInput from '@/components/organisms/AppInput'
 import AppPagination from '@/components/organisms/AppPagination'
 import Modal from '@/components/organisms/Modal'
+import ResponseModal from '@/components/organisms/ResponseModal'
 import serialize from '@/hooks/Serialize'
 import { addAward, fetchAward } from '@/services/authService'
 import { AllEmployees, allDepartment, awardType, companies, companyEnum } from '@/utility/constants'
@@ -11,12 +12,15 @@ import React, { useEffect, useState } from 'react'
 
 function Page() {
   const [showModal, setShowModal] = useState(false)
+  const [proccessingAdd, setProccessingAdd] = useState(false)
   const [awards, setAwards] = useState([])
   const [compnis, setCompnis] = useState([])
   const [allDept, setAllDept] = useState([])
   const [empl, setAllEmpl] = useState([])
   const [awty, setAwty] = useState([])
   const [imgUrl, setImgUrl] = useState("")
+  const [alertMsg, setAlert] = useState(false)
+  const [alertMsgData, setAlertData] = useState(false)
 
   const perset_key = process.env.NEXT_PUBLIC_API_CLOUDINARY_PERSET_KEY
   const cloud_name = process.env.NEXT_PUBLIC_API_CLOUDINARY_CLOUD_NAME
@@ -35,12 +39,16 @@ function Page() {
 
   const add = async (e) => {
     e.preventDefault();
+    setProccessingAdd(true)
     const formData = serialize(e.target);
     const { status, data } = await addAward(formData).catch(err => console.log(err))
     if (status) {
       fetch()
       setShowModal(false)
     }
+    setAlert(true)
+    setAlertData(data)
+    setProccessingAdd(false)
   }
 
   const fetch = async () => {
@@ -82,7 +90,7 @@ function Page() {
                 <AppInput name={"description"} type={"textarea"} label="Description" />
               </div>
             </div>
-            <button className="bg-hrms_green w-full rounded-lg text-white py-2">Add</button>
+            <button disabled={proccessingAdd} className="bg-hrms_green disabled:bg-opacity-40 w-full text-white rounded-lg py-2 text-center cursor-pointer">{proccessingAdd ? "Adding Award" : "Add Award"}</button>
           </form>
         </Modal>
 
@@ -110,23 +118,23 @@ function Page() {
             <table className="w-full divide-y text-sm text-left">
               <tr className="bg-gray-100">
                 <th className="flex gap-3 pl-5 py-2">
-                  <div className="w-9 relative">
+                  {/* <div className="w-9 relative">
                     <div className="absolute -top-1"><AppInput onChange={(e) => selectAll(e)} type="checkbox" name="employee" /></div>
-                  </div>
+                  </div> */}
                   Employee
                 </th>
                 <th className="hidden lg:table-cell">Department</th>
                 <th className="hidden sm:table-cell">Award Name</th>
                 <th className="hidden sm:table-cell">Date Awarded</th>
-                <th className="w-20">Action</th>
+                {/* <th className="w-20">Action</th> */}
               </tr>
               {
                 awards?.data?.map((list, i) => (
                   <tr key={i}>
                     <td className="flex items-center gap-3 pl-5 py-2">
-                      <div className="w-9 relative">
+                      {/* <div className="w-9 relative">
                         <div className=""><AppInput onChange={(e) => selectAll(e)} type="checkbox" name="employee" /></div>
-                      </div>
+                      </div> */}
                       <div className="flex-grow gap-2 flex">
                         {list.employee.employee_name}
                       </div>
@@ -140,12 +148,12 @@ function Page() {
                     <td className="hidden sm:table-cell">
                       <div className="">{list.award_date}</div>
                     </td>
-                    <td>
+                    {/* <td>
                       <div className="text-xl flex gap-1">
                         <div className="text-hrms_green p-1 cursor-pointer"><i className="ri-edit-2-line"></i></div>
                         <div className="text-danger p-1 cursor-pointer"><i className="ri-delete-bin-6-line"></i></div>
                       </div>
-                    </td>
+                    </td> */}
                   </tr>
                 ))
               }
@@ -156,6 +164,12 @@ function Page() {
           </div>
         </div>
       </div>
+        <ResponseModal
+          status={alertMsgData?.success}
+          isOpen={alertMsg}
+          onClose={() => setAlert(false)}
+          message={alertMsgData?.message}
+        />
     </AppLayout>
   )
 }

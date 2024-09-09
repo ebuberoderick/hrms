@@ -73,7 +73,7 @@ function AdminSideNav() {
               subMenu={[
                 { name: "promotion", extra: false },
                 { name: "award", extra: false },
-                { name: "travel", extra: false },
+                // { name: "travel", extra: false },
                 { name: "resignation", extra: false },
                 { name: "complaints", extra: false },
                 { name: "transfer", extra: false },

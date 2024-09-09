@@ -3,6 +3,7 @@ import AppLayout from '@/components/layouts/appLayout'
 import AppInput from '@/components/organisms/AppInput'
 import AppPagination from '@/components/organisms/AppPagination'
 import Modal from '@/components/organisms/Modal'
+import ResponseModal from '@/components/organisms/ResponseModal'
 import serialize from '@/hooks/Serialize'
 import { addResignation, fetchResignation } from '@/services/authService'
 import { AllEmployees, allDepartment, companies } from '@/utility/constants'
@@ -14,15 +15,22 @@ function Page() {
   const [compnis, setCompnis] = useState([])
   const [allDept, setAllDept] = useState([])
   const [empl, setAllEmpl] = useState([])
+  const [alertMsg, setAlert] = useState(false)
+  const [proccessingAdd, setProccessingAdd] = useState(false)
+  const [alertMsgData, setAlertData] = useState(false)
 
   const add = async (e) => {
     e.preventDefault();
+    setProccessingAdd(true)
     const formData = serialize(e.target);
     const { status, data } = await addResignation(formData).catch(err => console.log(err))
     if (status) {
       fetch()
       setShowModal(false)
     }
+    setAlert(true)
+    setAlertData(data)
+    setProccessingAdd(false)
   }
 
   const fetch = async () => {
@@ -55,7 +63,7 @@ function Page() {
               <AppInput name="resignation_date" type={"date"} required label="Resignation Date" />
               <AppInput name={"description"} type={"textarea"} label="Description" />
             </div>
-            <button className="bg-hrms_green w-full rounded-lg text-white py-2">Add</button>
+            <button disabled={proccessingAdd} className="bg-hrms_green disabled:bg-opacity-40 w-full text-white rounded-lg py-2 text-center cursor-pointer">{proccessingAdd ? "Adding Resignation" : "Add Resignation"}</button>
           </form>
         </Modal>
 
@@ -84,9 +92,9 @@ function Page() {
             <table className="w-full divide-y text-sm text-left">
               <tr className="bg-gray-100">
                 <th className="flex gap-3 pl-5 py-2">
-                  <div className="w-9 relative">
+                  {/* <div className="w-9 relative">
                     <div className="absolute -top-1"><AppInput onChange={(e) => selectAll(e)} type="checkbox" name="employee" /></div>
-                  </div>
+                  </div> */}
                   Employee
                 </th>
 
@@ -94,15 +102,15 @@ function Page() {
                 <th className="hidden sm:table-cell">Department</th>
                 <th className="hidden sm:table-cell">Resignation Date</th>
                 <th className="hidden lg:table-cell">Notice Date</th>
-                <th className="w-20">Action</th>
+                {/* <th className="w-20">Action</th> */}
               </tr>
               {
                 riz?.data?.map((list, i) => (
                   <tr key={i}>
                     <td className="flex items-center gap-3 pl-5 py-2">
-                      <div className="w-9 relative">
+                      {/* <div className="w-9 relative">
                         <div className=""><AppInput onChange={(e) => selectAll(e)} type="checkbox" name="employee" /></div>
-                      </div>
+                      </div> */}
                       <div className="space-y-1">
                         <div className="">{list.employee.employee_name}</div>
                       </div>
@@ -119,12 +127,12 @@ function Page() {
                     <td className="hidden lg:table-cell">
                       <div className="">{list.notice_date}</div>
                     </td>
-                    <td>
+                    {/* <td>
                       <div className="text-xl flex gap-1">
                         <div className="text-hrms_green p-1 cursor-pointer"><i className="ri-edit-2-line"></i></div>
                         <div className="text-danger p-1 cursor-pointer"><i className="ri-delete-bin-6-line"></i></div>
                       </div>
-                    </td>
+                    </td> */}
                   </tr>
                 ))
 
@@ -137,6 +145,12 @@ function Page() {
           </div>
         </div>
       </div>
+      <ResponseModal
+        status={alertMsgData?.success}
+        isOpen={alertMsg}
+        onClose={() => setAlert(false)}
+        message={alertMsgData?.message}
+      />
     </AppLayout>
   )
 }
