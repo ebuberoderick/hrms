@@ -4,6 +4,7 @@ import logo from "@assets/images/authLogo.png";
 import AppLink from "../organisms/AppLink";
 import { RiSettings4Line } from "react-icons/ri";
 import { FaRegBell } from "react-icons/fa";
+import { AiOutlineFileSearch } from "react-icons/ai";
 
 function AdminSideNav() {
   return (
@@ -188,6 +189,11 @@ function AdminSideNav() {
                 { name: "Transaction History", extra: false },
                 { name: "Transfer", extra: false }
               ]}
+            />
+            
+            <AppLink
+              text={"Audit Trail"}
+              icon={<AiOutlineFileSearch />}
             />
           </div>
         </div>

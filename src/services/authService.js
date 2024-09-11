@@ -51,6 +51,10 @@ export const updateDepartment = (formData) => apiWithAuth.post("admin/organizati
 export const fetchDepartment = () => apiWithAuth.post("admin/organization/department/fetch").then(getApiResponse).catch(getErrorResponse);
 export const fetchAllDepartment = () => apiWithAuth.post("admin/organization/department/fetch_all").then(getApiResponse).catch(getErrorResponse);
 
+export const fetchAuditTrails = () => apiWithAuth.post("admin/aduit/fetch").then(getApiResponse).catch(getErrorResponse);
+
+export const payrollSchedule = (formData) => apiWithAuth.post("admin/payroll/payroll_schedule/create", formData).then(getApiResponse).catch(getErrorResponse);
+
 
 export const addQuery = (formData) => apiWithAuth.post("admin/corehr/warning/create", formData).then(getApiResponse).catch(getErrorResponse);
 export const fetchQuery = () => apiWithAuth.post("admin/corehr/warning/fetch").then(getApiResponse).catch(getErrorResponse);
