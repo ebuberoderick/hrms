@@ -5,7 +5,7 @@ import AppPagination from '@/components/organisms/AppPagination'
 import Modal from '@/components/organisms/Modal'
 import ResponseModal from '@/components/organisms/ResponseModal'
 import serialize from '@/hooks/Serialize'
-import { addDepartment, fetchDepartment } from '@/services/authService'
+import { addDepartment, fetchDepartment, updateDepartment } from '@/services/authService'
 import { AllEmployees, companies, companyEnum } from '@/utility/constants'
 import React, { useEffect, useState } from 'react'
 
@@ -17,9 +17,12 @@ function Page() {
   const [compnis, setCompnis] = useState([])
   const [employees, setEmployees] = useState([])
   const [departments, setdepartments] = useState([])
+  const [proccessingAdd, setProccessingAdd] = useState(false)
+  const [editDept, setEditDept] = useState({})
 
   const add = async (e) => {
     e.preventDefault();
+    setProccessingAdd(true)
     const formData = serialize(e.target);
     const { status, data } = await addDepartment(formData).catch(err => console.log(err))
     if (status) {
@@ -29,6 +32,21 @@ function Page() {
       setAlertData(data)
       setBtn(false)
     }
+    setProccessingAdd(false)
+  }
+  const update = async (e) => {
+    e.preventDefault();
+    setProccessingAdd(true)
+    const formData = serialize(e.target);
+    const { status, data } = await updateDepartment(formData).catch(err => console.log(err))
+    if (status) {
+      await fetch()
+      setEditDept({})
+      setAlert(true)
+      setAlertData(data)
+      setBtn(false)
+    }
+    setProccessingAdd(false)
   }
 
   const fetch = async () => {
@@ -56,7 +74,19 @@ function Page() {
               <AppInput name="company_id" type={"select"} required label="Company Type" options={[...compnis]} />
               <AppInput name="employee_id" type={"select"} label="Department Head (Optional)" options={[...employees]} />
             </div>
-            <button className="bg-hrms_green w-full rounded-lg text-white py-2">Add</button>
+            <button disabled={proccessingAdd} className="bg-hrms_green disabled:bg-opacity-40 w-full text-white rounded-lg py-2 text-center cursor-pointer">{proccessingAdd ? "Adding..." : "Add"}</button>
+          </form>
+        </Modal>
+        <Modal closeModal={() => setEditDept({})} size={"xl"} isOpen={Object.keys(editDept).length > 0}>
+          <form onSubmit={(e) => update(e)} className="space-y-4">
+            <input type="hidden" name='id' value={editDept.id} />
+            <div className="text-hrms_green text-xl">Edit Department</div>
+            <div className="grid grid-cols-2 gap-4">
+              <AppInput name="department_name" type={"text"} defaultValue={editDept.department_name} required label="Department Name" />
+              <AppInput name="company_id" type={"select"} defaultValue={editDept.company_id} required label="Company Type" options={[...compnis]} />
+              <AppInput name="employee_id" type={"select"} defaultValue={editDept.department_head} label="Department Head (Optional)" options={[...employees]} />
+            </div>
+            <button disabled={proccessingAdd} className="bg-hrms_green disabled:bg-opacity-40 w-full text-white rounded-lg py-2 text-center cursor-pointer">{proccessingAdd ? "Updating..." : "Update"}</button>
           </form>
         </Modal>
         <div className="lg:flex space-y-3 items-center justify-between">
@@ -81,9 +111,9 @@ function Page() {
         <table className="w-full divide-y text-sm text-left">
           <tr className="bg-gray-100">
             <th className="flex gap-3 pl-5 py-2">
-              <div className="w-9 relative">
+              {/* <div className="w-9 relative">
                 <div className="absolute -top-1"><AppInput type="checkbox" name="employee" /></div>
-              </div>
+              </div> */}
               Department
             </th>
 
@@ -95,9 +125,9 @@ function Page() {
             departments?.data?.map((dept, i) => (
               <tr key={i}>
                 <td className="flex items-center gap-3 pl-5 py-2">
-                  <div className="w-9 relative">
+                  {/* <div className="w-9 relative">
                     <div className=""><AppInput type="checkbox" /></div>
-                  </div>
+                  </div> */}
                   <div className="flex-grow gap-2 flex">
                     {dept.department_name}
                   </div>
@@ -110,7 +140,7 @@ function Page() {
                 </td>
                 <td>
                   <div className="text-xl flex gap-1">
-                    <div className="text-hrms_green p-1 cursor-pointer"><i className="ri-edit-2-line"></i></div>
+                    <div onClick={() => setEditDept(dept)} className="text-hrms_green p-1 cursor-pointer"><i className="ri-edit-2-line"></i></div>
                     {/* <div className="text-danger p-1 cursor-pointer"><i className="ri-delete-bin-6-line"></i></div> */}
                   </div>
                 </td>

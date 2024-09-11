@@ -47,6 +47,7 @@ export const fetchAllCompanies = () => apiWithAuth.post("admin/organization/comp
 
 
 export const addDepartment = (formData) => apiWithAuth.post("admin/organization/department/create", formData).then(getApiResponse).catch(getErrorResponse);
+export const updateDepartment = (formData) => apiWithAuth.post("admin/organization/department/update", formData).then(getApiResponse).catch(getErrorResponse);
 export const fetchDepartment = () => apiWithAuth.post("admin/organization/department/fetch").then(getApiResponse).catch(getErrorResponse);
 export const fetchAllDepartment = () => apiWithAuth.post("admin/organization/department/fetch_all").then(getApiResponse).catch(getErrorResponse);
 
