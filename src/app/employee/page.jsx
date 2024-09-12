@@ -8,7 +8,7 @@ import DownloadCSV from "@/hooks/DownloadCSV";
 import { NigeriaStates } from "@/hooks/Nigeria";
 import serialize from "@/hooks/Serialize";
 import { debounce } from "@/hooks/useDebounce";
-import sample from "@assets/samples/employee_sample.csv"
+// import sample from ""
 // images/FiscusBookWhite.png
 import { addEmploye, adminadduser, employeeBulkUpload, employeeInvite, fetchEmployee, fetchemploy } from "@/services/authService";
 import axios from "axios";
@@ -101,7 +101,7 @@ const Page = () => {
 
   const handleDownload = () => {
     const link = document.createElement('a');
-    link.href = sample; // Path to the CSV file in the public directory
+    // link.href = sample; // Path to the CSV file in the public directory
     link.download = 'data.csv'; // Name of the file after download
     document.body.appendChild(link);
     link.click();
