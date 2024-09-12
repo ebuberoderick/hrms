@@ -8,7 +8,7 @@ import DownloadCSV from "@/hooks/DownloadCSV";
 import { NigeriaStates } from "@/hooks/Nigeria";
 import serialize from "@/hooks/Serialize";
 import { debounce } from "@/hooks/useDebounce";
-// import sample from "../../../public/samples/employee_sample.csv"
+import sample from "@assets/samples/employee_sample.csv"
 // images/FiscusBookWhite.png
 import { addEmploye, adminadduser, employeeBulkUpload, employeeInvite, fetchEmployee, fetchemploy } from "@/services/authService";
 import axios from "axios";
@@ -33,7 +33,7 @@ const Page = () => {
   const [employee, setEmployee] = useState([])
   const [updData, setUpdateData] = useState({})
   const [proccessingAdd, setProccessingAdd] = useState(false)
-
+  const [uploadBtn, setUploadBtn] = useState(false)
   const [isloading, setIsLoading] = useState(true)
 
 
@@ -101,7 +101,7 @@ const Page = () => {
 
   const handleDownload = () => {
     const link = document.createElement('a');
-    link.href = "../../../public/samples/employee_sample.csv"; // Path to the CSV file in the public directory
+    link.href = sample; // Path to the CSV file in the public directory
     link.download = 'data.csv'; // Name of the file after download
     document.body.appendChild(link);
     link.click();
@@ -113,7 +113,7 @@ const Page = () => {
     const file = e.target[0].files[0]
     const formData = new FormData();
     formData.append("csv_file", file)
-    setProccessingAdd(true)
+    setUploadBtn(true)
 
     await axios.post(`${API_BASE_URL}admin/employee/employee_bulk_upload`, formData, { headers }).then(async (res) => {
       await fetchEmployees()
@@ -125,7 +125,7 @@ const Page = () => {
       setAlert(true)
       setAlertData(error)
     })
-    setProccessingAdd(false)
+    setUploadBtn(false)
   }
 
 
@@ -506,10 +506,10 @@ const Page = () => {
                     Cancel
                   </div>
                   <button
-                    disabled={setProccessingAdd}
+                    disabled={uploadBtn}
                     className="disabled:bg-opacity-35 px-6 shadow-md bg-hrms_green text-white rounded-lg py-3"
                   >
-                    {setProccessingAdd ? "Uploading..." : "Upload"}
+                    {uploadBtn ? "Uploading..." : "Upload"}
                   </button>
                 </div>
               </form>

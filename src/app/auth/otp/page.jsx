@@ -21,7 +21,7 @@ function Page() {
   const user = useSelector(state => state.User)
 
   const resend = async () => {
-    const { status, data } = await resendOtp(e).catch(err => console.log(err))
+    const { status, data } = await resendOtp({email}).catch(err => console.log(err))
     if (status) {
       alert(data.message)
     }

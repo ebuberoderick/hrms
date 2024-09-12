@@ -23,7 +23,7 @@ export const chcekVerification = () => apiWithAuth.post("admin/employee/verifica
 
 export const addEmploye = (formData) => apiWithAuth.post("admin/employee/add_new_employee", formData).then(getApiResponse).catch(getErrorResponse);
 export const updateEmployeeInfo = (formData) => apiWithAuth.post("employee/employee_update_info", formData).then(getApiResponse).catch(getErrorResponse);
-export const fetchEmployee = () => apiWithAuth.post("admin/employee/fetch").then(getApiResponse).catch(getErrorResponse);
+export const fetchEmployee = (formData) => apiWithAuth.post("admin/employee/fetch",formData).then(getApiResponse).catch(getErrorResponse);
 export const fetchAllEmployee = () => apiWithAuth.post("admin/employee/fetch_all").then(getApiResponse).catch(getErrorResponse);
 
 export const fetchBanks = () => apiWithAuth.post("employee/paystack_bank").then(getApiResponse).catch(getErrorResponse);
