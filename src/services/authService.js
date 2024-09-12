@@ -3,6 +3,8 @@ import { apiWithAuth, apiWithOutAuth, getApiResponse, getErrorResponse } from ".
 export const pagination = (formData) => apiWithAuth.post(formData).then(getApiResponse).catch(getErrorResponse);
 
 export const Applogin = (formData) => apiWithOutAuth.post("/login", formData).then(getApiResponse).catch(getErrorResponse);
+export const verifyOtp = (formData) => apiWithOutAuth.post("/recover/verify_otp", formData).then(getApiResponse).catch(getErrorResponse);
+export const resendOtp = (formData) => apiWithOutAuth.post("/recover/resend_otp", formData).then(getApiResponse).catch(getErrorResponse);
 
 export const fetchMyData = (formData) => apiWithAuth.post("admin/employee/verification/fetch_my_data", formData).then(getApiResponse).catch(getErrorResponse);
 export const verifyMyData = (formData) => apiWithAuth.post("admin/employee/verification/employee_verify_data", formData).then(getApiResponse).catch(getErrorResponse);

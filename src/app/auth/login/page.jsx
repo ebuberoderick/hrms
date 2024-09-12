@@ -20,19 +20,24 @@ function Page() {
   const login = async (e) => {
     setProccessing(true)
     const { status, data } = await Applogin(e).catch(err => console.log(err))
-    console.log();
     setProccessing(false)
     if (status) {
       setErrMsg('')
-      SignInAuth(data,dispatch)
-      router.push("/dashboard")
+      console.log(data)
+      if (data.message === "OTP Code sent successfully") {
+        router.push(`/auth/otp?email=${data.data.email}`)
+      } else {
+        SignInAuth(data, dispatch)
+        router.push("/dashboard")
+      }
+
       window !== "undefined" && window.location.reload()
     } else {
       setErrMsg(data.message)
     }
   }
 
- 
+
   return (
     <AuthLayout errMsg={errMsg} onSubmit={(e) => login(e)} title={"Welcome Back"} subText={"Please fill in your details"}>
       <AppInput name="email" required label="Username" />
