@@ -65,11 +65,12 @@ function Page() {
 
     return (
         <AppLayout title={"Notifications"}>
-            <div className="grid grid-cols-4 gap-4">
+            
+            {/* <div className="grid grid-cols-4 gap-4">
                 <div className="space-y-4">
                     <div className="flex gap-3 items-center">
                         <div onClick={() => setActive("all")} className={`${active === "all" ? "bg-hrms_dark_green text-white" : "text-hrms_dark_green"} cursor-pointer px-3 py-1`}>All ({pending.length})</div>
-                        {/* <div onClick={() => setActive("new")} className={`${active === "new" ? "bg-hrms_dark_green text-white" : "text-hrms_dark_green"} cursor-pointer px-3 py-1`}>New (5)</div> */}
+                        <div onClick={() => setActive("new")} className={`${active === "new" ? "bg-hrms_dark_green text-white" : "text-hrms_dark_green"} cursor-pointer px-3 py-1`}>New (5)</div>
                     </div>
                     <div className="space-y-3">
                         {
@@ -96,7 +97,7 @@ function Page() {
                                         <div className="text-xs preload py-2 w-3/5"></div>
                                         <div className="text-xs preload py-1 w-2/3"></div>
                                     </div>
-                                    {/* <div className=""><IoIosCloseCircleOutline /></div> */}
+                                    <div className=""><IoIosCloseCircleOutline /></div>
                                 </div>
                             ))
                         }
@@ -124,7 +125,7 @@ function Page() {
                                         <AppInput name="middlename" type="text" value={empData?.middlename} label="Middle Name (Optional)" />
                                         <AppInput name="telephone" type="number" value={Number(empData.telephone.split("+")[1])} required label="Phone Number" />
                                         <AppInput name="date_of_birth" value={DOB} type="date" required label="DOB" />
-                                        {/* <AppInput name="email" type="email" required value={emp?.user?.email} label="Email" /> */}
+                                        <AppInput name="email" type="email" required value={emp?.user?.email} label="Email" />
                                         <AppInput name="staff_id" type="text" value={empData?.staff_id} required label="Staff ID" />
                                         <AppInput value={empData?.marital_status} name="marital_status" type="text" required label="Marital Status" options={[
                                             { value: "single", label: "Single" },
@@ -218,7 +219,7 @@ function Page() {
                 isOpen={alertMsg}
                 onClose={() => setAlert(false)}
                 message={alertMsgData?.message}
-            />
+            /> */}
         </AppLayout>
     )
 }
