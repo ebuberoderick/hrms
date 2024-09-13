@@ -5,6 +5,7 @@ import AppLink from "../organisms/AppLink";
 import { RiSettings4Line } from "react-icons/ri";
 import { FaRegBell } from "react-icons/fa";
 import { AiOutlineFileSearch } from "react-icons/ai";
+import { BsPatchCheck } from "react-icons/bs";
 
 function AdminSideNav() {
   return (
@@ -25,6 +26,11 @@ function AdminSideNav() {
           text={"Notification"}
           icon={<FaRegBell />}
         />
+        <AppLink
+          text={"Approval"}
+          icon={<BsPatchCheck />}
+        />
+         
         <div className="space-y-2">
           <div className="font-[500] text-xs text-gray-500 capitalize pl-3">System Admininstration</div>
           <div>
