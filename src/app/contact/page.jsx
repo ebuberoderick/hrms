@@ -7,7 +7,7 @@ function page() {
     <WebLayout active={"contact"}>
       <div className="max-w-7xl space-y-16 mx-auto px-4">
         <div className="max-w-xl">
-          <div className="text-white text-3xl font-bold">Let's work together</div>
+          <div className="text-white text-3xl font-bold">Let&apos;s work together</div>
           <div className="text-gray-300">Proin volutpat consequat porttitor cras nullam gravida at orci molestie a eu arcu sed ut tincidunt magna.</div>
         </div>
         <div className="grid grid-cols-2 rounded-lg overflow-hidden">
