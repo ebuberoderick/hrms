@@ -5,7 +5,6 @@ import bannerImg from "@assets/images/imagecontainer.png"
 import vector1 from "@assets/images/Rectangle12.png"
 import vector2 from "@assets/images/Rectangle12x.png"
 import Frame226 from "@assets/images/Frame226.png"
-import Frame from "@assets/images/Frame.png"
 import lineImg from "@assets/images/Vector29.png"
 import WebLayout from '@/components/layouts/webLayout'
 import { FiMinus } from 'react-icons/fi'
@@ -20,8 +19,8 @@ function Page() {
   // useEffect(() => {
   //   Aos.init()
   // }, [])
-  
-  
+
+
   return (
     <WebLayout active={"home"}>
       <div className="bg-black overflow-hidden text-white">
@@ -163,16 +162,6 @@ function Page() {
             <div className="bg-white space-y-2 text-black p-4 rounded-md">
               <div className="font-bold">Simplified Operations</div>
               <div className="text-xs">Manage all aspects of      your organization from a single platform, fostering a collaborative work      environment.</div>
-            </div>
-          </div>
-        </div>
-        <div className="pb-24 px-4">
-          <div className="h-96 overflow-hidden relative max-w-7xl mx-auto">
-            <Image src={Frame} className='h-full w-full' />
-            <div className="absolute gap-5 flex items-center flex-col justify-center top-0 right-0 w-full h-full bg-black bg-opacity-70">
-              <div className="text-4xl text-center">Get Started with FiscusBook Today!</div>
-              <div className="text-[10px] sm:text-sm max-w-3xl px-4 text-center">Request a free demo or contact our sales team to learn more about how FiscusBook can transform your financial management and empower your business for success.</div>
-              <div className="bg-hrms_lighter_green text-xs px-4 py-2 rounded-full text-black">Request A Free Demo</div>
             </div>
           </div>
         </div>
