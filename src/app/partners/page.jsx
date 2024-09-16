@@ -18,7 +18,7 @@ function page() {
           <div className="md:order-1 space-y-10">
             <div className="space-y-4">
               <div className="text-2xl">Partner with a trusted brand</div>
-              <div className="text-gray-600">Partnering with a trusted brand can significantly enhance your business's credibility and reach. Established brands bring a wealth of experience, market recognition, and a loyal customer base that can be invaluable for new or growing companies. </div>
+              <div className="text-gray-600">Partnering with a trusted brand can significantly enhance your business&apos;s credibility and reach. Established brands bring a wealth of experience, market recognition, and a loyal customer base that can be invaluable for new or growing companies. </div>
             </div>
             <div className="bg-hrms_green cursor-pointer inline-block px-7 py-3 rounded-full">Become A Partner</div>
           </div>

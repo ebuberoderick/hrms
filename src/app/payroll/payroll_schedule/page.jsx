@@ -75,7 +75,7 @@ function Page() {
           <div className="sm:flex space-y-3 sm:space-y-0 gap-[10px] text-sm">
             <div
               className="flex cursor-pointer font-bold justify-center gap-2 items-center text-white bg-hrms_green px-7 py-3 rounded-[4px]"
-            // onClick={() => setIsModalOpen(true)}
+            onClick={() => setIsModalOpen(true)}
             >
               <i className="ri-add-line"></i>
               <div className="">Generate Payroll Schedule</div>
