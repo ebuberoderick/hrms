@@ -3,9 +3,11 @@ import AppLayout from '@/components/layouts/appLayout'
 import AppInput from '@/components/organisms/AppInput'
 import ResponseModal from '@/components/organisms/ResponseModal'
 import { NigeriaStates } from '@/hooks/Nigeria'
+import logo from "@assets/favicon.png"
 import { fetchAllEmployeeData, fetchAllPendingVerification, hrVerifyEmployee } from '@/services/authService'
 import React, { useEffect, useState } from 'react'
 import { IoIosCloseCircleOutline } from 'react-icons/io'
+import Image from 'next/image'
 
 function Page() {
     const [active, setActive] = useState("all")
@@ -76,7 +78,9 @@ function Page() {
                             pending.map((list, i) => (
                                 <div onClick={() => setEmp(list)} key={i} className={`shadow-lg ${emp.id === list.id && "bg-hrms_green bg-opacity-20"} flex items-center hover:bg-hrms_lighter_green hover:bg-opacity-10 cursor-pointer gap-2 p-3 border border-gray-100`}>
                                     <div className="">
-                                        <div className="w-10 h-10 rounded-full overflow-hidden bg-gray-200"></div>
+                                        <div className="w-10 h-10 rounded-full overflow-hidden bg-gray-200">
+                                            <Image src={logo} className="w-full h-full" />
+                                        </div>
                                     </div>
                                     <div className="flex-grow space-y-2">
                                         <div className="font-bold leading-4">User onboarding verification</div>
