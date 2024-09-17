@@ -174,29 +174,29 @@ function VerifyAll({ user, check }) {
                 </div>
             </div>
 
-            <div id='divcontents' class="bg hidden">
-                <img src={Coat_of_arms} alt="Company Logo" class="water-mark" />
-                <div class="bg-content">
-                    <div class="head">
-                        <div class="head-left">
-                            <img src="https://via.placeholder.com/100" alt="Profile Picture" class="avatar" />
+            <div id='divcontents' className="bg hidden">
+                <img src={Coat_of_arms} alt="Company Logo" className="water-mark" />
+                <div className="bg-content">
+                    <div className="head">
+                        <div className="head-left">
+                            <img src="https://via.placeholder.com/100" alt="Profile Picture" className="avatar" />
                             <div>
-                                <h1 class="head-left-title">John Miles Johnson</h1>
-                                <p class="head-left-subText">john@gmail.com</p>
-                                <p class="head-left-subText">090 2345 5983</p>
+                                <h1 className="head-left-title">John Miles Johnson</h1>
+                                <p className="head-left-subText">john@gmail.com</p>
+                                <p className="head-left-subText">090 2345 5983</p>
                             </div>
                         </div>
-                        <div class="">
-                            <div class="head-right">
-                                <h2 class="head-left-title">Name of company</h2>
-                                <img src={Coat_of_arms} alt="Company Logo" class="logo" />
+                        <div className="">
+                            <div className="head-right">
+                                <h2 className="head-left-title">Name of company</h2>
+                                <img src={Coat_of_arms} alt="Company Logo" className="logo" />
                             </div>
                         </div>
                     </div>
 
-                    <div class="box">
-                        <h3 class="title mb-2">Employee Details</h3>
-                        <div class="section-content">
+                    <div className="box">
+                        <h3 className="title mb-2">Employee Details</h3>
+                        <div className="section-content">
                             <div><strong>Employee ID:</strong> 12345</div>
                             <div><strong>First Name:</strong> John</div>
                             <div><strong>Last Name:</strong> Miles</div>
@@ -209,18 +209,18 @@ function VerifyAll({ user, check }) {
                             <div><strong>State Of Origin:</strong> Imo</div>
                         </div>
                     </div>
-                    <div class="box">
-                        <h3 class="title mb-2">Address</h3>
-                        <div class="section-content">
-                            <div class="span-4"><strong>Home Address:</strong></div>
+                    <div className="box">
+                        <h3 className="title mb-2">Address</h3>
+                        <div className="section-content">
+                            <div className="span-4"><strong>Home Address:</strong></div>
                             <div><strong>State:</strong> Imo</div>
                             <div><strong>City:</strong> Owerri</div>
                             <div><strong>Address:</strong> Owerri, Nigeria</div>
                         </div>
                     </div>
-                    <div class="box">
-                        <h3 class="title mb-2">Next of Kin</h3>
-                        <div class="section-content">
+                    <div className="box">
+                        <h3 className="title mb-2">Next of Kin</h3>
+                        <div className="section-content">
                             <div><strong>First Name:</strong> Mike</div>
                             <div><strong>Last Name:</strong> Miles</div>
                             <div><strong>Middle Name:</strong> </div>
@@ -231,9 +231,9 @@ function VerifyAll({ user, check }) {
                             <div><strong>Address:</strong> Owerri, Nigeria</div>
                         </div>
                     </div>
-                    <div class="box">
-                        <h3 class="title mb-2">Identification</h3>
-                        <div class="section-content">
+                    <div className="box">
+                        <h3 className="title mb-2">Identification</h3>
+                        <div className="section-content">
                             <div><strong>Employee ID:</strong> #12345</div>
                             <div><strong>User ID:</strong> #2354</div>
                             <div><strong>Staff ID:</strong> #124</div>
@@ -243,18 +243,18 @@ function VerifyAll({ user, check }) {
                             <div><strong>BVN:</strong> 29988374</div>
                         </div>
                     </div>
-                    <div class="box">
-                        <h3 class="title mb-2">Official Details</h3>
-                        <div class="section-content">
+                    <div className="box">
+                        <h3 className="title mb-2">Official Details</h3>
+                        <div className="section-content">
                             <div><strong>Hire Date:</strong> 21/08/2024</div>
                             <div><strong>Posting:</strong> Developer</div>
                             <div><strong>Grade:</strong> Grade 1</div>
                             <div><strong>Step:</strong> Step 1</div>
                         </div>
                     </div>
-                    <div class="flex justify-end">
+                    <div className="flex justify-end">
                         <button onclick="window.print()"
-                            class="print-button bg-green-600 text-white px-4 py-2 rounded shadow hover:bg-green-500">Print</button>
+                            className="print-button bg-green-600 text-white px-4 py-2 rounded shadow hover:bg-green-500">Print</button>
                     </div>
                 </div>
             </div>
