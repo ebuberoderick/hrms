@@ -6,6 +6,10 @@ import { RiSettings4Line } from "react-icons/ri";
 import { FaRegBell } from "react-icons/fa";
 import { AiOutlineFileSearch } from "react-icons/ai";
 import { BsPatchCheck } from "react-icons/bs";
+import { FiBarChart2 } from "react-icons/fi";
+import { GrFlag } from "react-icons/gr";
+import { IoWalletOutline } from "react-icons/io5";
+import { GiChart } from "react-icons/gi";
 
 function AdminSideNav() {
   return (
@@ -30,7 +34,7 @@ function AdminSideNav() {
           text={"Approval"}
           icon={<BsPatchCheck />}
         />
-         
+
         <div className="space-y-2">
           <div className="font-[500] text-xs text-gray-500 capitalize pl-3">System Admininstration</div>
           <div>
@@ -196,10 +200,27 @@ function AdminSideNav() {
                 { name: "Transfer", extra: false }
               ]}
             />
-            
+
             <AppLink
               text={"Audit Trail"}
               icon={<AiOutlineFileSearch />}
+            />
+
+            <AppLink
+              text={"Revenue Trend"}
+              icon={<IoWalletOutline />}
+            />
+            <AppLink
+              text={"Expense"}
+              icon={<FiBarChart2 />}
+            />
+            <AppLink
+              text={"Top Payees & Payers"}
+              icon={<GrFlag />}
+            />
+            <AppLink
+              text={"Revenue vs Expenses"}
+              icon={<GiChart />}
             />
           </div>
         </div>
