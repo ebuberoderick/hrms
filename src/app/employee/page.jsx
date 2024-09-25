@@ -480,9 +480,14 @@ const Page = () => {
               </div>
               <div className="flex justify-center">
                 <div>
-                  <div onClick={handleDownload} className="bg-hrms_green rounded-lg text-white px-5 py-3"><i className="ri-download-2-line"></i> Download File Sample</div>
+
+                  <a
+                    href={`data:text/csv;charset=utf-8,${escape(["STAFF ID,USER ID,EMPLOYEE NAME,EMPLOYEE STATUS,HIRE DATE,DATE OF BIRTH,MARITAL STATUS,GENDER,DESIGNATION,ASSIGNMENT,SUB ORGANIZATION,CATEGORY,GRADE,STEP,TELEPHONE,NPFA NAME,PIN NUMBER,LEGACY ID,PERSON START DATE,POSITION,EMPLOYEE TYPE,BVN,LAST NAME,FIRST NAME,MIDDLE NAME,STATE OF ORIGIN,DEPARTMENT ID,\n,\n,\n,\n,\n,\n"])}`}
+                    download="employee_sample.csv"
+                  >
+                    <div className="bg-hrms_green rounded-lg text-white px-5 py-3"><i className="ri-download-2-line"></i> Download File Sample</div>
+                  </a>
                 </div>
-                {/* <DownloadCSV data={data} fileName="employees" /> */}
               </div>
             </div>
             <div className="">
