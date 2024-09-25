@@ -24,7 +24,7 @@ function Page() {
       <div className='space-y-5'>
         <div className="lg:flex space-y-3 items-center justify-between">
           <div className="">
-            <p className=" text-[24px] font-[500] text-[#000000]">
+            <p className="text-[24px] font-[500] text-[#000000]">
               Payment History
             </p>
             <p className=" text-[12px] font-[400] text-[#00000099] text-opacity-60">

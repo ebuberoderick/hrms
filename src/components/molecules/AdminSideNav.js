@@ -105,6 +105,10 @@ function AdminSideNav() {
               text={"organization"}
               icon={<i className="ri-group-2-line"></i>}
               subMenu={[
+                {
+                  name: "MDAs", extra: true,
+                  option: ["Ministries", "Departments", "Agencies","Units"]
+                },
                 { name: "company", extra: false },
                 { name: "department", extra: false },
                 { name: "location", extra: false },

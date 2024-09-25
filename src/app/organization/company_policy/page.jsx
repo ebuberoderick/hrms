@@ -44,7 +44,7 @@ function Page() {
   }, [])
 
   return (
-    <AppLayout>
+    <AppLayout title={"Organizations Company Policy"}>
       <div className="space-y-5">
         <Modal closeModal={() => setShowModal(false)} size={"xl"} isOpen={showModal}>
           <form onSubmit={(e) => add(e)} className="space-y-4">
