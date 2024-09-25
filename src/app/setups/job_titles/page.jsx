@@ -151,7 +151,7 @@ function Page() {
             </div>
             <div
               className="flex cursor-pointer font-bold justify-center gap-2 items-center text-white bg-hrms_green px-7 py-3 rounded-[4px]"
-              onClick={() => setIsModalOpen(true)}
+              onClick={() => setShowModal(true)}
             >
               <i className="ri-add-line"></i>
               <div className="">Add Job Title</div>
