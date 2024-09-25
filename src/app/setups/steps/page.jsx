@@ -19,8 +19,6 @@ function Page() {
   const [empl, setAllEmpl] = useState([])
 
 
-
-
   const [uploadBtn, setUploadBtn] = useState(false)
   const [alertMsg, setAlert] = useState(false)
   const [alertMsgData, setAlertData] = useState(false)
