@@ -1,4 +1,4 @@
-import { createJobTitle, fetchAllCompanies, fetchAllDepartment, fetchAllEmployee, fetchAllLocation, fetchAllowanceDefinition, fetchAwardTypes, fetchDeductionDefinition, fetchGradeLevel, fetchGradeStep, fetchJobTitle, fetchQueryType, fetchSalaryStructure, fetchTerminationType } from "@/services/authService";
+import { createJobTitle, fetchAllCompanies, fetchAllDepartment, fetchAllEmployee, fetchAllLocation, fetchAllMadsAgencies, fetchAllMadsMinistry, fetchAllowanceDefinition, fetchAwardTypes, fetchDeductionDefinition, fetchGradeLevel, fetchGradeStep, fetchJobTitle, fetchQueryType, fetchSalaryStructure, fetchTerminationType } from "@/services/authService";
 
 
 
@@ -34,6 +34,24 @@ export const companies = async () => {
     const exportData = []
     await data.data[0].forEach(element => {
         exportData.push({ value: element.id, label: element.company_name })
+    });
+    return exportData;
+}
+
+export const ministries = async () => {
+    const { status, data } = await fetchAllMadsMinistry().catch(err => console.log(err))
+    const exportData = []
+    await data.data[0].forEach(element => {        
+        exportData.push({ value: element.id, label: element.name })
+    });
+    return exportData;
+}
+
+export const agencies = async () => {
+    const { status, data } = await fetchAllMadsAgencies().catch(err => console.log(err))
+    const exportData = []
+    await data.data[0].forEach(element => {        
+        exportData.push({ value: element.id, label: element.name })
     });
     return exportData;
 }

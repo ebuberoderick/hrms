@@ -122,9 +122,9 @@ function Page() {
         <table className="w-full divide-y text-sm text-left">
           <tr className="bg-gray-100">
             <th className="flex gap-3 pl-5 py-2">
-              <div className="w-9 relative">
+              {/* <div className="w-9 relative">
                 <div className="absolute -top-1"><AppInput type="checkbox" name="employee" /></div>
-              </div>
+              </div> */}
               Company
             </th>
 
@@ -137,9 +137,9 @@ function Page() {
             companies?.data?.map((cpomp, i) => (
               <tr key={i}>
                 <td className="flex items-center gap-3 pl-5 py-2">
-                  <div className="w-9 relative">
+                  {/* <div className="w-9 relative">
                     <div className=""><AppInput type="checkbox" name="employee" /></div>
-                  </div>
+                  </div> */}
                   <div className="flex-grow gap-2 flex">
                     {cpomp.company_name}
                   </div>

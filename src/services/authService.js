@@ -203,6 +203,31 @@ export const hrVerifyEmployee = (formData) => apiWithAuth.post("admin/employee/v
 // export const hodVerifyEmployee = (formData) => apiWithAuth.post("admin/employee/verification/hod_verify_data", formData).then(getApiResponse).catch(getErrorResponse);
 
 
+export const createMadsMinistry = (formData) => apiWithAuth.post("admin/mdas/ministries/create", formData).then(getApiResponse).catch(getErrorResponse);
+export const fetchMadsMinistry = (formData) => apiWithAuth.post("admin/mdas/ministries/fetch", formData).then(getApiResponse).catch(getErrorResponse);
+export const fetchAllMadsMinistry = (formData) => apiWithAuth.post("admin/mdas/ministries/fetch_all", formData).then(getApiResponse).catch(getErrorResponse);
+export const updateMadsMinistry = (formData) => apiWithAuth.post("admin/mdas/ministries/update", formData).then(getApiResponse).catch(getErrorResponse);
+export const deleteMadsMinistry = (formData) => apiWithAuth.post("admin/mdas/ministries/delete", formData).then(getApiResponse).catch(getErrorResponse);
+
+export const createMadsDepartment = (formData) => apiWithAuth.post("admin/mdas/departments/create", formData).then(getApiResponse).catch(getErrorResponse);
+export const fetchMadsDepartment = (formData) => apiWithAuth.post("admin/mdas/departments/fetch", formData).then(getApiResponse).catch(getErrorResponse);
+export const fetchAllMadsDepartment = (formData) => apiWithAuth.post("admin/mdas/departments/fetch_all", formData).then(getApiResponse).catch(getErrorResponse);
+export const updateMadsDepartment = (formData) => apiWithAuth.post("admin/mdas/departments/update", formData).then(getApiResponse).catch(getErrorResponse);
+export const deleteMadsDepartment = (formData) => apiWithAuth.post("admin/mdas/departments/delete", formData).then(getApiResponse).catch(getErrorResponse);
+
+export const createMadsAgencies = (formData) => apiWithAuth.post("admin/mdas/agencies/create", formData).then(getApiResponse).catch(getErrorResponse);
+export const fetchMadsAgencies = (formData) => apiWithAuth.post("admin/mdas/agencies/fetch", formData).then(getApiResponse).catch(getErrorResponse);
+export const fetchAllMadsAgencies = (formData) => apiWithAuth.post("admin/mdas/agencies/fetch_all", formData).then(getApiResponse).catch(getErrorResponse);
+export const updateMadsAgencies = (formData) => apiWithAuth.post("admin/mdas/agencies/update", formData).then(getApiResponse).catch(getErrorResponse);
+export const deleteMadsAgencies = (formData) => apiWithAuth.post("admin/mdas/agencies/delete", formData).then(getApiResponse).catch(getErrorResponse);
+
+export const createMadsUnits = (formData) => apiWithAuth.post("admin/mdas/units/create", formData).then(getApiResponse).catch(getErrorResponse);
+export const fetchMadsUnits = (formData) => apiWithAuth.post("admin/mdas/units/fetch", formData).then(getApiResponse).catch(getErrorResponse);
+export const fetchAllMadsUnits = (formData) => apiWithAuth.post("admin/mdas/units/fetch_all", formData).then(getApiResponse).catch(getErrorResponse);
+export const updateMadsUnits = (formData) => apiWithAuth.post("admin/mdas/units/update", formData).then(getApiResponse).catch(getErrorResponse);
+export const deleteMadsUnits = (formData) => apiWithAuth.post("admin/mdas/units/delete", formData).then(getApiResponse).catch(getErrorResponse);
+
+
 
 // export const createSalaryStructure = (formData) => apiWithAuth.post("admin/payroll/salary_structure/create",formData).then(getApiResponse).catch(getErrorResponse);
 

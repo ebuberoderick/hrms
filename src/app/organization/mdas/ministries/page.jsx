@@ -1,22 +1,44 @@
 "use client"
 import AppLayout from '@/components/layouts/appLayout'
 import AppInput from '@/components/organisms/AppInput'
+import AppPagination from '@/components/organisms/AppPagination'
 import Modal from '@/components/organisms/Modal'
+import serialize from '@/hooks/Serialize'
+import { createMadsMinistry, fetchMadsMinistry } from '@/services/authService'
+import { AllEmployees, companies } from '@/utility/constants'
 import React, { useEffect, useState } from 'react'
+import { HiOutlineBan } from 'react-icons/hi'
+import { LuEye } from 'react-icons/lu'
 
 function Page() {
+    const [riz, setRiz] = useState([])
     const [isloading, setIsLoading] = useState(true)
     const [showModal, setShowModal] = useState(false)
+    const [compnis, setCompnis] = useState([])
+    const [empl, setAllEmpl] = useState([])
 
     const add = async (e) => {
         e.preventDefault()
+        const formData = serialize(e.target);
+        const { status, data } = await createMadsMinistry(formData).catch(err => console.log(err))
+        if (status) {
+            fetch()
+            setShowModal(false)
+        }
     }
 
+    const fetch = async () => {
+        const { status, data } = await fetchMadsMinistry().catch(err => console.log(err))
+        if (status) {
+            setRiz(data.data[0]);
+        }
+        setIsLoading(false)
+    }
 
     useEffect(() => {
-        setTimeout(() => {
-            setIsLoading(false)
-        }, 4000);
+        companies().then(res => setCompnis([...res]))
+        AllEmployees().then(res => setAllEmpl([...res]))
+        fetch()
     }, [])
     return (
         <AppLayout title={"Organizations MDAs"}>
@@ -25,10 +47,12 @@ function Page() {
                     <form onSubmit={(e) => add(e)} className="space-y-4">
                         <div className="text-hrms_green text-xl">Add New Ministry</div>
                         <div className="grid grid-cols-2 gap-4">
-                            <AppInput name="company_name" type={"code"} required label="Code" />
-                            <AppInput name="company_type" type={""} required label="Name Of Ministry" />
+                            <AppInput name="hom_id" type={"select"} required label="Head of Ministry" options={[...empl]} />
+                            <AppInput name="company_id" type={"select"} required label="Company" options={[...compnis]} />
+                            <AppInput name="code" type={"code"} required label="Code" />
+                            <AppInput name="name" type={""} required label="Name Of Ministry" />
                             <div className="col-span-2">
-                                <AppInput name="trading_name" type={"textarea"} label="Description" />
+                                <AppInput name="description" type={"textarea"} label="Description" />
                             </div>
                         </div>
                         <button className="bg-hrms_green w-full rounded-lg text-white py-2">Add</button>
@@ -95,13 +119,31 @@ function Page() {
                         <table className="w-full divide-y text-xs text-left">
                             <tr className="bg-gray-100">
                                 <th className="flex gap-3 pl-5 py-2">
-                                    ID
+                                    Code
                                 </th>
-                                <th className="hidden lg:table-cell">Code</th>
                                 <th className="hidden sm:table-cell">Name Of Ministry</th>
                                 <th className="hidden lg:table-cell">Description</th>
                                 <th className="w-20">Action</th>
                             </tr>
+
+
+                            {
+                                riz?.data?.map((data, i) => (
+                                    <tr key={i} className="">
+                                        <td className="flex gap-3 pl-5 py-2">
+                                            {data.code}
+                                        </td>
+                                        <td className="hidden sm:table-cell">{data.name}</td>
+                                        <td className="hidden lg:table-cell">{data.description}</td>
+                                        <td className="text-xl flex items-center gap-1">
+                                            <div className="text-hrms_green p-1 cursor-pointer"><LuEye /></div>
+                                            <div className="text-hrms_green p-1 cursor-pointer"><i className="ri-edit-2-line"></i></div>
+                                            <div className="text-danger p-1 cursor-pointer"><HiOutlineBan /></div>
+                                        </td>
+                                    </tr>
+                                ))
+                            }
+
 
                             {
                                 isloading && ["", "", "", "", ""].map((list, i) => (
@@ -120,6 +162,7 @@ function Page() {
                             }
                         </table>
                     </div>
+                    <AppPagination totalRecords={riz} newData={(e) => setRiz(e)} />
                 </div>
             </div>
         </AppLayout>
