@@ -4,7 +4,7 @@ import AppInput from '@/components/organisms/AppInput'
 import Modal from '@/components/organisms/Modal'
 import React, { useEffect, useState } from 'react'
 
-function page() {
+function Page() {
     const [isloading, setIsLoading] = useState(true)
     const [showModal, setShowModal] = useState(false)
 
@@ -126,4 +126,4 @@ function page() {
     )
 }
 
-export default page
+export default Page
