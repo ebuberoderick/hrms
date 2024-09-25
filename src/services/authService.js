@@ -228,6 +228,7 @@ export const updateMadsUnits = (formData) => apiWithAuth.post("admin/mdas/units/
 export const deleteMadsUnits = (formData) => apiWithAuth.post("admin/mdas/units/delete", formData).then(getApiResponse).catch(getErrorResponse);
 
 
+export const decryptData = (formData) => apiWithAuth.post("admin/employee/decrypt_data", formData).then(getApiResponse).catch(getErrorResponse);
 
 // export const createSalaryStructure = (formData) => apiWithAuth.post("admin/payroll/salary_structure/create",formData).then(getApiResponse).catch(getErrorResponse);
 

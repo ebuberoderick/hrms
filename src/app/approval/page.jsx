@@ -4,7 +4,7 @@ import AppInput from '@/components/organisms/AppInput'
 import ResponseModal from '@/components/organisms/ResponseModal'
 import { NigeriaStates } from '@/hooks/Nigeria'
 import logo from "@assets/favicon.png"
-import { fetchAllEmployeeData, fetchAllPendingVerification, hrVerifyEmployee } from '@/services/authService'
+import { decryptData, fetchAllEmployeeData, fetchAllPendingVerification, hrVerifyEmployee } from '@/services/authService'
 import React, { useEffect, useState } from 'react'
 import { IoIosCloseCircleOutline } from 'react-icons/io'
 import Image from 'next/image'
@@ -18,13 +18,14 @@ function Page() {
     const [proccessing, setProccessing] = useState(false)
     const [DOB, setDOB] = useState("")
     const [SD, setSD] = useState("")
+    const [theBVN, setTheBVN] = useState("")
+    const [theNIN, setTheNIN] = useState("")
     const [alertMsg, setAlert] = useState(false)
     const [alertMsgData, setAlertData] = useState(false)
 
 
     const verify = async (state) => {
         setProccessing(true)
-
         const val = { status: state, employee_id: emp.employee_id }
         const { status, data } = await hrVerifyEmployee(val).catch(err => console.log(err))
         if (status) {
@@ -50,8 +51,26 @@ function Page() {
             setEmpData(data.data[0]);
             setDOB(data.data[0].date_of_birth)
             setSD(data.data[0].hire_date)
+            decryptBvn(data.data[0]?.bvn)
+            decryptNIN(data.data[0]?.user?.nin)
         }
         setIsLoading(false)
+    }
+
+
+
+    const decryptBvn = async (e) => {
+        const { status, data } = await decryptData({ data: e }).catch(err => console.log(err))
+        if (status) {
+            setTheBVN(data.data[0]);
+        }
+    }
+
+    const decryptNIN = async (e) => {
+        const { status, data } = await decryptData({ data: e }).catch(err => console.log(err))
+        if (status) {
+            setTheNIN(data.data[0]);
+        }
     }
 
 
@@ -165,7 +184,7 @@ function Page() {
                                 </div>
                                 <div className='space-y-4'>
                                     <div className='space-y-1'>
-                                        <AppInput name="bvn" value={empData?.bvn} type="text" required label="Enter BVN" />
+                                        <AppInput name="bvn" value={theBVN} type="password" required label="Enter BVN" />
                                     </div>
                                 </div>
                             </div>
@@ -178,7 +197,7 @@ function Page() {
                                 </div>
                                 <div className='space-y-4'>
                                     <div className='space-y-1'>
-                                        <AppInput name="nin" value={empData?.user?.nin} type="text" required label="Enter NIN" />
+                                        <AppInput name="nin" value={theNIN} type="password" required label="Enter NIN" />
                                     </div>
                                 </div>
                             </div>

@@ -4,7 +4,7 @@ import AppInput from '@/components/organisms/AppInput'
 import { NigeriaStates } from '@/hooks/Nigeria';
 import serialize from '@/hooks/Serialize';
 import Coat_of_arms from "@assets/images/Coat_of_arms.png";
-import { fetchMyData, verifyMyData } from '@/services/authService';
+import { decryptData, fetchMyData, verifyMyData } from '@/services/authService';
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 
@@ -12,6 +12,8 @@ function VerifyAll({ user, check }) {
     // console.log(user);
     const [userinfo, setUserinfo] = useState()
     const [btnPrint, setBtnPrint] = useState(false)
+    const [theBVN, setTheBVN] = useState("")
+    const [theNIN, setTheNIN] = useState("")
 
     const fetchInfo = async () => {
         const { status, data } = await fetchMyData().catch(err => console.log(err))
@@ -42,11 +44,28 @@ function VerifyAll({ user, check }) {
 
     }
 
+    const decryptBvn = async () => {
+        const { status, data } = await decryptData({ data: user?.employee?.bvn }).catch(err => console.log(err))
+        if (status) {
+            setTheBVN(data.data[0]);
+        }
+        
+    }
+
+    const decryptNIN = async () => {
+        const { status, data } = await decryptData({ data: user?.user?.nin }).catch(err => console.log(err))
+        if (status) {
+            setTheNIN(data.data[0]);
+        }
+    }
+
     var DOB = user?.employee.date_of_birth
     var SD = user?.employee?.hire_date
 
     useEffect(() => {
         fetchInfo()
+        decryptBvn()
+        decryptNIN()
     }, [])
 
     return (
@@ -319,7 +338,7 @@ function VerifyAll({ user, check }) {
                 </div>
                 <div className='space-y-4'>
                     <div className='space-y-1'>
-                        <AppInput name="bvn" value={user?.employee?.bvn} type="text" required label="Enter BVN" />
+                        <AppInput name="bvn" value={theBVN} type="password" required label="Enter BVN" />
                     </div>
                 </div>
             </div>
@@ -332,7 +351,7 @@ function VerifyAll({ user, check }) {
                 </div>
                 <div className='space-y-4'>
                     <div className='space-y-1'>
-                        <AppInput name="nin" value={user?.user?.nin} type="text" required label="Enter NIN" />
+                        <AppInput name="nin" value={theNIN} type="password" required label="Enter NIN" />
                     </div>
                 </div>
             </div>

@@ -39,11 +39,7 @@ const Page = () => {
 
   const perset_key = process.env.NEXT_PUBLIC_API_CLOUDINARY_PERSET_KEY
   const cloud_name = process.env.NEXT_PUBLIC_API_CLOUDINARY_CLOUD_NAME
-  const router = useRouter();
   const [imgUrl, setImgUrl] = useState("");
-  // const [errMsg, setErrMsg] = useState(false);
-  const [personalData, setPersonalData] = useState([])
-  const [currentStep, setCurrentStep] = useState(0)
 
   const headers = { 'Authorization': TOKEN }
 
@@ -53,12 +49,6 @@ const Page = () => {
   const [alertMsg, setAlert] = useState(false)
   const [alertMsgData, setAlertData] = useState(false)
   const [btn, setBtn] = useState(false)
-
-
-  const downloadCSV = () => {
-    saveAs('https://timesofindia.indiatimes.com/thumb/msid-70238371,imgsize-89579,width-400,resizemode-4/70238371.jpg', 'image.jpg') // Put your image URL here.
-  }
-
 
   const uploadImg = async (e) => {
     const file = e.target.files[0]
@@ -99,15 +89,6 @@ const Page = () => {
     setProccessingAdd(false)
   }
 
-  const handleDownload = () => {
-    const link = document.createElement('a');
-    // link.href = sample; // Path to the CSV file in the public directory
-    link.download = 'data.csv'; // Name of the file after download
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
   const bulkUpload = async (e) => {
     e.preventDefault();
     const file = e.target[0].files[0]
@@ -138,7 +119,6 @@ const Page = () => {
     const dd = String(today.getDate()).padStart(2, "0");
     return `${yyyy}-${mm}-${dd}`;
   };
-  const maxDate = getTodayDate();
 
   const inviteEmployee = async (e) => {
     e.preventDefault();
@@ -175,8 +155,6 @@ const Page = () => {
       setEmployee(data.data[0])
     }
   }, 3000);
-
-  const data = "Name,Age,Profession\nJohn Doe,30,Developer\nJane Smith,25,Designer";
 
 
   useEffect(() => {
