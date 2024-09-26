@@ -138,15 +138,15 @@ function Page() {
               {
                 salaryStructure.map((list, i) => (
                   <tr key={i}>
-                    <th className="flex gap-3 pl-5 py-2">{list.employee.employee_name}</th>
-                    <th className="hidden lg:table-cell">{list.jobtitle.title}</th>
-                    <th className="hidden sm:table-cell">{list.gradelevel.grade}</th>
-                    <th className="hidden sm:table-cell">{list.gradestep.step}</th>
-                    <th className="hidden sm:table-cell">{list.basic_pay}</th>
-                    <th className="hidden sm:table-cell">{list.created_at.split("T")[0]}</th>
-                    <th className="hidden sm:table-cell">{list.updated_at.split("T")[0]}</th>
-                    <th className="hidden sm:table-cell">{list.createdby.name}</th>
-                    <th className="w-20">{list?.updatedby?.name}</th>
+                    <td className="flex gap-3 pl-5 py-2">{list.employee.employee_name}</td>
+                    <td className="hidden lg:table-cell">{list.jobtitle.title}</td>
+                    <td className="hidden sm:table-cell">{list.gradelevel.grade}</td>
+                    <td className="hidden sm:table-cell">{list.gradestep.step}</td>
+                    <td className="hidden sm:table-cell">{list.basic_pay}</td>
+                    <td className="hidden sm:table-cell">{list.created_at.split("T")[0]}</td>
+                    <td className="hidden sm:table-cell">{list.updated_at.split("T")[0]}</td>
+                    <td className="hidden sm:table-cell">{list.createdby.name}</td>
+                    <td className="w-20">{list?.updatedby?.name}</td>
                   </tr>
                 ))
               }

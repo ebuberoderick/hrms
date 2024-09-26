@@ -149,7 +149,6 @@ function Page() {
                                 isloading && ["", "", "", "", ""].map((list, i) => (
                                     <tr className="" key={i}>
                                         <th className="flex gap-3 pl-5 py-2"><div className="preload py-2 w-2/3"></div></th>
-                                        <th className="hidden lg:table-cell"><div className="preload py-2 w-2/3"></div></th>
                                         <th className="hidden sm:table-cell"><div className="preload py-2 w-2/3"></div></th>
                                         <th className="hidden lg:table-cell"><div className="preload py-2 w-2/3"></div></th>
                                         <th className="w-20 flex gap-2">
