@@ -3,7 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
-function AppLink({ text, icon, subMenu }) {
+function AppLink({ text, icon, subMenu,prefix }) {
   const [showSub, setShowSub] = useState(false);
   const [active, setActive] = useState("");
   const [activeSub, setActiveSub] = useState("");
@@ -54,7 +54,7 @@ function AppLink({ text, icon, subMenu }) {
         </div>
       ) : (
         <Link
-          href={`/${ text.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x")}`}
+          href={`/${text.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x")}`}
         >
           <div
             className={`flex items-center gap-3 py-2 cursor-pointer px-3 ${active.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x") === text.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x")

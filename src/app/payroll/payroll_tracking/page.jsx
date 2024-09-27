@@ -108,7 +108,7 @@ function Page() {
                             </tr>
                             {
                                 employee.map((data, i) => (
-                                    <tr className="">
+                                    <tr key={i} className="">
                                         <td className="flex gap-3 pl-5 py-2">
                                             {data.id}
                                         </td>
@@ -129,7 +129,7 @@ function Page() {
                             }
                             {
                                 isloading && ["", "", "", "", ""].map((list, i) => (
-                                    <tr className="">
+                                    <tr key={i} className="">
                                         <th className="flex gap-3 pl-5 py-2">
                                             <div className="preload py-2 w-2/3"></div>
                                         </th>
