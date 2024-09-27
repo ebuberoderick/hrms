@@ -29,9 +29,9 @@ function Page() {
       } else {
         SignInAuth(data, dispatch)
         router.push("/dashboard")
+        window !== "undefined" && window.location.reload()
       }
 
-      window !== "undefined" && window.location.reload()
     } else {
       setErrMsg(data.message)
     }
