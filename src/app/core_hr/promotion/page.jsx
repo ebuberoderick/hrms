@@ -55,7 +55,7 @@ function Page() {
           <form onSubmit={(e) => add(e)} className="space-y-4">
             <div className="text-hrms_green text-xl">Add Promotion</div>
             <div className="grid grid-cols-2 gap-4">
-              <AppInput name="employee_id" type={"select"} required label="Employee Email" options={[...empl]} />
+              <AppInput name="employee_id" type={"select"} required label="Employee" options={[...empl]} />
               <AppInput name="company_id" type={"select"} required label="Company" options={[...compnis]} />
               <AppInput name="promotion_title" type={"text"} required label="Promotion Ttile" />
               <AppInput name="promotion_date" type={"date"} required label="Promotion Date" />
