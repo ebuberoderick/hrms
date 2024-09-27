@@ -1,6 +1,14 @@
 "use client"
 import AppLayout from '@/components/layouts/appLayout'
+import LineChart from '@/components/molecules/LineChart'
+import PieChart from '@/components/molecules/PieChart'
+import ResponseModal from '@/components/organisms/ResponseModal'
 import React, { useEffect, useState } from 'react'
+import { FiUploadCloud, FiUsers } from 'react-icons/fi'
+import { IoIosArrowDown } from 'react-icons/io'
+import { PiPrinter } from 'react-icons/pi'
+import { RiUserReceivedLine } from 'react-icons/ri'
+import { TbCalendarTime } from 'react-icons/tb'
 
 function Page() {
   const [isloading, setIsLoading] = useState(true)
@@ -12,17 +20,9 @@ function Page() {
   }, [])
 
   return (
-    <AppLayout title={"Payroll"}>
+    <AppLayout title={"Payroll Setups"}>
       <div className='space-y-5'>
-        <div className="lg:flex space-y-3 items-center justify-between">
-          <div className="">
-            <p className="text-[24px] font-[500] text-[#000000]">
-              Payment History
-            </p>
-            <p className=" text-[12px] font-[400] text-[#00000099] text-opacity-60">
-              All the payment history are listed here.
-            </p>
-          </div>
+        <div className="flex justify-end">
           <div className="sm:flex space-y-3 sm:space-y-0 gap-[10px] text-sm">
             <div className="border border-hrms_green rounded-md cursor-pointer text-hrms_green px-6 py-2">
               Export PDF
@@ -44,15 +44,12 @@ function Page() {
                   {/* <div className="w-9 relative">
                     <div className="absolute -top-1"><AppInput onChange={(e) => selectAll(e)} type="checkbox" name="employee" /></div>
                   </div> */}
-                  Payment ID
+                  Net Salary
                 </th>
-                <th className="hidden lg:table-cell">Employee ID</th>
-                <th className="hidden sm:table-cell">Employee Name</th>
-                <th className="hidden sm:table-cell">Orgnization</th>
-                <th className="hidden sm:table-cell">Department</th>
-                <th className="hidden sm:table-cell">Grade Level</th>
-                <th className="hidden sm:table-cell">Start Date</th>
-                <th className="w-20">End Date</th>
+                <th className="hidden lg:table-cell">Salary Month</th>
+                <th className="hidden sm:table-cell">Payroll Date</th>
+                <th className="hidden sm:table-cell">Status</th>
+                <th className="w-20">Action</th>
               </tr>
               {/* {
                                 acct?.data?.map((list, i) => (
@@ -89,10 +86,7 @@ function Page() {
                     <th className="hidden lg:table-cell"><div className="preload py-2 w-2/3"></div></th>
                     <th className="hidden sm:table-cell"><div className="preload py-2 w-2/3"></div></th>
                     <th className="hidden sm:table-cell"><div className="preload py-2 w-2/3"></div></th>
-                    <th className="hidden sm:table-cell"><div className="preload py-2 w-2/3"></div></th>
-                    <th className="hidden sm:table-cell"><div className="preload py-2 w-2/3"></div></th>
-                    <th className="hidden sm:table-cell"><div className="preload py-2 w-2/3"></div></th>
-                    <th className="w-20"><div className="preload py-2 w-2/3"></div></th>
+                    <th className="w-20"><div className="preload py-2 w-1/3"></div></th>
                   </tr>
                 ))
               }

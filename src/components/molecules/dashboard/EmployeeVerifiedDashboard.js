@@ -7,6 +7,7 @@ import { SlPlane } from 'react-icons/sl'
 import { HiOutlineBriefcase } from "react-icons/hi";
 import PieChart from '../PieChart'
 import { VscMail } from 'react-icons/vsc'
+import Link from 'next/link'
 
 function EmployeeVerifiedDashboard() {
     return (
@@ -53,7 +54,9 @@ function EmployeeVerifiedDashboard() {
                 <div className='flex rounded-lg py-4 gap-1 text-white bg-hrms_dark_green flex-col items-center justify-center'>
                     <div><IoWalletOutline className='3xl' /></div>
                     <div>Payslip</div>
-                    <div className='px-3 bg-white text-sm text-hrms_dark_green rounded-lg'>View Details</div>
+                    <Link href="/payslip">
+                        <div className='px-3 py-2 bg-white text-sm text-hrms_dark_green rounded-lg'>View Details</div>
+                    </Link>
                 </div>
             </div>
             <div className='grid grid-cols-3 gap-4'>
@@ -71,7 +74,7 @@ function EmployeeVerifiedDashboard() {
                         <div className="border border-gray-100 p-4 bg-white shadow-sm rounded-lg">
                             <div className="text-lg font-semibold">Total Task Assigned</div>
                             <div className="">
-                                <PieChart series={[45, 35,18]} labels={["Task Done", "In Progress","Pending"]} />
+                                <PieChart series={[45, 35, 18]} labels={["Task Done", "In Progress", "Pending"]} />
                             </div>
                         </div>
                     </div>

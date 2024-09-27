@@ -4,6 +4,7 @@ import logo from "@assets/images/authLogo.png";
 import CustomizeIcon from "@assets/images/customize.svg";
 import AppLink from "../organisms/AppLink";
 import { useSelector } from "react-redux";
+import { IoWalletOutline } from "react-icons/io5";
 
 function EmployeeSideNav() {
 
@@ -36,7 +37,7 @@ function EmployeeSideNav() {
               { name: "company policy", extra: false },
             ]}
           />
-          <AppLink
+          {/* <AppLink
             text={"time sheets"}
             icon={<i className="ri-time-line"></i>}
             subMenu={[
@@ -44,10 +45,14 @@ function EmployeeSideNav() {
               { name: "Date wise attendance", extra: false },
               { name: "monthly attendance", extra: false },
             ]}
-          />
-          <AppLink
+          /> */}
+          {/* <AppLink
             text={"HR calender"}
             icon={<i className="ri-calendar-todo-line"></i>}
+          /> */}
+          <AppLink
+            text={"Payslip"}
+            icon={<IoWalletOutline />}
           />
         </div>
         <div className="divition"></div>
