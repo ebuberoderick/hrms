@@ -233,7 +233,6 @@ export const fetchPayrollWorkflow = (formData) => apiWithAuth.post("admin/payrol
 
 
 
-
 // export const createSalaryStructure = (formData) => apiWithAuth.post("admin/payroll/salary_structure/create",formData).then(getApiResponse).catch(getErrorResponse);
 
 

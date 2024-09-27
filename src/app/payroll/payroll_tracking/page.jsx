@@ -49,9 +49,37 @@ function Page() {
 
     return (
         <AppLayout title={"Payroll"}>
-            <Modal size={"sm"} closeModal={() => setIsModalOpen(false)} isOpen={isModalOpen}>
+            <Modal size={"2xl"} closeModal={() => setViewSlip({})} isOpen={Object.keys(viewSlip).length > 0}>
                 <div className="">
-                    <form onSubmit={add} className="space-y-4">
+                    <table className="w-full divide-y text-xs text-left">
+                        <tr className="bg-gray-100">
+                            <th className="flex gap-3 pl-5 py-2">
+                                Employee Info
+                            </th>
+                            <th className="table-cell">Payment Date</th>
+                            <th className="table-cell">Status</th>
+                            <th className="table-cell">Account Details</th>
+                        </tr>
+                        {
+                            viewSlip?.payroll?.map((datf, i) => (
+                                <tr className="" key={i}>
+                                    <td className="pl-5 py-2">
+                                        <div className="">Ebube Onyemzoro Roderick</div>
+                                        <div className="">&#8358;23,988</div>
+                                    </td>
+                                    <td className="table-cell">Payment Date</td>
+                                    <td className="table-cell">Status</td>
+                                    <td className="table-cell">
+                                        <div className="font-bold">Account:</div>
+                                        <div className="">2120802649</div>
+                                        <div className="font-bold">Bank:</div>
+                                        <div className="">Zenith Bank</div>
+                                    </td>
+                                </tr>
+                            ))
+                        }
+                    </table>
+                    {/* <form onSubmit={add} className="space-y-4">
                         <div className="space-y-2">
                             <div className="text-hrms_green text-xl">Generate Payroll Schedule</div>
                             <div className="">
@@ -61,7 +89,7 @@ function Page() {
                         <div>
                             <button disabled={proccessingAdd} className="bg-hrms_green disabled:bg-opacity-40 w-full text-white rounded-lg py-2 text-center cursor-pointer">{proccessingAdd ? "Generating Payroll Schedule" : "Generate Payroll Schedule"}</button>
                         </div>
-                    </form>
+                    </form> */}
                 </div>
             </Modal>
             <div className='space-y-5'>
@@ -95,9 +123,8 @@ function Page() {
                         <table className="w-full divide-y text-xs text-left">
                             <tr className="bg-gray-100">
                                 <th className="flex gap-3 pl-5 py-2">
-                                    Tracking ID
+                                    Total Payslip
                                 </th>
-                                <th className="table-cell">Total Payslip</th>
                                 <th className="hidden sm:table-cell">Created Date</th>
                                 <th className="hidden sm:table-cell">Updated Date</th>
                                 <th className="hidden sm:table-cell">Created By</th>
@@ -110,9 +137,8 @@ function Page() {
                                 employee.map((data, i) => (
                                     <tr key={i} className="">
                                         <td className="flex gap-3 pl-5 py-2">
-                                            {data.id}
+                                            {data.payroll.length}
                                         </td>
-                                        <td className="table-cell">{data.payroll.length}</td>
                                         <td className="hidden sm:table-cell">{data.created_at.split("T")[0]}</td>
                                         <td className="hidden sm:table-cell">{data.date_updated?.split("T")[0]}</td>
                                         <td className="hidden sm:table-cell">{data.createdby?.name}</td>
@@ -121,7 +147,7 @@ function Page() {
                                         <td className="hidden sm:table-cell">{data.schedule_date}</td>
                                         <td className="hidden sm:table-cell">{data.status}</td>
                                         <td className="text-xl flex items-center gap-1">
-                                            <div className="text-hrms_green p-1 cursor-pointer"><LuEye /></div>
+                                            <div onClick={() => setViewSlip(data)} className="text-hrms_green p-1 cursor-pointer"><LuEye /></div>
                                             <div className="text-hrms_green p-1 cursor-pointer"><i className="ri-edit-2-line"></i></div>
                                         </td>
                                     </tr>

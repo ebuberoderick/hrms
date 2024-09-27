@@ -5,7 +5,7 @@ import AppPagination from '@/components/organisms/AppPagination'
 import Modal from '@/components/organisms/Modal'
 import ResponseModal from '@/components/organisms/ResponseModal'
 import serialize from '@/hooks/Serialize'
-import { fetchEmployee, fetchSalaryAllowance, payrollSchedule } from '@/services/authService'
+import { fetchSalaryAllowance, fetchSalaryStructure, payrollSchedule } from '@/services/authService'
 import React, { useEffect, useState } from 'react'
 
 function Page() {
@@ -22,18 +22,19 @@ function Page() {
     const formData = serialize(e.target);
     const { status, data } = await payrollSchedule(formData).catch(err => console.log(err))
     if (status) {
-      await fetchEmployees()
+      await fetch()
       setIsModalOpen(false)
     }
     setAlert(true)
     setAlertData(data)
     setProccessingAdd(false)
   }
+  
 
 
 
-  const fetchEmployees = async () => {
-    const { status, data } = await fetchSalaryAllowance().catch(err => console.log(err))
+  const fetch = async () => {
+    const { status, data } = await fetchSalaryStructure().catch(err => console.log(err))
     if (status) {
       setEmployee(data.data[0])
     }
@@ -41,8 +42,9 @@ function Page() {
   }
 
 
+
   useEffect(() => {
-    fetchEmployees()
+    fetch()
   }, [])
 
   return (
@@ -96,7 +98,6 @@ function Page() {
             </div>
           </div>
         </div>
-
         <div className="">
           <div className="">
             <table className="w-full divide-y text-xs text-left">
@@ -105,28 +106,29 @@ function Page() {
                   {/* <div className="w-9 relative">
                     <div className="absolute -top-1"><AppInput onChange={(e) => selectAll(e)} type="checkbox" name="employee" /></div>
                   </div> */}
-                  Employee ID
+                  Employee
                 </th>
-                <th className="hidden lg:table-cell">Employee Name</th>
-                <th className="hidden sm:table-cell">Department</th>
-                <th className="hidden sm:table-cell">Job Title</th>
+                <th className="hidden lg:table-cell">Job Title</th>
                 <th className="hidden sm:table-cell">Grade Level</th>
-                <th className="w-20">Basic Salary</th>
+                <th className="hidden sm:table-cell">Grade Step</th>
+                <th className="hidden sm:table-cell">Basic Salary</th>
+                <th className="hidden sm:table-cell">Created Date</th>
+                <th className="hidden sm:table-cell">Updated Date</th>
+                <th className="hidden sm:table-cell">Created By</th>
+                <th className="w-20">Updated By</th>
               </tr>
               {
-                employee.map((data, i) => (
-                  <tr key={i} className="">
-                    <td className="flex gap-3 pl-5 py-2">
-                      {/* <div className="w-9 relative">
-                  <div className="absolute -top-1"><AppInput onChange={(e) => selectAll(e)} type="checkbox" name="employee" /></div>
-                </div> */}
-                      {data?.employee?.staff_id}
-                    </td>
-                    <td className="hidden lg:table-cell">{data?.employee?.employee_name}</td>
-                    <td className="hidden sm:table-cell">{data.employee.position}</td>
-                    <td className="hidden sm:table-cell">{data.employee.category}</td>
-                    <td className="hidden sm:table-cell">{data.employee.grade}</td>
-                    <td className="w-20">{data.amount}</td>
+                employee.map((list, i) => (
+                  <tr key={i}>
+                    <td className="flex gap-3 pl-5 py-2">{list.employee.employee_name}</td>
+                    <td className="hidden lg:table-cell">{list.jobtitle.title}</td>
+                    <td className="hidden sm:table-cell">{list.gradelevel.grade}</td>
+                    <td className="hidden sm:table-cell">{list.gradestep.step}</td>
+                    <td className="hidden sm:table-cell">{list.basic_pay}</td>
+                    <td className="hidden sm:table-cell">{list.created_at.split("T")[0]}</td>
+                    <td className="hidden sm:table-cell">{list.updated_at.split("T")[0]}</td>
+                    <td className="hidden sm:table-cell">{list.createdby.name}</td>
+                    <td className="w-20">{list?.updatedby?.name}</td>
                   </tr>
                 ))
               }
@@ -138,14 +140,15 @@ function Page() {
                     <th className="hidden sm:table-cell"><div className="preload py-2 w-2/3"></div></th>
                     <th className="hidden sm:table-cell"><div className="preload py-2 w-2/3"></div></th>
                     <th className="hidden sm:table-cell"><div className="preload py-2 w-2/3"></div></th>
+                    <th className="hidden sm:table-cell"><div className="preload py-2 w-2/3"></div></th>
+                    <th className="hidden sm:table-cell"><div className="preload py-2 w-2/3"></div></th>
+                    <th className="hidden sm:table-cell"><div className="preload py-2 w-2/3"></div></th>
                     <th className="w-20"><div className="preload py-2 w-2/3"></div></th>
                   </tr>
                 ))
               }
             </table>
           </div>
-          <AppPagination totalRecords={employee} newData={(e) => setEmployee(e)} />
-
         </div>
 
         <ResponseModal

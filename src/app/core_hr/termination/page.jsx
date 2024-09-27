@@ -76,7 +76,7 @@ function Page() {
               Terminations
             </p>
             <p className=" text-[12px] font-[400] text-[#00000099] text-opacity-60">
-              All the company termination are listed here
+              All the company terminations are listed here
             </p>
           </div>
           <div className="sm:flex space-y-3 sm:space-y-0 gap-[10px] text-sm">
