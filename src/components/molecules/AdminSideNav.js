@@ -177,6 +177,7 @@ function AdminSideNav() {
                   option: ["Employee Details", "Allowances", "Deductions"]
                 },
                 { name: "Payroll Schedule", extra: false },
+                { name: "Payroll Tracking", extra: false },
                 // { name: "Payroll Settings", extra: false },
                 // { name: "Payslip", extra: false },
                 // { name: "Payment History", extra: false }

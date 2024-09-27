@@ -3,7 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
-function AppLink({ text, icon, subMenu }) {
+function AppLink({ text, icon, subMenu,prefix }) {
   const [showSub, setShowSub] = useState(false);
   const [active, setActive] = useState("");
   const [activeSub, setActiveSub] = useState("");
@@ -54,7 +54,7 @@ function AppLink({ text, icon, subMenu }) {
         </div>
       ) : (
         <Link
-          href={`/${ text.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x")}`}
+          href={`${prefix}/${ text.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x")}`}
         >
           <div
             className={`flex items-center gap-3 py-2 cursor-pointer px-3 ${active.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x") === text.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x")
@@ -88,7 +88,7 @@ function AppLink({ text, icon, subMenu }) {
                   <div className={`pl-6 space-y-2 ${activeSub.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x") === subText.name.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x") ? "":"hidden"} `}  id={subText.name}>
                     {subText.option.map((e, i) => (
                       <div key={e + i}>
-                        <Link href={`/${text.toLowerCase()}/${subText.name.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x")}/${e.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x")}`}>
+                        <Link href={`${prefix}/${text.toLowerCase()}/${subText.name.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x")}/${e.toLowerCase().replaceAll(" ", "_").replaceAll("&", "x")}`}>
                           <div className="hover:text-bg-hrms_dark_green py-1">{e}</div>
                         </Link>
                       </div>
@@ -97,7 +97,7 @@ function AppLink({ text, icon, subMenu }) {
                 </div>
               ) : (
                 <Link
-                  href={`/${text.toLowerCase()
+                  href={`${prefix}/${text.toLowerCase()
                     .replaceAll(" ", "_")
                     .replaceAll("&", "x")}/${subText.name.toLowerCase()
                       .replaceAll(" ", "_")

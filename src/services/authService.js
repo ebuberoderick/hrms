@@ -229,6 +229,10 @@ export const deleteMadsUnits = (formData) => apiWithAuth.post("admin/mdas/units/
 
 
 export const decryptData = (formData) => apiWithAuth.post("admin/employee/decrypt_data", formData).then(getApiResponse).catch(getErrorResponse);
+export const fetchPayrollWorkflow = (formData) => apiWithAuth.post("admin/payroll/payroll_schedule/fetch_payroll_workflow", formData).then(getApiResponse).catch(getErrorResponse);
+
+
+
 
 // export const createSalaryStructure = (formData) => apiWithAuth.post("admin/payroll/salary_structure/create",formData).then(getApiResponse).catch(getErrorResponse);
 

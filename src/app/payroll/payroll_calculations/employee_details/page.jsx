@@ -24,9 +24,9 @@ function Page() {
     if (status) {
       await fetchEmployees()
       setIsModalOpen(false)
-      setAlert(true)
-      setAlertData(data)
     }
+    setAlert(true)
+    setAlertData(data)
     setProccessingAdd(false)
   }
 
@@ -129,7 +129,6 @@ function Page() {
                     <td className="w-20">{data.amount}</td>
                   </tr>
                 ))
-
               }
               {
                 isloading && ["", "", "", "", ""].map((list, i) => (

@@ -28,6 +28,7 @@ function EmployeeSideNav() {
         <div className="divition"></div>
         <div>
           <AppLink
+            prefix={"employee"}
             text={"organization"}
             icon={<i className="ri-group-2-line"></i>}
             subMenu={[

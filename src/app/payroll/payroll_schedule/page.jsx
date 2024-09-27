@@ -14,6 +14,7 @@ function Page() {
   const [employee, setEmployee] = useState([])
   const [proccessingAdd, setProccessingAdd] = useState(false)
   const [alertMsg, setAlert] = useState(false)
+  const [viewSlip,setViewSlip]= useState({})
   const [alertMsgData, setAlertData] = useState(false)
 
   const add = async (e) => {
@@ -102,9 +103,6 @@ function Page() {
             <table className="w-full divide-y text-xs text-left">
               <tr className="bg-gray-100">
                 <th className="flex gap-3 pl-5 py-2">
-                  {/* <div className="w-9 relative">
-                    <div className="absolute -top-1"><AppInput onChange={(e) => selectAll(e)} type="checkbox" name="employee" /></div>
-                  </div> */}
                   Employee ID
                 </th>
                 <th className="hidden lg:table-cell">Employee Name</th>
@@ -115,11 +113,8 @@ function Page() {
               </tr>
               {
                 employee.map((data, i) => (
-                  <tr key={i} className="">
+                  <tr onClick={() => setViewSlip(data)} key={i} className="">
                     <td className="flex gap-3 pl-5 py-2">
-                      {/* <div className="w-9 relative">
-                  <div className="absolute -top-1"><AppInput onChange={(e) => selectAll(e)} type="checkbox" name="employee" /></div>
-                </div> */}
                       {data?.employee?.staff_id}
                     </td>
                     <td className="hidden lg:table-cell">{data?.employee?.employee_name}</td>

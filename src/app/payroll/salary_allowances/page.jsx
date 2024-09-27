@@ -66,7 +66,7 @@ function Page() {
               </div>
             </div>
             <div>
-              <button disabled={proccessingAdd} className="bg-hrms_green disabled:bg-opacity-40 w-full text-white rounded-lg py-2 text-center cursor-pointer">{proccessingAdd ? "Adding Deduction" : "Add Deduction"}</button>
+              <button disabled={proccessingAdd} className="bg-hrms_green disabled:bg-opacity-40 w-full text-white rounded-lg py-2 text-center cursor-pointer">{proccessingAdd ? "Adding Allowance" : "Add Allowance"}</button>
             </div>
           </form>
         </div>
