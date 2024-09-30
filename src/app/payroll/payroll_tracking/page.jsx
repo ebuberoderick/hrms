@@ -5,31 +5,32 @@ import AppPagination from '@/components/organisms/AppPagination'
 import Modal from '@/components/organisms/Modal'
 import ResponseModal from '@/components/organisms/ResponseModal'
 import serialize from '@/hooks/Serialize'
-import { fetchPayrollWorkflow, payrollSchedule } from '@/services/authService'
+import { fetchPayrollWorkflow, fetchPayrollWorkflowPayslips, payrollSchedule, updatePayrollWorkflow } from '@/services/authService'
 import React, { useEffect, useState } from 'react'
 import { LuEye } from 'react-icons/lu'
 
 function Page() {
     const [isloading, setIsLoading] = useState(true)
-    const [isModalOpen, setIsModalOpen] = useState(false)
+    const [payslipLoading, setIsPayslipLoading] = useState(false)
     const [employee, setEmployee] = useState([])
-    const [proccessingAdd, setProccessingAdd] = useState(false)
+    const [viewSlipData, setViewSlipData] = useState([])
     const [alertMsg, setAlert] = useState(false)
     const [viewSlip, setViewSlip] = useState({})
     const [alertMsgData, setAlertData] = useState(false)
+    const [proccessingAdd, setProccessingAdd] = useState(false)
 
-    const add = async (e) => {
+    const payNw = async (e) => {
         e.preventDefault()
-        // setProccessingAdd(true)
-        // const formData = serialize(e.target);
-        // const { status, data } = await payrollSchedule(formData).catch(err => console.log(err))
-        // if (status) {
-        //     await fetchEmployees()
-        //     setIsModalOpen(false)
-        // }
-        // setAlert(true)
-        // setAlertData(data)
-        // setProccessingAdd(false)
+        setProccessingAdd(true)
+        const formData = serialize(e.target);
+        const { status, data } = await updatePayrollWorkflow(formData).catch(err => console.log(err))
+        if (status) {
+            await fetchEmployees()
+            setViewSlip({})
+        }
+        setAlert(true)
+        setAlertData(data)
+        setProccessingAdd(false)
     }
 
 
@@ -42,17 +43,34 @@ function Page() {
         setIsLoading(false)
     }
 
+    const fetchPayslipInfo = async () => {
+        const { status, data } = await fetchPayrollWorkflowPayslips({ id: viewSlip.id }).catch(err => console.log(err))
+        if (status) {
+            setViewSlipData(data.data[0])
+        }
+        setIsPayslipLoading(false)
+    }
+
+
+
+
 
     useEffect(() => {
         fetchEmployees()
     }, [])
 
+    useEffect(() => {
+        Object.keys(viewSlip).length > 0 && fetchPayslipInfo()
+    }, [viewSlip])
+
+
+
     return (
         <AppLayout title={"Payroll"}>
             <Modal size={"2xl"} closeModal={() => setViewSlip({})} isOpen={Object.keys(viewSlip).length > 0}>
-                <div className="">
+                <div className="space-y-5 max-h-[400px] table-auto overflow-y-auto">
                     <table className="w-full divide-y text-xs text-left">
-                        <tr className="bg-gray-100">
+                        <tr className="bg-gray-100 sticky top-0">
                             <th className="flex gap-3 pl-5 py-2">
                                 Employee Info
                             </th>
@@ -61,35 +79,42 @@ function Page() {
                             <th className="table-cell">Account Details</th>
                         </tr>
                         {
-                            viewSlip?.payroll?.map((datf, i) => (
+                            viewSlipData?.map((datf, i) => (
                                 <tr className="" key={i}>
                                     <td className="pl-5 py-2">
-                                        <div className="">Ebube Onyemzoro Roderick</div>
-                                        <div className="">&#8358;23,988</div>
+                                        <div className="">{datf.account_name}</div>
+                                        <div className="">&#8358;{Number(datf.basic_salary).toLocaleString('en-US')}</div>
                                     </td>
-                                    <td className="table-cell">Payment Date</td>
-                                    <td className="table-cell">Status</td>
+                                    <td className="table-cell">{datf.schedule_date}</td>
+                                    <td className="table-cell">{datf.status}</td>
                                     <td className="table-cell">
                                         <div className="font-bold">Account:</div>
-                                        <div className="">2120802649</div>
+                                        <div className="">{datf.account_number}</div>
                                         <div className="font-bold">Bank:</div>
-                                        <div className="">Zenith Bank</div>
+                                        <div className="">{datf.bank_name}</div>
                                     </td>
                                 </tr>
                             ))
                         }
+
                     </table>
-                    {/* <form onSubmit={add} className="space-y-4">
+                    <form onSubmit={payNw} className="space-y-4">
+                        <input type="hidden" name='id' value={viewSlip.id} />
                         <div className="space-y-2">
-                            <div className="text-hrms_green text-xl">Generate Payroll Schedule</div>
                             <div className="">
-                                <AppInput name="schedule_date" type={"date"} required label="Set Date" />
+                                <AppInput name="status" type={"select"} required label="Set Status" options={[
+                                    { value: "pending", label: "Pending" },
+                                    { value: "processing", label: "Processing" },
+                                    { value: "paid", label: "Paid" },
+                                    { value: "suspended", label: "Suspended" },
+                                    { value: "failed", label: "Failed" },
+                                    { value: "completed", label: "Completed" }]} />
                             </div>
                         </div>
                         <div>
-                            <button disabled={proccessingAdd} className="bg-hrms_green disabled:bg-opacity-40 w-full text-white rounded-lg py-2 text-center cursor-pointer">{proccessingAdd ? "Generating Payroll Schedule" : "Generate Payroll Schedule"}</button>
+                            <button disabled={proccessingAdd} className="bg-hrms_green disabled:bg-opacity-40 w-full text-white rounded-lg py-2 text-center cursor-pointer">Confirm</button>
                         </div>
-                    </form> */}
+                    </form>
                 </div>
             </Modal>
             <div className='space-y-5'>
