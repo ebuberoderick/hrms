@@ -3,6 +3,7 @@ import AppLayout from '@/components/layouts/appLayout'
 import LineChart from '@/components/molecules/LineChart'
 import PieChart from '@/components/molecules/PieChart'
 import AppPagination from '@/components/organisms/AppPagination'
+import Modal from '@/components/organisms/Modal'
 import ResponseModal from '@/components/organisms/ResponseModal'
 import { fetchPayslip } from '@/services/authService'
 import React, { useEffect, useState } from 'react'
@@ -16,6 +17,7 @@ import { TbCalendarTime } from 'react-icons/tb'
 function Page() {
   const [isloading, setIsLoading] = useState(true)
   const [info, setInfo] = useState([])
+  const [view, setView] = useState({})
 
   const fetchPayslipData = async () => {
     const { status, data } = await fetchPayslip().catch(err => console.log(err))
@@ -32,6 +34,45 @@ function Page() {
 
   return (
     <AppLayout title={"Payroll Setups"}>
+
+      <Modal size={"lg"} closeModal={() => setView({})} isOpen={Object.keys(view).length > 0}>
+        {console.log(view)
+        }
+        <div className="grid grid-cols-2 gap-4">
+          <div className="">
+            <div className="font-bold capitalize">basic salary</div>
+            <div className="">&#8358;{Number(view.basic_salary).toLocaleString('en-US')}</div>
+          </div>
+          <div className="">
+            <div className="font-bold capitalize">gross salary</div>
+            <div className="">&#8358;{Number(view.gross_salary).toLocaleString('en-US')}</div>
+          </div>
+          <div className="">
+            <div className="font-bold capitalize">net salary</div>
+            <div className="">&#8358;{Number(view.net_salary).toLocaleString('en-US')}</div>
+          </div>
+          <div className="">
+            <div className="font-bold capitalize">salary allowances</div>
+            <div className="">&#8358;{Number(view.salary_allowances).toLocaleString('en-US')}</div>
+          </div>
+          <div className="">
+            <div className="font-bold capitalize">salary deductions</div>
+            <div className="">&#8358;{Number(view.salary_deductions).toLocaleString('en-US')}</div>
+          </div>
+          <div className="">
+            <div className="font-bold capitalize">schedule date</div>
+            <div className="">{view.schedule_date}</div>
+          </div>
+          <div className="">
+            <div className="font-bold capitalize">status</div>
+            <div className="capitalize">{view.status}</div>
+          </div>
+          <div className="">
+            <div className="font-bold capitalize">transaction ref</div>
+            <div className="">{view.transaction_ref}</div>
+          </div>
+        </div>
+      </Modal>
       <div className='space-y-5'>
         <div className="flex justify-end">
           <div className="sm:flex space-y-3 sm:space-y-0 gap-[10px] text-sm">
@@ -64,7 +105,7 @@ function Page() {
                   <tr key={i}>
                     <td className="flex gap-3 pl-5 py-2">
                       <div className="">&#8358;{Number(list.net_salary).toLocaleString('en-US')}</div>
-                      </td>
+                    </td>
                     <td className="hidden lg:table-cell">&#8358;{Number(list.basic_salary).toLocaleString('en-US')}</td>
                     <td className="hidden sm:table-cell">{list.schedule_date}</td>
                     <td className="hidden sm:table-cell">{list.status}</td>
@@ -90,7 +131,6 @@ function Page() {
             </table>
           </div>
           <AppPagination totalRecords={info} newData={(e) => setInfo(e)} />
-
         </div>
       </div>
     </AppLayout>
