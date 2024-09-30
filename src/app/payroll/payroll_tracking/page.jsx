@@ -173,7 +173,7 @@ function Page() {
                                         <td className="hidden sm:table-cell">{data.status}</td>
                                         <td className="text-xl flex items-center gap-1">
                                             <div onClick={() => setViewSlip(data)} className="text-hrms_green p-1 cursor-pointer"><LuEye /></div>
-                                            <div className="text-hrms_green p-1 cursor-pointer"><i className="ri-edit-2-line"></i></div>
+                                            {/* <div className="text-hrms_green p-1 cursor-pointer"><i className="ri-edit-2-line"></i></div> */}
                                         </td>
                                     </tr>
                                 ))
