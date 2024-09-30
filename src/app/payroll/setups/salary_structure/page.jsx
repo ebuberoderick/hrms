@@ -142,9 +142,9 @@ function Page() {
                     <td className="hidden lg:table-cell">{list?.jobtitle?.title}</td>
                     <td className="hidden sm:table-cell">{list?.gradelevel?.grade}</td>
                     <td className="hidden sm:table-cell">{list?.gradestep?.step}</td>
-                    <td className="hidden sm:table-cell">{list?.basic_pay}</td>
-                    <td className="hidden sm:table-cell">{list?.created_at.split("T")[0]}</td>
-                    <td className="hidden sm:table-cell">{list?.updated_at.split("T")[0]}</td>
+                    <td className="hidden sm:table-cell">&#8358;{Number(list?.basic_pay).toLocaleString('en-US')}</td>
+                    <td className="hidden sm:table-cell">{list?.created_at?.split("T")[0]}</td>
+                    <td className="hidden sm:table-cell">{list?.updated_at?.split("T")[0]}</td>
                     <td className="hidden sm:table-cell">{list?.createdby?.name}</td>
                     <td className="w-20">{list?.updatedby?.name}</td>
                   </tr>

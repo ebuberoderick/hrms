@@ -5,7 +5,7 @@ import AppPagination from '@/components/organisms/AppPagination'
 import Modal from '@/components/organisms/Modal'
 import ResponseModal from '@/components/organisms/ResponseModal'
 import serialize from '@/hooks/Serialize'
-import { fetchEmployee, fetchSalaryAllowance, payrollSchedule } from '@/services/authService'
+import { fetchEmployee, fetchPayroll, fetchSalaryAllowance, payrollSchedule } from '@/services/authService'
 import React, { useEffect, useState } from 'react'
 
 function Page() {
@@ -34,7 +34,7 @@ function Page() {
 
 
   const fetchEmployees = async () => {
-    const { status, data } = await fetchSalaryAllowance().catch(err => console.log(err))
+    const { status, data } = await fetchPayroll().catch(err => console.log(err))
     if (status) {
       setEmployee(data.data[0])
     }
@@ -112,16 +112,16 @@ function Page() {
                 <th className="w-20">Basic Salary</th>
               </tr>
               {
-                employee.map((data, i) => (
+                employee?.data?.map((data, i) => (
                   <tr onClick={() => setViewSlip(data)} key={i} className="">
                     <td className="flex gap-3 pl-5 py-2">
                       {data?.employee?.staff_id}
                     </td>
                     <td className="hidden lg:table-cell">{data?.employee?.employee_name}</td>
-                    <td className="hidden sm:table-cell">{data.employee.position}</td>
-                    <td className="hidden sm:table-cell">{data.employee.category}</td>
-                    <td className="hidden sm:table-cell">{data.employee.grade}</td>
-                    <td className="w-20">{data.amount}</td>
+                    <td className="hidden sm:table-cell">{data?.employee?.position}</td>
+                    <td className="hidden sm:table-cell">{data?.employee.category}</td>
+                    <td className="hidden sm:table-cell">{data?.employee?.grade}</td>
+                    <td className="w-20">&#8358;{Number(data?.basic_salary).toLocaleString('en-US')}</td>
                   </tr>
                 ))
 

@@ -230,10 +230,11 @@ export const deleteMadsUnits = (formData) => apiWithAuth.post("admin/mdas/units/
 
 export const decryptData = (formData) => apiWithAuth.post("admin/employee/decrypt_data", formData).then(getApiResponse).catch(getErrorResponse);
 export const fetchPayrollWorkflow = (formData) => apiWithAuth.post("admin/payroll/payroll_schedule/fetch_payroll_workflow", formData).then(getApiResponse).catch(getErrorResponse);
+export const fetchPayroll = (formData) => apiWithAuth.post("admin/payroll/payroll_schedule/fetch_payroll", formData).then(getApiResponse).catch(getErrorResponse);
+
 export const fetchPayrollWorkflowPayslips = (formData) => apiWithAuth.post("admin/payroll/payroll_schedule/fetch_payroll_workflow_payslips", formData).then(getApiResponse).catch(getErrorResponse);
 export const fetchPayslip = (formData) => apiWithAuth.post("employee/payroll/fetch_payslip", formData).then(getApiResponse).catch(getErrorResponse);
 export const updatePayrollWorkflow = (formData) => apiWithAuth.post("admin/payroll/payroll_schedule/update_payroll_workflow", formData).then(getApiResponse).catch(getErrorResponse);
-
 
 
 
