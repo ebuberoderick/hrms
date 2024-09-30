@@ -11,7 +11,7 @@ import { LuEye } from 'react-icons/lu'
 
 function Page() {
     const [isloading, setIsLoading] = useState(true)
-    const [payslipLoading, setIsPayslipLoading] = useState(false)
+    const [payslipLoading, setIsPayslipLoading] = useState(true)
     const [employee, setEmployee] = useState([])
     const [viewSlipData, setViewSlipData] = useState([])
     const [alertMsg, setAlert] = useState(false)
@@ -95,6 +95,12 @@ function Page() {
                                     </td>
                                 </tr>
                             ))
+                        }
+
+                        {
+                            payslipLoading && (
+                                <div className="text-center">Fetching PaySlips ...</div>
+                            )
                         }
 
                     </table>
