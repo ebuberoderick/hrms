@@ -7,6 +7,7 @@ import ResponseModal from '@/components/organisms/ResponseModal'
 import serialize from '@/hooks/Serialize'
 import { fetchPayrollWorkflow, fetchPayrollWorkflowPayslips, payrollSchedule, updatePayrollWorkflow } from '@/services/authService'
 import React, { useEffect, useState } from 'react'
+import { FaPrint } from 'react-icons/fa'
 import { LuEye } from 'react-icons/lu'
 
 function Page() {
@@ -53,6 +54,17 @@ function Page() {
 
 
 
+    const printNw = () => {
+        var content = document.getElementById("divcontents");
+        var pri = document.getElementById("ifmcontentstoprint").contentWindow;
+        pri.document.open();
+        pri.document.write(content.innerHTML);
+        pri.document.close();
+        pri.focus();
+        pri.print();
+    }
+
+
 
 
     useEffect(() => {
@@ -67,6 +79,8 @@ function Page() {
 
     return (
         <AppLayout title={"Payroll"}>
+            <iframe id="ifmcontentstoprint" className='h-0 w-0 absolute'></iframe>
+
             <Modal size={"2xl"} closeModal={() => setViewSlip({})} isOpen={Object.keys(viewSlip).length > 0}>
                 <div className="space-y-5 max-h-[400px] table-auto overflow-y-auto">
                     <table className="w-full divide-y text-xs text-left">
@@ -96,14 +110,13 @@ function Page() {
                                 </tr>
                             ))
                         }
-
-                        {
-                            payslipLoading && (
-                                <div className="text-center">Fetching PaySlips ...</div>
-                            )
-                        }
-
                     </table>
+                    {
+                        payslipLoading && (
+                            <div className="text-center">Fetching PaySlips ...</div>
+                        )
+                    }
+                    <div onClick={() => printNw()} className="text-hrms_green p-1 inline-flex items-center gap-1 cursor-pointer"><FaPrint /> Print</div>
                     <form onSubmit={payNw} className="space-y-4">
                         <input type="hidden" name='id' value={viewSlip.id} />
                         <div className="space-y-2">
@@ -179,7 +192,6 @@ function Page() {
                                         <td className="hidden sm:table-cell">{data.status}</td>
                                         <td className="text-xl flex items-center gap-1">
                                             <div onClick={() => setViewSlip(data)} className="text-hrms_green p-1 cursor-pointer"><LuEye /></div>
-                                            {/* <div className="text-hrms_green p-1 cursor-pointer"><i className="ri-edit-2-line"></i></div> */}
                                         </td>
                                     </tr>
                                 ))
