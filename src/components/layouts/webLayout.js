@@ -7,6 +7,8 @@ import Footer from '../molecules/Footer'
 import { IoMdArrowBack } from 'react-icons/io'
 import { useRouter } from 'next/navigation'
 
+export const runtime = "edge";
+
 function WebLayout({ children, active }) {
     const router = useRouter()
     return (

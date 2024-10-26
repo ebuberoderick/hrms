@@ -6,6 +6,8 @@ import TopNav from "../molecules/TopNav";
 import { useDispatch, useSelector } from "react-redux";
 import { Session, SignOut } from "@/hooks/Auth";
 
+export const runtime = "edge";
+
 function AppLayout({ children,title }) {
   const user = useSelector((state) => state?.User);
   const userNames = user?.value?.user?.name

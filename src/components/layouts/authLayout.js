@@ -6,7 +6,10 @@ import { useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import { Session } from "@/hooks/Auth";
 
+export const runtime = "edge";
+
 function AuthLayout({ children, title, subText, onSubmit, errMsg }) {
+
   const user = useSelector((state) => state.User);
   const isAuthenticated = Session(user);
   const router = useRouter();

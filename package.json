@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "pages:build": "npx @cloudflare/next-on-pages"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
@@ -36,6 +37,7 @@
     "remixicon": "^4.1.0"
   },
   "devDependencies": {
+    "@cloudflare/next-on-pages": "^1.13.5",
     "eslint": "^8",
     "eslint-config-next": "14.2.3",
     "postcss": "^8",
