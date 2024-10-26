@@ -28,6 +28,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <Head>
+        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" defer></script>
         <link rel="shortcut icon" href={icon} />
       </Head>
       <body className={`overflow-x-hidden ${inter.className}`}>

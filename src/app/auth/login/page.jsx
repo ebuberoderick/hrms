@@ -49,6 +49,7 @@ function Page() {
         <Link href="forgotten-password" className="text-sm text-hrms_green hidden sm:block">Forgot Password ?</Link>
       </div>
       <div className="flex gap-3">
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAAAyeAhStJlRC8nzr" data-theme="light"></div>
         <button disabled={proccessing} className="flex-grow disabled:bg-opacity-35 shadow-md bg-hrms_green text-white rounded-lg py-3"> {proccessing ? "Proccessing..." : "Log In"}</button>
         <div className="bg-hrms_green text-white w-12 h-12 rounded-lg text-3xl flex items-center justify-center cursor-pointer"><i className="ri-fingerprint-2-line"></i></div>
       </div>
